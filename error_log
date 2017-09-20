@@ -1,0 +1,62 @@
+[09-May-2017 16:50:10 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 16:51:27 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 16:51:47 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 16:55:46 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 16:55:51 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 16:57:16 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 16:57:21 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 16:57:22 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 16:57:23 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 16:57:32 UTC] PHP Fatal error:  Class 'MY_Controller' not found in /home/bmottag/public_html/pruebas/application/modules/login/controllers/Login.php on line 4
+[09-May-2017 16:57:34 UTC] PHP Fatal error:  Class 'MY_Controller' not found in /home/bmottag/public_html/pruebas/application/modules/login/controllers/Login.php on line 4
+[09-May-2017 16:57:36 UTC] PHP Fatal error:  Class 'MY_Controller' not found in /home/bmottag/public_html/pruebas/application/modules/login/controllers/Login.php on line 4
+[09-May-2017 16:57:43 UTC] PHP Fatal error:  Class 'MY_Controller' not found in /home/bmottag/public_html/pruebas/application/modules/login/controllers/Login.php on line 4
+[09-May-2017 16:58:10 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 17:04:58 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 17:05:01 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 17:08:09 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 17:20:28 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 17:20:30 UTC] PHP Fatal error:  Call to undefined method MY_Loader::_ci_object_to_array() in /home/bmottag/public_html/pruebas/application/third_party/MX/Loader.php on line 300
+[09-May-2017 17:24:32 UTC] PHP Fatal error:  Call to a member function sess_destroy() on a non-object in /home/bmottag/public_html/pruebas/application/modules/login/controllers/Login.php on line 18
+[09-May-2017 17:30:16 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/bmottag/public_html/pruebas/application/modules/login/views/login.php on line 63
+[09-May-2017 17:30:28 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/bmottag/public_html/pruebas/application/modules/login/views/login.php on line 63
+[09-May-2017 17:30:32 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/bmottag/public_html/pruebas/application/modules/login/views/login.php on line 63
+[09-May-2017 17:32:09 UTC] PHP Fatal error:  Call to undefined function get_cookie() in /home/bmottag/public_html/pruebas/application/modules/login/views/login.php on line 63
+[09-May-2017 18:29:54 UTC] PHP Fatal error:  Call to a member function get_basic_search() on a non-object in /home/bmottag/public_html/pruebas/application/modules/login/controllers/Login.php on line 32
+[09-May-2017 20:53:08 UTC] PHP Fatal error:  Call to undefined method General_model::countTask() in /home/bmottag/public_html/pruebas/application/modules/dashboard/controllers/Dashboard.php on line 21
+[09-May-2017 21:21:43 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/bmottag/public_html/pruebas/application/modules/dashboard/views/dashboard.php on line 392
+[09-May-2017 21:29:31 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/bmottag/public_html/pruebas/application/views/template/menu.php on line 141
+[09-May-2017 21:29:33 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/bmottag/public_html/pruebas/application/views/template/menu.php on line 141
+[09-May-2017 21:29:35 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/bmottag/public_html/pruebas/application/views/template/menu.php on line 141
+[09-May-2017 21:29:37 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/bmottag/public_html/pruebas/application/views/template/menu.php on line 141
+[11-Jun-2017 02:57:38 America/Bogota] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home/jelozanoo/public_html/application/modules/cron/controllers/Cron.php on line 83
+[30-Jul-2017 22:49:39 America/Bogota] PHP Fatal error:  Call to a member function get_alertas_vencidas_totales() on null in /home/jelozanoo/public_html/application/modules/report/views/lista_total_coordinador.php on line 34
+[02-Aug-2017 08:13:23 America/Bogota] PHP Parse error:  syntax error, unexpected '}' in /home/jelozanoo/public_html/application/modules/dashboard/views/lista_respuestas_por_alerta.php on line 115
+[04-Aug-2017 00:23:34 America/Bogota] PHP Fatal error:  Call to undefined method General_model::get_coordinadores_nodo() in /home/jelozanoo/public_html/application/modules/admin/controllers/Admin.php on line 1449
+[07-Aug-2017 12:09:23 America/Bogota] PHP Fatal error:  Cannot redeclare Dashboard::coordinador() in /home/jelozanoo/public_html/application/modules/dashboard/controllers/Dashboard.php on line 365
+[07-Aug-2017 12:09:25 America/Bogota] PHP Fatal error:  Cannot redeclare Dashboard::coordinador() in /home/jelozanoo/public_html/application/modules/dashboard/controllers/Dashboard.php on line 365
+[14-Aug-2017 13:03:51 America/Bogota] PHP Fatal error:  Call to undefined method Novedades_model::updateCambioCuadernillo() in /home/jelozanoo/public_html/application/modules/novedades/controllers/Novedades.php on line 771
+[14-Aug-2017 13:04:00 America/Bogota] PHP Fatal error:  Call to undefined method Novedades_model::updateCambioCuadernillo() in /home/jelozanoo/public_html/application/modules/novedades/controllers/Novedades.php on line 771
+[16-Aug-2017 21:37:28 America/Bogota] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/jelozanoo/public_html/application/modules/novedades/views/cambio_cuadernillo_coordinador.php on line 137
+[16-Aug-2017 22:31:09 America/Bogota] PHP Fatal error:  Call to undefined method Specific_model::get_anulaciones_sin_aprobar() in /home/jelozanoo/public_html/application/modules/dashboard/controllers/Dashboard.php on line 251
+[27-Aug-2017 04:32:50 America/Bogota] PHP Parse error:  syntax error, unexpected 'exit' (T_EXIT), expecting function (T_FUNCTION) in /home/jelozanoo/public_html/application/modules/admin/controllers/Admin.php on line 1920
+[27-Aug-2017 08:50:52 America/Bogota] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home/jelozanoo/public_html/application/models/General_model.php on line 487
+[27-Aug-2017 09:55:16 America/Bogota] PHP Fatal error:  Call to undefined method Specific_model::get_alertas_iniciadas_totales() in /home/jelozanoo/public_html/application/modules/dashboard/views/dashboard.php on line 79
+[27-Aug-2017 12:03:50 America/Bogota] PHP Fatal error:  Method name must be a string in /home/jelozanoo/public_html/application/modules/anulaciones/controllers/Anulaciones.php on line 215
+[27-Aug-2017 15:41:47 America/Bogota] PHP Parse error:  syntax error, unexpected ''pa' (T_ENCAPSED_AND_WHITESPACE) in /home/jelozanoo/public_html/application/models/General_model.php on line 498
+[27-Aug-2017 15:41:47 America/Bogota] PHP Parse error:  syntax error, unexpected ''pa' (T_ENCAPSED_AND_WHITESPACE) in /home/jelozanoo/public_html/application/models/General_model.php on line 498
+[27-Aug-2017 15:41:47 America/Bogota] PHP Parse error:  syntax error, unexpected ''pa' (T_ENCAPSED_AND_WHITESPACE) in /home/jelozanoo/public_html/application/models/General_model.php on line 498
+[27-Aug-2017 15:41:48 America/Bogota] PHP Parse error:  syntax error, unexpected ''pa' (T_ENCAPSED_AND_WHITESPACE) in /home/jelozanoo/public_html/application/models/General_model.php on line 498
+[13-Sep-2017 01:07:20 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/DB_query_builder.php on line 454
+[13-Sep-2017 01:07:33 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/DB_query_builder.php on line 2410
+[13-Sep-2017 01:08:27 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/core/Model.php on line 77
+[13-Sep-2017 01:08:40 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/DB_driver.php on line 1838
+[13-Sep-2017 01:09:39 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/DB_query_builder.php on line 2709
+[13-Sep-2017 01:10:41 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/DB_driver.php on line 1839
+[13-Sep-2017 01:10:43 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/DB_query_builder.php on line 503
+[13-Sep-2017 01:11:45 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/DB_driver.php on line 1429
+[13-Sep-2017 01:11:48 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/DB_query_builder.php on line 294
+[13-Sep-2017 01:12:48 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/DB_driver.php on line 1543
+[13-Sep-2017 01:13:32 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/drivers/mysqli/mysqli_driver.php on line 305
+[13-Sep-2017 01:13:52 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/DB_query_builder.php on line 2709
+[13-Sep-2017 01:14:52 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/jelozanoo/public_html/control/system/database/DB_query_builder.php on line 2436

@@ -1,0 +1,34 @@
+.DS_Store
+
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+
+composer.lock
+
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+/vendor/
+
+# IDE Files
+#-------------------------
+/nbproject/
+.idea/*
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+images/anulaciones/
+images/logo.png
+public/reportico/templates_c/%%F1^F12^F1236896%%expand_prepare.tpl.php
+public/reportico/templates_c/%%31^313^313328AA%%critbody_prepare.tpl.php
+public/reportico/projects/tutorials/config.php
