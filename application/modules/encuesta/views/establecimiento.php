@@ -4,14 +4,28 @@ $(function(){
 			var oID = $(this).attr("id");
             $.ajax ({
                 type: 'POST',
-				url: base_url + '/encuesta/cargarModalEstablecimiento',
-                data: {'idUser': oID},
+				url: base_url + 'encuesta/cargarModalEstablecimiento',
+                data: {'idManzana': oID, 'idEstablecimiento': 'x'},
                 cache: false,
                 success: function (data) {
                     $('#tablaDatos').html(data);
                 }
             });
-	});	
+	});
+	
+	$(".btn-info").click(function () {	
+			var oID = $(this).attr("id");
+            $.ajax ({
+                type: 'POST',
+				url: base_url + 'encuesta/cargarModalEstablecimiento',
+                data: {'idManzana': '', 'idEstablecimiento': oID},
+                cache: false,
+                success: function (data) {
+                    $('#tablaDatos').html(data);
+                }
+            });
+	});
+	
 });
 </script>
 
@@ -39,7 +53,29 @@ $(function(){
 					<i class="fa fa-users"></i> LISTA DE ESTABLECIMIENTO Y PROPIETARIO
 				</div>
 				<div class="panel-body">
-					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modal" id="x">
+				
+					<div class="row">
+						<div class="col-lg-12">
+						
+							<div class="row" align="center">
+								<div style="width:50%;" align="center">
+									<div class="alert alert-success">
+										<strong>SECTOR: </strong>
+										<?php echo $infoManzana[0]['fk_id_sector']; ?>
+										<br><strong>SECCIÓN: </strong>
+										<?php echo $infoManzana[0]['fk_id_seccion']; ?>
+										<br><strong>MANZANA: </strong>
+										<?php echo $infoManzana[0]['fk_id_manzana']; ?>
+										<br><strong>BARRIO: </strong>
+										<?php echo $infoManzana[0]['barrio']; ?>
+									</div>
+								</div>
+							</div>	
+						
+						</div>
+					</div>
+				
+					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modal" id="<?php echo $infoManzana[0]['id_manzana']; ?>">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar establecimiento y propietario
 					</button><br>
 <?php
@@ -80,7 +116,6 @@ if ($retornoError) {
 								<th class="text-center">Teléfono</th>
 								<th class="text-center">Razón social</th>								
 								<th class="text-center">Cédula o NIT</th>
-								<th class="text-center">Comuna</th>
 							</tr>
 						</thead>
 						<tbody>							
@@ -90,7 +125,7 @@ if ($retornoError) {
 									echo "<td class='text-right'>" . $lista['id_establecimiento'] . "</td>";
 									echo "<td class='text-center'>";
 						?>
-									<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_establecimiento']; ?>" >
+									<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_establecimiento']; ?>" >
 										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
 									</button>
 						<?php
@@ -100,7 +135,6 @@ if ($retornoError) {
 									echo "<td class='text-center'>" . $lista['telefono'] . "</td>";
 									echo "<td>" . $lista['razon_social'] . "</td>";
 									echo "<td>" . $lista['cedula'] . "</td>";
-									echo "<td>" . $lista['comuna'] . "</td>";
 									echo "</tr>";
 							endforeach;
 						?>

@@ -17,18 +17,21 @@
 		}
 		
 		/**
-		 * Lista de encuestas
+		 * Lista de establecimientos
 		 * @since 18/9/2017
 		 */
-		public function get_encuestas($arrDatos) 
+		public function get_establecimientos($arrDatos) 
 		{
 				$this->db->select();
 				if (array_key_exists("idEstablecimiento", $arrDatos)) {
 					$this->db->where('id_establecimiento', $arrDatos["idEstablecimiento"]);
 				}
+				if (array_key_exists("idManzana", $arrDatos)) {
+					$this->db->where('E.fk_id_manzana', $arrDatos["idManzana"]);
+				}
 				
 				$this->db->order_by('id_establecimiento', 'asc');
-				$query = $this->db->get('form_establecimiento');
+				$query = $this->db->get('form_establecimiento E');
 
 				if ($query->num_rows() > 0) {
 					return $query->result_array();
@@ -56,7 +59,8 @@
 
 				//revisar si es para adicionar o editar
 				if ($idEstablecimiento == '') {
-					$data['fecha_registro'] = date("Y-m-d G:i:s");;
+					$data['fk_id_usuario'] = $this->session->id;
+					$data['fecha_registro'] = date("Y-m-d G:i:s");
 					$query = $this->db->insert('form_establecimiento', $data);
 					$idEstablecimiento = $this->db->insert_id();
 				} else {
@@ -65,6 +69,64 @@
 				}
 				if ($query) {
 					return $idEstablecimiento;
+				} else {
+					return false;
+				}
+		}
+		
+		/**
+		 * Lista manzanas
+		 * @since 19/9/2017
+		 */
+		public function get_manzanas($arrDatos) 
+		{		
+				$this->db->select();
+				//$this->db->join('pruebas P', 'P.id_prueba = G.fk_id_prueba', 'INNER');
+				if (array_key_exists("idManzana", $arrDatos)) {
+					$this->db->where('M.id_manzana', $arrDatos["idManzana"]);
+				}
+				if (array_key_exists("idUsuario", $arrDatos)) {
+					$this->db->where('M.fk_id_usuario', $arrDatos["idUsuario"]);
+				}
+				
+				$this->db->order_by('barrio', 'asc');
+				$query = $this->db->get('form_manzana M');
+
+				if ($query->num_rows() > 0) {
+					return $query->result_array();
+				} else {
+					return false;
+				}
+		}
+		
+		/**
+		 * Add/Edit MANZANA
+		 * @since 19/9/2017
+		 */
+		public function saveManzana() 
+		{
+				$identificador = $this->input->post('hddId');
+				
+				$data = array(
+					'fk_id_sector' => $this->input->post('sector'),
+					'fk_id_seccion' => $this->input->post('seccion'),
+					'fk_id_manzana' => $this->input->post('manzana'),
+					'fk_id_comuna' => $this->input->post('comuna'),
+					'barrio' => $this->input->post('barrio')
+				);
+				
+				//revisar si es para adicionar o editar
+				if ($identificador == '') {
+					$data['fk_id_usuario'] = $this->session->id;
+					$data['fecha_creacion'] = date("Y-m-d G:i:s");
+					$query = $this->db->insert('form_manzana', $data);
+					$identificador = $this->db->insert_id();				
+				} else {
+					$this->db->where('id_manzana', $identificador);
+					$query = $this->db->update('form_manzana', $data);
+				}
+				if ($query) {
+					return $identificador;
 				} else {
 					return false;
 				}

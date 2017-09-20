@@ -10,19 +10,94 @@ class Encuesta extends MX_Controller {
     }
 	
 	/**
+	 * Lista de MANZANAS
+     * @since 19/9/2017
+	 */
+	public function manzana()
+	{
+			$arrParam = array();
+			$data['info'] = $this->encuesta_model->get_manzanas($arrParam);
+			
+			$data["view"] = 'manzana';
+			$this->load->view("layout", $data);
+	}
+	
+    /**
+     * Cargo modal - formulario manzanas
+     * @since 19/9/2017
+     */
+    public function cargarModalManzana() 
+	{
+			header("Content-Type: text/plain; charset=utf-8"); //Para evitar problemas de acentos
+			
+			$data['information'] = FALSE;
+			$data["identificador"] = $this->input->post("identificador");	
+			
+			$this->load->model("general_model");
+			$arrParam = array(
+				"table" => "param_roles",
+				"order" => "id_rol",
+				"id" => "x"
+			);
+			$data['sector'] = $this->general_model->get_basic_search($arrParam);//listado sectores
+			
+			if ($data["identificador"] != 'x') {
+				$this->load->model("general_model");
+				$arrParam = array(
+					"table" => "manzana",
+					"order" => "id_manzana",
+					"column" => "id_manzana",
+					"id" => $data["identificador"]
+				);
+				$data['information'] = $this->general_model->get_basic_search($arrParam);
+			}
+			
+			$this->load->view("manzana_modal", $data);
+    }
+	
+	/**
+	 * Update MANZANA
+     * @since 19/9/2017
+	 */
+	public function save_manzana()
+	{			
+			header('Content-Type: application/json');
+			$data = array();
+			
+			$identificador = $this->input->post('hddId');
+			
+			$msj = "Se adicionó la manzana con éxito.";
+			if ($identificador != '') {
+				$msj = "Se actualizó la manzana con éxito.";
+			}
+
+			if ($identificador = $this->encuesta_model->saveManzana()) {
+				$data["result"] = true;
+				$data["idRecord"] = $identificador;
+				
+				$this->session->set_flashdata('retornoExito', $msj);
+			} else {
+				$data["result"] = "error";
+				$data["idRecord"] = "";
+				
+				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el Administrador.');
+			}
+
+			echo json_encode($data);
+    }
+
+	/**
 	 * establecimiento List
      * @since 18/9/2017
 	 */
-	public function establecimiento()
+	public function establecimiento($idManzana)
 	{
-			$userRol = $this->session->rol;
-			if ($userRol != 1 ) { 
-				show_error('ERROR!!! - You are in the wrong place.');	
-			}
-
-			$arrParam = array();
-			$data['info'] = $this->encuesta_model->get_encuestas($arrParam);
+			$arrParam = array("idManzana" => $idManzana);
+			$data['info'] = $this->encuesta_model->get_establecimientos($arrParam);
 			
+			$arrParam = array("idManzana" => $idManzana);
+			$data['infoManzana'] = $this->encuesta_model->get_manzanas($arrParam);
+
 			$data["view"] = 'establecimiento';
 			$this->load->view("layout", $data);
 	}

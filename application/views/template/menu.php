@@ -248,7 +248,7 @@ if($userRol==6){//OPERADOR
                         </li>
 						
                         <li>
-							<a href="<?php echo base_url("encuesta/establecimiento"); ?>"><i class="fa fa-dashboard fa-fw"></i> Encuesta</a>
+							<a href="<?php echo base_url("encuesta/manzana"); ?>"><i class="fa fa-dashboard fa-fw"></i> Formularios</a>
                         </li>
 						
 

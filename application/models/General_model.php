@@ -25,6 +25,48 @@ class General_model extends CI_Model {
             return false;
     }
 	
+	
+		/**
+		 * Contar establecimientos
+		 * filtrado por id manzana
+		 * @since  19/9/2017
+		 */
+		public function countEstablecimientos($arrDatos)
+		{
+				$sql = "SELECT count(id_establecimiento) CONTEO";
+				$sql.= " FROM form_establecimiento E";
+				
+				if (array_key_exists("idManzana", $arrDatos)) {
+					$sql.= " WHERE fk_id_manzana = " . $arrDatos["idManzana"];
+				}
+
+				$query = $this->db->query($sql);
+				$row = $query->row();
+				return $row->CONTEO;
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		/**
 		 * Lista de departamentos
 		 * @since 12/5/2017
@@ -335,24 +377,7 @@ class General_model extends CI_Model {
 				return $row->CONTEO;
 		}
 		
-		/**
-		 * Contar sesiones para los grupos
-		 * filtrado por grupo
-		 * @since  25/5/2017
-		 */
-		public function countSesionesbyGrupo($arrDatos)
-		{
-				$sql = "SELECT count(id_sesion) CONTEO";
-				$sql.= " FROM sesiones S";
-				
-				if (array_key_exists("idGrupoInstrumentos", $arrDatos)) {
-					$sql.= " WHERE fk_id_grupo_instrumentos = " . $arrDatos["idGrupoInstrumentos"];
-				}
 
-				$query = $this->db->query($sql);
-				$row = $query->row();
-				return $row->CONTEO;
-		}
 		
 		/**
 		 * Obtener alertas vencidas y que se le debe dar respuesta por el delegado
