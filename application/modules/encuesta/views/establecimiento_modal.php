@@ -64,8 +64,8 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="form-group text-left">
-					<label class="control-label" for="email">Comuna : *</label>
-					<input type="text" class="form-control" id="email" name="email" value="<?php echo $information?$information[0]["email"]:""; ?>" placeholder="Comuna" />
+					<label class="control-label" for="comuna">Comuna : *</label>
+					<input type="text" class="form-control" id="comuna" name="comuna" value="<?php echo $information?$information[0]["email"]:""; ?>" placeholder="Comuna" />
 				</div>
 			</div>
 		</div>

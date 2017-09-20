@@ -61,7 +61,7 @@ $( document ).ready( function () {
 							$("#div_load").css("display", "none");
 							$('#btnSubmit').removeAttr('disabled');
 
-							var url = base_url + "admin/users/";
+							var url = base_url + "encuesta/establecimiento/";
 							$(location).attr("href", url);
 						}
 						else

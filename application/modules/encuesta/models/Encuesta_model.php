@@ -27,7 +27,7 @@
 					$this->db->where('id_establecimiento', $arrDatos["idEstablecimiento"]);
 				}
 				
-				$this->db->order_by('numero_formulario', 'asc');
+				$this->db->order_by('id_establecimiento', 'asc');
 				$query = $this->db->get('form_establecimiento');
 
 				if ($query->num_rows() > 0) {
@@ -38,41 +38,33 @@
 		}
 		
 		/**
-		 * Add/Edit USER
-		 * @since 10/5/2017
+		 * Add/Edit FORM ESTABLECIMIENTO
+		 * @since 19/9/2017
 		 */
-		public function saveUser($clave) 
+		public function saveEstablecimiento() 
 		{
-				$idUser = $this->input->post('hddId');
+				$idEstablecimiento = $this->input->post('hddId');
 				
 				$data = array(
-					'tipo_documento' => $this->input->post('tipoDocumento'),
-					'numero_documento' => $this->input->post('documento'),
-					'nombres_usuario' => $this->input->post('firstName'),
-					'apellidos_usuario' => $this->input->post('lastName'),
-					'direccion_usuario' => $this->input->post('address'),
-					'telefono_fijo' => $this->input->post('telefono'),
-					'celular' => $this->input->post('movilNumber'),
-					'email' => $this->input->post('email'),
-					'log_user' => $this->input->post('documento'),
-					'fk_id_rol' => $this->input->post('rol')
+					'nombre_propietario' => $this->input->post('nombre'),
+					'direccion' => $this->input->post('address'),
+					'telefono' => $this->input->post('telefono'),
+					'razon_social' => $this->input->post('razonSocial'),
+					'cedula' => $this->input->post('documento'),
+					'comuna' => $this->input->post('comuna')
 				);	
 
 				//revisar si es para adicionar o editar
-				if ($idUser == '') {
-					$data['fecha_creacion'] = date("Y-m-d");
-					$data['estado'] = 1;//si es para adicionar se coloca estado inicial como usuario ACTIVO
-					$data['password'] = md5($clave);
-					$data['clave'] = $clave;
-					$query = $this->db->insert('usuario', $data);
-					$idUser = $this->db->insert_id();
+				if ($idEstablecimiento == '') {
+					$data['fecha_registro'] = date("Y-m-d G:i:s");;
+					$query = $this->db->insert('form_establecimiento', $data);
+					$idEstablecimiento = $this->db->insert_id();
 				} else {
-					$data['estado'] = $this->input->post('estado');
-					$this->db->where('id_usuario', $idUser);
-					$query = $this->db->update('usuario', $data);
+					$this->db->where('id_establecimiento', $idEstablecimiento);
+					$query = $this->db->update('form_establecimiento', $data);
 				}
 				if ($query) {
-					return $idUser;
+					return $idEstablecimiento;
 				} else {
 					return false;
 				}

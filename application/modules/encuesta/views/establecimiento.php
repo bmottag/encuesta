@@ -87,10 +87,10 @@ if ($retornoError) {
 						<?php
 							foreach ($info as $lista):
 									echo "<tr>";
-									echo "<td>" . $lista['numero_formulario'] . "</td>";
+									echo "<td class='text-right'>" . $lista['id_establecimiento'] . "</td>";
 									echo "<td class='text-center'>";
 						?>
-									<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_usuario']; ?>" >
+									<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_establecimiento']; ?>" >
 										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
 									</button>
 						<?php
@@ -99,6 +99,7 @@ if ($retornoError) {
 									echo "<td class='text-center'>" . $lista['direccion'] . "</td>";
 									echo "<td class='text-center'>" . $lista['telefono'] . "</td>";
 									echo "<td>" . $lista['razon_social'] . "</td>";
+									echo "<td>" . $lista['cedula'] . "</td>";
 									echo "<td>" . $lista['comuna'] . "</td>";
 									echo "</tr>";
 							endforeach;
