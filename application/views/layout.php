@@ -9,7 +9,7 @@
     <meta name="author" content="bmottag">
 	<meta name="baseurl" content="<?php echo base_url()?>" />
 
-    <title>Control - Icfes</title>
+    <title>Encuesta</title>
 	<link rel="icon" type="image/png" href="<?php echo base_url("images/favicon.png"); ?>" />
 	
     <!-- Bootstrap Core CSS -->

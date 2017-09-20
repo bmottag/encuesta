@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	
-    <title>Control - Icfes</title>
+    <title>Encuesta</title>
 
     <!-- Bootstrap Core CSS -->
 	<link href="<?php echo base_url("assets/bootstrap/vendor/bootstrap/css/bootstrap.min.css"); ?>" rel="stylesheet">
