@@ -44,7 +44,7 @@ class Encuesta extends MX_Controller {
 			if ($data["identificador"] != 'x') {
 				$this->load->model("general_model");
 				$arrParam = array(
-					"table" => "manzana",
+					"table" => "form_manzana",
 					"order" => "id_manzana",
 					"column" => "id_manzana",
 					"id" => $data["identificador"]
@@ -112,13 +112,16 @@ class Encuesta extends MX_Controller {
 			
 			$data['information'] = FALSE;
 			$data["idEstablecimiento"] = $this->input->post("idEstablecimiento");
+			$data["idManzana"] = $this->input->post("idManzana");
 
 			if ($data["idEstablecimiento"] != 'x') 
 			{
 				$arrParam = array(
 					"idEstablecimiento" => $data["idEstablecimiento"]
 				);
-				$data['information'] = $this->encuesta_model->get_encuestas($arrParam);
+				$data['information'] = $this->encuesta_model->get_establecimientos($arrParam);
+				
+				$data["idManzana"] = $data['information'][0]['fk_id_manzana'];
 			}
 			
 			$this->load->view("establecimiento_modal", $data);

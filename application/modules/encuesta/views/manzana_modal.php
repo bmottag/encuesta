@@ -35,7 +35,7 @@
 					<select name="seccion" id="seccion" class="form-control" >
 						<option value=''>Select...</option>
 						<?php for ($i = 0; $i < count($sector); $i++) { ?>
-							<option value="<?php echo $sector[$i]["id_rol"]; ?>" <?php if($information[0]["fk_id_sector"] == $sector[$i]["id_rol"]) { echo "selected"; }  ?>><?php echo $sector[$i]["nombre_rol"]; ?></option>	
+							<option value="<?php echo $sector[$i]["id_rol"]; ?>" <?php if($information[0]["fk_id_seccion"] == $sector[$i]["id_rol"]) { echo "selected"; }  ?>><?php echo $sector[$i]["nombre_rol"]; ?></option>	
 						<?php } ?>
 					</select>
 				</div>
@@ -49,7 +49,7 @@
 					<select name="manzana" id="manzana" class="form-control" >
 						<option value=''>Select...</option>
 						<?php for ($i = 0; $i < count($sector); $i++) { ?>
-							<option value="<?php echo $sector[$i]["id_rol"]; ?>" <?php if($information[0]["fk_id_sector"] == $sector[$i]["id_rol"]) { echo "selected"; }  ?>><?php echo $sector[$i]["nombre_rol"]; ?></option>	
+							<option value="<?php echo $sector[$i]["id_rol"]; ?>" <?php if($information[0]["fk_id_manzana"] == $sector[$i]["id_rol"]) { echo "selected"; }  ?>><?php echo $sector[$i]["nombre_rol"]; ?></option>	
 						<?php } ?>
 					</select>
 				</div>
@@ -63,7 +63,7 @@
 					<select name="comuna" id="comuna" class="form-control" >
 						<option value=''>Select...</option>
 						<?php for ($i = 0; $i < count($sector); $i++) { ?>
-							<option value="<?php echo $sector[$i]["id_rol"]; ?>" <?php if($information[0]["fk_id_sector"] == $sector[$i]["id_rol"]) { echo "selected"; }  ?>><?php echo $sector[$i]["nombre_rol"]; ?></option>	
+							<option value="<?php echo $sector[$i]["id_rol"]; ?>" <?php if($information[0]["fk_id_comuna"] == $sector[$i]["id_rol"]) { echo "selected"; }  ?>><?php echo $sector[$i]["nombre_rol"]; ?></option>	
 						<?php } ?>
 					</select>
 				</div>
@@ -74,7 +74,7 @@
 			<div class="col-sm-12">
 				<div class="form-group text-left">
 						<label for="type" class="control-label">Barrio : *</label>
-						<input type="text" id="barrio" name="barrio" class="form-control" value="<?php echo $information?$information[0]["nombre_grupo_instrumentos"]:""; ?>" placeholder="Barrio" required >
+						<input type="text" id="barrio" name="barrio" class="form-control" value="<?php echo $information?$information[0]["barrio"]:""; ?>" placeholder="Barrio" required >
 				</div>
 			</div>
 		</div>
