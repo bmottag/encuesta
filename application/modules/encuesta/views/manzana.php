@@ -1,7 +1,7 @@
 
 <script>
 $(function(){ 
-	$(".btn-success").click(function () {	
+	$(".btn-info").click(function () {	
 			var oID = $(this).attr("id");
             $.ajax ({
                 type: 'POST',
@@ -22,12 +22,12 @@ $(function(){
 	<!-- /.row -->
 	<div class="row">
 		<div class="col-lg-12">
-			<div class="panel panel-default">
+			<div class="panel panel-info">
 				<div class="panel-heading">
 					<i class="fa fa-bullseye"></i> LISTA MANZANAS
 				</div>
 				<div class="panel-body">
-					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modal" id="x">
+					<button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#modal" id="x">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Manzana
 					</button><br>
 <?php
@@ -78,7 +78,7 @@ if ($retornoError) {
 									echo "<td>" . $lista['fk_id_seccion'] . "</td>";
 									echo "<td class='text-center'>";
 						?>
-									<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_manzana']; ?>" >
+									<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_manzana']; ?>" >
 										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
 									</button>									
 						<?php
@@ -105,7 +105,7 @@ $arrParam = array("idManzana" => $lista["id_manzana"]);
 $conteoEstablecimiento = $this->general_model->countEstablecimientos($arrParam);
 ?>
 									
-<a href="<?php echo base_url("encuesta/establecimiento/" . $lista['id_manzana']); ?>" class="btn btn-primary btn-xs">
+<a href="<?php echo base_url("encuesta/establecimiento/" . $lista['id_manzana']); ?>" class="btn btn-success btn-xs">
 Establecimiento  <span class="badge"><?php echo $conteoEstablecimiento; ?></span>
 </a>
 

@@ -5,11 +5,31 @@
 	<!-- /.row -->
 	<div class="row">
 		<div class="col-lg-12">
-			<div class="panel panel-default">
+			<div class="panel panel-warning">
 				<div class="panel-heading">
+					<a class="btn btn-warning" href=" <?php echo base_url().'encuesta/establecimiento/' . $information[0]['fk_id_manzana']; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
 					<i class="fa fa-gears"></i> ENLACES DEL FORMULARIO
 				</div>
 				<div class="panel-body">
+				
+					<div class="row">
+						<div class="col-lg-12">
+						
+							<div class="row" align="center">
+								<div style="width:50%;" align="center">
+									<div class="alert alert-warning">
+										<strong>No. Formulario: </strong>
+										<?php echo $information[0]['id_establecimiento']; ?>
+										<br><strong>Razón socil: </strong>
+										<?php echo $information[0]['razon_social']; ?>
+										<br><strong>Nombre comercial: </strong>
+										<?php echo $information[0]['nombre_propietario']; ?>
+									</div>
+								</div>
+							</div>	
+						
+						</div>
+					</div>
 				
 <?php
 $retornoExito = $this->session->flashdata('retornoExito');
@@ -36,100 +56,57 @@ if ($retornoError) {
     <?php
 }
 ?> 
+
+
 					<div class="row">
-						<div class="col-lg-4">	
-							<div class="alert alert-danger">
-								<strong>Aspectos administrativos</strong> 
-								<br><br>
-								
-<a class="btn btn-danger btn-xs" href=" <?php echo base_url(). 'encuesta/form_administrativos/' . $idFormulario; ?> ">
-Ir <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-						
-							</div>
+						<div class="col-lg-6">	
+<a href="<?php echo base_url(). 'encuesta/form_administrativos/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Formulario Aspectos administrativos   
+</a>
 						</div>
 
-						<div class="col-lg-4">	
-							<div class="alert alert-warning">
-								<strong>Características Generales de la Actividad Económica</strong>
-								<br><br>
-
-<a class="btn btn-warning btn-xs" href=" <?php echo base_url(). 'encuesta/form_actividad_economica/' . $idFormulario; ?> ">
-Ir <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-								
-							</div>
+						<div class="col-lg-6">	
+<a href="<?php echo base_url(). 'encuesta/form_actividad_economica/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Formulario Características Generales de la Actividad Económica  
+</a>
 						</div>
-						
-						<div class="col-lg-4">	
-							<div class="alert alert-info">
-								<strong>Aspectos críticos del Establecimiento 							</strong>
-								
-								<br><br>
-								
-<a class="btn btn-info btn-xs" href=" <?php echo base_url(). 'encuesta/form_criticos/' . $idFormulario; ?> ">
-Ir <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-								
-							</div>
-						</div>
-						
-						<div class="col-lg-4">	
-							<div class="alert alert-success">
-								<strong>Información Financiera del Establecimiento </strong>
-								
-								<br><br>
-								
-<a class="btn btn-success btn-xs" href=" <?php echo base_url(). 'encuesta/form_financiera/' . $idFormulario; ?> ">
-Ir <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-					
-							</div>
-						</div>
-						
-						
-						<div class="col-lg-4">	
-							<div class="alert alert-success">
-								<strong>Servicios de Apoyo Empresarial </strong>
-								
-								<br><br>
-								
-<a class="btn btn-success btn-xs" href=" <?php echo base_url(). 'encuesta/form_servicios/' . $idFormulario; ?> ">
-Ir <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-														
-							</div>
-						</div>
-
-
-						<div class="col-lg-4">	
-							<div class="alert alert-success">
-								<strong>Formalización Empresarial </strong>
-								
-								<br><br>
-
-<a class="btn btn-success btn-xs" href=" <?php echo base_url(). 'encuesta/form_formalizacion/' . $idFormulario; ?> ">
-Ir <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-								
-							</div>
-						</div>
-						
-
-
-							
-						
 					</div>
-					
-				</div>
-				<!-- /.row (nested) -->
+<br>					
+					<div class="row">
+						<div class="col-lg-6">	
+<a href="<?php echo base_url(). 'encuesta/form_criticos/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Formulario Aspectos críticos del Establecimiento  
+</a>
+						</div>
+
+						<div class="col-lg-6">	
+<a href="<?php echo base_url(). 'encuesta/form_financiera/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Formulario Información Financiera del Establecimiento   
+</a>
+						</div>
+					</div>
+<br>
+					<div class="row">
+						<div class="col-lg-6">	
+<a href="<?php echo base_url(). 'encuesta/form_servicios/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Formulario Servicios de Apoyo Empresarial  
+</a>
+						</div>
+						
+						<div class="col-lg-6">	
+<a href="<?php echo base_url(). 'encuesta/form_formalizacion/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Formulario Formalización Empresarial   
+</a>
+						</div>
+					</div>
+
 			</div>
 			<!-- /.panel-body -->
 		</div>
 		<!-- /.panel -->
 	</div>
 	<!-- /.col-lg-12 -->
-	
-	
 
-	
-	
-	
-	
 	
 </div>
 <!-- /.row -->

@@ -137,21 +137,19 @@ class Encuesta extends MX_Controller {
 			$data = array();
 			
 			$idEstablecimiento = $this->input->post('hddId');
-			$idManzana  = $this->input->post('hddId');
+			$idManzana  = $this->input->post('hddIdManzana');
 
 			$msj = "Se adicionó un nuevo establecimiento.";
 			if ($idEstablecimiento != '') {
 				$msj = "Se actualizó el establecimiento con éxito.";
 			}			
 
-
+			$data["idRecord"] = $idManzana;
 			if ($idEstablecimiento = $this->encuesta_model->saveEstablecimiento()) {
 				$data["result"] = true;					
 				$this->session->set_flashdata('retornoExito', $msj);
-				$data["idRecord"] = $idManzana;
 			} else {
 				$data["result"] = "error";
-				$data["idRecord"] = "";
 				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el administrador.');
 			}
 
@@ -164,6 +162,11 @@ class Encuesta extends MX_Controller {
 	 */
 	public function form_home($idFormulario)
 	{
+			$arrParam = array(
+				"idEstablecimiento" => $idFormulario
+			);
+			$data['information'] = $this->encuesta_model->get_establecimientos($arrParam);//informacion del establecimiento
+		
 			$data['idFormulario'] = $idFormulario;
 			$data["view"] = 'home';
 			$this->load->view("layout", $data);

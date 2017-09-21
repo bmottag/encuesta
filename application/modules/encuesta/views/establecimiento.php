@@ -36,8 +36,9 @@ $(function(){
 	<!-- /.row -->
 	<div class="row">
 		<div class="col-lg-12">
-			<div class="panel panel-default">
+			<div class="panel panel-success">
 				<div class="panel-heading">
+					<a class="btn btn-success" href=" <?php echo base_url().'encuesta/manzana/'; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
 					<i class="fa fa-users"></i> LISTA DE ESTABLECIMIENTO Y PROPIETARIO
 				</div>
 				<div class="panel-body">
@@ -100,7 +101,7 @@ if ($retornoError) {
 								<th class="text-center">No. formulario</th>
 								<th class="text-center">Editar</th>
 								<th class="text-center">Razón social</th>
-								<th class="text-center">Nombre de comercial</th>
+								<th class="text-center">Nombre comercial</th>
 								<th class="text-center">Dirección</th>
 								<th class="text-center">Teléfono</th>
 								<th class="text-center">Cédula o NIT</th>
@@ -117,15 +118,15 @@ if ($retornoError) {
 										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
 									</button>
 
-<a href="<?php echo base_url("encuesta/form_home/" . $lista['id_establecimiento']); ?>" class="btn btn-primary btn-xs">
+<a href="<?php echo base_url("encuesta/form_home/" . $lista['id_establecimiento']); ?>" class="btn btn-warning btn-xs">
 Formulario  
 </a>
 						<?php
 									echo "</td>";
+									echo "<td>" . $lista['razon_social'] . "</td>";
 									echo "<td class='text-center'>" . $lista['nombre_propietario'] . "</td>";
 									echo "<td class='text-center'>" . $lista['direccion'] . "</td>";
 									echo "<td class='text-center'>" . $lista['telefono'] . "</td>";
-									echo "<td>" . $lista['razon_social'] . "</td>";
 									echo "<td>" . $lista['cedula'] . "</td>";
 									echo "</tr>";
 							endforeach;
