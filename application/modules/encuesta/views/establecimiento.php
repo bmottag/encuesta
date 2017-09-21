@@ -111,10 +111,10 @@ if ($retornoError) {
 							<tr>
 								<th class="text-center">No. formulario</th>
 								<th class="text-center">Editar</th>
-								<th class="text-center">Nombre de propietario</th>
+								<th class="text-center">Razón social</th>
+								<th class="text-center">Nombre de comercial</th>
 								<th class="text-center">Dirección</th>
 								<th class="text-center">Teléfono</th>
-								<th class="text-center">Razón social</th>								
 								<th class="text-center">Cédula o NIT</th>
 							</tr>
 						</thead>

@@ -63,7 +63,7 @@ $( document ).ready( function () {
 							$("#div_load").css("display", "none");
 							$('#btnSubmit').removeAttr('disabled');
 
-							var url = base_url + "encuesta/establecimiento/";
+							var url = base_url + "encuesta/establecimiento/" + data.idRecord;
 							$(location).attr("href", url);
 						}
 						else

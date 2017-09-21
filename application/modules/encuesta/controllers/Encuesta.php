@@ -137,6 +137,7 @@ class Encuesta extends MX_Controller {
 			$data = array();
 			
 			$idEstablecimiento = $this->input->post('hddId');
+			$idManzana  = $this->input->post('hddId');
 
 			$msj = "Se adicionó un nuevo establecimiento.";
 			if ($idEstablecimiento != '') {
@@ -144,14 +145,15 @@ class Encuesta extends MX_Controller {
 			}			
 
 
-			if ($idUsuario = $this->encuesta_model->saveEstablecimiento()) {
+			if ($idEstablecimiento = $this->encuesta_model->saveEstablecimiento()) {
 				$data["result"] = true;					
 				$this->session->set_flashdata('retornoExito', $msj);
-				
+				$data["idRecord"] = $idManzana;
 			} else {
-				$data["result"] = "error";					
+				$data["result"] = "error";
+				$data["idRecord"] = "";
 				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el administrador.');
-					}
+			}
 
 			echo json_encode($data);
     }

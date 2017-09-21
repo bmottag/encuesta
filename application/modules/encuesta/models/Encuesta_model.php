@@ -54,7 +54,7 @@
 					'telefono' => $this->input->post('telefono'),
 					'razon_social' => $this->input->post('razonSocial'),
 					'cedula' => $this->input->post('documento'),
-					'comuna' => $this->input->post('comuna')
+					'fk_id_manzana' => $this->input->post('hddIdManzana')
 				);	
 
 				//revisar si es para adicionar o editar

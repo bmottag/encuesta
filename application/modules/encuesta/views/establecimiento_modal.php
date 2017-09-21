@@ -17,7 +17,14 @@
 
 		
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="col-sm-6">
+				<div class="form-group text-left">
+					<label class="control-label" for="razonSocial">Razón social o nombre comercial : *</label>
+					<input type="text" id="razonSocial" name="razonSocial" class="form-control" value="<?php echo $information?$information[0]["razon_social"]:""; ?>" placeholder="Razón social o nombre comercial" required >
+				</div>
+			</div>
+			
+			<div class="col-sm-6">
 				<div class="form-group text-left">
 					<label class="control-label" for="nombre">Nombre comercial : *</label>
 					<input type="text" id="nombre" name="nombre" class="form-control" value="<?php echo $information?$information[0]["nombre_propietario"]:""; ?>" placeholder="Nombre del propietario" required >
@@ -26,36 +33,27 @@
 		</div>
 		
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="col-sm-6">
 				<div class="form-group text-left">
 					<label class="control-label" for="address">Dirección :</label>
 					<input type="text" id="address" name="address" class="form-control" value="<?php echo $information?$information[0]["direccion"]:""; ?>" placeholder="Dirección" >
 				</div>
 			</div>
-		</div>
-		
-		<div class="row">
+
 			<div class="col-sm-6">
 				<div class="form-group text-left">
 					<label class="control-label" for="telefono">Teléfono : *</label>
 					<input type="text" id="telefono" name="telefono" class="form-control" value="<?php echo $information?$information[0]["telefono"]:""; ?>" placeholder="Teléfono" >
 				</div>
 			</div>
-			
-			<div class="col-sm-6">
-				<div class="form-group text-left">
-					<label class="control-label" for="razonSocial">Razón social o nombre comercial : *</label>
-					<input type="text" id="razonSocial" name="razonSocial" class="form-control" value="<?php echo $information?$information[0]["celular"]:""; ?>" placeholder="Razón social o nombre comercial" required >
-				</div>
-			</div>
 		</div>
 
 		
 		<div class="row">	
-			<div class="col-sm-12">
+			<div class="col-sm-6">
 				<div class="form-group text-left">
 					<label class="control-label" for="documento">No. Documento : *</label>
-					<input type="text" id="documento" name="documento" class="form-control" value="<?php echo $information?$information[0]["numero_documento"]:""; ?>" placeholder="Cédula o NIT" required >
+					<input type="text" id="documento" name="documento" class="form-control" value="<?php echo $information?$information[0]["cedula"]:""; ?>" placeholder="Cédula o NIT" required >
 				</div>
 			</div>
 			
