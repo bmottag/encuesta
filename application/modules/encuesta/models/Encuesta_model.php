@@ -300,6 +300,168 @@
 				return false;
 			}
 		}
+		
+		/**
+		 * Info formulario financiera
+		 * @since 21/9/2017
+		 */
+		public function get_form_financiera($arrDatos) 
+		{
+				$this->db->select();
+				if (array_key_exists("idFormulario", $arrDatos)) {
+					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
+				}
+				if (array_key_exists("idFormFinanciera", $arrDatos)) {
+					$this->db->where('A.id_financiera', $arrDatos["idFormFinanciera"]);
+				}
+				
+				$query = $this->db->get('form_financiera A');
+
+				if ($query->num_rows() > 0) {
+					return $query->row_array();
+				} else {
+					return false;
+				}
+		}
+		
+		/**
+		 * Add form financiera
+		 * @since 21/9/2017
+		 */
+		public function add_form_financiera() 
+		{
+			$idFormFinanciera = $this->input->post('hddIdFormFinanciera');
+			
+			$data = array(
+				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_usuario' => $this->session->userdata("id"),
+				'ingresos' => $this->input->post('ingresos'),
+				'contabilidad' => $this->input->post('contabilidad'),
+				'formacion' => $this->input->post('formacion'),
+				'impuestos' => $this->input->post('impuestos')
+			);
+			
+			//revisar si es para adicionar o editar
+			if ($idFormFinanciera == '') {
+				$data['fecha_registro'] = date("Y-m-d G:i:s");
+				$query = $this->db->insert('form_financiera', $data);				
+			} else {
+				$this->db->where('id_financiera', $idFormFinanciera);
+				$query = $this->db->update('form_financiera', $data);
+			}
+			
+			if ($query) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		/**
+		 * Info formulario servicios
+		 * @since 21/9/2017
+		 */
+		public function get_form_servicios($arrDatos) 
+		{
+				$this->db->select();
+				if (array_key_exists("idFormulario", $arrDatos)) {
+					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
+				}
+				if (array_key_exists("idFormCriticos", $arrDatos)) {
+					$this->db->where('A.id_criticos', $arrDatos["idFormCriticos"]);
+				}
+				
+				$query = $this->db->get('form_criticos A');
+
+				if ($query->num_rows() > 0) {
+					return $query->row_array();
+				} else {
+					return false;
+				}
+		}
+		
+		/**
+		 * Add form criticos
+		 * @since 21/9/2017
+		 */
+		public function add_form_servicios() 
+		{
+			$idFormCriticos = $this->input->post('hddIdFormCriticos');
+			
+			$data = array(
+				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_usuario' => $this->session->userdata("id"),
+				'inconvenientes' => $this->input->post('inconvenientes')
+			);
+			
+			//revisar si es para adicionar o editar
+			if ($idFormCriticos == '') {
+				$data['fecha_registro'] = date("Y-m-d G:i:s");
+				$query = $this->db->insert('form_criticos', $data);				
+			} else {
+				$this->db->where('id_criticos', $idFormCriticos);
+				$query = $this->db->update('form_criticos', $data);
+			}
+			
+			if ($query) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		/**
+		 * Info formulario formalizacion
+		 * @since 21/9/2017
+		 */
+		public function get_form_formalizacion($arrDatos) 
+		{
+				$this->db->select();
+				if (array_key_exists("idFormulario", $arrDatos)) {
+					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
+				}
+				if (array_key_exists("idFormCriticos", $arrDatos)) {
+					$this->db->where('A.id_criticos', $arrDatos["idFormCriticos"]);
+				}
+				
+				$query = $this->db->get('form_criticos A');
+
+				if ($query->num_rows() > 0) {
+					return $query->row_array();
+				} else {
+					return false;
+				}
+		}
+		
+		/**
+		 * Add form formalizacion
+		 * @since 21/9/2017
+		 */
+		public function add_form_formalizacion() 
+		{
+			$idFormCriticos = $this->input->post('hddIdFormCriticos');
+			
+			$data = array(
+				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_usuario' => $this->session->userdata("id"),
+				'inconvenientes' => $this->input->post('inconvenientes')
+			);
+			
+			//revisar si es para adicionar o editar
+			if ($idFormCriticos == '') {
+				$data['fecha_registro'] = date("Y-m-d G:i:s");
+				$query = $this->db->insert('form_criticos', $data);				
+			} else {
+				$this->db->where('id_criticos', $idFormCriticos);
+				$query = $this->db->update('form_criticos', $data);
+			}
+			
+			if ($query) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 
 	
 	    

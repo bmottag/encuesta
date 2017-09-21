@@ -2,9 +2,10 @@ $( document ).ready( function () {
 			
 	$( "#form" ).validate( {
 		rules: {
-			visible:			{ required: true },
-			aviso:				{ required: true },
-			matricula:				{ required: true }
+			ingresos:			{ required: true },
+			contabilidad:		{ required: true },
+			formacion:			{ required: true },
+			impuestos:			{ required: true }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {
@@ -39,7 +40,7 @@ $( document ).ready( function () {
 			
 				$.ajax({
 					type: "POST",	
-					url: base_url + "encuesta/save_form_administrativa",	
+					url: base_url + "encuesta/save_form_financiera",	
 					data: $("#form").serialize(),
 					dataType: "json",
 					contentType: "application/x-www-form-urlencoded;charset=UTF-8",

@@ -1,22 +1,11 @@
-<script type="text/javascript" src="<?php echo base_url("assets/js/validate/incidences/near_miss.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/form_financiera.js"); ?>"></script>
 
 <div id="page-wrapper">
 	<br>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h4 class="list-group-item-heading">
-					<i class="fa fa-ambulance fa-fw"></i>	Información Financiera del Establecimiento 														
-					</h4>
-				</div>
-			</div>
-		</div>
-		<!-- /.col-lg-12 -->				
-	</div>
 
 <form  name="form" id="form" class="form-horizontal" method="post"  >
 	<input type="hidden" id="hddIdentificador" name="hddIdentificador" value="<?php echo $idFormulario; ?>"/>
+	<input type="hidden" id="hddIdFormFinanciera" name="hddIdFormFinanciera" value="<?php echo $idFormFinanciera; ?>"/>
 	
 	<!-- /.row -->
 	<div class="row">
@@ -57,59 +46,59 @@ if ($retornoError) {
 <p class="text-danger text-left">Los campos con * son obligatorios.</p>								
 								
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="visible">¿Cuál es el valor promedio de ingresos por ventas o por servicios en el mes de este establecimiento?. (Coloque el valor señalado en los siguientes rangos) *</label>
+							<label class="col-sm-4 control-label" for="ingresos">¿Cuál es el valor promedio de ingresos por ventas o por servicios en el mes de este establecimiento?. (Coloque el valor señalado en los siguientes rangos) *</label>
 							<div class="col-sm-5">
-								<select name="visible" id="visible" class="form-control" required>
+								<select name="ingresos" id="ingresos" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["visible"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information[0]["visible"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information[0]["visible"] == 3) { echo "selected"; }  ?>>Si</option>
-									<option value=4 <?php if($information[0]["visible"] == 4) { echo "selected"; }  ?>>No</option>
-									<option value=5 <?php if($information[0]["visible"] == 5) { echo "selected"; }  ?>>Si</option>
-									<option value=6 <?php if($information[0]["visible"] == 6) { echo "selected"; }  ?>>No</option>
-									<option value=7 <?php if($information[0]["visible"] == 7) { echo "selected"; }  ?>>Si</option>
-									<option value=8 <?php if($information[0]["visible"] == 8) { echo "selected"; }  ?>>No</option>
-									<option value=9 <?php if($information[0]["visible"] == 9) { echo "selected"; }  ?>>Si</option>
+									<option value=1 <?php if($information["ingresos"] == 1) { echo "selected"; }  ?>>Menos de $500.000</option>
+									<option value=2 <?php if($information["ingresos"] == 2) { echo "selected"; }  ?>>Entre $500.001 y $1.000.000</option>
+									<option value=3 <?php if($information["ingresos"] == 3) { echo "selected"; }  ?>>Entre $1.000.001 y $1.500.000</option>
+									<option value=4 <?php if($information["ingresos"] == 4) { echo "selected"; }  ?>>Entre $1.500.001 y $2.000.000</option>
+									<option value=5 <?php if($information["ingresos"] == 5) { echo "selected"; }  ?>>Entre 2.000.001 y 5.000.000</option>
+									<option value=6 <?php if($information["ingresos"] == 6) { echo "selected"; }  ?>>Entre 5.000.001 y 10.000.000</option>
+									<option value=7 <?php if($information["ingresos"] == 7) { echo "selected"; }  ?>>Entre 10.000.001 y 15.000.000</option>
+									<option value=8 <?php if($information["ingresos"] == 8) { echo "selected"; }  ?>>Entre15.000.001 y en adelante</option>
+									<option value=9 <?php if($information["ingresos"] == 9) { echo "selected"; }  ?>>NS/NR</option>
 								</select>
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="aviso">¿Lleva contabilidad en su negocio? *</label>
+							<label class="col-sm-4 control-label" for="contabilidad">¿Lleva contabilidad en su negocio? *</label>
 							<div class="col-sm-5">
-								<select name="aviso" id="aviso" class="form-control" required>
+								<select name="contabilidad" id="contabilidad" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information[0]["aviso"] == 2) { echo "selected"; }  ?>>No</option>
+									<option value=1 <?php if($information["contabilidad"] == 1) { echo "selected"; }  ?>>Si</option>
+									<option value=2 <?php if($information["contabilidad"] == 2) { echo "selected"; }  ?>>No</option>
 								</select>
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="matricula">¿En qué áreas considera debería recibir formación el propietario o sus empleados? *</label>
+							<label class="col-sm-4 control-label" for="formacion">¿En qué áreas considera debería recibir formación el propietario o sus empleados? *</label>
 							<div class="col-sm-5">
-								<select name="matricula" id="matricula" class="form-control" required>
+								<select name="formacion" id="formacion" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["matricula"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information[0]["matricula"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information[0]["matricula"] == 3) { echo "selected"; }  ?>>NS/NR</option>
-									<option value=4 <?php if($information[0]["matricula"] == 4) { echo "selected"; }  ?>>Si</option>
-									<option value=5 <?php if($information[0]["matricula"] == 5) { echo "selected"; }  ?>>No</option>
-									<option value=6 <?php if($information[0]["matricula"] == 6) { echo "selected"; }  ?>>NS/NR</option>
+									<option value=1 <?php if($information["formacion"] == 1) { echo "selected"; }  ?>>Mercadeo y ventas</option>
+									<option value=2 <?php if($information["formacion"] == 2) { echo "selected"; }  ?>>Planeación estratégica</option>
+									<option value=3 <?php if($information["formacion"] == 3) { echo "selected"; }  ?>>Servicio al cliente</option>
+									<option value=4 <?php if($information["formacion"] == 4) { echo "selected"; }  ?>>Producción</option>
+									<option value=5 <?php if($information["formacion"] == 5) { echo "selected"; }  ?>>ISO 9001, 14000</option>
+									<option value=6 <?php if($information["formacion"] == 6) { echo "selected"; }  ?>>Otros</option>
 								</select>
 							</div>
 						</div>																	
 
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="porqueno">¿Qué impuestos a pagado este establecimiento en el último año? *</label>
+							<label class="col-sm-4 control-label" for="impuestos">¿Qué impuestos a pagado este establecimiento en el último año? *</label>
 							<div class="col-sm-5">
-								<select name="porqueno" id="porqueno" class="form-control" required>
+								<select name="impuestos" id="impuestos" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["porqueno"] == 1) { echo "selected"; }  ?>>No es útil</option>
-									<option value=2 <?php if($information[0]["porqueno"] == 2) { echo "selected"; }  ?>>Es muy costoso</option>
-									<option value=3 <?php if($information[0]["porqueno"] == 3) { echo "selected"; }  ?>>No tiene tiempo de sacarla</option>
-									<option value=4 <?php if($information[0]["porqueno"] == 4) { echo "selected"; }  ?>>No sabía que existía</option>
-									<option value=5 <?php if($information[0]["porqueno"] == 5) { echo "selected"; }  ?>>No sabe si debe registrarse</option>
+									<option value=1 <?php if($information["impuestos"] == 1) { echo "selected"; }  ?>>Retención en la fuente</option>
+									<option value=2 <?php if($information["impuestos"] == 2) { echo "selected"; }  ?>>Impuesto de Renta</option>
+									<option value=3 <?php if($information["impuestos"] == 3) { echo "selected"; }  ?>>IVA</option>
+									<option value=4 <?php if($information["impuestos"] == 4) { echo "selected"; }  ?>>ICA</option>
+									<option value=5 <?php if($information["impuestos"] == 5) { echo "selected"; }  ?>>Ninguno</option>
 								</select>
 							</div>
 						</div>																	

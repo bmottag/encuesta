@@ -1,22 +1,11 @@
-<script type="text/javascript" src="<?php echo base_url("assets/js/validate/incidences/near_miss.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/form_formalizacion.js"); ?>"></script>
 
 <div id="page-wrapper">
 	<br>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h4 class="list-group-item-heading">
-					<i class="fa fa-ambulance fa-fw"></i>	Formalización Empresarial (solo se aplica a informales)																					
-					</h4>
-				</div>
-			</div>
-		</div>
-		<!-- /.col-lg-12 -->				
-	</div>
 
 <form  name="form" id="form" class="form-horizontal" method="post"  >
 	<input type="hidden" id="hddIdentificador" name="hddIdentificador" value="<?php echo $idFormulario; ?>"/>
+	<input type="hidden" id="hddIdFormFormalizacion" name="hddIdFormFormalizacion" value="<?php echo $idFormFormalizacion; ?>"/>
 	
 	<!-- /.row -->
 	<div class="row">

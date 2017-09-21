@@ -213,7 +213,7 @@ class Encuesta extends MX_Controller {
 			{
 				$data["result"] = true;
 				$data["mensaje"] = "Se guardó la información con éxito.";
-				$this->session->set_flashdata('retornoExito', 'Se guardo la información con éxito.');
+				$this->session->set_flashdata('retornoExito', 'Se guardó la información con éxito.');
 			} else {
 				$data["result"] = "error";
 				$data["mensaje"] = "Error!!! Contactarse con el administrador.";
@@ -264,7 +264,7 @@ class Encuesta extends MX_Controller {
 			{
 				$data["result"] = true;
 				$data["mensaje"] = "Se guardó la información con éxito.";
-				$this->session->set_flashdata('retornoExito', 'Se guardo la información con éxito.');
+				$this->session->set_flashdata('retornoExito', 'Se guardó la información con éxito.');
 			} else {
 				$data["result"] = "error";
 				$data["mensaje"] = "Error!!! Contactarse con el administrador.";
@@ -281,7 +281,6 @@ class Encuesta extends MX_Controller {
 	public function form_criticos($idFormulario)
 	{
 			$data['information'] = FALSE;
-			$data['deshabilitar'] = '';
 			
 			//busco informacion del formulario si existe
 			$arrParam = array(
@@ -316,7 +315,7 @@ class Encuesta extends MX_Controller {
 			{
 				$data["result"] = true;
 				$data["mensaje"] = "Se guardó la información con éxito.";
-				$this->session->set_flashdata('retornoExito', 'Se guardo la información con éxito.');
+				$this->session->set_flashdata('retornoExito', 'Se guardó la información con éxito.');
 			} else {
 				$data["result"] = "error";
 				$data["mensaje"] = "Error!!! Contactarse con el administrador.";
@@ -327,37 +326,32 @@ class Encuesta extends MX_Controller {
     }
 	
 	/**
-	 * Form Información Financiera del Establecimiento				
+	 * Form financiera
      * @since 20/9/2017
 	 */
 	public function form_financiera($idFormulario)
 	{
 			$data['information'] = FALSE;
-			$data['deshabilitar'] = '';
 			
-			
-			//si envio el id, entonces busco la informacion 
-			
-	/*		
-			if ($idFormulario != 'x') {
-				
-				$arrParam = array(
-					"idNearMiss" => $id
-				);				
-				$data['information'] = $this->incidences_model->get_near_miss_by_idUser($arrParam);
-				
-				if (!$data['information']) { 
-					show_error('ERROR!!! - You are in the wrong place.');	
-				}
-			}			
-	*/
+			//busco informacion del formulario si existe
+			$arrParam = array(
+				"idFormulario" => $idFormulario
+			);				
+			$data['information'] = $this->encuesta_model->get_form_financiera($arrParam);
+
+			if ($data['information']) { 
+				$data["idFormFinanciera"] = $data['information']['id_financiera'];
+			}else{
+				$data["idFormFinanciera"] = "";
+			}
+
 			$data["idFormulario"] = $idFormulario;
 			$data["view"] = 'form_financiera';
 			$this->load->view("layout", $data);
 	}
 	
 	/**
-	 * Guardar formulario administrativa
+	 * Guardar formulario financiera
      * @since 21/9/2017
 	 */
 	public function save_form_financiera()
@@ -368,11 +362,11 @@ class Encuesta extends MX_Controller {
 			$idFormulario = $this->input->post('hddIdentificador');
 			$data["idFormulario"] = $idFormulario;
 
-			if($this->encuesta_model->add_form_actividad_economica()) 
+			if($this->encuesta_model->add_form_financiera()) 
 			{
 				$data["result"] = true;
 				$data["mensaje"] = "Se guardó la información con éxito.";
-				$this->session->set_flashdata('retornoExito', 'Se guardo la información con éxito.');
+				$this->session->set_flashdata('retornoExito', 'Se guardó la información con éxito.');
 			} else {
 				$data["result"] = "error";
 				$data["mensaje"] = "Error!!! Contactarse con el administrador.";
@@ -389,24 +383,19 @@ class Encuesta extends MX_Controller {
 	public function form_servicios($idFormulario)
 	{
 			$data['information'] = FALSE;
-			$data['deshabilitar'] = '';
+
+			//busco informacion del formulario si existe
+			$arrParam = array(
+				"idFormulario" => $idFormulario
+			);				
+			$data['information'] = $this->encuesta_model->get_form_servicios($arrParam);
+
+			if ($data['information']) { 
+				$data["idFormServicios"] = $data['information']['id_servicios'];
+			}else{
+				$data["idFormServicios"] = "";
+			}
 			
-			
-			//si envio el id, entonces busco la informacion 
-			
-	/*		
-			if ($idFormulario != 'x') {
-				
-				$arrParam = array(
-					"idNearMiss" => $id
-				);				
-				$data['information'] = $this->incidences_model->get_near_miss_by_idUser($arrParam);
-				
-				if (!$data['information']) { 
-					show_error('ERROR!!! - You are in the wrong place.');	
-				}
-			}			
-	*/
 			$data["idFormulario"] = $idFormulario;
 			$data["view"] = 'form_servicios';
 			$this->load->view("layout", $data);
@@ -428,7 +417,7 @@ class Encuesta extends MX_Controller {
 			{
 				$data["result"] = true;
 				$data["mensaje"] = "Se guardó la información con éxito.";
-				$this->session->set_flashdata('retornoExito', 'Se guardo la información con éxito.');
+				$this->session->set_flashdata('retornoExito', 'Se guardó la información con éxito.');
 			} else {
 				$data["result"] = "error";
 				$data["mensaje"] = "Error!!! Contactarse con el administrador.";
@@ -445,24 +434,19 @@ class Encuesta extends MX_Controller {
 	public function form_formalizacion($idFormulario)
 	{
 			$data['information'] = FALSE;
-			$data['deshabilitar'] = '';
+
+			//busco informacion del formulario si existe
+			$arrParam = array(
+				"idFormulario" => $idFormulario
+			);				
+			$data['information'] = $this->encuesta_model->get_form_formalizacion($arrParam);
+
+			if ($data['information']) { 
+				$data["idFormFormalizacion"] = $data['information']['id_formalizacion'];
+			}else{
+				$data["idFormFormalizacion"] = "";
+			}
 			
-			
-			//si envio el id, entonces busco la informacion 
-			
-	/*		
-			if ($idFormulario != 'x') {
-				
-				$arrParam = array(
-					"idNearMiss" => $id
-				);				
-				$data['information'] = $this->incidences_model->get_near_miss_by_idUser($arrParam);
-				
-				if (!$data['information']) { 
-					show_error('ERROR!!! - You are in the wrong place.');	
-				}
-			}			
-	*/
 			$data["idFormulario"] = $idFormulario;
 			$data["view"] = 'form_formalizacion';
 			$this->load->view("layout", $data);
@@ -484,7 +468,7 @@ class Encuesta extends MX_Controller {
 			{
 				$data["result"] = true;
 				$data["mensaje"] = "Se guardó la información con éxito.";
-				$this->session->set_flashdata('retornoExito', 'Se guardo la información con éxito.');
+				$this->session->set_flashdata('retornoExito', 'Se guardó la información con éxito.');
 			} else {
 				$data["result"] = "error";
 				$data["mensaje"] = "Error!!! Contactarse con el administrador.";
