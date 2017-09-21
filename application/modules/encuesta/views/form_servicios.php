@@ -13,7 +13,7 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<a class="btn btn-info" href=" <?php echo base_url().'encuesta/form_home/' . $idFormulario; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
-					<i class="fa fa-ambulance"></i> Formulario Servicios de Apoyo Empresarial							
+					<i class="fa fa-inbox"></i> Formulario Servicios de Apoyo Empresarial							
 				</div>
 				<div class="panel-body">
 
@@ -46,39 +46,39 @@ if ($retornoError) {
 <p class="text-danger text-left">Los campos con * son obligatorios.</p>								
 								
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="visible">Pensando en su experiencia personal, cual fue el principal motivó a crear esta empresa? *</label>
+							<label class="col-sm-4 control-label" for="motivo">Pensando en su experiencia personal, cual fue el principal motivó a crear esta empresa? *</label>
 							<div class="col-sm-5">
-								<select name="visible" id="visible" class="form-control" required>
+								<select name="motivo" id="motivo" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["visible"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information[0]["visible"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information[0]["visible"] == 3) { echo "selected"; }  ?>>Si</option>
-									<option value=4 <?php if($information[0]["visible"] == 4) { echo "selected"; }  ?>>No</option>
-									<option value=5 <?php if($information[0]["visible"] == 5) { echo "selected"; }  ?>>Si</option>
-									<option value=6 <?php if($information[0]["visible"] == 6) { echo "selected"; }  ?>>No</option>
-									<option value=7 <?php if($information[0]["visible"] == 7) { echo "selected"; }  ?>>Si</option>
-									<option value=8 <?php if($information[0]["visible"] == 8) { echo "selected"; }  ?>>No</option>
+									<option value=1 <?php if($information["motivo"] == 1) { echo "selected"; }  ?>>Necesidad económica</option>
+									<option value=2 <?php if($information["motivo"] == 2) { echo "selected"; }  ?>>Continuar con el negocio familiar</option>
+									<option value=3 <?php if($information["motivo"] == 3) { echo "selected"; }  ?>>Desempleo (no tenía nada más que hacer)</option>
+									<option value=4 <?php if($information["motivo"] == 4) { echo "selected"; }  ?>>Tener nuevos ingresos</option>
+									<option value=5 <?php if($information["motivo"] == 5) { echo "selected"; }  ?>>Por inversión</option>
+									<option value=6 <?php if($information["motivo"] == 6) { echo "selected"; }  ?>>Deseo de aplicar conocimientos</option>
+									<option value=7 <?php if($information["motivo"] == 7) { echo "selected"; }  ?>>Tenía experiencia</option>
+									<option value=8 <?php if($information["motivo"] == 8) { echo "selected"; }  ?>>Otra</option>
 								</select>
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="aviso">¿Cuáles de los siguientes servicios de apoyo empresarial considera necesarios para fortalecer su actividad? *</label>
+							<label class="col-sm-4 control-label" for="fortalecer">¿Cuáles de los siguientes servicios de apoyo empresarial considera necesarios para fortalecer su actividad? *</label>
 							<div class="col-sm-5">
-								<select name="aviso" id="aviso" class="form-control" required>
+								<select name="fortalecer" id="fortalecer" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information[0]["aviso"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information[0]["aviso"] == 3) { echo "selected"; }  ?>>Si</option>
-									<option value=4 <?php if($information[0]["aviso"] == 4) { echo "selected"; }  ?>>No</option>
-									<option value=5 <?php if($information[0]["aviso"] == 5) { echo "selected"; }  ?>>Si</option>
-									<option value=6 <?php if($information[0]["aviso"] == 6) { echo "selected"; }  ?>>No</option>
-									<option value=7 <?php if($information[0]["aviso"] == 7) { echo "selected"; }  ?>>Si</option>
-									<option value=8 <?php if($information[0]["aviso"] == 8) { echo "selected"; }  ?>>No</option>
-									<option value=9 <?php if($information[0]["aviso"] == 9) { echo "selected"; }  ?>>Si</option>
-									<option value=10 <?php if($information[0]["aviso"] == 10) { echo "selected"; }  ?>>No</option>
-									<option value=11 <?php if($information[0]["aviso"] == 11) { echo "selected"; }  ?>>Si</option>
-									<option value=12 <?php if($information[0]["aviso"] == 12) { echo "selected"; }  ?>>No</option>
+									<option value=1 <?php if($information["fortalecer"] == 1) { echo "selected"; }  ?>>Capacitación en mejora de productos</option>
+									<option value=2 <?php if($information["fortalecer"] == 2) { echo "selected"; }  ?>>Capacitación en mejora de procesos</option>
+									<option value=3 <?php if($information["fortalecer"] == 3) { echo "selected"; }  ?>>Capacitación y actualización del recurso humano</option>
+									<option value=4 <?php if($information["fortalecer"] == 4) { echo "selected"; }  ?>>Asesoría en mercadeo y comercialización</option>
+									<option value=5 <?php if($information["fortalecer"] == 5) { echo "selected"; }  ?>>Asesoría en productos nuevos</option>
+									<option value=6 <?php if($information["fortalecer"] == 6) { echo "selected"; }  ?>>Asesoría en el manejo de nuevos productos informáticos</option>
+									<option value=7 <?php if($information["fortalecer"] == 7) { echo "selected"; }  ?>>Asesoría en innovación empresarial</option>
+									<option value=8 <?php if($information["fortalecer"] == 8) { echo "selected"; }  ?>>Asesoría en trámites (ej.: comercio exterior, patentes, inversión extranjera)</option>
+									<option value=9 <?php if($information["fortalecer"] == 9) { echo "selected"; }  ?>>Participación en ferias, ruedas de negocios y eventos nacionales e internacionales</option>
+									<option value=10 <?php if($information["fortalecer"] == 10) { echo "selected"; }  ?>>Información sobre acceso a financiamiento</option>
+									<option value=11 <?php if($information["fortalecer"] == 11) { echo "selected"; }  ?>>Gerencia y capacitación para la formulación e implementación de proyectos empresariales</option>
+									<option value=12 <?php if($information["fortalecer"] == 12) { echo "selected"; }  ?>>Otro</option>
 								</select>
 							</div>
 						</div>

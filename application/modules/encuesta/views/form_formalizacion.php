@@ -50,8 +50,8 @@ if ($retornoError) {
 							<div class="col-sm-5">
 								<select name="visible" id="visible" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["visible"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information[0]["visible"] == 2) { echo "selected"; }  ?>>No</option>
+									<option value=1 <?php if($information["visible"] == 1) { echo "selected"; }  ?>>Si</option>
+									<option value=2 <?php if($information["visible"] == 2) { echo "selected"; }  ?>>No</option>
 								</select>
 							</div>
 						</div>
@@ -61,14 +61,14 @@ if ($retornoError) {
 							<div class="col-sm-5">
 								<select name="aviso" id="aviso" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information[0]["aviso"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information[0]["aviso"] == 3) { echo "selected"; }  ?>>Si</option>
-									<option value=4 <?php if($information[0]["aviso"] == 4) { echo "selected"; }  ?>>No</option>
-									<option value=5 <?php if($information[0]["aviso"] == 5) { echo "selected"; }  ?>>Si</option>
-									<option value=6 <?php if($information[0]["aviso"] == 6) { echo "selected"; }  ?>>No</option>
-									<option value=7 <?php if($information[0]["aviso"] == 7) { echo "selected"; }  ?>>Si</option>
-									<option value=8 <?php if($information[0]["aviso"] == 8) { echo "selected"; }  ?>>No</option>
+									<option value=1 <?php if($information["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
+									<option value=2 <?php if($information["aviso"] == 2) { echo "selected"; }  ?>>No</option>
+									<option value=3 <?php if($information["aviso"] == 3) { echo "selected"; }  ?>>Si</option>
+									<option value=4 <?php if($information["aviso"] == 4) { echo "selected"; }  ?>>No</option>
+									<option value=5 <?php if($information["aviso"] == 5) { echo "selected"; }  ?>>Si</option>
+									<option value=6 <?php if($information["aviso"] == 6) { echo "selected"; }  ?>>No</option>
+									<option value=7 <?php if($information["aviso"] == 7) { echo "selected"; }  ?>>Si</option>
+									<option value=8 <?php if($information["aviso"] == 8) { echo "selected"; }  ?>>No</option>
 								</select>
 							</div>
 						</div>
@@ -78,16 +78,16 @@ if ($retornoError) {
 							<div class="col-sm-5">
 								<select name="aviso" id="aviso" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information[0]["aviso"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information[0]["aviso"] == 3) { echo "selected"; }  ?>>Si</option>
-									<option value=4 <?php if($information[0]["aviso"] == 4) { echo "selected"; }  ?>>No</option>
-									<option value=5 <?php if($information[0]["aviso"] == 5) { echo "selected"; }  ?>>Si</option>
-									<option value=6 <?php if($information[0]["aviso"] == 6) { echo "selected"; }  ?>>No</option>
-									<option value=7 <?php if($information[0]["aviso"] == 7) { echo "selected"; }  ?>>Si</option>
-									<option value=8 <?php if($information[0]["aviso"] == 8) { echo "selected"; }  ?>>No</option>
-									<option value=9 <?php if($information[0]["aviso"] == 9) { echo "selected"; }  ?>>Si</option>
-									<option value=10 <?php if($information[0]["aviso"] == 10) { echo "selected"; }  ?>>No</option>
+									<option value=1 <?php if($information["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
+									<option value=2 <?php if($information["aviso"] == 2) { echo "selected"; }  ?>>No</option>
+									<option value=3 <?php if($information["aviso"] == 3) { echo "selected"; }  ?>>Si</option>
+									<option value=4 <?php if($information["aviso"] == 4) { echo "selected"; }  ?>>No</option>
+									<option value=5 <?php if($information["aviso"] == 5) { echo "selected"; }  ?>>Si</option>
+									<option value=6 <?php if($information["aviso"] == 6) { echo "selected"; }  ?>>No</option>
+									<option value=7 <?php if($information["aviso"] == 7) { echo "selected"; }  ?>>Si</option>
+									<option value=8 <?php if($information["aviso"] == 8) { echo "selected"; }  ?>>No</option>
+									<option value=9 <?php if($information["aviso"] == 9) { echo "selected"; }  ?>>Si</option>
+									<option value=10 <?php if($information["aviso"] == 10) { echo "selected"; }  ?>>No</option>
 								</select>
 							</div>
 						</div>
@@ -97,14 +97,14 @@ if ($retornoError) {
 							<div class="col-sm-5">
 								<select name="aviso" id="aviso" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information[0]["aviso"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information[0]["aviso"] == 3) { echo "selected"; }  ?>>Si</option>
-									<option value=4 <?php if($information[0]["aviso"] == 4) { echo "selected"; }  ?>>No</option>
-									<option value=5 <?php if($information[0]["aviso"] == 5) { echo "selected"; }  ?>>Si</option>
-									<option value=6 <?php if($information[0]["aviso"] == 6) { echo "selected"; }  ?>>No</option>
-									<option value=7 <?php if($information[0]["aviso"] == 7) { echo "selected"; }  ?>>Si</option>
-									<option value=8 <?php if($information[0]["aviso"] == 8) { echo "selected"; }  ?>>No</option>
+									<option value=1 <?php if($information["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
+									<option value=2 <?php if($information["aviso"] == 2) { echo "selected"; }  ?>>No</option>
+									<option value=3 <?php if($information["aviso"] == 3) { echo "selected"; }  ?>>Si</option>
+									<option value=4 <?php if($information["aviso"] == 4) { echo "selected"; }  ?>>No</option>
+									<option value=5 <?php if($information["aviso"] == 5) { echo "selected"; }  ?>>Si</option>
+									<option value=6 <?php if($information["aviso"] == 6) { echo "selected"; }  ?>>No</option>
+									<option value=7 <?php if($information["aviso"] == 7) { echo "selected"; }  ?>>Si</option>
+									<option value=8 <?php if($information["aviso"] == 8) { echo "selected"; }  ?>>No</option>
 								</select>
 							</div>
 						</div>

@@ -367,11 +367,11 @@
 				if (array_key_exists("idFormulario", $arrDatos)) {
 					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
 				}
-				if (array_key_exists("idFormCriticos", $arrDatos)) {
-					$this->db->where('A.id_criticos', $arrDatos["idFormCriticos"]);
+				if (array_key_exists("idFormServicios", $arrDatos)) {
+					$this->db->where('A.id_servicios', $arrDatos["idFormServicios"]);
 				}
 				
-				$query = $this->db->get('form_criticos A');
+				$query = $this->db->get('form_servicios A');
 
 				if ($query->num_rows() > 0) {
 					return $query->row_array();
@@ -381,26 +381,27 @@
 		}
 		
 		/**
-		 * Add form criticos
+		 * Add form servicios
 		 * @since 21/9/2017
 		 */
 		public function add_form_servicios() 
 		{
-			$idFormCriticos = $this->input->post('hddIdFormCriticos');
+			$idFormServicios = $this->input->post('hddIdFormServicios');
 			
 			$data = array(
 				'fk_id_formulario' => $this->input->post('hddIdentificador'),
 				'fk_id_usuario' => $this->session->userdata("id"),
-				'inconvenientes' => $this->input->post('inconvenientes')
+				'motivo' => $this->input->post('motivo'),
+				'fortalecer' => $this->input->post('fortalecer')
 			);
 			
 			//revisar si es para adicionar o editar
-			if ($idFormCriticos == '') {
+			if ($idFormServicios == '') {
 				$data['fecha_registro'] = date("Y-m-d G:i:s");
-				$query = $this->db->insert('form_criticos', $data);				
+				$query = $this->db->insert('form_servicios', $data);				
 			} else {
-				$this->db->where('id_criticos', $idFormCriticos);
-				$query = $this->db->update('form_criticos', $data);
+				$this->db->where('id_servicios', $idFormServicios);
+				$query = $this->db->update('form_servicios', $data);
 			}
 			
 			if ($query) {

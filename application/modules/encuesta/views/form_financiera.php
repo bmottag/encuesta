@@ -13,7 +13,7 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<a class="btn btn-info" href=" <?php echo base_url().'encuesta/form_home/' . $idFormulario; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
-					<i class="fa fa-ambulance"></i> Formulario Información Financiera del Establecimiento 							
+					<i class="fa fa-th-list"></i> Formulario Información Financiera del Establecimiento 							
 				</div>
 				<div class="panel-body">
 

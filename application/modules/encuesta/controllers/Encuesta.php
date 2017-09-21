@@ -413,7 +413,7 @@ class Encuesta extends MX_Controller {
 			$idFormulario = $this->input->post('hddIdentificador');
 			$data["idFormulario"] = $idFormulario;
 
-			if($this->encuesta_model->add_form_actividad_economica()) 
+			if($this->encuesta_model->add_form_servicios()) 
 			{
 				$data["result"] = true;
 				$data["mensaje"] = "Se guardó la información con éxito.";
