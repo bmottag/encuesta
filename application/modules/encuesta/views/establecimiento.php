@@ -128,6 +128,10 @@ if ($retornoError) {
 									<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_establecimiento']; ?>" >
 										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
 									</button>
+
+<a href="<?php echo base_url("encuesta/form_home/" . $lista['id_establecimiento']); ?>" class="btn btn-primary btn-xs">
+Formulario  
+</a>
 						<?php
 									echo "</td>";
 									echo "<td class='text-center'>" . $lista['nombre_propietario'] . "</td>";

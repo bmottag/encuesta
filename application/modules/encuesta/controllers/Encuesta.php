@@ -158,6 +158,17 @@ class Encuesta extends MX_Controller {
 			echo json_encode($data);
     }
 	
+	/**
+	 * Vista con los enlaces a los capitulos del formulario
+     * @since 20/9/2017
+	 */
+	public function form_home($idFormulario)
+	{
+			$data['idFormulario'] = $idFormulario;
+			$data["view"] = 'home';
+			$this->load->view("layout", $data);
+	}
+	
 		
 
 	
