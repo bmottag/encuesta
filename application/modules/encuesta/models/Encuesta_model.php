@@ -247,6 +247,59 @@
 				return false;
 			}
 		}
+		
+		/**
+		 * Info formulario criticos
+		 * @since 21/9/2017
+		 */
+		public function get_form_criticos($arrDatos) 
+		{
+				$this->db->select();
+				if (array_key_exists("idFormulario", $arrDatos)) {
+					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
+				}
+				if (array_key_exists("idFormCriticos", $arrDatos)) {
+					$this->db->where('A.id_criticos', $arrDatos["idFormCriticos"]);
+				}
+				
+				$query = $this->db->get('form_criticos A');
+
+				if ($query->num_rows() > 0) {
+					return $query->row_array();
+				} else {
+					return false;
+				}
+		}
+		
+		/**
+		 * Add form criticos
+		 * @since 21/9/2017
+		 */
+		public function add_form_criticos() 
+		{
+			$idFormCriticos = $this->input->post('hddIdFormCriticos');
+			
+			$data = array(
+				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_usuario' => $this->session->userdata("id"),
+				'inconvenientes' => $this->input->post('inconvenientes')
+			);
+			
+			//revisar si es para adicionar o editar
+			if ($idFormCriticos == '') {
+				$data['fecha_registro'] = date("Y-m-d G:i:s");
+				$query = $this->db->insert('form_criticos', $data);				
+			} else {
+				$this->db->where('id_criticos', $idFormCriticos);
+				$query = $this->db->update('form_criticos', $data);
+			}
+			
+			if ($query) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 
 	
 	    

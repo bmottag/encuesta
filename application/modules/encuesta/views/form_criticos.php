@@ -1,22 +1,11 @@
-<script type="text/javascript" src="<?php echo base_url("assets/js/validate/incidences/near_miss.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/form_criticos.js"); ?>"></script>
 
 <div id="page-wrapper">
 	<br>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h4 class="list-group-item-heading">
-					<i class="fa fa-ambulance fa-fw"></i>	Aspectos críticos del Establecimiento 														
-					</h4>
-				</div>
-			</div>
-		</div>
-		<!-- /.col-lg-12 -->				
-	</div>
 
 <form  name="form" id="form" class="form-horizontal" method="post"  >
 	<input type="hidden" id="hddIdentificador" name="hddIdentificador" value="<?php echo $idFormulario; ?>"/>
+	<input type="hidden" id="hddIdFormCriticos" name="hddIdFormCriticos" value="<?php echo $idFormCriticos; ?>"/>
 	
 	<!-- /.row -->
 	<div class="row">
@@ -24,7 +13,7 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<a class="btn btn-info" href=" <?php echo base_url().'encuesta/form_home/' . $idFormulario; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
-					<i class="fa fa-ambulance"></i> Formulario Aspectos críticos del Establecimiento 							
+					<i class="fa fa-thumb-tack"></i> Formulario Aspectos críticos del Establecimiento 							
 				</div>
 				<div class="panel-body">
 
@@ -58,19 +47,19 @@ if ($retornoError) {
 <p class="text-danger text-left">Los campos con * son obligatorios.</p>								
 													
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="tiempo">En el último año, este establecimiento tuvo inconvenientes o dificultades en: *</label>
+							<label class="col-sm-4 control-label" for="inconvenientes">En el último año, este establecimiento tuvo inconvenientes o dificultades en: *</label>
 							<div class="col-sm-5">
-								<select name="tiempo" id="tiempo" class="form-control" required>
+								<select name="inconvenientes" id="inconvenientes" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["tiempo"] == 1) { echo "selected"; }  ?>>Menos de 6 meses</option>
-									<option value=2 <?php if($information[0]["tiempo"] == 2) { echo "selected"; }  ?>>Entre 6 meses y  12 meses</option>
-									<option value=3 <?php if($information[0]["tiempo"] == 3) { echo "selected"; }  ?>>Entre 1 año y 3 años</option>
-									<option value=4 <?php if($information[0]["tiempo"] == 4) { echo "selected"; }  ?>>Entre 3 años y  5 años</option>
-									<option value=5 <?php if($information[0]["tiempo"] == 5) { echo "selected"; }  ?>>Entre 5 años y  10 años</option>
-									<option value=6 <?php if($information[0]["tiempo"] == 6) { echo "selected"; }  ?>>10 años y más</option>
-									<option value=7 <?php if($information[0]["tiempo"] == 7) { echo "selected"; }  ?>>Entre 3 años y  5 años</option>
-									<option value=8 <?php if($information[0]["tiempo"] == 8) { echo "selected"; }  ?>>Entre 5 años y  10 años</option>
-									<option value=9 <?php if($information[0]["tiempo"] == 9) { echo "selected"; }  ?>>10 años y más</option>
+									<option value=1 <?php if($information["inconvenientes"] == 1) { echo "selected"; }  ?>>Financiamiento</option>
+									<option value=2 <?php if($information["inconvenientes"] == 2) { echo "selected"; }  ?>>Ausencia de recursos humano</option>
+									<option value=3 <?php if($information["inconvenientes"] == 3) { echo "selected"; }  ?>>Capacitación</option>
+									<option value=4 <?php if($information["inconvenientes"] == 4) { echo "selected"; }  ?>>Competencia desleal</option>
+									<option value=5 <?php if($information["inconvenientes"] == 5) { echo "selected"; }  ?>>Manejo ambiental</option>
+									<option value=6 <?php if($information["inconvenientes"] == 6) { echo "selected"; }  ?>>Seguridad</option>
+									<option value=7 <?php if($information["inconvenientes"] == 7) { echo "selected"; }  ?>>Ventas</option>
+									<option value=8 <?php if($information["inconvenientes"] == 8) { echo "selected"; }  ?>>Proveedores</option>
+									<option value=9 <?php if($information["inconvenientes"] == 9) { echo "selected"; }  ?>>Otros</option>
 								</select>
 							</div>
 						</div>
