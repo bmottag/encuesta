@@ -191,6 +191,62 @@
 				return false;
 			}
 		}
+		
+		/**
+		 * Info formulario actividad economica
+		 * @since 21/9/2017
+		 */
+		public function get_form_actividad_economica($arrDatos) 
+		{
+				$this->db->select();
+				if (array_key_exists("idFormulario", $arrDatos)) {
+					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
+				}
+				if (array_key_exists("idFormActividadEconomica", $arrDatos)) {
+					$this->db->where('A.id_actividad_economica', $arrDatos["idFormActividadEconomica"]);
+				}
+				
+				$query = $this->db->get('form_actividad_economica A');
+
+				if ($query->num_rows() > 0) {
+					return $query->row_array();
+				} else {
+					return false;
+				}
+		}
+		
+		/**
+		 * Add form actividad economica
+		 * @since 21/9/2017
+		 */
+		public function add_form_actividad_economica() 
+		{
+			$idFormActividadEconomica = $this->input->post('hddIdFormActividadEconomica');
+			
+			$data = array(
+				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_usuario' => $this->session->userdata("id"),
+				'actividad' => $this->input->post('actividad'),
+				'numero_personas' => $this->input->post('numero_personas'),
+				'seguridad_social' => $this->input->post('seguridad_social'),
+				'lugar' => $this->input->post('lugar')
+			);
+			
+			//revisar si es para adicionar o editar
+			if ($idFormActividadEconomica == '') {
+				$data['fecha_registro'] = date("Y-m-d G:i:s");
+				$query = $this->db->insert('form_actividad_economica', $data);				
+			} else {
+				$this->db->where('id_actividad_economica', $idFormActividadEconomica);
+				$query = $this->db->update('form_actividad_economica', $data);
+			}
+			
+			if ($query) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 
 	
 	    

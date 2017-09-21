@@ -230,28 +230,49 @@ class Encuesta extends MX_Controller {
 	public function form_actividad_economica($idFormulario)
 	{
 			$data['information'] = FALSE;
-			$data['deshabilitar'] = '';
+
+			//busco informacion del formulario si existe
+			$arrParam = array(
+				"idFormulario" => $idFormulario
+			);				
+			$data['information'] = $this->encuesta_model->get_form_actividad_economica($arrParam);
+
+			if ($data['information']) { 
+				$data["idFormActividadEconomica"] = $data['information']['id_actividad_economica'];
+			}else{
+				$data["idFormActividadEconomica"] = "";
+			}
 			
-			
-			//si envio el id, entonces busco la informacion 
-			
-	/*		
-			if ($idFormulario != 'x') {
-				
-				$arrParam = array(
-					"idNearMiss" => $id
-				);				
-				$data['information'] = $this->incidences_model->get_near_miss_by_idUser($arrParam);
-				
-				if (!$data['information']) { 
-					show_error('ERROR!!! - You are in the wrong place.');	
-				}
-			}			
-	*/
 			$data["idFormulario"] = $idFormulario;
 			$data["view"] = 'form_actividad_economica';
-			$this->load->view("layout", $data);
-	}		
+			$this->load->view("layout", $data);	
+	}
+
+	/**
+	 * Guardar formulario administrativa
+     * @since 21/9/2017
+	 */
+	public function save_form_actividad_economica()
+	{			
+			header('Content-Type: application/json');
+			$data = array();
+			
+			$idFormulario = $this->input->post('hddIdentificador');
+			$data["idFormulario"] = $idFormulario;
+
+			if($this->encuesta_model->add_form_actividad_economica()) 
+			{
+				$data["result"] = true;
+				$data["mensaje"] = "Se guardó la información con éxito.";
+				$this->session->set_flashdata('retornoExito', 'Se guardo la información con éxito.');
+			} else {
+				$data["result"] = "error";
+				$data["mensaje"] = "Error!!! Contactarse con el administrador.";
+				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el administrador.');
+			}
+
+			echo json_encode($data);
+    }
 
 	/**
 	 * Form Características Generales de la Actividad Económica						

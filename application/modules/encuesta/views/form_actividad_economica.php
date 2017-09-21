@@ -1,22 +1,11 @@
-<script type="text/javascript" src="<?php echo base_url("assets/js/validate/incidences/near_miss.js"); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/form_actividad_economica.js"); ?>"></script>
 
 <div id="page-wrapper">
 	<br>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h4 class="list-group-item-heading">
-					<i class="fa fa-ambulance fa-fw"></i>	Características Generales de la Actividad Económica						
-					</h4>
-				</div>
-			</div>
-		</div>
-		<!-- /.col-lg-12 -->				
-	</div>
 
 <form  name="form" id="form" class="form-horizontal" method="post"  >
 	<input type="hidden" id="hddIdentificador" name="hddIdentificador" value="<?php echo $idFormulario; ?>"/>
+	<input type="hidden" id="hddIdFormActividadEconomica" name="hddIdFormActividadEconomica" value="<?php echo $idFormActividadEconomica; ?>"/>
 	
 	<!-- /.row -->
 	<div class="row">
@@ -24,7 +13,7 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<a class="btn btn-info" href=" <?php echo base_url().'encuesta/form_home/' . $idFormulario; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
-					<i class="fa fa-ambulance"></i> Formulario Características Generales de la Actividad Económica						
+					<i class="fa fa-usd"></i> Formulario Características Generales de la Actividad Económica						
 				</div>
 				<div class="panel-body">
 
@@ -56,72 +45,72 @@ if ($retornoError) {
 <p class="text-danger text-left">Los campos con * son obligatorios.</p>								
 								
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="visible">¿Cuál es su actividad económica principal o que se dedica su establecimiento? *</label>
+							<label class="col-sm-4 control-label" for="actividad">¿Cuál es su actividad económica principal o que se dedica su establecimiento? *</label>
 							<div class="col-sm-5">
-								<select name="visible" id="visible" class="form-control" required>
+								<select name="actividad" id="actividad" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["visible"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information[0]["visible"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information[0]["visible"] == 3) { echo "selected"; }  ?>>Si</option>
-									<option value=4 <?php if($information[0]["visible"] == 4) { echo "selected"; }  ?>>No</option>
-									<option value=5 <?php if($information[0]["visible"] == 5) { echo "selected"; }  ?>>Si</option>
-									<option value=6 <?php if($information[0]["visible"] == 6) { echo "selected"; }  ?>>No</option>
-									<option value=7 <?php if($information[0]["visible"] == 7) { echo "selected"; }  ?>>Si</option>
-									<option value=8 <?php if($information[0]["visible"] == 8) { echo "selected"; }  ?>>No</option>
-									<option value=9 <?php if($information[0]["visible"] == 9) { echo "selected"; }  ?>>Si</option>
-									<option value=10 <?php if($information[0]["visible"] == 10) { echo "selected"; }  ?>>No</option>
-									<option value=11 <?php if($information[0]["visible"] == 11) { echo "selected"; }  ?>>Si</option>
-									<option value=12 <?php if($information[0]["visible"] == 12) { echo "selected"; }  ?>>No</option>
-									<option value=13 <?php if($information[0]["visible"] == 13) { echo "selected"; }  ?>>Si</option>
-									<option value=14 <?php if($information[0]["visible"] == 14) { echo "selected"; }  ?>>No</option>
-									<option value=15 <?php if($information[0]["visible"] == 15) { echo "selected"; }  ?>>Si</option>
-									<option value=16 <?php if($information[0]["visible"] == 16) { echo "selected"; }  ?>>No</option>
-									<option value=17 <?php if($information[0]["visible"] == 17) { echo "selected"; }  ?>>Si</option>
-									<option value=18 <?php if($information[0]["visible"] == 18) { echo "selected"; }  ?>>No</option>
-									<option value=19 <?php if($information[0]["visible"] == 19) { echo "selected"; }  ?>>Si</option>
-									<option value=20 <?php if($information[0]["visible"] == 20) { echo "selected"; }  ?>>No</option>
-									<option value=21 <?php if($information[0]["visible"] == 21) { echo "selected"; }  ?>>Si</option>
-									<option value=22 <?php if($information[0]["visible"] == 22) { echo "selected"; }  ?>>No</option>
-									<option value=23 <?php if($information[0]["visible"] == 23) { echo "selected"; }  ?>>Si</option>
-									<option value=24 <?php if($information[0]["visible"] == 24) { echo "selected"; }  ?>>No</option>
-									<option value=25 <?php if($information[0]["visible"] == 25) { echo "selected"; }  ?>>Si</option>
-									<option value=26 <?php if($information[0]["visible"] == 26) { echo "selected"; }  ?>>No</option>
-									<option value=27 <?php if($information[0]["visible"] == 27) { echo "selected"; }  ?>>Si</option>
+									<option value=1 <?php if($information["actividad"] == 1) { echo "selected"; }  ?>>Agricultura, ganadería, caza, silvicultura y pesca</option>
+									<option value=2 <?php if($information["actividad"] == 2) { echo "selected"; }  ?>>Elaboración de productos alimenticios</option>
+									<option value=3 <?php if($information["actividad"] == 3) { echo "selected"; }  ?>>Elaboración de bebidas</option>
+									<option value=4 <?php if($information["actividad"] == 4) { echo "selected"; }  ?>>Industrias manufactureras</option>
+									<option value=5 <?php if($information["actividad"] == 5) { echo "selected"; }  ?>>Construcción</option>
+									<option value=6 <?php if($information["actividad"] == 6) { echo "selected"; }  ?>>Comercio al por mayor</option>
+									<option value=7 <?php if($information["actividad"] == 7) { echo "selected"; }  ?>>Comercio al por menor </option>
+									<option value=8 <?php if($information["actividad"] == 8) { echo "selected"; }  ?>>Transporte</option>
+									<option value=9 <?php if($information["actividad"] == 9) { echo "selected"; }  ?>>Restaurante</option>
+									<option value=10 <?php if($information["actividad"] == 10) { echo "selected"; }  ?>>Cafetería, fuente de soda o frutería</option>
+									<option value=11 <?php if($information["actividad"] == 11) { echo "selected"; }  ?>>Otros expendios de comida</option>
+									<option value=12 <?php if($information["actividad"] == 12) { echo "selected"; }  ?>>Expendio de bebidas alcohólicas</option>
+									<option value=13 <?php if($information["actividad"] == 13) { echo "selected"; }  ?>>Hotel, hostal o aparta hotel, residencias, moteles, amoblados,   centro vacacional, zona de camping, otro tipo de alojamiento?</option>
+									<option value=14 <?php if($information["actividad"] == 14) { echo "selected"; }  ?>>Desarrollo de sistemas informáticos (planificación, análisis, diseño, programación, pruebas), consultoría informática y actividades relacionadas</option>
+									<option value=15 <?php if($information["actividad"] == 15) { echo "selected"; }  ?>>Actividades inmobiliarias</option>
+									<option value=16 <?php if($information["actividad"] == 16) { echo "selected"; }  ?>>Actividades jurídicas, contabilidad, administración empresarial, consultoría de gestión, arquitectura e ingeniería,  Publicidad,  estudios de mercado, fotografía, veterinarias</option>
+									<option value=17 <?php if($information["actividad"] == 17) { echo "selected"; }  ?>>Actividades de alquiler y arrendamiento</option>
+									<option value=18 <?php if($information["actividad"] == 18) { echo "selected"; }  ?>>Actividades de agencias de empleo</option>
+									<option value=19 <?php if($information["actividad"] == 19) { echo "selected"; }  ?>>Actividades de servicios a edificios y paisajismo (jardines, zonas verdes)</option>
+									<option value=20 <?php if($information["actividad"] == 20) { echo "selected"; }  ?>>Curtido y recurtido de cueros; fabricación de calzado; fabricación de artículos de viaje, maletas, bolsos de mano y artículos similares, y fabricación de artículos de talabartería y guarnicionería; adobo y teñido de pieles. Curtido y recurtido de cueros; fabricación de calzado; fabricación de artículos de viaje, maletas, bolsos de mano y artículos similares, y fabricación de artículos de talabartería y guarnicionería; adobo y teñido de pieles.</option>
+									<option value=21 <?php if($information["actividad"] == 21) { echo "selected"; }  ?>>Actividades de impresión y de producción de copias a partir de grabaciones originales.</option>
+									<option value=22 <?php if($information["actividad"] == 22) { echo "selected"; }  ?>>Fabricación de sustancias y productos químicos.</option>
+									<option value=23 <?php if($information["actividad"] == 23) { echo "selected"; }  ?>>Fabricación de muebles, colchones y somieres.</option>
+									<option value=24 <?php if($information["actividad"] == 24) { echo "selected"; }  ?>>Comercio, mantenimiento y reparación de vehículos automotores y motocicletas, sus partes, piezas y accesorios.</option>
+									<option value=25 <?php if($information["actividad"] == 25) { echo "selected"; }  ?>>Actividades artísticas, de entretenimiento y recreación.</option>
+									<option value=26 <?php if($information["actividad"] == 26) { echo "selected"; }  ?>>Mantenimiento y reparación de computadores, efectos personales y enseres domésticos</option>
+									<option value=27 <?php if($information["actividad"] == 27) { echo "selected"; }  ?>>Otras actividades</option>
 								</select>
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="aviso">¿Cuántas personas; incluido(a) usted, trabajan actualmente en el establecimiento? *</label>
+							<label class="col-sm-4 control-label" for="numero_personas">¿Cuántas personas; incluido(a) usted, trabajan actualmente en el establecimiento? *</label>
 							<div class="col-sm-5">
-								<select name="aviso" id="aviso" class="form-control" required>
+								<select name="numero_personas" id="numero_personas" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information[0]["aviso"] == 2) { echo "selected"; }  ?>>No</option>
+									<option value=1 <?php if($information["numero_personas"] == 1) { echo "selected"; }  ?>>Si</option>
+									<option value=2 <?php if($information["numero_personas"] == 2) { echo "selected"; }  ?>>No</option>
 								</select>
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="matricula">¿Los trabajadores de este establecimiento; incluido(a) usted,  se encuentran afiliados a seguridad social? *</label>
+							<label class="col-sm-4 control-label" for="seguridad_social">¿Los trabajadores de este establecimiento; incluido(a) usted,  se encuentran afiliados a seguridad social? *</label>
 							<div class="col-sm-5">
-								<select name="matricula" id="matricula" class="form-control" required>
+								<select name="seguridad_social" id="seguridad_social" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["matricula"] == 1) { echo "selected"; }  ?>>Todo</option>
-									<option value=2 <?php if($information[0]["matricula"] == 2) { echo "selected"; }  ?>>Alguno</option>
-									<option value=3 <?php if($information[0]["matricula"] == 3) { echo "selected"; }  ?>>Ninguno</option>
+									<option value=1 <?php if($information["seguridad_social"] == 1) { echo "selected"; }  ?>>Todo</option>
+									<option value=2 <?php if($information["seguridad_social"] == 2) { echo "selected"; }  ?>>Alguno</option>
+									<option value=3 <?php if($information["seguridad_social"] == 3) { echo "selected"; }  ?>>Ninguno</option>
 								</select>
 							</div>
 						</div>																	
 
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="porqueno">El lugar donde funciona este establecimiento es:  *</label>
+							<label class="col-sm-4 control-label" for="lugar">El lugar donde funciona este establecimiento es:  *</label>
 							<div class="col-sm-5">
-								<select name="porqueno" id="porqueno" class="form-control" required>
+								<select name="lugar" id="lugar" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information[0]["porqueno"] == 1) { echo "selected"; }  ?>>Propio</option>
-									<option value=2 <?php if($information[0]["porqueno"] == 2) { echo "selected"; }  ?>>Arrendado</option>
-									<option value=3 <?php if($information[0]["porqueno"] == 3) { echo "selected"; }  ?>>Usufruto</option>
+									<option value=1 <?php if($information["lugar"] == 1) { echo "selected"; }  ?>>Propio</option>
+									<option value=2 <?php if($information["lugar"] == 2) { echo "selected"; }  ?>>Arrendado</option>
+									<option value=3 <?php if($information["lugar"] == 3) { echo "selected"; }  ?>>Usufruto</option>
 								</select>
 							</div>
 						</div>																	
