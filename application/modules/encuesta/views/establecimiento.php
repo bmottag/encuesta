@@ -109,7 +109,7 @@ if ($retornoError) {
 					<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
 						<thead>
 							<tr>
-								<th class="text-center">Número de formulario</th>
+								<th class="text-center">No. formulario</th>
 								<th class="text-center">Editar</th>
 								<th class="text-center">Nombre de propietario</th>
 								<th class="text-center">Dirección</th>

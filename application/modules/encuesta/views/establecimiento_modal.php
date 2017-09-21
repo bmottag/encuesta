@@ -12,13 +12,15 @@
 	<p class="text-danger text-left">Los campos con * son obligatorios.</p>
 
 	<form name="form" id="form" role="form" method="post" >
-		<input type="hidden" id="hddId" name="hddId" value="<?php echo $information?$information[0]["id_usuario"]:""; ?>"/>
+		<input type="hidden" id="hddId" name="hddId" value="<?php echo $information?$information[0]["id_establecimiento"]:""; ?>"/>		
+		<input type="hidden" id="hddIdManzana" name="hddIdManzana" value="<?php echo $idManzana; ?>"/>
+
 		
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="form-group text-left">
-					<label class="control-label" for="nombre">Nombre del propietario : *</label>
-					<input type="text" id="nombre" name="nombre" class="form-control" value="<?php echo $information?$information[0]["nombres_usuario"]:""; ?>" placeholder="Nombre del propietario" required >
+					<label class="control-label" for="nombre">Nombre comercial : *</label>
+					<input type="text" id="nombre" name="nombre" class="form-control" value="<?php echo $information?$information[0]["nombre_propietario"]:""; ?>" placeholder="Nombre del propietario" required >
 				</div>
 			</div>
 		</div>
@@ -27,7 +29,7 @@
 			<div class="col-sm-12">
 				<div class="form-group text-left">
 					<label class="control-label" for="address">Dirección :</label>
-					<input type="text" id="address" name="address" class="form-control" value="<?php echo $information?$information[0]["direccion_usuario"]:""; ?>" placeholder="Dirección" >
+					<input type="text" id="address" name="address" class="form-control" value="<?php echo $information?$information[0]["direccion"]:""; ?>" placeholder="Dirección" >
 				</div>
 			</div>
 		</div>
@@ -36,7 +38,7 @@
 			<div class="col-sm-6">
 				<div class="form-group text-left">
 					<label class="control-label" for="telefono">Teléfono : *</label>
-					<input type="text" id="telefono" name="telefono" class="form-control" value="<?php echo $information?$information[0]["telefono_fijo"]:""; ?>" placeholder="Teléfono" >
+					<input type="text" id="telefono" name="telefono" class="form-control" value="<?php echo $information?$information[0]["telefono"]:""; ?>" placeholder="Teléfono" >
 				</div>
 			</div>
 			
@@ -52,27 +54,14 @@
 		<div class="row">	
 			<div class="col-sm-12">
 				<div class="form-group text-left">
-					<label class="control-label" for="documento">Cédula o NIT : *</label>
+					<label class="control-label" for="documento">No. Documento : *</label>
 					<input type="text" id="documento" name="documento" class="form-control" value="<?php echo $information?$information[0]["numero_documento"]:""; ?>" placeholder="Cédula o NIT" required >
 				</div>
 			</div>
 			
 		</div>
-
-
-
-		<div class="row">
-			<div class="col-sm-6">
-				<div class="form-group text-left">
-					<label class="control-label" for="comuna">Comuna : *</label>
-					<input type="text" class="form-control" id="comuna" name="comuna" value="<?php echo $information?$information[0]["email"]:""; ?>" placeholder="Comuna" />
-				</div>
-			</div>
-		</div>
-		
 		
 
-		
 		<div class="form-group">
 			<div class="row" align="center">
 				<div style="width:50%;" align="center">
