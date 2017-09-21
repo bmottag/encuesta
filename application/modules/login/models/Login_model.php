@@ -59,16 +59,10 @@
 	    				redirect("/employee","location",301);
 	    				break;
 	    		case 1: //ACTIVE USER
-						if($userRol==4){//vista para delegados
-							redirect("/dashboard/delegados","location",301);
-						}elseif($userRol==6){//vista para operadores
-							redirect("/dashboard/operador","location",301);
-						}elseif($userRol==3){//vista para coordinadores
-							redirect("/dashboard/coordinador","location",301);
-						}elseif($userRol==2){//vista para coordinadores
-							redirect("/dashboard/directivo","location",301);
+						if($userRol==2){//vista para supervisores
+							redirect("/encuesta/manzana","location",301);
 						}else{
-							redirect("/dashboard/admin","location",301);
+							redirect("/encuesta/manzana","location",301);
 						}
 	    				break;
 	    		case 2: //INACTIVE USER

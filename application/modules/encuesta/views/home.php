@@ -1,18 +1,6 @@
 <div id="page-wrapper">
 
 	<br>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h4 class="list-group-item-heading">
-						<i class="fa fa-gear fa-fw"></i> FORMULARIO
-					</h4>
-				</div>
-			</div>
-		</div>
-		<!-- /.col-lg-12 -->				
-	</div>
 	
 	<!-- /.row -->
 	<div class="row">

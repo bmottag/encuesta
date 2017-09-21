@@ -242,10 +242,6 @@ if($userRol==6){//OPERADOR
                         <li>
                             <a href="#"><i class="fa fa-user fa-fw"></i> <?php echo $this->session->firstname; ?></a>
                         </li>
-
-                        <li>
-							<a href="<?php echo $enlace; ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard <?php echo $titulo; ?></a>
-                        </li>
 						
                         <li>
 							<a href="<?php echo base_url("encuesta/manzana"); ?>"><i class="fa fa-dashboard fa-fw"></i> Formularios</a>
