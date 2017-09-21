@@ -73,11 +73,11 @@ Ir <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true">
 						
 						<div class="col-lg-4">	
 							<div class="alert alert-info">
-								<strong>Problemas y Necesidades del Establecimiento</strong>
+								<strong>Aspectos críticos del Establecimiento 							</strong>
 								
 								<br><br>
 								
-<a class="btn btn-info btn-xs" href=" <?php echo base_url(). 'encuesta/form_necesidades/' . $idFormulario; ?> ">
+<a class="btn btn-info btn-xs" href=" <?php echo base_url(). 'encuesta/form_criticos/' . $idFormulario; ?> ">
 Ir <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
 								
 							</div>

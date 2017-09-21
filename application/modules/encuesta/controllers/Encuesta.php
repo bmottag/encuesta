@@ -199,8 +199,154 @@ class Encuesta extends MX_Controller {
 			$this->load->view("layout", $data);
 	}
 	
-		
+	/**
+	 * Form Características Generales de la Actividad Económica						
+     * @since 20/9/2017
+	 */
+	public function form_actividad_economica($idFormulario)
+	{
+			$data['information'] = FALSE;
+			$data['deshabilitar'] = '';
+			
+			
+			//si envio el id, entonces busco la informacion 
+			
+	/*		
+			if ($idFormulario != 'x') {
+				
+				$arrParam = array(
+					"idNearMiss" => $id
+				);				
+				$data['information'] = $this->incidences_model->get_near_miss_by_idUser($arrParam);
+				
+				if (!$data['information']) { 
+					show_error('ERROR!!! - You are in the wrong place.');	
+				}
+			}			
+	*/
+			$data["idFormulario"] = $idFormulario;
+			$data["view"] = 'form_actividad_economica';
+			$this->load->view("layout", $data);
+	}		
 
+	/**
+	 * Form Características Generales de la Actividad Económica						
+     * @since 20/9/2017
+	 */
+	public function form_criticos($idFormulario)
+	{
+			$data['information'] = FALSE;
+			$data['deshabilitar'] = '';
+			
+			
+			//si envio el id, entonces busco la informacion 
+			
+	/*		
+			if ($idFormulario != 'x') {
+				
+				$arrParam = array(
+					"idNearMiss" => $id
+				);				
+				$data['information'] = $this->incidences_model->get_near_miss_by_idUser($arrParam);
+				
+				if (!$data['information']) { 
+					show_error('ERROR!!! - You are in the wrong place.');	
+				}
+			}			
+	*/
+			$data["idFormulario"] = $idFormulario;
+			$data["view"] = 'form_criticos';
+			$this->load->view("layout", $data);
+	}
 	
+	/**
+	 * Form Información Financiera del Establecimiento				
+     * @since 20/9/2017
+	 */
+	public function form_financiera($idFormulario)
+	{
+			$data['information'] = FALSE;
+			$data['deshabilitar'] = '';
+			
+			
+			//si envio el id, entonces busco la informacion 
+			
+	/*		
+			if ($idFormulario != 'x') {
+				
+				$arrParam = array(
+					"idNearMiss" => $id
+				);				
+				$data['information'] = $this->incidences_model->get_near_miss_by_idUser($arrParam);
+				
+				if (!$data['information']) { 
+					show_error('ERROR!!! - You are in the wrong place.');	
+				}
+			}			
+	*/
+			$data["idFormulario"] = $idFormulario;
+			$data["view"] = 'form_financiera';
+			$this->load->view("layout", $data);
+	}
+	
+	/**
+	 * Form Características Generales de la Actividad Económica						
+     * @since 20/9/2017
+	 */
+	public function form_servicios($idFormulario)
+	{
+			$data['information'] = FALSE;
+			$data['deshabilitar'] = '';
+			
+			
+			//si envio el id, entonces busco la informacion 
+			
+	/*		
+			if ($idFormulario != 'x') {
+				
+				$arrParam = array(
+					"idNearMiss" => $id
+				);				
+				$data['information'] = $this->incidences_model->get_near_miss_by_idUser($arrParam);
+				
+				if (!$data['information']) { 
+					show_error('ERROR!!! - You are in the wrong place.');	
+				}
+			}			
+	*/
+			$data["idFormulario"] = $idFormulario;
+			$data["view"] = 'form_servicios';
+			$this->load->view("layout", $data);
+	}
+	
+	/**
+	 * Form Formalización Empresarial (solo se aplica a informales)							
+     * @since 20/9/2017
+	 */
+	public function form_formalizacion($idFormulario)
+	{
+			$data['information'] = FALSE;
+			$data['deshabilitar'] = '';
+			
+			
+			//si envio el id, entonces busco la informacion 
+			
+	/*		
+			if ($idFormulario != 'x') {
+				
+				$arrParam = array(
+					"idNearMiss" => $id
+				);				
+				$data['information'] = $this->incidences_model->get_near_miss_by_idUser($arrParam);
+				
+				if (!$data['information']) { 
+					show_error('ERROR!!! - You are in the wrong place.');	
+				}
+			}			
+	*/
+			$data["idFormulario"] = $idFormulario;
+			$data["view"] = 'form_formalizacion';
+			$this->load->view("layout", $data);
+	}
 	
 }
