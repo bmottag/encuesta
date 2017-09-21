@@ -176,28 +176,49 @@ class Encuesta extends MX_Controller {
 	public function form_administrativos($idFormulario)
 	{
 			$data['information'] = FALSE;
-			$data['deshabilitar'] = '';
 			
-			
-			//si envio el id, entonces busco la informacion 
-			
-	/*		
-			if ($idFormulario != 'x') {
-				
-				$arrParam = array(
-					"idNearMiss" => $id
-				);				
-				$data['information'] = $this->incidences_model->get_near_miss_by_idUser($arrParam);
-				
-				if (!$data['information']) { 
-					show_error('ERROR!!! - You are in the wrong place.');	
-				}
-			}			
-	*/
+			//busco informacion del formulario si existe
+			$arrParam = array(
+				"idFormulario" => $idFormulario
+			);				
+			$data['information'] = $this->encuesta_model->get_form_administrativa($arrParam);
+
+			if ($data['information']) { 
+				$data["idFormAdministrativa"] = $data['information']['id_administrativa'];
+			}else{
+				$data["idFormAdministrativa"] = "";
+			}
+
 			$data["idFormulario"] = $idFormulario;
 			$data["view"] = 'form_administrativo';
 			$this->load->view("layout", $data);
 	}
+	
+	/**
+	 * Guardar formulario administrativa
+     * @since 21/9/2017
+	 */
+	public function save_form_administrativa()
+	{			
+			header('Content-Type: application/json');
+			$data = array();
+			
+			$idFormulario = $this->input->post('hddIdentificador');
+			$data["idFormulario"] = $idFormulario;
+
+			if($this->encuesta_model->add_form_administrativa()) 
+			{
+				$data["result"] = true;
+				$data["mensaje"] = "Se guardó la información con éxito.";
+				$this->session->set_flashdata('retornoExito', 'Se guardo la información con éxito.');
+			} else {
+				$data["result"] = "error";
+				$data["mensaje"] = "Error!!! Contactarse con el administrador.";
+				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el administrador.');
+			}
+
+			echo json_encode($data);
+    }
 	
 	/**
 	 * Form Características Generales de la Actividad Económica						

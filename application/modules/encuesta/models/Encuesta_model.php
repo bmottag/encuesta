@@ -131,6 +131,66 @@
 					return false;
 				}
 		}
+		
+		/**
+		 * Info formulario administrativa
+		 * @since 21/9/2017
+		 */
+		public function get_form_administrativa($arrDatos) 
+		{
+				$this->db->select();
+				if (array_key_exists("idformulario", $arrDatos)) {
+					$this->db->where('fk_id_formulario', $arrDatos["idformulario"]);
+				}
+				if (array_key_exists("idFormAdministrativa", $arrDatos)) {
+					$this->db->where('A.id_administrativa', $arrDatos["idFormAdministrativa"]);
+				}
+				
+				$query = $this->db->get('form_administrativa A');
+
+				if ($query->num_rows() > 0) {
+					return $query->row_array();
+				} else {
+					return false;
+				}
+		}
+		
+		/**
+		 * Add form administrativa
+		 * @since 21/9/2017
+		 */
+		public function add_form_administrativa() 
+		{
+			$idFormAdministrativa = $this->input->post('hddIdFormAdministrativa');
+			
+			$data = array(
+				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_usuario' => $this->session->userdata("id"),
+				'visible' => $this->input->post('visible'),
+				'aviso' => $this->input->post('aviso'),
+				'matricula' => $this->input->post('matricula'),
+				'porqueno' => $this->input->post('porqueno'),
+				'estado_actual' => $this->input->post('estado_actual'),
+				'establecimiento' => $this->input->post('establecimiento'),
+				'tiempo' => $this->input->post('tiempo'),
+				'rut' => $this->input->post('rut')
+			);
+			
+			//revisar si es para adicionar o editar
+			if ($idFormAdministrativa == '') {
+				$data['fecha_registro'] = date("Y-m-d G:i:s");
+				$query = $this->db->insert('form_administrativa', $data);				
+			} else {
+				$this->db->where('id_administrativa', $idFormAdministrativa);
+				$query = $this->db->update('form_administrativa', $data);
+			}
+			
+			if ($query) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 
 	
 	    
