@@ -29,7 +29,7 @@
 		}
 ?>
 
-		<a class="navbar-brand" href="<?php echo $enlace; ?>"><img src="<?php echo base_url("images/logo.png"); ?>" class="img-rounded" width="87" height="32" /></a>
+		<a class="navbar-brand" href="<?php echo $enlace; ?>">CEIV-CCV</a>
 				
             </div>
             <!-- /.navbar-header -->
