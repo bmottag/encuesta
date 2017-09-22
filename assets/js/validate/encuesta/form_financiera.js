@@ -5,7 +5,8 @@ $( document ).ready( function () {
 			ingresos:			{ required: true },
 			contabilidad:		{ required: true },
 			formacion:			{ required: true },
-			impuestos:			{ required: true }
+			impuestos:			{ required: true },
+			cuales:				{ maxlength: 190 }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {

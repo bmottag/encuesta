@@ -341,7 +341,8 @@
 				'ingresos' => $this->input->post('ingresos'),
 				'contabilidad' => $this->input->post('contabilidad'),
 				'formacion' => $this->input->post('formacion'),
-				'impuestos' => $this->input->post('impuestos')
+				'impuestos' => $this->input->post('impuestos'),
+				'cuales' => $this->input->post('cuales')
 			);
 			
 			//revisar si es para adicionar o editar

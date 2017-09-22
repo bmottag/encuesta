@@ -1,5 +1,22 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/form_financiera.js"); ?>"></script>
 
+<script>
+$(document).ready(function () {
+	
+    $('#formacion').change(function () {
+        $('#formacion option:selected').each(function () {
+            var formacion = $('#formacion').val();
+            if (formacion == 6) {
+				$("#div_cual").css("display", "inline");
+            } else {
+				$("#div_cual").css("display", "none");
+            }
+        });
+    });
+    
+});
+</script>
+
 <div id="page-wrapper">
 	<br>
 
@@ -87,7 +104,21 @@ if ($retornoError) {
 									<option value=6 <?php if($information["formacion"] == 6) { echo "selected"; }  ?>>Otros</option>
 								</select>
 							</div>
-						</div>																	
+						</div>
+
+<?php 
+	$mostrar = "none";
+	if($information && $information["formacion"]==6){
+		$mostrar = "inline";
+	}
+?>
+						
+						<div class="form-group" id="div_cual" style="display: <?php echo $mostrar; ?>">
+							<label class="col-sm-4 control-label" for="cuales">¿Cuáles? </label>
+							<div class="col-sm-5">
+								<input type="text" id="cuales" name="cuales" class="form-control" value="<?php echo $information?$information["cuales"]:""; ?>" placeholder="¿Cuáles?" required >
+							</div>
+						</div>
 
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="impuestos">¿Qué impuestos a pagado este establecimiento en el último año? *</label>
