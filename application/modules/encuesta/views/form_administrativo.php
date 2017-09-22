@@ -3,6 +3,17 @@
 <script>
 $(document).ready(function () {
 	
+    $('#matricula').change(function () {
+        $('#matricula option:selected').each(function () {
+            var matricula = $('#matricula').val();
+            if (matricula == 1) {
+				$("#div_porqueno").css("display", "none");
+            } else {
+				$("#div_porqueno").css("display", "inline");
+            }
+        });
+    });
+	
     $('#porqueno').change(function () {
         $('#porqueno option:selected').each(function () {
             var porqueno = $('#porqueno').val();
@@ -96,9 +107,16 @@ if ($retornoError) {
 									<option value=3 <?php if($information["matricula"] == 3) { echo "selected"; }  ?>>NS/NR</option>
 								</select>
 							</div>
-						</div>																	
+						</div>	
 
-						<div class="form-group">
+<?php 
+	$mostrar2 = "inline";
+	if($information && $information["matricula"]==1){
+		$mostrar2 = "none";
+	}
+?>						
+
+						<div class="form-group" id="div_porqueno" style="display: <?php echo $mostrar2; ?>">
 							<label class="col-sm-4 control-label" for="porqueno">¿Por qué no cuenta Matricula Mercantil? *</label>
 							<div class="col-sm-5">
 								<select name="porqueno" id="porqueno" class="form-control" required>
