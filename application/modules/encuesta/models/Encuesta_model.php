@@ -451,11 +451,11 @@
 				if (array_key_exists("idFormulario", $arrDatos)) {
 					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
 				}
-				if (array_key_exists("idFormCriticos", $arrDatos)) {
-					$this->db->where('A.id_criticos', $arrDatos["idFormCriticos"]);
+				if (array_key_exists("idFormFormalizacion", $arrDatos)) {
+					$this->db->where('A.id_formalizacion', $arrDatos["idFormFormalizacion"]);
 				}
 				
-				$query = $this->db->get('form_criticos A');
+				$query = $this->db->get('form_formalizacion A');
 
 				if ($query->num_rows() > 0) {
 					return $query->row_array();
@@ -470,21 +470,39 @@
 		 */
 		public function add_form_formalizacion() 
 		{
-			$idFormCriticos = $this->input->post('hddIdFormCriticos');
+			$idFormFormalizacion = $this->input->post('hddIdFormFormalizacion');
 			
 			$data = array(
 				'fk_id_formulario' => $this->input->post('hddIdentificador'),
 				'fk_id_usuario' => $this->session->userdata("id"),
-				'inconvenientes' => $this->input->post('inconvenientes')
+				'formalizar' => $this->input->post('formalizar'),
+				'motivo' => $this->input->post('motivo'),
+				'asesoria' => $this->input->post('asesoria'),
+				'apoyo' => $this->input->post('apoyo'),
+				'asesoria_juridica' => $this->input->post('asesoria_juridica'),
+				'capacitacion' => $this->input->post('capacitacion'),
+				'tecnologias' => $this->input->post('tecnologias'),
+				'participacion' => $this->input->post('participacion'),
+				'simplificacion' => $this->input->post('simplificacion'),
+				'tramites' => $this->input->post('tramites'),
+				'creditos' => $this->input->post('creditos'),
+				'impuestos' => $this->input->post('impuestos'),
+				'contratacion' => $this->input->post('contratacion'),
+				'suelo' => $this->input->post('suelo'),
+				'seguridad_social' => $this->input->post('seguridad_social'),
+				'impuestos_municipales' => $this->input->post('impuestos_municipales'),
+				'registro' => $this->input->post('registro'),
+				'impuestos_nacionales' => $this->input->post('impuestos_nacionales'),
+				'licencias' => $this->input->post('licencias')
 			);
 			
 			//revisar si es para adicionar o editar
-			if ($idFormCriticos == '') {
+			if ($idFormFormalizacion == '') {
 				$data['fecha_registro'] = date("Y-m-d G:i:s");
-				$query = $this->db->insert('form_criticos', $data);				
+				$query = $this->db->insert('form_formalizacion', $data);				
 			} else {
-				$this->db->where('id_criticos', $idFormCriticos);
-				$query = $this->db->update('form_criticos', $data);
+				$this->db->where('id_formalizacion', $idFormFormalizacion);
+				$query = $this->db->update('form_formalizacion', $data);
 			}
 			
 			if ($query) {

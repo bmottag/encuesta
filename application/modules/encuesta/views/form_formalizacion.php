@@ -46,66 +46,60 @@ if ($retornoError) {
 <p class="text-danger text-left">Los campos con * son obligatorios.</p>								
 								
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="visible">¿Tiene interés en formalizar su establecimiento? *</label>
+							<label class="col-sm-4 control-label" for="formalizar">¿Tiene interés en formalizar su establecimiento? *</label>
 							<div class="col-sm-5">
-								<select name="visible" id="visible" class="form-control" required>
+								<select name="formalizar" id="formalizar" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information["visible"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information["visible"] == 2) { echo "selected"; }  ?>>No</option>
+									<option value=1 <?php if($information["formalizar"] == 1) { echo "selected"; }  ?>>Si</option>
+									<option value=2 <?php if($information["formalizar"] == 2) { echo "selected"; }  ?>>No</option>
 								</select>
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="aviso">¿Cuál es el principal motivo por el que no ha formalizado su establecimiento? *</label>
+							<label class="col-sm-4 control-label" for="motivo">¿Cuál es el principal motivo por el que no ha formalizado su establecimiento? *</label>
 							<div class="col-sm-5">
-								<select name="aviso" id="aviso" class="form-control" required>
+								<select name="motivo" id="motivo" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information["aviso"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information["aviso"] == 3) { echo "selected"; }  ?>>Si</option>
-									<option value=4 <?php if($information["aviso"] == 4) { echo "selected"; }  ?>>No</option>
-									<option value=5 <?php if($information["aviso"] == 5) { echo "selected"; }  ?>>Si</option>
-									<option value=6 <?php if($information["aviso"] == 6) { echo "selected"; }  ?>>No</option>
-									<option value=7 <?php if($information["aviso"] == 7) { echo "selected"; }  ?>>Si</option>
-									<option value=8 <?php if($information["aviso"] == 8) { echo "selected"; }  ?>>No</option>
+									<option value=1 <?php if($information["motivo"] == 1) { echo "selected"; }  ?>>Altos impuestos</option>
+									<option value=2 <?php if($information["motivo"] == 2) { echo "selected"; }  ?>>Tramitología</option>
+									<option value=3 <?php if($information["motivo"] == 3) { echo "selected"; }  ?>>Negocio pequeño o temporal</option>
+									<option value=4 <?php if($information["motivo"] == 4) { echo "selected"; }  ?>>Falta de interés o no lo considera necesario</option>
+									<option value=5 <?php if($information["motivo"] == 5) { echo "selected"; }  ?>>Falta de tiempo</option>
+									<option value=6 <?php if($information["motivo"] == 6) { echo "selected"; }  ?>>Falta de recursos económicos</option>
+									<option value=7 <?php if($information["motivo"] == 7) { echo "selected"; }  ?>>Falta de información o desconocimiento</option>
+									<option value=8 <?php if($information["motivo"] == 8) { echo "selected"; }  ?>>Inicio del establecimiento o en periodo de prueba</option>
 								</select>
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="aviso">¿Cuáles de los siguientes beneficios o incentivos motivarían la formalización de los establecimientos? *</label>
-							<div class="col-sm-5">
-								<select name="aviso" id="aviso" class="form-control" required>
-									<option value=''>Select...</option>
-									<option value=1 <?php if($information["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information["aviso"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information["aviso"] == 3) { echo "selected"; }  ?>>Si</option>
-									<option value=4 <?php if($information["aviso"] == 4) { echo "selected"; }  ?>>No</option>
-									<option value=5 <?php if($information["aviso"] == 5) { echo "selected"; }  ?>>Si</option>
-									<option value=6 <?php if($information["aviso"] == 6) { echo "selected"; }  ?>>No</option>
-									<option value=7 <?php if($information["aviso"] == 7) { echo "selected"; }  ?>>Si</option>
-									<option value=8 <?php if($information["aviso"] == 8) { echo "selected"; }  ?>>No</option>
-									<option value=9 <?php if($information["aviso"] == 9) { echo "selected"; }  ?>>Si</option>
-									<option value=10 <?php if($information["aviso"] == 10) { echo "selected"; }  ?>>No</option>
-								</select>
+							<div class="col-sm-5">								
+<input type="checkbox" id="asesoria" name="asesoria" value=1 <?php if($information && $information["asesoria"]){echo "checked";} ?> > Asesoría de mercados (local, nacional e internacional)<br>
+<input type="checkbox" id="apoyo" name="apoyo" value=1 <?php if($information && $information["apoyo"]){echo "checked";} ?> > Apoyo en solución de conflictos<br>
+<input type="checkbox" id="asesoria_juridica" name="asesoria_juridica" value=1 <?php if($information && $information["asesoria_juridica"]){echo "checked";} ?> > Asesoría jurídica gratita<br>
+<input type="checkbox" id="capacitacion" name="capacitacion" value=1 <?php if($information && $information["capacitacion"]){echo "checked";} ?> > Capacitación gratuita<br>
+<input type="checkbox" id="tecnologias" name="tecnologias" value=1 <?php if($information && $information["tecnologias"]){echo "checked";} ?> > Acceso a tecnologías con bajo costo<br>
+<input type="checkbox" id="participacion" name="participacion" value=1 <?php if($information && $information["participacion"]){echo "checked";} ?> > Participación en eventos empresariales<br>
+<input type="checkbox" id="simplificacion" name="simplificacion" value=1 <?php if($information && $information["simplificacion"]){echo "checked";} ?> > Simplificación de trámites<br>
+<input type="checkbox" id="tramites" name="tramites" value=1 <?php if($information && $information["tramites"]){echo "checked";} ?> > Trámites gratuitos o con bajo costo<br>
+<input type="checkbox" id="creditos" name="creditos" value=1 <?php if($information && $information["creditos"]){echo "checked";} ?> > Acceso a créditos<br>
+<input type="checkbox" id="impuestos" name="impuestos" value=1 <?php if($information && $information["impuestos"]){echo "checked";} ?> > Impuestos con tarifas bajas
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="aviso">Conoce las normas en materia de: *</label>
+							<label class="col-sm-4 control-label" for="normas">Conoce las normas en materia de: *</label>
 							<div class="col-sm-5">
-								<select name="aviso" id="aviso" class="form-control" required>
-									<option value=''>Select...</option>
-									<option value=1 <?php if($information["aviso"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information["aviso"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information["aviso"] == 3) { echo "selected"; }  ?>>Si</option>
-									<option value=4 <?php if($information["aviso"] == 4) { echo "selected"; }  ?>>No</option>
-									<option value=5 <?php if($information["aviso"] == 5) { echo "selected"; }  ?>>Si</option>
-									<option value=6 <?php if($information["aviso"] == 6) { echo "selected"; }  ?>>No</option>
-									<option value=7 <?php if($information["aviso"] == 7) { echo "selected"; }  ?>>Si</option>
-									<option value=8 <?php if($information["aviso"] == 8) { echo "selected"; }  ?>>No</option>
-								</select>
+<input type="checkbox" id="contratacion" name="contratacion" value=1 <?php if($information && $information["contratacion"]){echo "checked";} ?> > Contratación laboral<br>
+<input type="checkbox" id="suelo" name="suelo" value=1 <?php if($information && $information["suelo"]){echo "checked";} ?> > Uso del suelo<br>
+<input type="checkbox" id="medio_ambiente" name="medio_ambiente" value=1 <?php if($information && $information["medio_ambiente"]){echo "checked";} ?> > Medio ambiente<br>
+<input type="checkbox" id="seguridad_social" name="seguridad_social" value=1 <?php if($information && $information["seguridad_social"]){echo "checked";} ?> > Seguridad social<br>
+<input type="checkbox" id="impuestos_municipales" name="impuestos_municipales" value=1 <?php if($information && $information["impuestos_municipales"]){echo "checked";} ?> > Impuestos municipales<br>
+<input type="checkbox" id="registro" name="registro" value=1 <?php if($information && $information["registro"]){echo "checked";} ?> > Registro mercantil<br>
+<input type="checkbox" id="impuestos_nacionales" name="impuestos_nacionales" value=1 <?php if($information && $information["impuestos_nacionales"]){echo "checked";} ?> > Impuestos nacionales<br>
+<input type="checkbox" id="licencias" name="licencias" value=1 <?php if($information && $information["licencias"]){echo "checked";} ?> > Licencias sanitarias
 							</div>
 						</div>
 						
