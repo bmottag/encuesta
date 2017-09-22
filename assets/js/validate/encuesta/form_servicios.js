@@ -2,8 +2,10 @@ $( document ).ready( function () {
 			
 	$( "#form" ).validate( {
 		rules: {
-			motivo:			{ required: true },
-			fortalecer:		{ required: true }
+			motivo:					{ required: true },
+			fortalecer:				{ required: true },
+			cual_motivo:			{ maxlength: 150 },
+			cual_fortalecer:		{ maxlength: 150 }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {

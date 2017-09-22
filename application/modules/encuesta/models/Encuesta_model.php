@@ -396,7 +396,9 @@
 				'fk_id_formulario' => $this->input->post('hddIdentificador'),
 				'fk_id_usuario' => $this->session->userdata("id"),
 				'motivo' => $this->input->post('motivo'),
-				'fortalecer' => $this->input->post('fortalecer')
+				'fortalecer' => $this->input->post('fortalecer'),
+				'cual_motivo' => $this->input->post('cual_motivo'),
+				'cual_fortalecer' => $this->input->post('cual_fortalecer')
 			);
 			
 			//revisar si es para adicionar o editar

@@ -1,5 +1,33 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/form_servicios.js"); ?>"></script>
 
+<script>
+$(document).ready(function () {
+	
+    $('#motivo').change(function () {
+        $('#motivo option:selected').each(function () {
+            var motivo = $('#motivo').val();
+            if (motivo == 8) {
+				$("#div_cual").css("display", "inline");
+            } else {
+				$("#div_cual").css("display", "none");
+            }
+        });
+    });
+	
+    $('#fortalecer').change(function () {
+        $('#fortalecer option:selected').each(function () {
+            var fortalecer = $('#fortalecer').val();
+            if (fortalecer == 12) {
+				$("#div_cual2").css("display", "inline");
+            } else {
+				$("#div_cual2").css("display", "none");
+            }
+        });
+    });
+    
+});
+</script>
+
 <div id="page-wrapper">
 	<br>
 
@@ -62,6 +90,20 @@ if ($retornoError) {
 							</div>
 						</div>
 						
+<?php 
+	$mostrar = "none";
+	if($information && $information["motivo"]==8){
+		$mostrar = "inline";
+	}
+?>
+						
+						<div class="form-group" id="div_cual" style="display: <?php echo $mostrar; ?>">
+							<label class="col-sm-4 control-label" for="cual_motivo">¿Cuál? </label>
+							<div class="col-sm-5">
+								<input type="text" id="cual_motivo" name="cual_motivo" class="form-control" value="<?php echo $information?$information["cual_motivo"]:""; ?>" placeholder="¿Cuál?" required >
+							</div>
+						</div>
+						
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="fortalecer">¿Cuáles de los siguientes servicios de apoyo empresarial considera necesarios para fortalecer su actividad? *</label>
 							<div class="col-sm-5">
@@ -80,6 +122,20 @@ if ($retornoError) {
 									<option value=11 <?php if($information["fortalecer"] == 11) { echo "selected"; }  ?>>Gerencia y capacitación para la formulación e implementación de proyectos empresariales</option>
 									<option value=12 <?php if($information["fortalecer"] == 12) { echo "selected"; }  ?>>Otro</option>
 								</select>
+							</div>
+						</div>
+						
+<?php 
+	$mostrar2 = "none";
+	if($information && $information["fortalecer"]==12){
+		$mostrar2 = "inline";
+	}
+?>
+						
+						<div class="form-group" id="div_cual2" style="display: <?php echo $mostrar2; ?>">
+							<label class="col-sm-4 control-label" for="cual_fortalecer">¿Cuál? </label>
+							<div class="col-sm-5">
+								<input type="text" id="cual_fortalecer" name="cual_fortalecer" class="form-control" value="<?php echo $information?$information["cual_fortalecer"]:""; ?>" placeholder="¿Cuál?" required >
 							</div>
 						</div>
 						
