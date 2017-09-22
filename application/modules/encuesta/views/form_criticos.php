@@ -13,6 +13,26 @@ $(document).ready(function () {
             }
         });
     });
+	
+	
+
+	
+	
+    $("#otros").on("click", function() {
+        var condiciones = $("#otros").is(":checked");
+        if (condiciones) {
+            $("#div_cual").css("display", "inline");
+            event.preventDefault();
+        } else {
+			$("#div_cual").css("display", "none");
+        }
+    });
+	
+	
+	
+	
+	
+	
     
 });
 </script>
@@ -66,68 +86,21 @@ if ($retornoError) {
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="inconvenientes">En el último año, este establecimiento tuvo inconvenientes o dificultades en: *</label>
 							<div class="col-sm-5">
-							
-							
-
-								
-<?php 
-
-	$opcion1="";
-	$opcion2="";
-	$opcion3="";
-	$opcion4="";
-	$opcion5="";
-	$opcion6="";
-	$opcion7="";
-	$opcion8="";
-	$opcion9="";
-
-if($information){	
-	
-	$array = json_decode($information["inconvenientes"]);
-		
-	foreach ($array as $lista):
-		if($lista == 1){
-			$opcion1="checked";
-		}elseif($lista == 2){
-			$opcion2="checked";
-		}elseif($lista == 3){
-			$opcion3="checed";
-		}elseif($lista == 4){
-			$opcion4="checked";
-		}elseif($lista == 5){
-			$opcion5="checked";
-		}elseif($lista == 6){
-			$opcion6="checked";
-		}elseif($lista == 7){
-			$opcion7="checked";
-		}elseif($lista == 8){
-			$opcion8="checked";
-		}elseif($lista == 9){
-			$opcion9="checked";
-		}
-	endforeach;
-}
- ?>
-								
-  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="1" <?php echo $opcion1; ?> > Financiamiento<br>
-  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="2" <?php echo $opcion2; ?> > Ausencia de recursos humano<br>
-  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="3" <?php echo $opcion3; ?> > Capacitación<br>
-  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="4" <?php echo $opcion4; ?> > Competencia desleal<br>
-  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="5" <?php echo $opcion5; ?> > Manejo ambiental<br>
-  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="6" <?php echo $opcion6; ?> > Seguridad<br>
-  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="7" <?php echo $opcion7; ?> > Ventas<br>
-  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="8" <?php echo $opcion8; ?> > Proveedores<br>
-  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="9" <?php echo $opcion9; ?> > Otros<br>  
-								
-								
-								
+<input type="checkbox" id="financiamiento" name="financiamiento" value=1 <?php if($information && $information["financiamiento"]){echo "checked";} ?> > Financiamiento<br>
+<input type="checkbox" id="ausencia" name="ausencia" value=1 <?php if($information && $information["ausencia"]){echo "checked";} ?> > Ausencia de recursos humano<br>
+<input type="checkbox" id="capacitacion" name="capacitacion" value=1 <?php if($information && $information["capacitacion"]){echo "checked";} ?> > Capacitación<br>
+<input type="checkbox" id="competencia" name="competencia" value=1 <?php if($information && $information["competencia"]){echo "checked";} ?> > Competencia desleal<br>
+<input type="checkbox" id="ambiental" name="ambiental" value=1 <?php if($information && $information["ambiental"]){echo "checked";} ?> > Manejo ambiental<br>
+<input type="checkbox" id="seguridad" name="seguridad" value=1 <?php if($information && $information["seguridad"]){echo "checked";} ?> > Seguridad<br>
+<input type="checkbox" id="ventas" name="ventas" value=1 <?php if($information && $information["ventas"]){echo "checked";} ?> > Ventas<br>
+<input type="checkbox" id="proveedores" name="proveedores" value=1 <?php if($information && $information["proveedores"]){echo "checked";} ?> > Proveedores<br>
+<input type="checkbox" id="otros" name="otros" value=1 <?php if($information && $information["otros"]){echo "checked";} ?> > Otros
 							</div>
 						</div>
 
 <?php 
 	$mostrar = "none";
-	if($information && $information["inconvenientes"]==9){
+	if($information && $information["otros"]==1){
 		$mostrar = "inline";
 	}
 ?>

@@ -284,7 +284,15 @@
 			$data = array(
 				'fk_id_formulario' => $this->input->post('hddIdentificador'),
 				'fk_id_usuario' => $this->session->userdata("id"),
-				'inconvenientes' => json_encode($this->input->post('inconvenientes')),
+				'financiamiento' => $this->input->post('financiamiento'),
+				'ausencia' => $this->input->post('ausencia'),
+				'capacitacion' => $this->input->post('capacitacion'),
+				'competencia' => $this->input->post('competencia'),
+				'ambiental' => $this->input->post('ambiental'),
+				'seguridad' => $this->input->post('seguridad'),
+				'ventas' => $this->input->post('ventas'),
+				'proveedores' => $this->input->post('proveedores'),
+				'otros' => $this->input->post('otros'),
 				'cuales' => $this->input->post('cuales')
 			);
 			

@@ -307,7 +307,7 @@ class Encuesta extends MX_Controller {
 	{			
 			header('Content-Type: application/json');
 			$data = array();
-			
+		
 			$idFormulario = $this->input->post('hddIdentificador');
 			$data["idFormulario"] = $idFormulario;
 
