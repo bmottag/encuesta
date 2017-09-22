@@ -1,5 +1,22 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/form_administrativa.js"); ?>"></script>
 
+<script>
+$(document).ready(function () {
+	
+    $('#porqueno').change(function () {
+        $('#porqueno option:selected').each(function () {
+            var porqueno = $('#porqueno').val();
+            if (porqueno == 6) {
+				$("#div_cual").css("display", "inline");
+            } else {
+				$("#div_cual").css("display", "none");
+            }
+        });
+    });
+    
+});
+</script>
+
 <div id="page-wrapper">
 	<br>
 
@@ -94,7 +111,14 @@ if ($retornoError) {
 									<option value=6 <?php if($information["porqueno"] == 6) { echo "selected"; }  ?>>Otra</option>
 								</select>
 							</div>
-						</div>																	
+						</div>
+
+						<div class="form-group" id="div_cual" style="display: none">
+							<label class="col-sm-4 control-label" for="plate">¿Cuál? </label>
+							<div class="col-sm-5">
+								<input type="text" id="cual" name="cual" class="form-control" value="<?php echo $information?$information["cual"]:""; ?>" placeholder="¿Cuál?" required >
+							</div>
+						</div>						
 
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="estado_actual">¿Cuál es el estado actual del establecimiento? *</label>

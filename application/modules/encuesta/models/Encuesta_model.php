@@ -174,7 +174,8 @@
 				'estado_actual' => $this->input->post('estado_actual'),
 				'establecimiento' => $this->input->post('establecimiento'),
 				'tiempo' => $this->input->post('tiempo'),
-				'rut' => $this->input->post('rut')
+				'rut' => $this->input->post('rut'),
+				'cual' => $this->input->post('cual')
 			);
 			
 			//revisar si es para adicionar o editar
