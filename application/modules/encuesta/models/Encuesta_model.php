@@ -348,7 +348,12 @@
 				'fk_id_usuario' => $this->session->userdata("id"),
 				'ingresos' => $this->input->post('ingresos'),
 				'contabilidad' => $this->input->post('contabilidad'),
-				'formacion' => $this->input->post('formacion'),
+				'mercadeo' => $this->input->post('mercadeo'),
+				'planeacion' => $this->input->post('planeacion'),
+				'servicio' => $this->input->post('servicio'),
+				'produccion' => $this->input->post('produccion'),
+				'iso' => $this->input->post('iso'),
+				'otros' => $this->input->post('otros'),
 				'impuestos' => $this->input->post('impuestos'),
 				'cuales' => $this->input->post('cuales')
 			);

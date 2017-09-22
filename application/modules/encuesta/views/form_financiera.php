@@ -2,16 +2,15 @@
 
 <script>
 $(document).ready(function () {
-	
-    $('#formacion').change(function () {
-        $('#formacion option:selected').each(function () {
-            var formacion = $('#formacion').val();
-            if (formacion == 6) {
-				$("#div_cual").css("display", "inline");
-            } else {
-				$("#div_cual").css("display", "none");
-            }
-        });
+		
+    $("#otros").on("click", function() {
+        var condiciones = $("#otros").is(":checked");
+        if (condiciones) {
+            $("#div_cual").css("display", "inline");
+            event.preventDefault();
+        } else {
+			$("#div_cual").css("display", "none");
+        }
     });
     
 });
@@ -93,22 +92,19 @@ if ($retornoError) {
 						
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="formacion">¿En qué áreas considera debería recibir formación el propietario o sus empleados? *</label>
-							<div class="col-sm-5">
-								<select name="formacion" id="formacion" class="form-control" required>
-									<option value=''>Select...</option>
-									<option value=1 <?php if($information["formacion"] == 1) { echo "selected"; }  ?>>Mercadeo y ventas</option>
-									<option value=2 <?php if($information["formacion"] == 2) { echo "selected"; }  ?>>Planeación estratégica</option>
-									<option value=3 <?php if($information["formacion"] == 3) { echo "selected"; }  ?>>Servicio al cliente</option>
-									<option value=4 <?php if($information["formacion"] == 4) { echo "selected"; }  ?>>Producción</option>
-									<option value=5 <?php if($information["formacion"] == 5) { echo "selected"; }  ?>>ISO 9001, 14000</option>
-									<option value=6 <?php if($information["formacion"] == 6) { echo "selected"; }  ?>>Otros</option>
-								</select>
+							<div class="col-sm-5">						
+<input type="checkbox" id="mercadeo" name="mercadeo" value=1 <?php if($information && $information["mercadeo"]){echo "checked";} ?> > Mercadeo y ventas<br>
+<input type="checkbox" id="planeacion" name="planeacion" value=1 <?php if($information && $information["planeacion"]){echo "checked";} ?> > Planeación estratégica<br>
+<input type="checkbox" id="servicio" name="servicio" value=1 <?php if($information && $information["servicio"]){echo "checked";} ?> > Servicio al cliente<br>
+<input type="checkbox" id="produccion" name="produccion" value=1 <?php if($information && $information["produccion"]){echo "checked";} ?> > Producción<br>
+<input type="checkbox" id="iso" name="iso" value=1 <?php if($information && $information["iso"]){echo "checked";} ?> > ISO 9001, 14000<br>
+<input type="checkbox" id="otros" name="otros" value=1 <?php if($information && $information["otros"]){echo "checked";} ?> > Otros
 							</div>
 						</div>
 
 <?php 
 	$mostrar = "none";
-	if($information && $information["formacion"]==6){
+	if($information && $information["otros"]==1){
 		$mostrar = "inline";
 	}
 ?>

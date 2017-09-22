@@ -4,7 +4,6 @@ $( document ).ready( function () {
 		rules: {
 			ingresos:			{ required: true },
 			contabilidad:		{ required: true },
-			formacion:			{ required: true },
 			impuestos:			{ required: true },
 			cuales:				{ maxlength: 190 }
 		},
