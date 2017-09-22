@@ -52,11 +52,24 @@
 		<div class="row">	
 			<div class="col-sm-6">
 				<div class="form-group text-left">
-					<label class="control-label" for="documento">No. Documento : *</label>
-					<input type="text" id="documento" name="documento" class="form-control" value="<?php echo $information?$information[0]["cedula"]:""; ?>" placeholder="Cédula o NIT" required >
+					<label class="control-label" for="tipo_documento">Tipo documento : *</label>
+					<select name="tipo_documento" id="tipo_documento" class="form-control" required>
+						<option value=''>Select...</option>
+						<option value=1 <?php if($information[0]["tipo_documento"] == 1) { echo "selected"; }  ?>>NIT/RUT</option>
+						<option value=2 <?php if($information[0]["tipo_documento"] == 2) { echo "selected"; }  ?>>Cédula de ciudadanía C.C.</option>
+						<option value=3 <?php if($information[0]["tipo_documento"] == 3) { echo "selected"; }  ?>>Cédula de extranjería C.E.</option>
+						<option value=4 <?php if($information[0]["tipo_documento"] == 4) { echo "selected"; }  ?>>No tiene</option>
+						<option value=5 <?php if($information[0]["tipo_documento"] == 5) { echo "selected"; }  ?>>NS/NR</option>
+					</select>
 				</div>
 			</div>
 			
+			<div class="col-sm-6">
+				<div class="form-group text-left">
+					<label class="control-label" for="documento">No. Documento : *</label>
+					<input type="text" id="documento" name="documento" class="form-control" value="<?php echo $information?$information[0]["cedula"]:""; ?>" placeholder="Cédula o NIT" required >
+				</div>
+			</div>			
 		</div>
 		
 
