@@ -81,13 +81,9 @@ if ($retornoError) {
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="numero_personas">¿Cuántas personas; incluido(a) usted, trabajan actualmente en el establecimiento? *</label>
+							<label class="col-sm-4 control-label" for="numero_personas">¿Cuántas personas; incluido(a) usted, trabajan actualmente en el establecimiento? *</label>					
 							<div class="col-sm-5">
-								<select name="numero_personas" id="numero_personas" class="form-control" required>
-									<option value=''>Select...</option>
-									<option value=1 <?php if($information["numero_personas"] == 1) { echo "selected"; }  ?>>Si</option>
-									<option value=2 <?php if($information["numero_personas"] == 2) { echo "selected"; }  ?>>No</option>
-								</select>
+								<input type="text" id="numero_personas" name="numero_personas" class="form-control" value="<?php echo $information?$information["numero_personas"]:""; ?>" placeholder="Número de personas" required >
 							</div>
 						</div>
 						

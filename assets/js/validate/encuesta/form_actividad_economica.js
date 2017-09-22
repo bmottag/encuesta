@@ -3,7 +3,7 @@ $( document ).ready( function () {
 	$( "#form" ).validate( {
 		rules: {
 			actividad:			{ required: true },
-			numero_personas:	{ required: true },
+			numero_personas:	{ required: true, number: true, maxlength:3 },
 			seguridad_social:	{ required: true },
 			lugar:				{ required: true }
 		},
