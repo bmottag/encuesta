@@ -66,18 +66,62 @@ if ($retornoError) {
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="inconvenientes">En el último año, este establecimiento tuvo inconvenientes o dificultades en: *</label>
 							<div class="col-sm-5">
-								<select name="inconvenientes" id="inconvenientes" class="form-control" required>
-									<option value=''>Select...</option>
-									<option value=1 <?php if($information["inconvenientes"] == 1) { echo "selected"; }  ?>>Financiamiento</option>
-									<option value=2 <?php if($information["inconvenientes"] == 2) { echo "selected"; }  ?>>Ausencia de recursos humano</option>
-									<option value=3 <?php if($information["inconvenientes"] == 3) { echo "selected"; }  ?>>Capacitación</option>
-									<option value=4 <?php if($information["inconvenientes"] == 4) { echo "selected"; }  ?>>Competencia desleal</option>
-									<option value=5 <?php if($information["inconvenientes"] == 5) { echo "selected"; }  ?>>Manejo ambiental</option>
-									<option value=6 <?php if($information["inconvenientes"] == 6) { echo "selected"; }  ?>>Seguridad</option>
-									<option value=7 <?php if($information["inconvenientes"] == 7) { echo "selected"; }  ?>>Ventas</option>
-									<option value=8 <?php if($information["inconvenientes"] == 8) { echo "selected"; }  ?>>Proveedores</option>
-									<option value=9 <?php if($information["inconvenientes"] == 9) { echo "selected"; }  ?>>Otros</option>
-								</select>
+							
+							
+
+								
+<?php 
+
+	$opcion1="";
+	$opcion2="";
+	$opcion3="";
+	$opcion4="";
+	$opcion5="";
+	$opcion6="";
+	$opcion7="";
+	$opcion8="";
+	$opcion9="";
+
+if($information){	
+	
+	$array = json_decode($information["inconvenientes"]);
+		
+	foreach ($array as $lista):
+		if($lista == 1){
+			$opcion1="checked";
+		}elseif($lista == 2){
+			$opcion2="checked";
+		}elseif($lista == 3){
+			$opcion3="checed";
+		}elseif($lista == 4){
+			$opcion4="checked";
+		}elseif($lista == 5){
+			$opcion5="checked";
+		}elseif($lista == 6){
+			$opcion6="checked";
+		}elseif($lista == 7){
+			$opcion7="checked";
+		}elseif($lista == 8){
+			$opcion8="checked";
+		}elseif($lista == 9){
+			$opcion9="checked";
+		}
+	endforeach;
+}
+ ?>
+								
+  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="1" <?php echo $opcion1; ?> > Financiamiento<br>
+  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="2" <?php echo $opcion2; ?> > Ausencia de recursos humano<br>
+  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="3" <?php echo $opcion3; ?> > Capacitación<br>
+  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="4" <?php echo $opcion4; ?> > Competencia desleal<br>
+  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="5" <?php echo $opcion5; ?> > Manejo ambiental<br>
+  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="6" <?php echo $opcion6; ?> > Seguridad<br>
+  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="7" <?php echo $opcion7; ?> > Ventas<br>
+  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="8" <?php echo $opcion8; ?> > Proveedores<br>
+  <input type="checkbox" id="inconvenientes" name="inconvenientes[]" value="9" <?php echo $opcion9; ?> > Otros<br>  
+								
+								
+								
 							</div>
 						</div>
 
