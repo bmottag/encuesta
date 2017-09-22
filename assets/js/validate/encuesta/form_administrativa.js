@@ -4,7 +4,8 @@ $( document ).ready( function () {
 		rules: {
 			visible:			{ required: true },
 			aviso:				{ required: true },
-			matricula:				{ required: true }
+			matricula:			{ required: true },
+			cual:				{ maxlength: 120 }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {

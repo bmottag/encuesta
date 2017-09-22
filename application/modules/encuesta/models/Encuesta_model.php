@@ -284,7 +284,8 @@
 			$data = array(
 				'fk_id_formulario' => $this->input->post('hddIdentificador'),
 				'fk_id_usuario' => $this->session->userdata("id"),
-				'inconvenientes' => $this->input->post('inconvenientes')
+				'inconvenientes' => $this->input->post('inconvenientes'),
+				'cuales' => $this->input->post('cuales')
 			);
 			
 			//revisar si es para adicionar o editar

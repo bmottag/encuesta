@@ -112,9 +112,16 @@ if ($retornoError) {
 								</select>
 							</div>
 						</div>
+						
+<?php 
+	$mostrar = "none";
+	if($information && $information["porqueno"]==6){
+		$mostrar = "inline";
+	}
+?>
 
-						<div class="form-group" id="div_cual" style="display: none">
-							<label class="col-sm-4 control-label" for="plate">¿Cuál? </label>
+						<div class="form-group" id="div_cual" style="display: <?php echo $mostrar; ?>">
+							<label class="col-sm-4 control-label" for="cual">¿Cuál? </label>
 							<div class="col-sm-5">
 								<input type="text" id="cual" name="cual" class="form-control" value="<?php echo $information?$information["cual"]:""; ?>" placeholder="¿Cuál?" required >
 							</div>

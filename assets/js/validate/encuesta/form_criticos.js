@@ -2,7 +2,8 @@ $( document ).ready( function () {
 			
 	$( "#form" ).validate( {
 		rules: {
-			inconvenientes:			{ required: true }
+			inconvenientes:			{ required: true },
+			cuales:					{ maxlength: 190 }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {

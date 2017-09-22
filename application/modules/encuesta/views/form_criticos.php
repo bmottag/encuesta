@@ -1,5 +1,22 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/form_criticos.js"); ?>"></script>
 
+<script>
+$(document).ready(function () {
+	
+    $('#inconvenientes').change(function () {
+        $('#inconvenientes option:selected').each(function () {
+            var inconvenientes = $('#inconvenientes').val();
+            if (inconvenientes == 9) {
+				$("#div_cual").css("display", "inline");
+            } else {
+				$("#div_cual").css("display", "none");
+            }
+        });
+    });
+    
+});
+</script>
+
 <div id="page-wrapper">
 	<br>
 
@@ -64,6 +81,19 @@ if ($retornoError) {
 							</div>
 						</div>
 
+<?php 
+	$mostrar = "none";
+	if($information && $information["inconvenientes"]==9){
+		$mostrar = "inline";
+	}
+?>
+						
+						<div class="form-group" id="div_cual" style="display: <?php echo $mostrar; ?>">
+							<label class="col-sm-4 control-label" for="cuales">¿Cuáles? </label>
+							<div class="col-sm-5">
+								<input type="text" id="cuales" name="cuales" class="form-control" value="<?php echo $information?$information["cuales"]:""; ?>" placeholder="¿Cuáles?" required >
+							</div>
+						</div>	
 
 				</div>
 			</div>
