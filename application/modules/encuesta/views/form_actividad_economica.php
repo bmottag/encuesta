@@ -13,7 +13,7 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<a class="btn btn-info" href=" <?php echo base_url().'encuesta/form_home/' . $idFormulario; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
-					<i class="fa fa-usd"></i> Capítulo Características Generales de la Actividad Económica						
+					<i class="fa fa-usd"></i> 2. Capítulo Características Generales de la Actividad Económica						
 				</div>
 				<div class="panel-body">
 

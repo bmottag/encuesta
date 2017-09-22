@@ -61,13 +61,13 @@ if ($retornoError) {
 					<div class="row">
 						<div class="col-lg-6">	
 <a href="<?php echo base_url(). 'encuesta/form_administrativos/' . $idFormulario; ?>" class="btn btn-warning btn-block">
-<span class="glyphicon glyphicon-home" aria-hidden="true"></span> Capítulo Aspectos administrativos   
+<span class="glyphicon glyphicon-home" aria-hidden="true"></span> 1. Capítulo Aspectos administrativos   
 </a>
 						</div>
 
 						<div class="col-lg-6">	
 <a href="<?php echo base_url(). 'encuesta/form_actividad_economica/' . $idFormulario; ?>" class="btn btn-warning btn-block">
-<span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Capítulo Características Generales de la Actividad Económica  
+<span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 2. Capítulo Características Generales de la Actividad Económica  
 </a>
 						</div>
 					</div>
@@ -75,13 +75,13 @@ if ($retornoError) {
 					<div class="row">
 						<div class="col-lg-6">	
 <a href="<?php echo base_url(). 'encuesta/form_criticos/' . $idFormulario; ?>" class="btn btn-warning btn-block">
-<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Capítulo Aspectos críticos del Establecimiento  
+<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> 3. Capítulo Aspectos críticos del Establecimiento  
 </a>
 						</div>
 
 						<div class="col-lg-6">	
 <a href="<?php echo base_url(). 'encuesta/form_financiera/' . $idFormulario; ?>" class="btn btn-warning btn-block">
-<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Capítulo Información Financiera del Establecimiento   
+<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 4. Capítulo Información Financiera del Establecimiento   
 </a>
 						</div>
 					</div>
@@ -89,13 +89,13 @@ if ($retornoError) {
 					<div class="row">
 						<div class="col-lg-6">	
 <a href="<?php echo base_url(). 'encuesta/form_servicios/' . $idFormulario; ?>" class="btn btn-warning btn-block">
-<span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Capítulo Servicios de Apoyo Empresarial  
+<span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> 5. Capítulo Servicios de Apoyo Empresarial  
 </a>
 						</div>
 						
 						<div class="col-lg-6">	
 <a href="<?php echo base_url(). 'encuesta/form_formalizacion/' . $idFormulario; ?>" class="btn btn-warning btn-block">
-<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Capítulo Formalización Empresarial   
+<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> 6. Capítulo Formalización Empresarial   
 </a>
 						</div>
 					</div>

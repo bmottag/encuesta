@@ -2,22 +2,7 @@
 
 <script>
 $(document).ready(function () {
-	
-    $('#inconvenientes').change(function () {
-        $('#inconvenientes option:selected').each(function () {
-            var inconvenientes = $('#inconvenientes').val();
-            if (inconvenientes == 9) {
-				$("#div_cual").css("display", "inline");
-            } else {
-				$("#div_cual").css("display", "none");
-            }
-        });
-    });
-	
-	
-
-	
-	
+		
     $("#otros").on("click", function() {
         var condiciones = $("#otros").is(":checked");
         if (condiciones) {
@@ -27,13 +12,7 @@ $(document).ready(function () {
 			$("#div_cual").css("display", "none");
         }
     });
-	
-	
-	
-	
-	
-	
-    
+
 });
 </script>
 
@@ -50,7 +29,7 @@ $(document).ready(function () {
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<a class="btn btn-info" href=" <?php echo base_url().'encuesta/form_home/' . $idFormulario; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
-					<i class="fa fa-thumb-tack"></i> Capítulo Aspectos críticos del Establecimiento 							
+					<i class="fa fa-thumb-tack"></i> 3. Capítulo Aspectos críticos del Establecimiento 							
 				</div>
 				<div class="panel-body">
 
