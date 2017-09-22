@@ -14,15 +14,14 @@ $(document).ready(function () {
         });
     });
 	
-    $('#fortalecer').change(function () {
-        $('#fortalecer option:selected').each(function () {
-            var fortalecer = $('#fortalecer').val();
-            if (fortalecer == 12) {
-				$("#div_cual2").css("display", "inline");
-            } else {
-				$("#div_cual2").css("display", "none");
-            }
-        });
+    $("#otro").on("click", function() {
+        var condiciones = $("#otro").is(":checked");
+        if (condiciones) {
+            $("#div_cual2").css("display", "inline");
+            event.preventDefault();
+        } else {
+			$("#div_cual2").css("display", "none");
+        }
     });
     
 });
@@ -106,28 +105,25 @@ if ($retornoError) {
 						
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="fortalecer">¿Cuáles de los siguientes servicios de apoyo empresarial considera necesarios para fortalecer su actividad? *</label>
-							<div class="col-sm-5">
-								<select name="fortalecer" id="fortalecer" class="form-control" required>
-									<option value=''>Select...</option>
-									<option value=1 <?php if($information["fortalecer"] == 1) { echo "selected"; }  ?>>Capacitación en mejora de productos</option>
-									<option value=2 <?php if($information["fortalecer"] == 2) { echo "selected"; }  ?>>Capacitación en mejora de procesos</option>
-									<option value=3 <?php if($information["fortalecer"] == 3) { echo "selected"; }  ?>>Capacitación y actualización del recurso humano</option>
-									<option value=4 <?php if($information["fortalecer"] == 4) { echo "selected"; }  ?>>Asesoría en mercadeo y comercialización</option>
-									<option value=5 <?php if($information["fortalecer"] == 5) { echo "selected"; }  ?>>Asesoría en productos nuevos</option>
-									<option value=6 <?php if($information["fortalecer"] == 6) { echo "selected"; }  ?>>Asesoría en el manejo de nuevos productos informáticos</option>
-									<option value=7 <?php if($information["fortalecer"] == 7) { echo "selected"; }  ?>>Asesoría en innovación empresarial</option>
-									<option value=8 <?php if($information["fortalecer"] == 8) { echo "selected"; }  ?>>Asesoría en trámites (ej.: comercio exterior, patentes, inversión extranjera)</option>
-									<option value=9 <?php if($information["fortalecer"] == 9) { echo "selected"; }  ?>>Participación en ferias, ruedas de negocios y eventos nacionales e internacionales</option>
-									<option value=10 <?php if($information["fortalecer"] == 10) { echo "selected"; }  ?>>Información sobre acceso a financiamiento</option>
-									<option value=11 <?php if($information["fortalecer"] == 11) { echo "selected"; }  ?>>Gerencia y capacitación para la formulación e implementación de proyectos empresariales</option>
-									<option value=12 <?php if($information["fortalecer"] == 12) { echo "selected"; }  ?>>Otro</option>
-								</select>
+							<div class="col-sm-8">
+<input type="checkbox" id="productos" name="productos" value=1 <?php if($information && $information["productos"]){echo "checked";} ?> > Capacitación en mejora de productos<br>
+<input type="checkbox" id="procesos" name="procesos" value=1 <?php if($information && $information["procesos"]){echo "checked";} ?> > Capacitación en mejora de procesos<br>
+<input type="checkbox" id="capacitacion" name="capacitacion" value=1 <?php if($information && $information["capacitacion"]){echo "checked";} ?> > Capacitación y actualización del recurso humano<br>
+<input type="checkbox" id="mercadeo" name="mercadeo" value=1 <?php if($information && $information["mercadeo"]){echo "checked";} ?> > Asesoría en mercadeo y comercialización<br>
+<input type="checkbox" id="nuevos" name="nuevos" value=1 <?php if($information && $information["nuevos"]){echo "checked";} ?> > Asesoría en productos nuevos<br>
+<input type="checkbox" id="informaticos" name="informaticos" value=1 <?php if($information && $information["informaticos"]){echo "checked";} ?> > Asesoría en el manejo de nuevos productos informáticos<br>
+<input type="checkbox" id="innovacion" name="innovacion" value=1 <?php if($information && $information["innovacion"]){echo "checked";} ?> > Asesoría en innovación empresarial<br>
+<input type="checkbox" id="tramites" name="tramites" value=1 <?php if($information && $information["tramites"]){echo "checked";} ?> > Asesoría en trámites (ej.: comercio exterior, patentes, inversión extranjera)<br>
+<input type="checkbox" id="participacion" name="participacion" value=1 <?php if($information && $information["participacion"]){echo "checked";} ?> > Participación en ferias, ruedas de negocios y eventos nacionales e internacionales<br>
+<input type="checkbox" id="financiamiento" name="financiamiento" value=1 <?php if($information && $information["financiamiento"]){echo "checked";} ?> > Información sobre acceso a financiamiento<br>
+<input type="checkbox" id="proyectos" name="proyectos" value=1 <?php if($information && $information["proyectos"]){echo "checked";} ?> > Gerencia y capacitación para la formulación e implementación de proyectos empresariales<br>
+<input type="checkbox" id="otro" name="otro" value=1 <?php if($information && $information["otro"]){echo "checked";} ?> > Otro
 							</div>
 						</div>
 						
 <?php 
 	$mostrar2 = "none";
-	if($information && $information["fortalecer"]==12){
+	if($information && $information["otro"]==1){
 		$mostrar2 = "inline";
 	}
 ?>
