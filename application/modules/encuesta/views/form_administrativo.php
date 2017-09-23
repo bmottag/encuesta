@@ -172,7 +172,7 @@ if ($retornoError) {
 
 
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="tiempo">¿Cuánto tiempo lleva funcionando el establecimiento?*</label>
+							<label class="col-sm-4 control-label" for="tiempo">¿Cuánto tiempo lleva funcionando el establecimiento? (Esperar respuesta) *</label>
 							<div class="col-sm-5">
 								<select name="tiempo" id="tiempo" class="form-control" required>
 									<option value=''>Select...</option>
@@ -181,7 +181,7 @@ if ($retornoError) {
 									<option value=3 <?php if($information["tiempo"] == 3) { echo "selected"; }  ?>>Entre 1 año y 3 años</option>
 									<option value=4 <?php if($information["tiempo"] == 4) { echo "selected"; }  ?>>Entre 3 años y  5 años</option>
 									<option value=5 <?php if($information["tiempo"] == 5) { echo "selected"; }  ?>>Entre 5 años y  10 años</option>
-									<option value=6 <?php if($information["tiempo"] == 6) { echo "selected"; }  ?>>10 años y más</option>
+									<option value=6 <?php if($information["tiempo"] == 6) { echo "selected"; }  ?>>Entre 10 años y más</option>
 								</select>
 							</div>
 						</div>

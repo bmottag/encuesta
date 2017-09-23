@@ -232,7 +232,8 @@
 				'actividad' => $this->input->post('actividad'),
 				'numero_personas' => $this->input->post('numero_personas'),
 				'seguridad_social' => $this->input->post('seguridad_social'),
-				'lugar' => $this->input->post('lugar')
+				'lugar' => $this->input->post('lugar'),
+				'cual' => $this->input->post('cual')
 			);
 			
 			//revisar si es para adicionar o editar

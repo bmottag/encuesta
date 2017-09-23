@@ -1,5 +1,23 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/form_actividad_economica.js"); ?>"></script>
 
+<script>
+$(document).ready(function () {
+	
+    $('#actividad').change(function () {
+        $('#actividad option:selected').each(function () {
+            var actividad = $('#actividad').val();
+            if (actividad == 27) {
+				$("#div_cual").css("display", "inline");
+            } else {
+				$("#div_cual").css("display", "none");
+            }
+        });
+    });
+    
+});
+</script>
+
+
 <div id="page-wrapper">
 	<br>
 
@@ -45,7 +63,7 @@ if ($retornoError) {
 <p class="text-danger text-left">Los campos con * son obligatorios.</p>								
 								
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="actividad">¿Cuál es su actividad económica principal o que se dedica su establecimiento? *</label>
+							<label class="col-sm-4 control-label" for="actividad">¿Cuál es su actividad económica principal o que se dedica su establecimiento? (Esperar respuesta)*</label>
 							<div class="col-sm-5">
 								<select name="actividad" id="actividad" class="form-control" required>
 									<option value=''>Select...</option>
@@ -77,6 +95,20 @@ if ($retornoError) {
 									<option value=26 <?php if($information["actividad"] == 26) { echo "selected"; }  ?>>Mantenimiento y reparación de computadores, efectos personales y enseres domésticos</option>
 									<option value=27 <?php if($information["actividad"] == 27) { echo "selected"; }  ?>>Otras actividades</option>
 								</select>
+							</div>
+						</div>
+						
+<?php 
+	$mostrar = "none";
+	if($information && $information["actividad"]==27){
+		$mostrar = "inline";
+	}
+?>
+						
+						<div class="form-group" id="div_cual" style="display: <?php echo $mostrar; ?>">
+							<label class="col-sm-4 control-label" for="cual_motivo">¿Cuál? </label>
+							<div class="col-sm-5">
+								<input type="text" id="cual" name="cual" class="form-control" value="<?php echo $information?$information["cual"]:""; ?>" placeholder="¿Cuál?" required >
 							</div>
 						</div>
 						
