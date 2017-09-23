@@ -49,13 +49,15 @@ $(function(){
 							<div class="row" align="center">
 								<div style="width:50%;" align="center">
 									<div class="alert alert-success">
-										<strong>SECTOR: </strong>
+										<strong>Comuna: </strong>
+										<?php echo $infoManzana[0]['fk_id_comuna']; ?>
+										 - <strong>Sector: </strong>
 										<?php echo $infoManzana[0]['fk_id_sector']; ?>
-										<br><strong>SECCIÓN: </strong>
+										<br><strong>Sección: </strong>
 										<?php echo $infoManzana[0]['fk_id_seccion']; ?>
-										<br><strong>MANZANA: </strong>
+										- <strong>Manzana: </strong>
 										<?php echo $infoManzana[0]['fk_id_manzana']; ?>
-										<br><strong>BARRIO: </strong>
+										<br><strong>Barrio: </strong>
 										<?php echo $infoManzana[0]['barrio']; ?>
 									</div>
 								</div>
@@ -100,10 +102,10 @@ if ($retornoError) {
 							<tr>
 								<th class="text-center">No. formulario</th>
 								<th class="text-center">Editar</th>
-								<th class="text-center">Razón social</th>
+								<th class="text-center">Razón social o nombre del propietario</th>
 								<th class="text-center">Nombre comercial</th>
-								<th class="text-center">Dirección</th>
-								<th class="text-center">Teléfono</th>
+								<th class="text-center">Dirección del establecimiento</th>
+								<th class="text-center">Teléfono y/o celular del establecimiento</th>
 								<th class="text-center">Cédula o NIT</th>
 							</tr>
 						</thead>

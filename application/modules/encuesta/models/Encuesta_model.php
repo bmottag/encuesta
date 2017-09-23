@@ -55,7 +55,8 @@
 					'razon_social' => $this->input->post('razonSocial'),
 					'cedula' => $this->input->post('documento'),
 					'fk_id_manzana' => $this->input->post('hddIdManzana'),
-					'tipo_documento' => $this->input->post('tipo_documento')
+					'tipo_documento' => $this->input->post('tipo_documento'),
+					'digito' => $this->input->post('digito')
 				);	
 
 				//revisar si es para adicionar o editar

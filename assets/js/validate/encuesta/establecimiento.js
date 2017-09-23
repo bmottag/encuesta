@@ -11,7 +11,8 @@ $( document ).ready( function () {
 			nombre: 			{ required: true, minlength: 3, maxlength:100 },
 			address: 			{ minlength: 4, maxlength:100},
 			documento: 			{ required: true, number: true, minlength: 4, maxlength:12 },
-			telefono:	 		{ minlength: 4, maxlength:15  }
+			telefono:	 		{ minlength: 4, maxlength:40  },
+			digito:		 		{ maxlength:1  }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {
@@ -21,10 +22,10 @@ $( document ).ready( function () {
 
 		},
 		highlight: function ( element, errorClass, validClass ) {
-			$( element ).parents( ".col-sm-6" ).addClass( "has-error" ).removeClass( "has-success" );
+			$( element ).parents( ".col-sm-12" ).addClass( "has-error" ).removeClass( "has-success" );
 		},
 		unhighlight: function (element, errorClass, validClass) {
-			$( element ).parents( ".col-sm-6" ).addClass( "has-success" ).removeClass( "has-error" );
+			$( element ).parents( ".col-sm-12" ).addClass( "has-success" ).removeClass( "has-error" );
 		},
 		submitHandler: function (form) {
 			return true;

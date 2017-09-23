@@ -1,5 +1,24 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/establecimiento.js"); ?>"></script>
 
+<script>
+$(document).ready(function () {
+	
+    $('#tipo_documento').change(function () {
+        $('#tipo_documento option:selected').each(function () {
+            var tipo_documento = $('#tipo_documento').val();
+            if (tipo_documento == 1) {
+				$("#div_digito").css("display", "inline");
+				$('#digito').val("");
+            } else {
+				$("#div_digito").css("display", "none");
+				$('#digito').val("");
+            }
+        });
+    });
+    
+});
+</script>
+
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	<h4 class="modal-title" id="exampleModalLabel">Identificación del establecimiento y propietario
@@ -17,14 +36,16 @@
 
 		
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-12">
 				<div class="form-group text-left">
-					<label class="control-label" for="razonSocial">Razón social o nombre comercial : *</label>
+					<label class="control-label" for="razonSocial">Razón social o nombre del propietario*</label>
 					<input type="text" id="razonSocial" name="razonSocial" class="form-control" value="<?php echo $information?$information[0]["razon_social"]:""; ?>" placeholder="Razón social o nombre comercial" required >
 				</div>
 			</div>
+		</div>
 			
-			<div class="col-sm-6">
+		<div class="row">
+			<div class="col-sm-12">
 				<div class="form-group text-left">
 					<label class="control-label" for="nombre">Nombre comercial : *</label>
 					<input type="text" id="nombre" name="nombre" class="form-control" value="<?php echo $information?$information[0]["nombre_propietario"]:""; ?>" placeholder="Nombre del propietario" required >
@@ -33,16 +54,18 @@
 		</div>
 		
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-12">
 				<div class="form-group text-left">
-					<label class="control-label" for="address">Dirección :</label>
+					<label class="control-label" for="address">Dirección del establecimiento :</label>
 					<input type="text" id="address" name="address" class="form-control" value="<?php echo $information?$information[0]["direccion"]:""; ?>" placeholder="Dirección" >
 				</div>
 			</div>
+		</div>
 
-			<div class="col-sm-6">
+		<div class="row">
+			<div class="col-sm-12">
 				<div class="form-group text-left">
-					<label class="control-label" for="telefono">Teléfono : *</label>
+					<label class="control-label" for="telefono">Teléfono y/o celular del establecimiento : *</label>
 					<input type="text" id="telefono" name="telefono" class="form-control" value="<?php echo $information?$information[0]["telefono"]:""; ?>" placeholder="Teléfono" >
 				</div>
 			</div>
@@ -50,9 +73,9 @@
 
 		
 		<div class="row">	
-			<div class="col-sm-6">
+			<div class="col-sm-12">
 				<div class="form-group text-left">
-					<label class="control-label" for="tipo_documento">Tipo documento : *</label>
+					<label class="control-label" for="tipo_documento">Tipo documento del establecimiento : *</label>
 					<select name="tipo_documento" id="tipo_documento" class="form-control" required>
 						<option value=''>Select...</option>
 						<option value=1 <?php if($information[0]["tipo_documento"] == 1) { echo "selected"; }  ?>>NIT/RUT</option>
@@ -63,11 +86,30 @@
 					</select>
 				</div>
 			</div>
-			
-			<div class="col-sm-6">
+		</div>
+		
+		<div class="row">	
+			<div class="col-sm-12">
 				<div class="form-group text-left">
 					<label class="control-label" for="documento">No. Documento : *</label>
 					<input type="text" id="documento" name="documento" class="form-control" value="<?php echo $information?$information[0]["cedula"]:""; ?>" placeholder="Cédula o NIT" required >
+				</div>
+			</div>			
+		</div>
+		
+		
+<?php 
+	$mostrar = "none";
+	if($information && $information[0]["tipo_documento"]==1){
+		$mostrar = "inline";
+	}
+?>
+						
+		<div class="row" id="div_digito" style="display: <?php echo $mostrar; ?>">
+			<div class="col-sm-12">
+				<div class="form-group text-left">
+					<label class="control-label" for="digito">Digito de Verificación D.V.  : </label>
+					<input type="text" id="digito" name="digito" class="form-control" value="<?php echo $information?$information[0]["digito"]:""; ?>" placeholder="Digito de Verificación D.V." required >
 				</div>
 			</div>			
 		</div>
