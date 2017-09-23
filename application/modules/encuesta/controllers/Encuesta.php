@@ -33,23 +33,11 @@ class Encuesta extends MX_Controller {
 			$data['information'] = FALSE;
 			$data["identificador"] = $this->input->post("identificador");	
 			
-			$this->load->model("general_model");
-			$arrParam = array(
-				"table" => "param_roles",
-				"order" => "id_rol",
-				"id" => "x"
-			);
-			$data['sector'] = $this->general_model->get_basic_search($arrParam);//listado sectores
-			
-			if ($data["identificador"] != 'x') {
-				$this->load->model("general_model");
+			if ($data["identificador"] != 'x') {				
 				$arrParam = array(
-					"table" => "form_manzana",
-					"order" => "id_manzana",
-					"column" => "id_manzana",
-					"id" => $data["identificador"]
+					"idManzana" => $data["identificador"]
 				);
-				$data['information'] = $this->general_model->get_basic_search($arrParam);
+				$data['information'] = $this->encuesta_model->get_manzanas($arrParam);
 			}
 			
 			$this->load->view("manzana_modal", $data);
@@ -477,5 +465,67 @@ class Encuesta extends MX_Controller {
 
 			echo json_encode($data);
     }
+	
+	/**
+	 * Lista de sectores por comuna
+     * @since 22/9/2017
+	 */
+    public function sectorList()
+	{
+			header("Content-Type: text/plain; charset=utf-8"); //Para evitar problemas de acentos
+
+			$arrParam['idComuna'] = $this->input->post('identificador');
+			$lista = $this->encuesta_model->get_sector_by($arrParam);
+		
+			echo "<option value=''>Select...</option>";
+			if ($lista) {
+				foreach ($lista as $fila) {
+					echo "<option value='" . $fila["idSector"] . "' >" . $fila["idSector"] . "</option>";
+				}
+			}
+    }
+	
+	/**
+	 * Lista de secciones por sector
+     * @since 22/9/2017
+	 */
+    public function seccionList()
+	{
+			header("Content-Type: text/plain; charset=utf-8"); //Para evitar problemas de acentos
+
+			$arrParam['idSector'] = $this->input->post('identificador');
+			$arrParam['idComuna'] = $this->input->post('comuna');
+			$lista = $this->encuesta_model->get_seccion_by($arrParam);
+		
+			echo "<option value=''>Select...</option>";
+			if ($lista) {
+				foreach ($lista as $fila) {
+					echo "<option value='" . $fila["idSeccion"] . "' >" . $fila["idSeccion"] . "</option>";
+				}
+			}
+    }
+
+	/**
+	 * Lista de manzanas por sector
+     * @since 22/9/2017
+	 */
+    public function manzanaList()
+	{
+			header("Content-Type: text/plain; charset=utf-8"); //Para evitar problemas de acentos
+
+			$arrParam['idSeccion'] = $this->input->post('identificador');
+			$arrParam['idSector'] = $this->input->post('sector');
+			$arrParam['idComuna'] = $this->input->post('comuna');
+			$lista = $this->encuesta_model->get_manzana_by($arrParam);
+
+			echo "<option value=''>Select...</option>";
+			if ($lista) {
+				foreach ($lista as $fila) {
+					echo "<option value='" . $fila["idManzana"] . "' >" . $fila["idManzana"] . "</option>";
+				}
+			}
+    }
+
+	
 	
 }

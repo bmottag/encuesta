@@ -61,11 +61,11 @@ if ($retornoError) {
 					<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
 						<thead>
 							<tr>
+								<th class="text-center">Comuna</th>
 								<th class="text-center">Sector</th>
 								<th class="text-center">Sección</th>
 								<th class="text-center">Editar</th>
 								<th class="text-center">Manzana</th>
-								<th class="text-center">Comuna</th>
 								<th class="text-center">Barrio</th>
 								<th class="text-center">Establecimientos</th>
 							</tr>
@@ -74,6 +74,7 @@ if ($retornoError) {
 						<?php
 							foreach ($info as $lista):
 									echo "<tr>";
+									echo "<td class='text-center'>" . $lista['fk_id_comuna'] . "</td>";
 									echo "<td>" . $lista['fk_id_sector'] . "</td>";
 									echo "<td>" . $lista['fk_id_seccion'] . "</td>";
 									echo "<td class='text-center'>";
@@ -84,7 +85,7 @@ if ($retornoError) {
 						<?php
 									echo "</td>";
 									echo "<td class='text-center'>" . $lista['fk_id_manzana'] . "</td>";
-									echo "<td class='text-center'>" . $lista['fk_id_comuna'] . "</td>";
+									
 									echo "<td class='text-center'>" . $lista['barrio'] . "</td>";
 
 						?>

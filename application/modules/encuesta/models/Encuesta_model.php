@@ -82,7 +82,7 @@
 		public function get_manzanas($arrDatos) 
 		{		
 				$this->db->select();
-				//$this->db->join('pruebas P', 'P.id_prueba = G.fk_id_prueba', 'INNER');
+
 				if (array_key_exists("idManzana", $arrDatos)) {
 					$this->db->where('M.id_manzana', $arrDatos["idManzana"]);
 				}
@@ -140,8 +140,8 @@
 		public function get_form_administrativa($arrDatos) 
 		{
 				$this->db->select();
-				if (array_key_exists("idformulario", $arrDatos)) {
-					$this->db->where('fk_id_formulario', $arrDatos["idformulario"]);
+				if (array_key_exists("idFormulario", $arrDatos)) {
+					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
 				}
 				if (array_key_exists("idFormAdministrativa", $arrDatos)) {
 					$this->db->where('A.id_administrativa', $arrDatos["idFormAdministrativa"]);
@@ -511,6 +511,94 @@
 				return false;
 			}
 		}
+		
+		/**
+		 * Sector by comuna
+		 * @since 22/9/2017
+		 */
+		public function get_sector_by($arrDatos)
+		{			
+				$sector = array();
+				$this->db->select("DISTINCT(sector)");
+				if (array_key_exists("idComuna", $arrDatos)) {
+					$this->db->where('comuna', $arrDatos["idComuna"]);
+				}
+								
+				$this->db->order_by('sector', 'asc');
+				$query = $this->db->get('param_comuna');
+					
+				if ($query->num_rows() > 0) {
+					$i = 0;
+					foreach ($query->result() as $row) {
+						$sector[$i]["idSector"] = $row->sector;
+						$i++;
+					}
+				}
+				$this->db->close();
+				return $sector;
+		}
+		
+		/**
+		 * Seccion by sector
+		 * @since 22/9/2017
+		 */
+		public function get_seccion_by($arrDatos)
+		{			
+				$seccion = array();
+				$this->db->select("DISTINCT(seccion)");
+				if (array_key_exists("idSector", $arrDatos)) {
+					$this->db->where('sector', $arrDatos["idSector"]);
+				}
+				if (array_key_exists("idComuna", $arrDatos)) {
+					$this->db->where('comuna', $arrDatos["idComuna"]);
+				}
+								
+				$this->db->order_by('seccion', 'asc');
+				$query = $this->db->get('param_comuna');
+					
+				if ($query->num_rows() > 0) {
+					$i = 0;
+					foreach ($query->result() as $row) {
+						$seccion[$i]["idSeccion"] = $row->seccion;
+						$i++;
+					}
+				}
+				$this->db->close();
+				return $seccion;
+		}
+		
+		/**
+		 * Manzana by seccion
+		 * @since 22/9/2017
+		 */
+		public function get_manzana_by($arrDatos)
+		{			
+				$manzana = array();
+				$this->db->select("DISTINCT(manzana)");
+				if (array_key_exists("idSeccion", $arrDatos)) {
+					$this->db->where('seccion', $arrDatos["idSeccion"]);
+				}
+				if (array_key_exists("idSector", $arrDatos)) {
+					$this->db->where('sector', $arrDatos["idSector"]);
+				}
+				if (array_key_exists("idComuna", $arrDatos)) {
+					$this->db->where('comuna', $arrDatos["idComuna"]);
+				}
+								
+				$this->db->order_by('manzana', 'asc');
+				$query = $this->db->get('param_comuna');
+					
+				if ($query->num_rows() > 0) {
+					$i = 0;
+					foreach ($query->result() as $row) {
+						$manzana[$i]["idManzana"] = $row->manzana;
+						$i++;
+					}
+				}
+				$this->db->close();
+				return $manzana;
+		}
+
 
 	
 	    
