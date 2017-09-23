@@ -20,7 +20,7 @@
 									<div class="alert alert-warning">
 										<strong>No. Formulario: </strong>
 										<?php echo $information[0]['id_establecimiento']; ?>
-										<br><strong>Razón socil: </strong>
+										<br><strong>Razón social o nombre del propietario: </strong>
 										<?php echo $information[0]['razon_social']; ?>
 										<br><strong>Nombre comercial: </strong>
 										<?php echo $information[0]['nombre_propietario']; ?>
@@ -61,7 +61,7 @@ if ($retornoError) {
 					<div class="row">
 						<div class="col-lg-6">	
 <a href="<?php echo base_url(). 'encuesta/form_administrativos/' . $idFormulario; ?>" class="btn btn-warning btn-block">
-<span class="glyphicon glyphicon-home" aria-hidden="true"></span> 1. Capítulo Aspectos administrativos   
+<span class="glyphicon glyphicon-home" aria-hidden="true"></span> 1. Capítulo Aspectos Administrativos   
 </a>
 						</div>
 
@@ -75,7 +75,7 @@ if ($retornoError) {
 					<div class="row">
 						<div class="col-lg-6">	
 <a href="<?php echo base_url(). 'encuesta/form_criticos/' . $idFormulario; ?>" class="btn btn-warning btn-block">
-<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> 3. Capítulo Aspectos críticos del Establecimiento  
+<span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> 3. Capítulo Aspectos Críticos del Establecimiento  
 </a>
 						</div>
 

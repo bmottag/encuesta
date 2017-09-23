@@ -67,7 +67,7 @@ $(function(){
 					</div>
 				
 					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modal" id="<?php echo $infoManzana[0]['id_manzana']; ?>">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar establecimiento y propietario
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar identificación del Establecimiento y Propietario
 					</button><br>
 <?php
 $retornoExito = $this->session->flashdata('retornoExito');
@@ -106,7 +106,8 @@ if ($retornoError) {
 								<th class="text-center">Nombre comercial</th>
 								<th class="text-center">Dirección del establecimiento</th>
 								<th class="text-center">Teléfono y/o celular del establecimiento</th>
-								<th class="text-center">Cédula o NIT</th>
+								<th class="text-center">Tipo Documento</th>
+								<th class="text-center">No. Documento</th>
 							</tr>
 						</thead>
 						<tbody>							
@@ -121,7 +122,7 @@ if ($retornoError) {
 									</button>
 
 <a href="<?php echo base_url("encuesta/form_home/" . $lista['id_establecimiento']); ?>" class="btn btn-warning btn-xs">
-Formulario  
+Encuesta  
 </a>
 						<?php
 									echo "</td>";
@@ -129,6 +130,27 @@ Formulario
 									echo "<td class='text-center'>" . $lista['nombre_propietario'] . "</td>";
 									echo "<td class='text-center'>" . $lista['direccion'] . "</td>";
 									echo "<td class='text-center'>" . $lista['telefono'] . "</td>";
+									echo "<td>";
+
+									switch ($lista['tipo_documento']) {
+										case 1:
+											echo "NIT/RUT";
+											break;
+										case 2:
+											echo "Cédula de ciudadanía C.C.";
+											break;
+										case 3:
+											echo "Cédula de extranjería C.E.";
+											break;
+										case 4:
+											echo "No tiene";
+											break;
+										case 5:
+											echo "NS/NR";
+											break;
+									}
+									
+									echo "</td>";
 									echo "<td>" . $lista['cedula'] . "</td>";
 									echo "</tr>";
 							endforeach;

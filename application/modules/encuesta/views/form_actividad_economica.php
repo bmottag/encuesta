@@ -120,12 +120,12 @@ if ($retornoError) {
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-4 control-label" for="seguridad_social">¿Los trabajadores de este establecimiento; incluido(a) usted,  se encuentran afiliados a seguridad social? *</label>
+							<label class="col-sm-4 control-label" for="seguridad_social">¿Cuantos de los trabajadores de este establecimiento; incluido(a) usted,  se encuentran afiliados a seguridad social? *</label>
 							<div class="col-sm-5">
 								<select name="seguridad_social" id="seguridad_social" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information["seguridad_social"] == 1) { echo "selected"; }  ?>>Todo</option>
-									<option value=2 <?php if($information["seguridad_social"] == 2) { echo "selected"; }  ?>>Alguno</option>
+									<option value=1 <?php if($information["seguridad_social"] == 1) { echo "selected"; }  ?>>Todos</option>
+									<option value=2 <?php if($information["seguridad_social"] == 2) { echo "selected"; }  ?>>Algunos</option>
 									<option value=3 <?php if($information["seguridad_social"] == 3) { echo "selected"; }  ?>>Ninguno</option>
 								</select>
 							</div>
