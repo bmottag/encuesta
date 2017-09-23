@@ -13,6 +13,19 @@ $(document).ready(function () {
 				$("#div_digito").css("display", "none");
 				$('#digito').val("");
             }
+			
+			
+            if (tipo_documento == 4 || tipo_documento == 5) {
+				$("#div_cedula").css("display", "none");
+				$('#documento').val("");
+				
+				$("#div_digito").css("display", "none");
+				$('#digito').val("");
+            } else {
+				$("#div_cedula").css("display", "inline");
+				$('#documento').val("");
+            }
+			
         });
     });
     
@@ -87,8 +100,19 @@ $(document).ready(function () {
 				</div>
 			</div>
 		</div>
+
+<?php 
+	$mostrar2 = "inline";
+	if($information){
+		if($information[0]["tipo_documento"]==4 || $information[0]["tipo_documento"]==5){
+			$mostrar2 = "none";
+		}
+	}else{
+		$mostrar2 = "none";
+	}
+?>
 		
-		<div class="row">	
+		<div class="row" id="div_cedula" style="display: <?php echo $mostrar2; ?>">
 			<div class="col-sm-12">
 				<div class="form-group text-left">
 					<label class="control-label" for="documento">No. Documento : *</label>
