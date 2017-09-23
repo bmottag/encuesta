@@ -43,28 +43,6 @@
 				
 				
 				
-<?php 
-if($userRol==2 || $userRol==1){ //SI es usuario ADMIN o DIRECTIVO
-?>				
-		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				<i class="fa fa-list-alt"></i> Reportes <i class="fa fa-caret-down"></i>
-			</a>
-			<ul class="dropdown-menu dropdown-messages">
-			
-				<li>
-					<a href="<?php echo base_url("#"); ?>"><i class="fa fa-list-alt fa-fw"></i> Información General</a>
-				</li>
-				
-				<li class="divider"></li>
-
-				
-			</ul>
-		</li>
-<?php 
-}
-?>
-				
 				
 				
 				
@@ -97,81 +75,6 @@ if($userRol==1){ //ADMIN
 }
 ?>
 
-
-<?php 
-if($userRol==4){ //ROL DELEGADO
-?>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-warning"></i> Novedades <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-				
-						<li>
-							<a href="<?php echo base_url("novedades/otras"); ?>"><i class="fa fa-fire fa-fw"></i> Otras novedades</a>
-						</li>
-
-                    </ul>
-                    <!-- /.dropdown-messages -->
-                </li>
-<?php
-}
-?>
-
-
-<?php 
-if($userRol==3){//COORDINADOR 
-?>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-warning"></i> Novedades <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-										
-						<li>
-							<a href="<?php echo base_url("novedades/otra_coordinador"); ?>"><i class="fa fa-fire fa-fw"></i> Lista otras novedades</a>
-						</li>
-
-                    </ul>
-                    <!-- /.dropdown-messages -->
-                </li>
-				
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="fa fa-list-alt"></i> Reportes <i class="fa fa-caret-down"></i>
-					</a>
-					<ul class="dropdown-menu dropdown-messages">
-					
-						<li>
-							<a href="<?php echo base_url("report/searchByCoordinador"); ?>"><i class="fa fa-list-alt fa-fw"></i> Información Alertas - Representantes</a>
-						</li>
-						
-					</ul>
-				</li>
-<?php
-}
-?>
-
-
-<?php 
-if($userRol==6){//OPERADOR
-?>
-
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="fa fa-list-alt"></i> Reportes <i class="fa fa-caret-down"></i>
-					</a>
-					<ul class="dropdown-menu dropdown-messages">
-					
-						<li>
-							<a href="<?php echo base_url("report/searchByCoordinador"); ?>"><i class="fa fa-list-alt fa-fw"></i> Información Alertas - Representantes</a>
-						</li>
-						
-					</ul>
-				</li>
-<?php
-}
-?>
 
 
 				<li>

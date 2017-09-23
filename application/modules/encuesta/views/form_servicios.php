@@ -8,8 +8,10 @@ $(document).ready(function () {
             var motivo = $('#motivo').val();
             if (motivo == 8) {
 				$("#div_cual").css("display", "inline");
+				$('#cual_motivo').val("");
             } else {
 				$("#div_cual").css("display", "none");
+				$('#cual_motivo').val("");
             }
         });
     });
@@ -18,9 +20,11 @@ $(document).ready(function () {
         var condiciones = $("#otro").is(":checked");
         if (condiciones) {
             $("#div_cual2").css("display", "inline");
+			$('#cual_fortalecer').val("");
             event.preventDefault();
         } else {
 			$("#div_cual2").css("display", "none");
+			$('#cual_fortalecer').val("");
         }
     });
     

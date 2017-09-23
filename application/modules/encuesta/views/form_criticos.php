@@ -7,9 +7,11 @@ $(document).ready(function () {
         var condiciones = $("#otros").is(":checked");
         if (condiciones) {
             $("#div_cual").css("display", "inline");
+			$('#cuales').val("");
             event.preventDefault();
         } else {
 			$("#div_cual").css("display", "none");
+			$('#cuales').val("");
         }
     });
 

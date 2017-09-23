@@ -82,13 +82,17 @@
 		 */
 		public function get_manzanas($arrDatos) 
 		{		
+				$userRol = $this->session->userdata("rol");
+				$userID = $this->session->userdata("id");
+		
 				$this->db->select();
 
 				if (array_key_exists("idManzana", $arrDatos)) {
 					$this->db->where('M.id_manzana', $arrDatos["idManzana"]);
 				}
-				if (array_key_exists("idUsuario", $arrDatos)) {
-					$this->db->where('M.fk_id_usuario', $arrDatos["idUsuario"]);
+				//FILTRO POR EL SUPERVISOR
+				if($userRol==3) {					
+					$this->db->where('M.fk_id_usuario', $userID);
 				}
 				
 				$this->db->order_by('barrio', 'asc');

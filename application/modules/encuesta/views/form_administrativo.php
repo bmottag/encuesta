@@ -8,8 +8,14 @@ $(document).ready(function () {
             var matricula = $('#matricula').val();
             if (matricula == 1) {
 				$("#div_porqueno").css("display", "none");
+				$("#div_cual").css("display", "none");
+				$('#porqueno').val("");
+				$('#cual').val("");
             } else {
 				$("#div_porqueno").css("display", "inline");
+				$("#div_cual").css("display", "none");
+				$('#porqueno').val("");
+				$('#cual').val("");
             }
         });
     });
@@ -19,8 +25,10 @@ $(document).ready(function () {
             var porqueno = $('#porqueno').val();
             if (porqueno == 6) {
 				$("#div_cual").css("display", "inline");
+				$('#cual').val("");
             } else {
 				$("#div_cual").css("display", "none");
+				$('#cual').val("");
             }
         });
     });
