@@ -14,8 +14,27 @@ $(document).ready(function () {
 			$('#cuales').val("");
         }
     });
-    
+	   
 });
+
+
+function valid_ninguno() 
+{   
+	if(document.getElementById('ninguno').checked){
+		document.getElementById('retencion').checked = false;
+		document.getElementById('renta').checked = false;
+		document.getElementById('iva').checked = false;
+		document.getElementById('ica').checked = false;
+	}
+}
+
+function valid_all() 
+{   
+	if(document.getElementById('retencion').checked || document.getElementById('renta').checked || document.getElementById('iva').checked || document.getElementById('ica').checked){
+		document.getElementById('ninguno').checked = false;
+	}
+}
+
 </script>
 
 <div id="page-wrapper">
@@ -121,14 +140,14 @@ if ($retornoError) {
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="impuestos">¿Qué impuestos a pagado este establecimiento en el último año? *</label>
 							<div class="col-sm-5">
-								<select name="impuestos" id="impuestos" class="form-control" required>
-									<option value=''>Select...</option>
-									<option value=1 <?php if($information["impuestos"] == 1) { echo "selected"; }  ?>>Retención en la fuente</option>
-									<option value=2 <?php if($information["impuestos"] == 2) { echo "selected"; }  ?>>Impuesto de Renta</option>
-									<option value=3 <?php if($information["impuestos"] == 3) { echo "selected"; }  ?>>IVA</option>
-									<option value=4 <?php if($information["impuestos"] == 4) { echo "selected"; }  ?>>ICA</option>
-									<option value=5 <?php if($information["impuestos"] == 5) { echo "selected"; }  ?>>Ninguno</option>
-								</select>
+								
+<input type="hidden" id="hddImpuestos" name="hddImpuestos" value=""/>
+								
+<input type="checkbox" id="retencion" name="retencion" value=1 <?php if($information && $information["retencion"]){echo "checked";} ?> onclick="valid_all()"> Retención en la fuente<br>
+<input type="checkbox" id="renta" name="renta" value=1 <?php if($information && $information["renta"]){echo "checked";} ?> onclick="valid_all()"> Impuesto de Renta<br>
+<input type="checkbox" id="iva" name="iva" value=1 <?php if($information && $information["iva"]){echo "checked";} ?> onclick="valid_all()"> IVA<br>
+<input type="checkbox" id="ica" name="ica" value=1 <?php if($information && $information["ica"]){echo "checked";} ?> onclick="valid_all()"> ICA<br>
+<input type="checkbox" id="ninguno" name="ninguno" value=1 <?php if($information && $information["ninguno"]){echo "checked";} ?> onclick="valid_ninguno()"> Ninguno<br>
 							</div>
 						</div>																	
 

@@ -360,8 +360,12 @@
 				'produccion' => $this->input->post('produccion'),
 				'iso' => $this->input->post('iso'),
 				'otros' => $this->input->post('otros'),
-				'impuestos' => $this->input->post('impuestos'),
-				'cuales' => $this->input->post('cuales')
+				'cuales' => $this->input->post('cuales'),
+				'retencion' => $this->input->post('retencion'),
+				'renta' => $this->input->post('renta'),
+				'iva' => $this->input->post('iva'),
+				'ica' => $this->input->post('ica'),
+				'ninguno' => $this->input->post('ninguno')
 			);
 			
 			//revisar si es para adicionar o editar
