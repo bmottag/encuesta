@@ -17,6 +17,14 @@ $(document).ready(function () {
 	   
 });
 
+function valid_formacion() 
+{   
+	if(document.getElementById('mercadeo').checked || document.getElementById('planeacion').checked || document.getElementById('servicio').checked || document.getElementById('produccion').checked || document.getElementById('iso').checked || document.getElementById('otros').checked){
+		document.getElementById('hddFormacion').value = 1;
+	}else{
+		document.getElementById('hddFormacion').value = "";
+	}
+}
 
 function valid_ninguno() 
 {   
@@ -25,6 +33,10 @@ function valid_ninguno()
 		document.getElementById('renta').checked = false;
 		document.getElementById('iva').checked = false;
 		document.getElementById('ica').checked = false;
+		
+		document.getElementById('hddImpuestos').value = 1;
+	}else{
+		document.getElementById('hddImpuestos').value = "";
 	}
 }
 
@@ -32,6 +44,9 @@ function valid_all()
 {   
 	if(document.getElementById('retencion').checked || document.getElementById('renta').checked || document.getElementById('iva').checked || document.getElementById('ica').checked){
 		document.getElementById('ninguno').checked = false;
+		document.getElementById('hddImpuestos').value = 1;
+	}else{
+		document.getElementById('hddImpuestos').value = "";
 	}
 }
 
@@ -120,6 +135,19 @@ if ($retornoError) {
 <input type="checkbox" id="produccion" name="produccion" value=1 <?php if($information && $information["produccion"]){echo "checked";} ?> > Producción<br>
 <input type="checkbox" id="iso" name="iso" value=1 <?php if($information && $information["iso"]){echo "checked";} ?> > ISO 9001, 14000<br>
 <input type="checkbox" id="otros" name="otros" value=1 <?php if($information && $information["otros"]){echo "checked";} ?> > Otros
+
+<?php 
+$valorFormacion = "";
+if($information)
+{
+	if($information["mercadeo"] || $information["planeacion"] || $information["servicio"] || $information["produccion"] || $information["iso"] || $information["otros"] )
+	{
+		$valorFormacion = 1;
+	}
+}
+?>
+<input type="hidden" id="hddFormacion" name="hddFormacion" value="<?php echo $valorFormacion; ?>"/>
+
 							</div>
 						</div>
 
@@ -133,7 +161,7 @@ if ($retornoError) {
 						<div class="form-group" id="div_cual" style="display: <?php echo $mostrar; ?>">
 							<label class="col-sm-4 control-label" for="cuales">¿Cuáles? </label>
 							<div class="col-sm-5">
-								<input type="text" id="cuales" name="cuales" class="form-control" value="<?php echo $information?$information["cuales"]:""; ?>" placeholder="¿Cuáles?" required >
+								<input type="text" id="cuales" name="cuales" class="form-control" value="<?php echo $information?$information["cuales"]:""; ?>" placeholder="¿Cuáles?" >
 							</div>
 						</div>
 
@@ -141,13 +169,24 @@ if ($retornoError) {
 							<label class="col-sm-4 control-label" for="impuestos">¿Qué impuestos a pagado este establecimiento en el último año? *</label>
 							<div class="col-sm-5">
 								
-<input type="hidden" id="hddImpuestos" name="hddImpuestos" value=""/>
-								
 <input type="checkbox" id="retencion" name="retencion" value=1 <?php if($information && $information["retencion"]){echo "checked";} ?> onclick="valid_all()"> Retención en la fuente<br>
 <input type="checkbox" id="renta" name="renta" value=1 <?php if($information && $information["renta"]){echo "checked";} ?> onclick="valid_all()"> Impuesto de Renta<br>
 <input type="checkbox" id="iva" name="iva" value=1 <?php if($information && $information["iva"]){echo "checked";} ?> onclick="valid_all()"> IVA<br>
 <input type="checkbox" id="ica" name="ica" value=1 <?php if($information && $information["ica"]){echo "checked";} ?> onclick="valid_all()"> ICA<br>
 <input type="checkbox" id="ninguno" name="ninguno" value=1 <?php if($information && $information["ninguno"]){echo "checked";} ?> onclick="valid_ninguno()"> Ninguno<br>
+
+<?php 
+$valorImpuestos = "";
+if($information)
+{
+	if($information["retencion"] || $information["renta"] || $information["iva"] || $information["ica"] || $information["ninguno"] )
+	{
+		$valorImpuestos = 1;
+	}
+}
+?>
+<input type="hidden" id="hddImpuestos" name="hddImpuestos" value="<?php echo $valorImpuestos; ?>"/>
+
 							</div>
 						</div>																	
 

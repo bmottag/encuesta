@@ -1,11 +1,23 @@
 $( document ).ready( function () {
-			
+	
+jQuery.validator.addMethod("campoCual", function(value, element, param) {
+	//return this.optional(element) || value != $(param).val();
+	var condiciones = $(param).is(":checked");
+	if(condiciones && value == ""){
+		return false;
+	}else{
+		return true;
+	}
+ 
+}, "Este campo es requerido.");
+
 	$( "#form" ).validate( {
 		rules: {
 			ingresos:			{ required: true },
 			contabilidad:		{ required: true },
-			impuestos:			{ required: true },
-			cuales:				{ maxlength: 190 }
+			hddFormacion:		{ required: true },
+			hddImpuestos:		{ required: true },
+			cuales:				{ maxlength: 190, campoCual: "#otros" }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {
