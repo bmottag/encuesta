@@ -1,14 +1,12 @@
 $( document ).ready( function () {
 	
 jQuery.validator.addMethod("campoCual", function(value, element, param) {
-	//return this.optional(element) || value != $(param).val();
 	var condiciones = $(param).is(":checked");
 	if(condiciones && value == ""){
 		return false;
 	}else{
 		return true;
 	}
- 
 }, "Este campo es requerido.");
 
 	$( "#form" ).validate( {

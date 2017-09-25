@@ -14,8 +14,17 @@ $(document).ready(function () {
 			$('#cuales').val("");
         }
     });
-
+	
 });
+
+function valid_inconvenientes() 
+{
+	if(document.getElementById('financiamiento').checked || document.getElementById('ausencia').checked || document.getElementById('capacitacion').checked || document.getElementById('competencia').checked || document.getElementById('ambiental').checked || document.getElementById('seguridad').checked || document.getElementById('ventas').checked || document.getElementById('proveedores').checked || document.getElementById('otros').checked){
+		document.getElementById('hddInconvenientes').value = 1;
+	}else{
+		document.getElementById('hddInconvenientes').value = "";
+	}
+}
 </script>
 
 <div id="page-wrapper">
@@ -67,15 +76,29 @@ if ($retornoError) {
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="inconvenientes">En el último año, este establecimiento tuvo inconvenientes o dificultades en: *</label>
 							<div class="col-sm-5">
-<input type="checkbox" id="financiamiento" name="financiamiento" value=1 <?php if($information && $information["financiamiento"]){echo "checked";} ?> > Financiamiento<br>
-<input type="checkbox" id="ausencia" name="ausencia" value=1 <?php if($information && $information["ausencia"]){echo "checked";} ?> > Ausencia de recursos humano<br>
-<input type="checkbox" id="capacitacion" name="capacitacion" value=1 <?php if($information && $information["capacitacion"]){echo "checked";} ?> > Capacitación<br>
-<input type="checkbox" id="competencia" name="competencia" value=1 <?php if($information && $information["competencia"]){echo "checked";} ?> > Competencia desleal<br>
-<input type="checkbox" id="ambiental" name="ambiental" value=1 <?php if($information && $information["ambiental"]){echo "checked";} ?> > Manejo ambiental<br>
-<input type="checkbox" id="seguridad" name="seguridad" value=1 <?php if($information && $information["seguridad"]){echo "checked";} ?> > Seguridad<br>
-<input type="checkbox" id="ventas" name="ventas" value=1 <?php if($information && $information["ventas"]){echo "checked";} ?> > Ventas<br>
-<input type="checkbox" id="proveedores" name="proveedores" value=1 <?php if($information && $information["proveedores"]){echo "checked";} ?> > Proveedores<br>
-<input type="checkbox" id="otros" name="otros" value=1 <?php if($information && $information["otros"]){echo "checked";} ?> > Otros
+<input type="checkbox" id="financiamiento" name="financiamiento" value=1 <?php if($information && $information["financiamiento"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Financiamiento<br>
+<input type="checkbox" id="ausencia" name="ausencia" value=1 <?php if($information && $information["ausencia"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Ausencia de recursos humano<br>
+<input type="checkbox" id="capacitacion" name="capacitacion" value=1 <?php if($information && $information["capacitacion"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Capacitación<br>
+<input type="checkbox" id="competencia" name="competencia" value=1 <?php if($information && $information["competencia"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Competencia desleal<br>
+<input type="checkbox" id="ambiental" name="ambiental" value=1 <?php if($information && $information["ambiental"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Manejo ambiental<br>
+<input type="checkbox" id="seguridad" name="seguridad" value=1 <?php if($information && $information["seguridad"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Seguridad<br>
+<input type="checkbox" id="ventas" name="ventas" value=1 <?php if($information && $information["ventas"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Ventas<br>
+<input type="checkbox" id="proveedores" name="proveedores" value=1 <?php if($information && $information["proveedores"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Proveedores<br>
+<input type="checkbox" id="otros" name="otros" value=1 <?php if($information && $information["otros"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Otros
+
+<?php 
+$valorInconvenientes = "";
+if($information)
+{
+	if($information["financiamiento"] || $information["ausencia"] || $information["capacitacion"] || $information["competencia"] || 
+	$information["ambiental"] || $information["seguridad"] || $information["ventas"] || $information["proveedores"] || $information["otros"] )
+	{
+		$valorInconvenientes = 1;
+	}
+}
+?>
+<input type="hidden" id="hddInconvenientes" name="hddInconvenientes" value="<?php echo $valorInconvenientes; ?>"/>
+
 							</div>
 						</div>
 
@@ -89,7 +112,7 @@ if ($retornoError) {
 						<div class="form-group" id="div_cual" style="display: <?php echo $mostrar; ?>">
 							<label class="col-sm-4 control-label" for="cuales">¿Cuáles? </label>
 							<div class="col-sm-5">
-								<input type="text" id="cuales" name="cuales" class="form-control" value="<?php echo $information?$information["cuales"]:""; ?>" placeholder="¿Cuáles?" required >
+								<input type="text" id="cuales" name="cuales" class="form-control" value="<?php echo $information?$information["cuales"]:""; ?>" placeholder="¿Cuáles?" >
 							</div>
 						</div>	
 

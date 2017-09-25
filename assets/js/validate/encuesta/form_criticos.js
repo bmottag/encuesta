@@ -1,8 +1,18 @@
 $( document ).ready( function () {
+	
+jQuery.validator.addMethod("campoCual", function(value, element, param) {
+	var condiciones = $(param).is(":checked");
+	if(condiciones && value == ""){
+		return false;
+	}else{
+		return true;
+	}
+}, "Este campo es requerido.");
 			
 	$( "#form" ).validate( {
 		rules: {
-			cuales:					{ maxlength: 190 }
+			hddInconvenientes:		{ required: true },
+			cuales:					{ maxlength: 190, campoCual: "#otros" }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {

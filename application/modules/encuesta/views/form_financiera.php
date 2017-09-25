@@ -129,12 +129,12 @@ if ($retornoError) {
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="formacion">¿En qué áreas considera debería recibir formación el propietario o sus empleados? *</label>
 							<div class="col-sm-5">						
-<input type="checkbox" id="mercadeo" name="mercadeo" value=1 <?php if($information && $information["mercadeo"]){echo "checked";} ?> > Mercadeo y ventas<br>
-<input type="checkbox" id="planeacion" name="planeacion" value=1 <?php if($information && $information["planeacion"]){echo "checked";} ?> > Planeación estratégica<br>
-<input type="checkbox" id="servicio" name="servicio" value=1 <?php if($information && $information["servicio"]){echo "checked";} ?> > Servicio al cliente<br>
-<input type="checkbox" id="produccion" name="produccion" value=1 <?php if($information && $information["produccion"]){echo "checked";} ?> > Producción<br>
-<input type="checkbox" id="iso" name="iso" value=1 <?php if($information && $information["iso"]){echo "checked";} ?> > ISO 9001, 14000<br>
-<input type="checkbox" id="otros" name="otros" value=1 <?php if($information && $information["otros"]){echo "checked";} ?> > Otros
+<input type="checkbox" id="mercadeo" name="mercadeo" value=1 <?php if($information && $information["mercadeo"]){echo "checked";} ?> onclick="valid_formacion()"> Mercadeo y ventas<br>
+<input type="checkbox" id="planeacion" name="planeacion" value=1 <?php if($information && $information["planeacion"]){echo "checked";} ?> onclick="valid_formacion()"> Planeación estratégica<br>
+<input type="checkbox" id="servicio" name="servicio" value=1 <?php if($information && $information["servicio"]){echo "checked";} ?> onclick="valid_formacion()"> Servicio al cliente<br>
+<input type="checkbox" id="produccion" name="produccion" value=1 <?php if($information && $information["produccion"]){echo "checked";} ?> onclick="valid_formacion()"> Producción<br>
+<input type="checkbox" id="iso" name="iso" value=1 <?php if($information && $information["iso"]){echo "checked";} ?> onclick="valid_formacion()"> ISO 9001, 14000<br>
+<input type="checkbox" id="otros" name="otros" value=1 <?php if($information && $information["otros"]){echo "checked";} ?> onclick="valid_formacion()"> Otros
 
 <?php 
 $valorFormacion = "";
