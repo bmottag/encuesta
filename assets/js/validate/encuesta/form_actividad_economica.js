@@ -1,11 +1,21 @@
 $( document ).ready( function () {
+
+jQuery.validator.addMethod("campoCual", function(value, element, param) {
+	var actividad = $('#actividad').val();
+	if (actividad == 27 && value == "") {
+		return false;
+	}else{
+		return true;
+	}
+}, "Este campo es requerido.");
 			
 	$( "#form" ).validate( {
 		rules: {
 			actividad:			{ required: true },
 			numero_personas:	{ required: true, number: true, maxlength:3 },
 			seguridad_social:	{ required: true },
-			lugar:				{ required: true }
+			lugar:				{ required: true },
+			cual:				{ maxlength: 120, campoCual: "#actividad" }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {

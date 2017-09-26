@@ -1,11 +1,30 @@
 $( document ).ready( function () {
 			
+jQuery.validator.addMethod("campoCual", function(value, element, param) {
+	var porqueno = $('#porqueno').val();
+	if (porqueno == 6 && value == "") {
+		return false;
+	}else{
+		return true;
+	}
+}, "Este campo es requerido.");
+
+jQuery.validator.addMethod("campoPorqueno", function(value, element, param) {
+	var matricula = $('#matricula').val();
+	if (matricula != 1 && value == "") {
+		return false;
+	}else{
+		return true;
+	}
+}, "Este campo es requerido.");
+			
 	$( "#form" ).validate( {
 		rules: {
 			visible:			{ required: true },
 			aviso:				{ required: true },
 			matricula:			{ required: true },
-			cual:				{ maxlength: 120 }
+			porqueno:			{ campoPorqueno: "#matricula" },
+			cual:				{ maxlength: 120, campoCual: "#porqueno" }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {
