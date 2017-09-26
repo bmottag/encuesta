@@ -29,6 +29,16 @@ $(document).ready(function () {
     });
     
 });
+
+
+function valid_fortalecer() 
+{   
+	if(document.getElementById('productos').checked || document.getElementById('procesos').checked || document.getElementById('capacitacion').checked || document.getElementById('mercadeo').checked || document.getElementById('nuevos').checked || document.getElementById('informaticos').checked || document.getElementById('innovacion').checked || document.getElementById('tramites').checked || document.getElementById('participacion').checked || document.getElementById('financiamiento').checked || document.getElementById('proyectos').checked || document.getElementById('otro').checked){
+		document.getElementById('hddFortalecer').value = 1;
+	}else{
+		document.getElementById('hddFortalecer').value = "";
+	}
+}
 </script>
 
 <div id="page-wrapper">
@@ -78,7 +88,7 @@ if ($retornoError) {
 								
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="motivo">Pensando en su experiencia personal, cual fue el principal motivó a crear esta empresa? *</label>
-							<div class="col-sm-5">
+							<div class="col-sm-8">
 								<select name="motivo" id="motivo" class="form-control" required>
 									<option value=''>Select...</option>
 									<option value=1 <?php if($information["motivo"] == 1) { echo "selected"; }  ?>>Necesidad económica</option>
@@ -102,26 +112,41 @@ if ($retornoError) {
 						
 						<div class="form-group" id="div_cual" style="display: <?php echo $mostrar; ?>">
 							<label class="col-sm-4 control-label" for="cual_motivo">¿Cuál? </label>
-							<div class="col-sm-5">
-								<input type="text" id="cual_motivo" name="cual_motivo" class="form-control" value="<?php echo $information?$information["cual_motivo"]:""; ?>" placeholder="¿Cuál?" required >
+							<div class="col-sm-8">
+								<input type="text" id="cual_motivo" name="cual_motivo" class="form-control" value="<?php echo $information?$information["cual_motivo"]:""; ?>" placeholder="¿Cuál?" >
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="fortalecer">¿Cuáles de los siguientes servicios de apoyo empresarial considera necesarios para fortalecer su actividad? *</label>
 							<div class="col-sm-8">
-<input type="checkbox" id="productos" name="productos" value=1 <?php if($information && $information["productos"]){echo "checked";} ?> > Capacitación en mejora de productos<br>
-<input type="checkbox" id="procesos" name="procesos" value=1 <?php if($information && $information["procesos"]){echo "checked";} ?> > Capacitación en mejora de procesos<br>
-<input type="checkbox" id="capacitacion" name="capacitacion" value=1 <?php if($information && $information["capacitacion"]){echo "checked";} ?> > Capacitación y actualización del recurso humano<br>
-<input type="checkbox" id="mercadeo" name="mercadeo" value=1 <?php if($information && $information["mercadeo"]){echo "checked";} ?> > Asesoría en mercadeo y comercialización<br>
-<input type="checkbox" id="nuevos" name="nuevos" value=1 <?php if($information && $information["nuevos"]){echo "checked";} ?> > Asesoría en productos nuevos<br>
-<input type="checkbox" id="informaticos" name="informaticos" value=1 <?php if($information && $information["informaticos"]){echo "checked";} ?> > Asesoría en el manejo de nuevos productos informáticos<br>
-<input type="checkbox" id="innovacion" name="innovacion" value=1 <?php if($information && $information["innovacion"]){echo "checked";} ?> > Asesoría en innovación empresarial<br>
-<input type="checkbox" id="tramites" name="tramites" value=1 <?php if($information && $information["tramites"]){echo "checked";} ?> > Asesoría en trámites (ej.: comercio exterior, patentes, inversión extranjera)<br>
-<input type="checkbox" id="participacion" name="participacion" value=1 <?php if($information && $information["participacion"]){echo "checked";} ?> > Participación en ferias, ruedas de negocios y eventos nacionales e internacionales<br>
-<input type="checkbox" id="financiamiento" name="financiamiento" value=1 <?php if($information && $information["financiamiento"]){echo "checked";} ?> > Información sobre acceso a financiamiento<br>
-<input type="checkbox" id="proyectos" name="proyectos" value=1 <?php if($information && $information["proyectos"]){echo "checked";} ?> > Gerencia y capacitación para la formulación e implementación de proyectos empresariales<br>
-<input type="checkbox" id="otro" name="otro" value=1 <?php if($information && $information["otro"]){echo "checked";} ?> > Otro
+<input type="checkbox" id="productos" name="productos" value=1 <?php if($information && $information["productos"]){echo "checked";} ?> onclick="valid_fortalecer()"> Capacitación en mejora de productos<br>
+<input type="checkbox" id="procesos" name="procesos" value=1 <?php if($information && $information["procesos"]){echo "checked";} ?> onclick="valid_fortalecer()"> Capacitación en mejora de procesos<br>
+<input type="checkbox" id="capacitacion" name="capacitacion" value=1 <?php if($information && $information["capacitacion"]){echo "checked";} ?> onclick="valid_fortalecer()"> Capacitación y actualización del recurso humano<br>
+<input type="checkbox" id="mercadeo" name="mercadeo" value=1 <?php if($information && $information["mercadeo"]){echo "checked";} ?> onclick="valid_fortalecer()"> Asesoría en mercadeo y comercialización<br>
+<input type="checkbox" id="nuevos" name="nuevos" value=1 <?php if($information && $information["nuevos"]){echo "checked";} ?> onclick="valid_fortalecer()"> Asesoría en productos nuevos<br>
+<input type="checkbox" id="informaticos" name="informaticos" value=1 <?php if($information && $information["informaticos"]){echo "checked";} ?> onclick="valid_fortalecer()"> Asesoría en el manejo de nuevos productos informáticos<br>
+<input type="checkbox" id="innovacion" name="innovacion" value=1 <?php if($information && $information["innovacion"]){echo "checked";} ?> onclick="valid_fortalecer()"> Asesoría en innovación empresarial<br>
+<input type="checkbox" id="tramites" name="tramites" value=1 <?php if($information && $information["tramites"]){echo "checked";} ?> onclick="valid_fortalecer()"> Asesoría en trámites (ej.: comercio exterior, patentes, inversión extranjera)<br>
+<input type="checkbox" id="participacion" name="participacion" value=1 <?php if($information && $information["participacion"]){echo "checked";} ?> onclick="valid_fortalecer()"> Participación en ferias, ruedas de negocios y eventos nacionales e internacionales<br>
+<input type="checkbox" id="financiamiento" name="financiamiento" value=1 <?php if($information && $information["financiamiento"]){echo "checked";} ?> onclick="valid_fortalecer()"> Información sobre acceso a financiamiento<br>
+<input type="checkbox" id="proyectos" name="proyectos" value=1 <?php if($information && $information["proyectos"]){echo "checked";} ?> onclick="valid_fortalecer()"> Gerencia y capacitación para la formulación e implementación de proyectos empresariales<br>
+<input type="checkbox" id="otro" name="otro" value=1 <?php if($information && $information["otro"]){echo "checked";} ?> onclick="valid_fortalecer()"> Otro
+
+
+
+<?php 
+$valorFortalecer = "";
+if($information)
+{
+	if($information["productos"] || $information["procesos"] || $information["capacitacion"] || $information["mercadeo"] || $information["nuevos"] || $information["informaticos"] || $information["innovacion"] || $information["tramites"] || 	$information["participacion"] || $information["financiamiento"] || $information["proyectos"] || $information["otro"])
+	{
+		$valorFortalecer = 1;
+	}
+}
+?>
+<input type="hidden" id="hddFortalecer" name="hddFortalecer" value="<?php echo $valorFortalecer; ?>"/>
+
 							</div>
 						</div>
 						
@@ -134,8 +159,8 @@ if ($retornoError) {
 						
 						<div class="form-group" id="div_cual2" style="display: <?php echo $mostrar2; ?>">
 							<label class="col-sm-4 control-label" for="cual_fortalecer">¿Cuál? </label>
-							<div class="col-sm-5">
-								<input type="text" id="cual_fortalecer" name="cual_fortalecer" class="form-control" value="<?php echo $information?$information["cual_fortalecer"]:""; ?>" placeholder="¿Cuál?" required >
+							<div class="col-sm-8">
+								<input type="text" id="cual_fortalecer" name="cual_fortalecer" class="form-control" value="<?php echo $information?$information["cual_fortalecer"]:""; ?>" placeholder="¿Cuál?" >
 							</div>
 						</div>
 						

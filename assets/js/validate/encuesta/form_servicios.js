@@ -1,10 +1,29 @@
 $( document ).ready( function () {
+
+jQuery.validator.addMethod("campoCual", function(value, element, param) {
+	var motivo = $('#motivo').val();
+	if (motivo == 8 && value == "") {
+		return false;
+	}else{
+		return true;
+	}
+}, "Este campo es requerido.");
+
+jQuery.validator.addMethod("campoOtro", function(value, element, param) {
+	var condiciones = $(param).is(":checked");
+	if(condiciones && value == ""){
+		return false;
+	}else{
+		return true;
+	}
+}, "Este campo es requerido.");
 			
 	$( "#form" ).validate( {
 		rules: {
 			motivo:					{ required: true },
-			cual_motivo:			{ maxlength: 150 },
-			cual_fortalecer:		{ maxlength: 150 }
+			cual_motivo:			{ maxlength: 150, campoCual: "#motivo" },
+			hddFortalecer:			{ required: true },
+			cual_fortalecer:		{ maxlength: 150, campoOtro: "#otro" }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {
@@ -14,10 +33,10 @@ $( document ).ready( function () {
 
 		},
 		highlight: function ( element, errorClass, validClass ) {
-			$( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+			$( element ).parents( ".col-sm-8" ).addClass( "has-error" ).removeClass( "has-success" );
 		},
 		unhighlight: function (element, errorClass, validClass) {
-			$( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+			$( element ).parents( ".col-sm-8" ).addClass( "has-success" ).removeClass( "has-error" );
 		},
 		submitHandler: function (form) {
 			return true;
