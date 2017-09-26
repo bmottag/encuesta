@@ -8,8 +8,10 @@ $(document).ready(function () {
             var actividad = $('#actividad').val();
             if (actividad == 27) {
 				$("#div_cual").css("display", "inline");
+				$('#cual').val("");
             } else {
 				$("#div_cual").css("display", "none");
+				$('#cual').val("");
             }
         });
     });
@@ -108,7 +110,7 @@ if ($retornoError) {
 						<div class="form-group" id="div_cual" style="display: <?php echo $mostrar; ?>">
 							<label class="col-sm-4 control-label" for="cual_motivo">¿Cuál? </label>
 							<div class="col-sm-5">
-								<input type="text" id="cual" name="cual" class="form-control" value="<?php echo $information?$information["cual"]:""; ?>" placeholder="¿Cuál?" required >
+								<input type="text" id="cual" name="cual" class="form-control" value="<?php echo $information?$information["cual"]:""; ?>" placeholder="¿Cuál?" >
 							</div>
 						</div>
 						

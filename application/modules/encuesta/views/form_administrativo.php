@@ -127,7 +127,7 @@ if ($retornoError) {
 						<div class="form-group" id="div_porqueno" style="display: <?php echo $mostrar2; ?>">
 							<label class="col-sm-4 control-label" for="porqueno">¿Por qué no cuenta Matricula Mercantil? *</label>
 							<div class="col-sm-5">
-								<select name="porqueno" id="porqueno" class="form-control" required>
+								<select name="porqueno" id="porqueno" class="form-control">
 									<option value=''>Select...</option>
 									<option value=1 <?php if($information["porqueno"] == 1) { echo "selected"; }  ?>>No es útil</option>
 									<option value=2 <?php if($information["porqueno"] == 2) { echo "selected"; }  ?>>Es muy costoso</option>
@@ -149,7 +149,7 @@ if ($retornoError) {
 						<div class="form-group" id="div_cual" style="display: <?php echo $mostrar; ?>">
 							<label class="col-sm-4 control-label" for="cual">¿Cuál? </label>
 							<div class="col-sm-5">
-								<input type="text" id="cual" name="cual" class="form-control" value="<?php echo $information?$information["cual"]:""; ?>" placeholder="¿Cuál?" required >
+								<input type="text" id="cual" name="cual" class="form-control" value="<?php echo $information?$information["cual"]:""; ?>" placeholder="¿Cuál?" >
 							</div>
 						</div>						
 
