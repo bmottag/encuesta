@@ -17,6 +17,9 @@ jQuery.validator.addMethod("campoOtro", function(value, element, param) {
 		return true;
 	}
 }, "Este campo es requerido.");
+
+$("#cual_motivo").convertirMayuscula();
+$("#cual_fortalecer").convertirMayuscula();
 			
 	$( "#form" ).validate( {
 		rules: {
@@ -86,7 +89,7 @@ jQuery.validator.addMethod("campoOtro", function(value, element, param) {
 							$("#div_guardado").css("display", "inline");
 							$('#btnSubmit').removeAttr('disabled');
 
-							var url = base_url + "encuesta/form_home/" + data.idFormulario;
+							var url = base_url + "encuesta/form_formalizacion/" + data.idFormulario;
 							$(location).attr("href", url);
 						}
 						else

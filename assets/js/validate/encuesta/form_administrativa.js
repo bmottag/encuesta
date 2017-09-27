@@ -17,6 +17,8 @@ jQuery.validator.addMethod("campoPorqueno", function(value, element, param) {
 		return true;
 	}
 }, "Este campo es requerido.");
+
+$("#cual").convertirMayuscula();
 			
 	$( "#form" ).validate( {
 		rules: {
@@ -87,7 +89,7 @@ jQuery.validator.addMethod("campoPorqueno", function(value, element, param) {
 							$("#div_guardado").css("display", "inline");
 							$('#btnSubmit').removeAttr('disabled');
 
-							var url = base_url + "encuesta/form_home/" + data.idFormulario;
+							var url = base_url + "encuesta/form_actividad_economica/" + data.idFormulario;
 							$(location).attr("href", url);
 						}
 						else

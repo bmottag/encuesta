@@ -67,7 +67,7 @@ $(function(){
 					</div>
 				
 					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modal" id="<?php echo $infoManzana[0]['id_manzana']; ?>">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar identificación del Establecimiento y Propietario
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Identificación del Establecimiento y Propietario
 					</button><br>
 <?php
 $retornoExito = $this->session->flashdata('retornoExito');
@@ -120,10 +120,11 @@ if ($retornoError) {
 									<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_establecimiento']; ?>" >
 										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
 									</button>
-
+<p><br>
 <a href="<?php echo base_url("encuesta/form_home/" . $lista['id_establecimiento']); ?>" class="btn btn-warning btn-xs">
 Encuesta  
 </a>
+</p>
 						<?php
 									echo "</td>";
 									echo "<td>" . $lista['razon_social'] . "</td>";

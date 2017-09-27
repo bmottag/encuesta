@@ -9,6 +9,8 @@ jQuery.validator.addMethod("campoCual", function(value, element, param) {
 	}
 }, "Este campo es requerido.");
 
+$("#cuales").convertirMayuscula();
+
 	$( "#form" ).validate( {
 		rules: {
 			ingresos:			{ required: true },
@@ -78,7 +80,7 @@ jQuery.validator.addMethod("campoCual", function(value, element, param) {
 							$("#div_guardado").css("display", "inline");
 							$('#btnSubmit').removeAttr('disabled');
 
-							var url = base_url + "encuesta/form_home/" + data.idFormulario;
+							var url = base_url + "encuesta/form_servicios/" + data.idFormulario;
 							$(location).attr("href", url);
 						}
 						else

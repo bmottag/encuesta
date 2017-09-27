@@ -6,24 +6,22 @@ $(document).ready(function () {
     $('#tipo_documento').change(function () {
         $('#tipo_documento option:selected').each(function () {
             var tipo_documento = $('#tipo_documento').val();
-            if (tipo_documento == 1) {
+            $('#digitoConfirm').val("");
+			$('#digito').val("");
+			$('#documento').val("");
+			$('#documentosConfirm').val("");
+			
+			if (tipo_documento == 1) {
 				$("#div_digito").css("display", "inline");
-				$('#digito').val("");
             } else {
 				$("#div_digito").css("display", "none");
-				$('#digito').val("");
             }
-			
 			
             if (tipo_documento == 4 || tipo_documento == 5) {
 				$("#div_cedula").css("display", "none");
-				$('#documento').val("");
-				
 				$("#div_digito").css("display", "none");
-				$('#digito').val("");
             } else {
 				$("#div_cedula").css("display", "inline");
-				$('#documento').val("");
             }
 			
         });
@@ -141,6 +139,13 @@ $(document).ready(function () {
 				<div class="form-group text-left">
 					<label class="control-label" for="digito">Digito de Verificación D.V.  : </label>
 					<input type="text" id="digito" name="digito" class="form-control" value="<?php echo $information?$information[0]["digito"]:""; ?>" placeholder="Digito de Verificación D.V." >
+				</div>
+			</div>			
+			
+			<div class="col-sm-12">
+				<div class="form-group text-left">
+					<label class="control-label" for="digitoConfirm">Confirmar Digito de Verificación D.V.  : </label>
+					<input type="text" id="digitoConfirm" name="digitoConfirm" class="form-control" value="<?php echo $information?$information[0]["digito"]:""; ?>" placeholder="Confirmar Digito de Verificación D.V." >
 				</div>
 			</div>			
 		</div>

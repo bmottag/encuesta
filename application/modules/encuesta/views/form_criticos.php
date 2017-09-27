@@ -8,7 +8,6 @@ $(document).ready(function () {
         if (condiciones) {
             $("#div_cual").css("display", "inline");
 			$('#cuales').val("");
-            event.preventDefault();
         } else {
 			$("#div_cual").css("display", "none");
 			$('#cuales').val("");
@@ -39,7 +38,7 @@ function valid_inconvenientes()
 		<div class="col-lg-12">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<a class="btn btn-info" href=" <?php echo base_url().'encuesta/form_home/' . $idFormulario; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
+					<a class="btn btn-info" href=" <?php echo base_url().'encuesta/form_home/' . $idFormulario; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar menú encuesta </a> 
 					<i class="fa fa-thumb-tack"></i> 3. Capítulo Aspectos críticos del Establecimiento 							
 				</div>
 				<div class="panel-body">
