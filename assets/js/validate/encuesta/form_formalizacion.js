@@ -3,6 +3,8 @@ $( document ).ready( function () {
 	$( "#form" ).validate( {
 		rules: {
 			formalizar:			{ required: true },
+			hddBeneficios:			{ required: true },
+			hddNormas:			{ required: true },
 			motivo:				{ required: true }
 		},
 		errorElement: "em",

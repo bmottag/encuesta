@@ -1,5 +1,27 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/form_formalizacion.js"); ?>"></script>
 
+<script>
+function valid_beneficios() 
+{
+	if(document.getElementById('asesoria').checked || document.getElementById('apoyo').checked || document.getElementById('asesoria_juridica').checked || document.getElementById('capacitacion').checked || document.getElementById('tecnologias').checked || document.getElementById('participacion').checked || document.getElementById('simplificacion').checked || document.getElementById('tramites').checked || document.getElementById('creditos').checked || document.getElementById('impuestos').checked){
+		document.getElementById('hddBeneficios').value = 1;
+	}else{
+		document.getElementById('hddBeneficios').value = "";
+	}
+}
+
+
+function valid_normas() 
+{   
+	if(document.getElementById('contratacion').checked || document.getElementById('suelo').checked || document.getElementById('medio_ambiente').checked || document.getElementById('seguridad_social').checked || document.getElementById('impuestos_municipales').checked || document.getElementById('registro').checked || document.getElementById('impuestos_nacionales').checked || document.getElementById('licencias').checked ){
+		document.getElementById('hddNormas').value = 1;
+	}else{
+		document.getElementById('hddNormas').value = "";
+	}
+}
+
+</script>
+
 <div id="page-wrapper">
 	<br>
 
@@ -61,14 +83,14 @@ if ($retornoError) {
 							<div class="col-sm-5">
 								<select name="motivo" id="motivo" class="form-control" required>
 									<option value=''>Select...</option>
-									<option value=1 <?php if($information["motivo"] == 1) { echo "selected"; }  ?>>Altos impuestos</option>
-									<option value=2 <?php if($information["motivo"] == 2) { echo "selected"; }  ?>>Tramitología</option>
-									<option value=3 <?php if($information["motivo"] == 3) { echo "selected"; }  ?>>Negocio pequeño o temporal</option>
-									<option value=4 <?php if($information["motivo"] == 4) { echo "selected"; }  ?>>Falta de interés o no lo considera necesario</option>
-									<option value=5 <?php if($information["motivo"] == 5) { echo "selected"; }  ?>>Falta de tiempo</option>
-									<option value=6 <?php if($information["motivo"] == 6) { echo "selected"; }  ?>>Falta de recursos económicos</option>
-									<option value=7 <?php if($information["motivo"] == 7) { echo "selected"; }  ?>>Falta de información o desconocimiento</option>
-									<option value=8 <?php if($information["motivo"] == 8) { echo "selected"; }  ?>>Inicio del establecimiento o en periodo de prueba</option>
+									<option value=1 <?php if($information["motivo"] == 1) { echo "selected"; }  ?> >Altos impuestos</option>
+									<option value=2 <?php if($information["motivo"] == 2) { echo "selected"; }  ?> >Tramitología</option>
+									<option value=3 <?php if($information["motivo"] == 3) { echo "selected"; }  ?> >Negocio pequeño o temporal</option>
+									<option value=4 <?php if($information["motivo"] == 4) { echo "selected"; }  ?> >Falta de interés o no lo considera necesario</option>
+									<option value=5 <?php if($information["motivo"] == 5) { echo "selected"; }  ?> >Falta de tiempo</option>
+									<option value=6 <?php if($information["motivo"] == 6) { echo "selected"; }  ?> >Falta de recursos económicos</option>
+									<option value=7 <?php if($information["motivo"] == 7) { echo "selected"; }  ?> >Falta de información o desconocimiento</option>
+									<option value=8 <?php if($information["motivo"] == 8) { echo "selected"; }  ?> >Inicio del establecimiento o en periodo de prueba</option>
 								</select>
 							</div>
 						</div>
@@ -76,30 +98,54 @@ if ($retornoError) {
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="aviso">¿Cuáles de los siguientes beneficios o incentivos motivarían la formalización de los establecimientos? *</label>
 							<div class="col-sm-5">								
-<input type="checkbox" id="asesoria" name="asesoria" value=1 <?php if($information && $information["asesoria"]){echo "checked";} ?> > Asesoría de mercados (local, nacional e internacional)<br>
-<input type="checkbox" id="apoyo" name="apoyo" value=1 <?php if($information && $information["apoyo"]){echo "checked";} ?> > Apoyo en solución de conflictos<br>
-<input type="checkbox" id="asesoria_juridica" name="asesoria_juridica" value=1 <?php if($information && $information["asesoria_juridica"]){echo "checked";} ?> > Asesoría jurídica gratita<br>
-<input type="checkbox" id="capacitacion" name="capacitacion" value=1 <?php if($information && $information["capacitacion"]){echo "checked";} ?> > Capacitación gratuita<br>
-<input type="checkbox" id="tecnologias" name="tecnologias" value=1 <?php if($information && $information["tecnologias"]){echo "checked";} ?> > Acceso a tecnologías con bajo costo<br>
-<input type="checkbox" id="participacion" name="participacion" value=1 <?php if($information && $information["participacion"]){echo "checked";} ?> > Participación en eventos empresariales<br>
-<input type="checkbox" id="simplificacion" name="simplificacion" value=1 <?php if($information && $information["simplificacion"]){echo "checked";} ?> > Simplificación de trámites<br>
-<input type="checkbox" id="tramites" name="tramites" value=1 <?php if($information && $information["tramites"]){echo "checked";} ?> > Trámites gratuitos o con bajo costo<br>
-<input type="checkbox" id="creditos" name="creditos" value=1 <?php if($information && $information["creditos"]){echo "checked";} ?> > Acceso a créditos<br>
-<input type="checkbox" id="impuestos" name="impuestos" value=1 <?php if($information && $information["impuestos"]){echo "checked";} ?> > Impuestos con tarifas bajas
+<input type="checkbox" id="asesoria" name="asesoria" value=1 <?php if($information && $information["asesoria"]){echo "checked";} ?> onclick="valid_beneficios()"> Asesoría de mercados (local, nacional e internacional)<br>
+<input type="checkbox" id="apoyo" name="apoyo" value=1 <?php if($information && $information["apoyo"]){echo "checked";} ?> onclick="valid_beneficios()"> Apoyo en solución de conflictos<br>
+<input type="checkbox" id="asesoria_juridica" name="asesoria_juridica" value=1 <?php if($information && $information["asesoria_juridica"]){echo "checked";} ?> onclick="valid_beneficios()"> Asesoría jurídica gratita<br>
+<input type="checkbox" id="capacitacion" name="capacitacion" value=1 <?php if($information && $information["capacitacion"]){echo "checked";} ?> onclick="valid_beneficios()"> Capacitación gratuita<br>
+<input type="checkbox" id="tecnologias" name="tecnologias" value=1 <?php if($information && $information["tecnologias"]){echo "checked";} ?> onclick="valid_beneficios()"> Acceso a tecnologías con bajo costo<br>
+<input type="checkbox" id="participacion" name="participacion" value=1 <?php if($information && $information["participacion"]){echo "checked";} ?> onclick="valid_beneficios()"> Participación en eventos empresariales<br>
+<input type="checkbox" id="simplificacion" name="simplificacion" value=1 <?php if($information && $information["simplificacion"]){echo "checked";} ?> onclick="valid_beneficios()"> Simplificación de trámites<br>
+<input type="checkbox" id="tramites" name="tramites" value=1 <?php if($information && $information["tramites"]){echo "checked";} ?> onclick="valid_beneficios()"> Trámites gratuitos o con bajo costo<br>
+<input type="checkbox" id="creditos" name="creditos" value=1 <?php if($information && $information["creditos"]){echo "checked";} ?> onclick="valid_beneficios()"> Acceso a créditos<br>
+<input type="checkbox" id="impuestos" name="impuestos" value=1 <?php if($information && $information["impuestos"]){echo "checked";} ?> onclick="valid_beneficios()"> Impuestos con tarifas bajas
+
+<?php 
+$valorBeneficios = "";
+if($information)
+{
+	if($information["asesoria"] || $information["apoyo"] || $information["asesoria_juridica"] || $information["capacitacion"] || $information["tecnologias"] || $information["participacion"] || $information["simplificacion"] || $information["tramites"] || $information["creditos"] || $information["impuestos"] )
+	{
+		$valorBeneficios = 1;
+	}
+}
+?>
+<input type="hidden" id="hddBeneficios" name="hddBeneficios" value="<?php echo $valorBeneficios; ?>"/>
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="normas">Conoce las normas en materia de: *</label>
 							<div class="col-sm-5">
-<input type="checkbox" id="contratacion" name="contratacion" value=1 <?php if($information && $information["contratacion"]){echo "checked";} ?> > Contratación laboral<br>
-<input type="checkbox" id="suelo" name="suelo" value=1 <?php if($information && $information["suelo"]){echo "checked";} ?> > Uso del suelo<br>
-<input type="checkbox" id="medio_ambiente" name="medio_ambiente" value=1 <?php if($information && $information["medio_ambiente"]){echo "checked";} ?> > Medio ambiente<br>
-<input type="checkbox" id="seguridad_social" name="seguridad_social" value=1 <?php if($information && $information["seguridad_social"]){echo "checked";} ?> > Seguridad social<br>
-<input type="checkbox" id="impuestos_municipales" name="impuestos_municipales" value=1 <?php if($information && $information["impuestos_municipales"]){echo "checked";} ?> > Impuestos municipales<br>
-<input type="checkbox" id="registro" name="registro" value=1 <?php if($information && $information["registro"]){echo "checked";} ?> > Registro mercantil<br>
-<input type="checkbox" id="impuestos_nacionales" name="impuestos_nacionales" value=1 <?php if($information && $information["impuestos_nacionales"]){echo "checked";} ?> > Impuestos nacionales<br>
-<input type="checkbox" id="licencias" name="licencias" value=1 <?php if($information && $information["licencias"]){echo "checked";} ?> > Licencias sanitarias
+<input type="checkbox" id="contratacion" name="contratacion" value=1 <?php if($information && $information["contratacion"]){echo "checked";} ?> onclick="valid_normas()"> Contratación laboral<br>
+<input type="checkbox" id="suelo" name="suelo" value=1 <?php if($information && $information["suelo"]){echo "checked";} ?> onclick="valid_normas()"> Uso del suelo<br>
+<input type="checkbox" id="medio_ambiente" name="medio_ambiente" value=1 <?php if($information && $information["medio_ambiente"]){echo "checked";} ?> onclick="valid_normas()"> Medio ambiente<br>
+<input type="checkbox" id="seguridad_social" name="seguridad_social" value=1 <?php if($information && $information["seguridad_social"]){echo "checked";} ?> onclick="valid_normas()"> Seguridad social<br>
+<input type="checkbox" id="impuestos_municipales" name="impuestos_municipales" value=1 <?php if($information && $information["impuestos_municipales"]){echo "checked";} ?> onclick="valid_normas()"> Impuestos municipales<br>
+<input type="checkbox" id="registro" name="registro" value=1 <?php if($information && $information["registro"]){echo "checked";} ?> onclick="valid_normas()"> Registro mercantil<br>
+<input type="checkbox" id="impuestos_nacionales" name="impuestos_nacionales" value=1 <?php if($information && $information["impuestos_nacionales"]){echo "checked";} ?> onclick="valid_normas()"> Impuestos nacionales<br>
+<input type="checkbox" id="licencias" name="licencias" value=1 <?php if($information && $information["licencias"]){echo "checked";} ?> onclick="valid_normas()"> Licencias sanitarias
+
+<?php 
+$valorNormas = "";
+if($information)
+{
+	if($information["contratacion"] || $information["suelo"] || $information["medio_ambiente"] || $information["seguridad_social"] || $information["impuestos_municipales"] || $information["registro"] || $information["impuestos_nacionales"] || $information["licencias"] )
+	{
+		$valorNormas = 1;
+	}
+}
+?>
+<input type="hidden" id="hddNormas" name="hddNormas" value="<?php echo $valorNormas; ?>"/>
 							</div>
 						</div>
 						
