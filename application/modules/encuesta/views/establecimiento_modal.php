@@ -116,7 +116,14 @@ $(document).ready(function () {
 			<div class="col-sm-12">
 				<div class="form-group text-left">
 					<label class="control-label" for="documento">No. Documento : *</label>
-					<input type="text" id="documento" name="documento" class="form-control" value="<?php echo $information?$information[0]["cedula"]:""; ?>" placeholder="Cédula o NIT" required >
+					<input type="text" id="documento" name="documento" class="form-control" value="<?php echo $information?$information[0]["cedula"]:""; ?>" placeholder="No. Documento" >
+				</div>
+			</div>			
+
+			<div class="col-sm-12">
+				<div class="form-group text-left">
+					<label class="control-label" for="documentosConfirm">Confirmar No. Documento : *</label>
+					<input type="text" id="documentosConfirm" name="documentosConfirm" class="form-control" value="<?php echo $information?$information[0]["cedula"]:""; ?>" placeholder="Confirmar No. Documento" >
 				</div>
 			</div>			
 		</div>
@@ -133,7 +140,7 @@ $(document).ready(function () {
 			<div class="col-sm-12">
 				<div class="form-group text-left">
 					<label class="control-label" for="digito">Digito de Verificación D.V.  : </label>
-					<input type="text" id="digito" name="digito" class="form-control" value="<?php echo $information?$information[0]["digito"]:""; ?>" placeholder="Digito de Verificación D.V." required >
+					<input type="text" id="digito" name="digito" class="form-control" value="<?php echo $information?$information[0]["digito"]:""; ?>" placeholder="Digito de Verificación D.V." >
 				</div>
 			</div>			
 		</div>

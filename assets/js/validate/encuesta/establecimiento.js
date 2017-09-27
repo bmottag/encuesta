@@ -1,5 +1,24 @@
 $( document ).ready( function () {
 
+jQuery.validator.addMethod("campoTipoDoc", function(value, element, param) {
+	var tipo_documento = $('#tipo_documento').val();
+	if ( tipo_documento != 4 && tipo_documento != 5 && value == "")  {
+		return false;
+	}else{
+		return true;
+	}
+}, "Este campo es requerido.");
+
+jQuery.validator.addMethod("campoNit", function(value, element, param) {
+	var tipo_documento = $('#tipo_documento').val();
+	if ( tipo_documento == 1 && value == "" ) {
+		return false;
+	}else{
+		return true;
+	}
+}, "Este campo es requerido.");
+
+
 	$("#nombre").bloquearNumeros().convertirMayuscula().maxlength(100);
 	$("#address").convertirMayuscula();
 	$("#razonSocial").convertirMayuscula();
@@ -10,9 +29,10 @@ $( document ).ready( function () {
 		rules: {
 			nombre: 			{ required: true, minlength: 3, maxlength:100 },
 			address: 			{ minlength: 4, maxlength:100},
-			documento: 			{ required: true, number: true, minlength: 4, maxlength:12 },
+			documento: 			{ number: true, minlength: 4, maxlength:12, campoTipoDoc: "#tipo_documento" },
+			documentosConfirm: 	{ equalTo: "#documento" },
 			telefono:	 		{ minlength: 4, maxlength:40  },
-			digito:		 		{ maxlength:1  }
+			digito:		 		{ maxlength:1, campoNit: "#tipo_documento" }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {
