@@ -21,7 +21,6 @@ $(document).ready(function () {
         if (condiciones) {
             $("#div_cual2").css("display", "inline");
 			$('#cual_fortalecer').val("");
-            event.preventDefault();
         } else {
 			$("#div_cual2").css("display", "none");
 			$('#cual_fortalecer').val("");

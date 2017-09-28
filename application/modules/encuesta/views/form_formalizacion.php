@@ -14,11 +14,31 @@ function valid_beneficios()
 function valid_normas() 
 {   
 	if(document.getElementById('contratacion').checked || document.getElementById('suelo').checked || document.getElementById('medio_ambiente').checked || document.getElementById('seguridad_social').checked || document.getElementById('impuestos_municipales').checked || document.getElementById('registro').checked || document.getElementById('impuestos_nacionales').checked || document.getElementById('licencias').checked ){
+		document.getElementById('ninguno').checked = false;
 		document.getElementById('hddNormas').value = 1;
 	}else{
 		document.getElementById('hddNormas').value = "";
 	}
 }
+
+function valid_ninguno() 
+{   
+	if(document.getElementById('ninguno').checked){
+		document.getElementById('contratacion').checked = false;
+		document.getElementById('suelo').checked = false;
+		document.getElementById('medio_ambiente').checked = false;
+		document.getElementById('seguridad_social').checked = false;
+		document.getElementById('impuestos_municipales').checked = false;
+		document.getElementById('registro').checked = false;
+		document.getElementById('impuestos_nacionales').checked = false;
+		document.getElementById('licencias').checked = false;		
+		
+		document.getElementById('hddNormas').value = 1;
+	}else{
+		document.getElementById('hddNormas').value = "";
+	}
+}
+
 
 </script>
 
@@ -133,13 +153,14 @@ if($information)
 <input type="checkbox" id="impuestos_municipales" name="impuestos_municipales" value=1 <?php if($information && $information["impuestos_municipales"]){echo "checked";} ?> onclick="valid_normas()"> Impuestos municipales<br>
 <input type="checkbox" id="registro" name="registro" value=1 <?php if($information && $information["registro"]){echo "checked";} ?> onclick="valid_normas()"> Registro mercantil<br>
 <input type="checkbox" id="impuestos_nacionales" name="impuestos_nacionales" value=1 <?php if($information && $information["impuestos_nacionales"]){echo "checked";} ?> onclick="valid_normas()"> Impuestos nacionales<br>
-<input type="checkbox" id="licencias" name="licencias" value=1 <?php if($information && $information["licencias"]){echo "checked";} ?> onclick="valid_normas()"> Licencias sanitarias
+<input type="checkbox" id="licencias" name="licencias" value=1 <?php if($information && $information["licencias"]){echo "checked";} ?> onclick="valid_normas()"> Licencias sanitarias<br>
+<input type="checkbox" id="ninguno" name="ninguno" value=1 <?php if($information && $information["ninguno"]){echo "checked";} ?> onclick="valid_ninguno()"> Ninguna
 
 <?php 
 $valorNormas = "";
 if($information)
 {
-	if($information["contratacion"] || $information["suelo"] || $information["medio_ambiente"] || $information["seguridad_social"] || $information["impuestos_municipales"] || $information["registro"] || $information["impuestos_nacionales"] || $information["licencias"] )
+	if($information["contratacion"] || $information["suelo"] || $information["medio_ambiente"] || $information["seguridad_social"] || $information["impuestos_municipales"] || $information["registro"] || $information["impuestos_nacionales"] || $information["licencias"] || $information["ninguno"] )
 	{
 		$valorNormas = 1;
 	}
