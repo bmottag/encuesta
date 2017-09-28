@@ -59,13 +59,15 @@ if ($retornoError) {
 
 
 					<div class="row">
-						<div class="col-lg-6">	
+						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_administrativos/' . $idFormulario; ?>" class="btn btn-warning btn-block">
 <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 1. Capítulo Aspectos Administrativos   
 </a>
 						</div>
-
-						<div class="col-lg-6">	
+					</div>
+<br>
+					<div class="row">
+						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_actividad_economica/' . $idFormulario; ?>" class="btn btn-warning btn-block">
 <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 2. Capítulo Características Generales de la Actividad Económica  
 </a>
@@ -73,13 +75,15 @@ if ($retornoError) {
 					</div>
 <br>					
 					<div class="row">
-						<div class="col-lg-6">	
+						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_criticos/' . $idFormulario; ?>" class="btn btn-warning btn-block">
 <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> 3. Capítulo Aspectos Críticos del Establecimiento  
 </a>
 						</div>
-
-						<div class="col-lg-6">	
+					</div>
+<br>						
+					<div class="row">
+						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_financiera/' . $idFormulario; ?>" class="btn btn-warning btn-block">
 <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 4. Capítulo Información Financiera del Establecimiento   
 </a>
@@ -87,18 +91,52 @@ if ($retornoError) {
 					</div>
 <br>
 					<div class="row">
-						<div class="col-lg-6">	
+						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_servicios/' . $idFormulario; ?>" class="btn btn-warning btn-block">
 <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> 5. Capítulo Servicios de Apoyo Empresarial  
 </a>
 						</div>
+					</div>
+<br>					
 						
-						<div class="col-lg-6">	
+						
+<!-- validaciones capitulo 6 -->
+<?php
+$bandera = true;
+if($information_form1 && $information_form1['matricula'] != 1){
+	$bandera = false;
+}
+
+if($information_form1 && $information_form1['rut'] != 1){
+	$bandera = false;
+}
+
+if($information_form1 && $information_form1['tiempo'] != 1 && $information_form1['tiempo'] != 2){
+	$bandera = false;
+}
+
+if($information_form1 && $information_form1['tiempo'] != 1 && $information_form1['tiempo'] != 2){
+	$bandera = false;
+}
+
+if($information_form2 && $information_form4['ninguno'] != 1){
+	$bandera = false;
+}
+
+if($information_form4 && $information_form4['ninguno'] == 1){
+	$bandera = false;
+}
+?>
+
+<?php if($bandera){ ?>
+					<div class="row">
+						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_formalizacion/' . $idFormulario; ?>" class="btn btn-warning btn-block">
 <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> 6. Capítulo Formalización Empresarial   
 </a>
 						</div>
 					</div>
+<?php } ?>
 
 			</div>
 			<!-- /.panel-body -->

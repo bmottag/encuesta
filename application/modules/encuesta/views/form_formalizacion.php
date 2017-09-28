@@ -45,6 +45,46 @@ function valid_ninguno()
 <div id="page-wrapper">
 	<br>
 
+	
+<!-- validaciones capitulo 6 -->
+<?php
+$bandera = true;
+if($information_form1 && $information_form1['matricula'] != 1){
+	$bandera = false;
+}
+
+if($information_form1 && $information_form1['rut'] != 1){
+	$bandera = false;
+}
+
+if($information_form1 && $information_form1['tiempo'] != 1 && $information_form1['tiempo'] != 2){
+	$bandera = false;
+}
+
+if($information_form1 && $information_form1['tiempo'] != 1 && $information_form1['tiempo'] != 2){
+	$bandera = false;
+}
+
+if($information_form2 && $information_form4['ninguno'] != 1){
+	$bandera = false;
+}
+
+if($information_form4 && $information_form4['ninguno'] == 1){
+	$bandera = false;
+}
+?>
+	
+<?php if(!$bandera){ ?>
+	<div class="col-lg-12">	
+		<div class="alert alert-success ">
+			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			Usted termino la encuesta gracias por su tiempo.
+		</div>
+	</div>
+<?php }else{ ?>
+
+
+
 <form  name="form" id="form" class="form-horizontal" method="post"  >
 	<input type="hidden" id="hddIdentificador" name="hddIdentificador" value="<?php echo $idFormulario; ?>"/>
 	<input type="hidden" id="hddIdFormFormalizacion" name="hddIdFormFormalizacion" value="<?php echo $idFormFormalizacion; ?>"/>
@@ -209,6 +249,8 @@ if($information)
 
 	
 </form>
+
+<?php } ?>
 
 </div>
 <!-- /#page-wrapper -->

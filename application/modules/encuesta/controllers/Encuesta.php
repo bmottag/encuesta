@@ -154,7 +154,16 @@ class Encuesta extends MX_Controller {
 				"idEstablecimiento" => $idFormulario
 			);
 			$data['information'] = $this->encuesta_model->get_establecimientos($arrParam);//informacion del establecimiento
-		
+			
+			
+			//busco informacion del formulario si existe
+			$arrParam = array(
+				"idFormulario" => $idFormulario
+			);				
+			$data['information_form1'] = $this->encuesta_model->get_form_administrativa($arrParam);
+			$data['information_form2'] = $this->encuesta_model->get_form_actividad_economica($arrParam);
+			$data['information_form4'] = $this->encuesta_model->get_form_financiera($arrParam);
+
 			$data['idFormulario'] = $idFormulario;
 			$data["view"] = 'home';
 			$this->load->view("layout", $data);
@@ -428,6 +437,10 @@ class Encuesta extends MX_Controller {
 				"idFormulario" => $idFormulario
 			);				
 			$data['information'] = $this->encuesta_model->get_form_formalizacion($arrParam);
+			
+			$data['information_form1'] = $this->encuesta_model->get_form_administrativa($arrParam);
+			$data['information_form2'] = $this->encuesta_model->get_form_actividad_economica($arrParam);
+			$data['information_form4'] = $this->encuesta_model->get_form_financiera($arrParam);
 
 			if ($data['information']) { 
 				$data["idFormFormalizacion"] = $data['information']['id_formalizacion'];
