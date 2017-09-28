@@ -32,7 +32,7 @@ jQuery.validator.addMethod("campoNit", function(value, element, param) {
 			documento: 			{ number: true, minlength: 4, maxlength:12, campoTipoDoc: "#tipo_documento" },
 			documentosConfirm: 	{ equalTo: "#documento" },
 			telefono:	 		{ minlength: 4, maxlength:40  },
-			digito:		 		{ maxlength:1, campoNit: "#tipo_documento" },
+			digito:		 		{ number: true, maxlength:1, campoNit: "#tipo_documento" },
 			digitoConfirm: 		{ equalTo: "#digito" }
 		},
 		errorElement: "em",

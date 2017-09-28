@@ -13,15 +13,20 @@ $(document).ready(function () {
 			
 			if (tipo_documento == 1) {
 				$("#div_digito").css("display", "inline");
+				$("#div_digito_confirmar").css("display", "inline");
             } else {
 				$("#div_digito").css("display", "none");
+				$("#div_digito_confirmar").css("display", "none");
             }
 			
             if (tipo_documento == 4 || tipo_documento == 5) {
 				$("#div_cedula").css("display", "none");
+				$("#div_cedula_confirmar").css("display", "none");
 				$("#div_digito").css("display", "none");
+				$("#div_digito_confirmar").css("display", "none");
             } else {
 				$("#div_cedula").css("display", "inline");
+				$("#div_cedula_confirmar").css("display", "inline");
             }
 			
         });
@@ -117,13 +122,6 @@ $(document).ready(function () {
 					<input type="text" id="documento" name="documento" class="form-control" value="<?php echo $information?$information[0]["cedula"]:""; ?>" placeholder="No. Documento" >
 				</div>
 			</div>			
-
-			<div class="col-sm-12">
-				<div class="form-group text-left">
-					<label class="control-label" for="documentosConfirm">Confirmar No. Documento : *</label>
-					<input type="text" id="documentosConfirm" name="documentosConfirm" class="form-control" value="<?php echo $information?$information[0]["cedula"]:""; ?>" placeholder="Confirmar No. Documento" >
-				</div>
-			</div>			
 		</div>
 		
 		
@@ -140,8 +138,19 @@ $(document).ready(function () {
 					<label class="control-label" for="digito">Digito de Verificación D.V.  : </label>
 					<input type="text" id="digito" name="digito" class="form-control" value="<?php echo $information?$information[0]["digito"]:""; ?>" placeholder="Digito de Verificación D.V." >
 				</div>
+			</div>					
+		</div>
+		
+		<div class="row" id="div_cedula_confirmar" style="display: <?php echo $mostrar2; ?>">
+			<div class="col-sm-12">
+				<div class="form-group text-left">
+					<label class="control-label" for="documentosConfirm">Confirmar No. Documento : *</label>
+					<input type="text" id="documentosConfirm" name="documentosConfirm" class="form-control" value="<?php echo $information?$information[0]["cedula"]:""; ?>" placeholder="Confirmar No. Documento" >
+				</div>
 			</div>			
-			
+		</div>
+		
+		<div class="row" id="div_digito_confirmar" style="display: <?php echo $mostrar; ?>">
 			<div class="col-sm-12">
 				<div class="form-group text-left">
 					<label class="control-label" for="digitoConfirm">Confirmar Digito de Verificación D.V.  : </label>
