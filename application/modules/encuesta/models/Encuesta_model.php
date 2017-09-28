@@ -118,7 +118,10 @@
 					'fk_id_seccion' => $this->input->post('seccion'),
 					'fk_id_manzana' => $this->input->post('manzana'),
 					'fk_id_comuna' => $this->input->post('comuna'),
-					'barrio' => $this->input->post('barrio')
+					'barrio' => $this->input->post('barrio'),
+					'latitud' => $this->input->post('latitud'),
+					'longitud' => $this->input->post('longitud'),
+					'address' => $this->input->post('address')
 				);
 				
 				//revisar si es para adicionar o editar
@@ -503,7 +506,8 @@
 				'impuestos_municipales' => $this->input->post('impuestos_municipales'),
 				'registro' => $this->input->post('registro'),
 				'impuestos_nacionales' => $this->input->post('impuestos_nacionales'),
-				'licencias' => $this->input->post('licencias')
+				'licencias' => $this->input->post('licencias'),
+				'ninguno' => $this->input->post('ninguno')
 			);
 			
 			//revisar si es para adicionar o editar
