@@ -50,13 +50,16 @@
 				
 				$data = array(
 					'nombre_propietario' => $this->input->post('nombre'),
-					'direccion' => $this->input->post('address'),
+					'direccion' => $this->input->post('address2'),
 					'telefono' => $this->input->post('telefono'),
 					'razon_social' => $this->input->post('razonSocial'),
 					'cedula' => $this->input->post('documento'),
 					'fk_id_manzana' => $this->input->post('hddIdManzana'),
 					'tipo_documento' => $this->input->post('tipo_documento'),
-					'digito' => $this->input->post('digito')
+					'digito' => $this->input->post('digito'),
+					'latitud' => $this->input->post('latitud'),
+					'longitud' => $this->input->post('longitud'),
+					'address' => $this->input->post('address')
 				);	
 
 				//revisar si es para adicionar o editar
@@ -118,10 +121,7 @@
 					'fk_id_seccion' => $this->input->post('seccion'),
 					'fk_id_manzana' => $this->input->post('manzana'),
 					'fk_id_comuna' => $this->input->post('comuna'),
-					'barrio' => $this->input->post('barrio'),
-					'latitud' => $this->input->post('latitud'),
-					'longitud' => $this->input->post('longitud'),
-					'address' => $this->input->post('address')
+					'barrio' => $this->input->post('barrio')
 				);
 				
 				//revisar si es para adicionar o editar

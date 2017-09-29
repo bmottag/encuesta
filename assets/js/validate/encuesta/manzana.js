@@ -8,8 +8,7 @@ $( document ).ready( function () {
 			seccion:	{ required: true },
 			manzana:	{ required: true },
 			comuna:		{ required: true },
-			barrio:		{ required: true, minlength: 3, maxlength:30 },
-			address:		{ required: true }
+			barrio:		{ required: true, minlength: 3, maxlength:30 }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {

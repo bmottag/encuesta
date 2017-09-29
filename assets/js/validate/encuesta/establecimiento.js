@@ -20,20 +20,23 @@ jQuery.validator.addMethod("campoNit", function(value, element, param) {
 
 
 	$("#nombre").bloquearNumeros().convertirMayuscula().maxlength(100);
-	$("#address").convertirMayuscula();
+	$("#address2").convertirMayuscula();
 	$("#razonSocial").convertirMayuscula();
-	$("#razonSocial").convertirMayuscula();
-	$("#comuna").bloquearTexto().maxlength(12);
+	$("#digito").bloquearTexto().maxlength(1);
+	$("#digitoConfirm").bloquearTexto().maxlength(1);
+	$("#documento").bloquearTexto().maxlength(12);
+	$("#documentosConfirm").bloquearTexto().maxlength(12);
 	
 	$( "#form" ).validate( {
 		rules: {
 			nombre: 			{ required: true, minlength: 3, maxlength:100 },
-			address: 			{ minlength: 4, maxlength:100},
+			address2: 			{ minlength: 4, maxlength:100},
 			documento: 			{ number: true, minlength: 4, maxlength:12, campoTipoDoc: "#tipo_documento" },
 			documentosConfirm: 	{ equalTo: "#documento" },
 			telefono:	 		{ minlength: 4, maxlength:40  },
 			digito:		 		{ number: true, maxlength:1, campoNit: "#tipo_documento" },
-			digitoConfirm: 		{ equalTo: "#digito" }
+			digitoConfirm: 		{ equalTo: "#digito" },
+			address:		{ required: true }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {

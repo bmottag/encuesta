@@ -48,29 +48,21 @@ function valid_ninguno()
 	
 <!-- validaciones capitulo 6 -->
 <?php
-$bandera = true;
+$bandera = false;
 if($information_form1 && $information_form1['matricula'] != 1){
-	$bandera = false;
+	$bandera = true;
 }
 
 if($information_form1 && $information_form1['rut'] != 1){
-	$bandera = false;
+	$bandera = true;
 }
 
-if($information_form1 && $information_form1['tiempo'] != 1 && $information_form1['tiempo'] != 2){
-	$bandera = false;
+if($information_form2 && $information_form2['seguridad_social'] != 1){
+	$bandera = true;
 }
 
-if($information_form1 && $information_form1['tiempo'] != 1 && $information_form1['tiempo'] != 2){
-	$bandera = false;
-}
-
-if($information_form2 && $information_form4['ninguno'] != 1){
-	$bandera = false;
-}
-
-if($information_form4 && $information_form4['ninguno'] == 1){
-	$bandera = false;
+if($information_form4 && $information_form4['ninguno'] == 1 && $information_form1 && $information_form1['tiempo'] != 1){
+	$bandera = true;
 }
 ?>
 	
@@ -79,6 +71,9 @@ if($information_form4 && $information_form4['ninguno'] == 1){
 		<div class="alert alert-success ">
 			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
 			Usted termino la encuesta gracias por su tiempo.
+<br><br>
+<a class="btn btn-success" href=" <?php echo base_url().'encuesta/establecimiento/' . $information_establecimiento[0]['fk_id_manzana']; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar a lista de establecimientos </a> 
+<a class="btn btn-success" href=" <?php echo base_url().'encuesta/manzana/'; ?> "> Regresar a lista de manzanas <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a> 
 		</div>
 	</div>
 <?php }else{ ?>

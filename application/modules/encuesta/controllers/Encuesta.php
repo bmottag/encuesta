@@ -162,7 +162,10 @@ class Encuesta extends MX_Controller {
 			);				
 			$data['information_form1'] = $this->encuesta_model->get_form_administrativa($arrParam);
 			$data['information_form2'] = $this->encuesta_model->get_form_actividad_economica($arrParam);
+			$data['information_form3'] = $this->encuesta_model->get_form_criticos($arrParam);
 			$data['information_form4'] = $this->encuesta_model->get_form_financiera($arrParam);
+			$data['information_form5'] = $this->encuesta_model->get_form_servicios($arrParam);
+			$data['information_form6'] = $this->encuesta_model->get_form_formalizacion($arrParam);
 
 			$data['idFormulario'] = $idFormulario;
 			$data["view"] = 'home';
@@ -432,12 +435,17 @@ class Encuesta extends MX_Controller {
 	{
 			$data['information'] = FALSE;
 
+			$arrParam = array(
+				"idEstablecimiento" => $idFormulario
+			);
+			$data['information_establecimiento'] = $this->encuesta_model->get_establecimientos($arrParam);//informacion del establecimiento
+						
 			//busco informacion del formulario si existe
 			$arrParam = array(
 				"idFormulario" => $idFormulario
 			);				
 			$data['information'] = $this->encuesta_model->get_form_formalizacion($arrParam);
-			
+						
 			$data['information_form1'] = $this->encuesta_model->get_form_administrativa($arrParam);
 			$data['information_form2'] = $this->encuesta_model->get_form_actividad_economica($arrParam);
 			$data['information_form4'] = $this->encuesta_model->get_form_financiera($arrParam);

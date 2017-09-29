@@ -57,10 +57,35 @@ if ($retornoError) {
 }
 ?> 
 
-
+<?php 
+	$boton_form1 = "btn-warning";
+	$boton_form2 = "btn-warning";
+	$boton_form3 = "btn-warning";
+	$boton_form4 = "btn-warning";
+	$boton_form5 = "btn-warning";
+	$boton_form6 = "btn-warning";
+	if($information_form1){
+			$boton_form1 = "btn-success";
+	}
+	if($information_form2){
+			$boton_form2 = "btn-success";
+	}
+	if($information_form3){
+			$boton_form3 = "btn-success";
+	}
+	if($information_form4){
+			$boton_form4 = "btn-success";
+	}
+	if($information_form5){
+			$boton_form5 = "btn-success";
+	}
+	if($information_form6){
+			$boton_form6 = "btn-success";
+	}
+?>
 					<div class="row">
 						<div class="col-lg-12">	
-<a href="<?php echo base_url(). 'encuesta/form_administrativos/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<a href="<?php echo base_url(). 'encuesta/form_administrativos/' . $idFormulario; ?>" class="btn <?php echo $boton_form1; ?> btn-block">
 <span class="glyphicon glyphicon-home" aria-hidden="true"></span> 1. Capítulo Aspectos Administrativos   
 </a>
 						</div>
@@ -102,29 +127,21 @@ if ($retornoError) {
 						
 <!-- validaciones capitulo 6 -->
 <?php
-$bandera = true;
+$bandera = false;
 if($information_form1 && $information_form1['matricula'] != 1){
-	$bandera = false;
+	$bandera = true;
 }
 
 if($information_form1 && $information_form1['rut'] != 1){
-	$bandera = false;
+	$bandera = true;
 }
 
-if($information_form1 && $information_form1['tiempo'] != 1 && $information_form1['tiempo'] != 2){
-	$bandera = false;
+if($information_form2 && $information_form2['seguridad_social'] != 1){
+	$bandera = true;
 }
 
-if($information_form1 && $information_form1['tiempo'] != 1 && $information_form1['tiempo'] != 2){
-	$bandera = false;
-}
-
-if($information_form2 && $information_form4['ninguno'] != 1){
-	$bandera = false;
-}
-
-if($information_form4 && $information_form4['ninguno'] == 1){
-	$bandera = false;
+if($information_form4 && $information_form4['ninguno'] == 1 && $information_form1 && $information_form1['tiempo'] != 1){
+	$bandera = true;
 }
 ?>
 
