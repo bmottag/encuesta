@@ -122,7 +122,7 @@ if ($retornoError) {
 </a>
 						</div>
 					</div>
-<br>					
+					
 						
 						
 <!-- validaciones capitulo 6 -->
@@ -146,6 +146,7 @@ if($information_form4 && $information_form4['ninguno'] == 1 && $information_form
 ?>
 
 <?php if($bandera){ ?>
+<br>
 					<div class="row">
 						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_formalizacion/' . $idFormulario; ?>" class="btn <?php echo $boton_form6; ?> btn-block">
@@ -154,6 +155,15 @@ if($information_form4 && $information_form4['ninguno'] == 1 && $information_form
 						</div>
 					</div>
 <?php } ?>
+
+<br>
+					<div class="row">
+						<div class="col-lg-12">	
+<a href="<?php echo base_url(). 'encuesta/form_control/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> 7. Capítulo Control de Encuesta
+</a>
+						</div>
+					</div>
 
 			</div>
 			<!-- /.panel-body -->

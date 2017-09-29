@@ -612,6 +612,64 @@
 				$this->db->close();
 				return $manzana;
 		}
+		
+		/**
+		 * Listado control encuesta
+		 * @since 28/9/2017
+		 */
+		public function get_control($arrDatos) 
+		{
+				$this->db->select();
+				if (array_key_exists("idFormulario", $arrDatos)) {
+					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
+				}
+				
+				if (array_key_exists("idControl", $arrDatos)) {
+					$this->db->where('id_control', $arrDatos["idControl"]);
+				}
+				
+				$this->db->order_by('id_control', 'asc');
+				$query = $this->db->get('form_control');
+
+				if ($query->num_rows() > 0) {
+					return $query->result_array();
+				} else {
+					return false;
+				}
+		}
+		
+		/**
+		 * Add/Edit FORM CONTROL
+		 * @since 28/9/2017
+		 */
+		public function saveControl() 
+		{
+				$idControl = $this->input->post('hddId');
+				
+				$data = array(
+					'fk_id_formulario' => $this->input->post('hddIdFormulario'),
+					'resultado_encuesta' => $this->input->post('resultado'),
+					'observaciones' => $this->input->post('observaciones'),
+					'fecha' => $this->input->post('date')
+				);	
+
+				//revisar si es para adicionar o editar
+				if ($idControl == '') {
+					//$data['fk_id_usuario'] = $this->session->id;
+					$query = $this->db->insert('form_control', $data);
+					$idControl = $this->db->insert_id();
+				} else {
+					$this->db->where('id_control', $idControl);
+					$query = $this->db->update('form_control', $data);
+				}
+				if ($query) {
+					return $idControl;
+				} else {
+					return false;
+				}
+		}
+
+
 
 
 	

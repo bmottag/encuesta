@@ -546,6 +546,74 @@ class Encuesta extends MX_Controller {
 				}
 			}
     }
+	
+	/**
+	 * encuesta control
+     * @since 28/9/2017
+	 */
+	public function form_control($idFormulario)
+	{
+			$arrParam = array("idFormulario" => $idFormulario);
+			$data['info'] = $this->encuesta_model->get_control($arrParam);
+
+			$data["idFormulario"] = $idFormulario;
+			$data["view"] = 'control';
+			$this->load->view("layout", $data);
+	}
+	
+    /**
+     * Cargo modal - encuesta control
+     * @since 28/9/2017
+     */
+    public function cargarModalControl() 
+	{
+			header("Content-Type: text/plain; charset=utf-8"); //Para evitar problemas de acentos
+			
+			$data['information'] = FALSE;
+			$data["idControl"] = $this->input->post("idControl");
+			$data["idFormulario"] = $this->input->post("idFormulario");
+
+			if ($data["idControl"] != 'x') 
+			{
+				$arrParam = array(
+					"idControl" => $data["idControl"]
+				);
+				$data['information'] = $this->encuesta_model->get_control($arrParam);
+				
+				$data["idFormulario"] = $data['information'][0]['fk_id_formulario'];
+			}
+			
+			$this->load->view("control_modal", $data);
+    }
+	
+	/**
+	 * Guardar control
+     * @since 28/9/2017
+	 */
+	public function save_control()
+	{			
+			header('Content-Type: application/json');
+			$data = array();
+			
+			$idControl = $this->input->post('hddId');
+			$idFormulario  = $this->input->post('hddIdFormulario');
+
+			$msj = "Se adicionó un nuevo registro de control.";
+			if ($idControl != '') {
+				$msj = "Se actualizó registro.";
+			}			
+
+			$data["idRecord"] = $idFormulario;
+			if ($idControl = $this->encuesta_model->saveControl()) {
+				$data["result"] = true;					
+				$this->session->set_flashdata('retornoExito', $msj);
+			} else {
+				$data["result"] = "error";
+				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el administrador.');
+			}
+
+			echo json_encode($data);
+    }
 
 	
 	
