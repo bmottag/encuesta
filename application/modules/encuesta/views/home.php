@@ -93,7 +93,7 @@ if ($retornoError) {
 <br>
 					<div class="row">
 						<div class="col-lg-12">	
-<a href="<?php echo base_url(). 'encuesta/form_actividad_economica/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<a href="<?php echo base_url(). 'encuesta/form_actividad_economica/' . $idFormulario; ?>" class="btn <?php echo $boton_form2; ?> btn-block">
 <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 2. Capítulo Características Generales de la Actividad Económica  
 </a>
 						</div>
@@ -101,7 +101,7 @@ if ($retornoError) {
 <br>					
 					<div class="row">
 						<div class="col-lg-12">	
-<a href="<?php echo base_url(). 'encuesta/form_criticos/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<a href="<?php echo base_url(). 'encuesta/form_criticos/' . $idFormulario; ?>" class="btn <?php echo $boton_form3; ?> btn-block">
 <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> 3. Capítulo Aspectos Críticos del Establecimiento  
 </a>
 						</div>
@@ -109,7 +109,7 @@ if ($retornoError) {
 <br>						
 					<div class="row">
 						<div class="col-lg-12">	
-<a href="<?php echo base_url(). 'encuesta/form_financiera/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<a href="<?php echo base_url(). 'encuesta/form_financiera/' . $idFormulario; ?>" class="btn <?php echo $boton_form4; ?> btn-block">
 <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 4. Capítulo Información Financiera del Establecimiento   
 </a>
 						</div>
@@ -117,7 +117,7 @@ if ($retornoError) {
 <br>
 					<div class="row">
 						<div class="col-lg-12">	
-<a href="<?php echo base_url(). 'encuesta/form_servicios/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<a href="<?php echo base_url(). 'encuesta/form_servicios/' . $idFormulario; ?>" class="btn <?php echo $boton_form5; ?> btn-block">
 <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> 5. Capítulo Servicios de Apoyo Empresarial  
 </a>
 						</div>
@@ -148,7 +148,7 @@ if($information_form4 && $information_form4['ninguno'] == 1 && $information_form
 <?php if($bandera){ ?>
 					<div class="row">
 						<div class="col-lg-12">	
-<a href="<?php echo base_url(). 'encuesta/form_formalizacion/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<a href="<?php echo base_url(). 'encuesta/form_formalizacion/' . $idFormulario; ?>" class="btn <?php echo $boton_form6; ?> btn-block">
 <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> 6. Capítulo Formalización Empresarial   
 </a>
 						</div>
