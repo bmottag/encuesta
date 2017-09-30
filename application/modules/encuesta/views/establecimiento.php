@@ -185,7 +185,7 @@ $(document).ready(function() {
 	$('#dataTables').DataTable({
 		responsive: true,
 		"order": [[ 0, "asc" ]],
-		"pageLength": 25
+		"pageLength": 50
 	});
 });
 </script>

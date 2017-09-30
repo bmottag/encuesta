@@ -61,41 +61,24 @@ if ($retornoError) {
 					<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
 						<thead>
 							<tr>
+								<th class="text-center">Editar</th>
 								<th class="text-center">Comuna</th>
 								<th class="text-center">Sector</th>
 								<th class="text-center">Sección</th>
-								<th class="text-center">Editar</th>
 								<th class="text-center">Manzana</th>
 								<th class="text-center">Barrio</th>
-								<th class="text-center">Establecimientos</th>
 							</tr>
 						</thead>
 						<tbody>							
 						<?php
 							foreach ($info as $lista):
 									echo "<tr>";
-									echo "<td class='text-center'>" . $lista['fk_id_comuna'] . "</td>";
-									echo "<td>" . $lista['fk_id_sector'] . "</td>";
-									echo "<td>" . $lista['fk_id_seccion'] . "</td>";
 									echo "<td class='text-center'>";
 						?>
 									<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_manzana']; ?>" >
 										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
 									</button>									
-						<?php
-									echo "</td>";
-									echo "<td class='text-center'>" . $lista['fk_id_manzana'] . "</td>";
 									
-									echo "<td class='text-center'>" . $lista['barrio'] . "</td>";
-
-						?>
-						
-						
-						
-						
-						
-						
-									<td class='text-center'>
 									
 <?php 
 //busco si la manzana tiene asicionada establecimientos
@@ -105,16 +88,20 @@ $ci->load->model("general_model");
 $arrParam = array("idManzana" => $lista["id_manzana"]);
 $conteoEstablecimiento = $this->general_model->countEstablecimientos($arrParam);
 ?>
-									
+<br><br>								
 <a href="<?php echo base_url("encuesta/establecimiento/" . $lista['id_manzana']); ?>" class="btn btn-success btn-xs">
-Establecimiento  <span class="badge"><?php echo $conteoEstablecimiento; ?></span>
-</a>
-
-									</td>
-						
-						
-
+Establecimientos  <span class="badge"><?php echo $conteoEstablecimiento; ?></span>
+</a>									
 						<?php
+									echo "</td>";
+									echo "<td class='text-center'>" . $lista['fk_id_comuna'] . "</td>";
+									echo "<td>" . $lista['fk_id_sector'] . "</td>";
+									echo "<td>" . $lista['fk_id_seccion'] . "</td>";
+
+									echo "<td class='text-center'>" . $lista['fk_id_manzana'] . "</td>";
+									
+									echo "<td class='text-center'>" . $lista['barrio'] . "</td>";
+
 							endforeach;
 						?>
 						</tbody>
@@ -147,7 +134,7 @@ Establecimiento  <span class="badge"><?php echo $conteoEstablecimiento; ?></span
 $(document).ready(function() {
 	$('#dataTables').DataTable({
 		responsive: true,
-		"pageLength": 25
+		"pageLength": 50
 	});
 });
 </script>
