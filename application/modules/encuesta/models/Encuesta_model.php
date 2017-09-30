@@ -52,7 +52,6 @@
 					'nombre_propietario' => $this->input->post('nombre'),
 					'direccion' => $this->input->post('address2'),
 					'telefono' => $this->input->post('telefono'),
-					'razon_social' => $this->input->post('razonSocial'),
 					'cedula' => $this->input->post('documento'),
 					'fk_id_manzana' => $this->input->post('hddIdManzana'),
 					'tipo_documento' => $this->input->post('tipo_documento'),

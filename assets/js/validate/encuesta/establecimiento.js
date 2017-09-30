@@ -21,7 +21,6 @@ jQuery.validator.addMethod("campoNit", function(value, element, param) {
 
 	$("#nombre").bloquearNumeros().convertirMayuscula().maxlength(100);
 	$("#address2").convertirMayuscula();
-	$("#razonSocial").convertirMayuscula();
 	$("#digito").bloquearTexto().maxlength(1);
 	$("#digitoConfirm").bloquearTexto().maxlength(1);
 	$("#documento").bloquearTexto().maxlength(12);

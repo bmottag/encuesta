@@ -102,7 +102,6 @@ if ($retornoError) {
 							<tr>
 								<th class="text-center">No. formulario</th>
 								<th class="text-center">Editar</th>
-								<th class="text-center">Razón social o nombre del propietario</th>
 								<th class="text-center">Nombre comercial</th>
 								<th class="text-center">Dirección del establecimiento</th>
 								<th class="text-center">Teléfono y/o celular del establecimiento</th>
@@ -127,7 +126,6 @@ Encuesta
 </p>
 						<?php
 									echo "</td>";
-									echo "<td>" . $lista['razon_social'] . "</td>";
 									echo "<td class='text-center'>" . $lista['nombre_propietario'] . "</td>";
 									echo "<td class='text-center'>" . $lista['direccion'] . "</td>";
 									echo "<td class='text-center'>" . $lista['telefono'] . "</td>";

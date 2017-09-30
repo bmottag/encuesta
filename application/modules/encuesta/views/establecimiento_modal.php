@@ -50,16 +50,7 @@ $(document).ready(function () {
 		<input type="hidden" id="hddId" name="hddId" value="<?php echo $information?$information[0]["id_establecimiento"]:""; ?>"/>		
 		<input type="hidden" id="hddIdManzana" name="hddIdManzana" value="<?php echo $idManzana; ?>"/>
 
-		
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="form-group text-left">
-					<label class="control-label" for="razonSocial">Razón social o nombre del propietario : *</label>
-					<input type="text" id="razonSocial" name="razonSocial" class="form-control" value="<?php echo $information?$information[0]["razon_social"]:""; ?>" placeholder="Razón social o nombre comercial" required >
-				</div>
-			</div>
-		</div>
-			
+
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="form-group text-left">
