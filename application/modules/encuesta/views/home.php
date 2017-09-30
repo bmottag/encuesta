@@ -20,8 +20,6 @@
 									<div class="alert alert-warning">
 										<strong>No. Formulario: </strong>
 										<?php echo $information[0]['id_establecimiento']; ?>
-										<br><strong>Razón social o nombre del propietario: </strong>
-										<?php echo $information[0]['razon_social']; ?>
 										<br><strong>Nombre comercial: </strong>
 										<?php echo $information[0]['nombre_propietario']; ?>
 									</div>
@@ -140,9 +138,14 @@ if($information_form2 && $information_form2['seguridad_social'] != 1){
 	$bandera = true;
 }
 
-if($information_form4 && $information_form4['ninguno'] == 1 && $information_form1 && $information_form1['tiempo'] != 1){
+if($information_form1 && $information_form1['tiempo'] != 1){
 	$bandera = true;
 }
+
+if($information_form4 && $information_form4['impuestos'] != 1){
+	$bandera = true;
+}
+
 ?>
 
 <?php if($bandera){ ?>

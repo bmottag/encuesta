@@ -363,11 +363,7 @@
 				'iso' => $this->input->post('iso'),
 				'otros' => $this->input->post('otros'),
 				'cuales' => $this->input->post('cuales'),
-				'retencion' => $this->input->post('retencion'),
-				'renta' => $this->input->post('renta'),
-				'iva' => $this->input->post('iva'),
-				'ica' => $this->input->post('ica'),
-				'ninguno' => $this->input->post('ninguno')
+				'impuestos' => $this->input->post('impuestos')
 			);
 			
 			//revisar si es para adicionar o editar
@@ -498,15 +494,7 @@
 				'simplificacion' => $this->input->post('simplificacion'),
 				'tramites' => $this->input->post('tramites'),
 				'creditos' => $this->input->post('creditos'),
-				'impuestos' => $this->input->post('impuestos'),
-				'contratacion' => $this->input->post('contratacion'),
-				'suelo' => $this->input->post('suelo'),
-				'seguridad_social' => $this->input->post('seguridad_social'),
-				'impuestos_municipales' => $this->input->post('impuestos_municipales'),
-				'registro' => $this->input->post('registro'),
-				'impuestos_nacionales' => $this->input->post('impuestos_nacionales'),
-				'licencias' => $this->input->post('licencias'),
-				'ninguno' => $this->input->post('ninguno')
+				'impuestos' => $this->input->post('impuestos')
 			);
 			
 			//revisar si es para adicionar o editar

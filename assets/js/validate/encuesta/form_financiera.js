@@ -16,7 +16,7 @@ $("#cuales").convertirMayuscula();
 			ingresos:			{ required: true },
 			contabilidad:		{ required: true },
 			hddFormacion:		{ required: true },
-			hddImpuestos:		{ required: true },
+			impuestos:			{ required: true },
 			cuales:				{ maxlength: 190, campoCual: "#otros" }
 		},
 		errorElement: "em",

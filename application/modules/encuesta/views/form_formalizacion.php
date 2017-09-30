@@ -9,37 +9,6 @@ function valid_beneficios()
 		document.getElementById('hddBeneficios').value = "";
 	}
 }
-
-
-function valid_normas() 
-{   
-	if(document.getElementById('contratacion').checked || document.getElementById('suelo').checked || document.getElementById('medio_ambiente').checked || document.getElementById('seguridad_social').checked || document.getElementById('impuestos_municipales').checked || document.getElementById('registro').checked || document.getElementById('impuestos_nacionales').checked || document.getElementById('licencias').checked ){
-		document.getElementById('ninguno').checked = false;
-		document.getElementById('hddNormas').value = 1;
-	}else{
-		document.getElementById('hddNormas').value = "";
-	}
-}
-
-function valid_ninguno() 
-{   
-	if(document.getElementById('ninguno').checked){
-		document.getElementById('contratacion').checked = false;
-		document.getElementById('suelo').checked = false;
-		document.getElementById('medio_ambiente').checked = false;
-		document.getElementById('seguridad_social').checked = false;
-		document.getElementById('impuestos_municipales').checked = false;
-		document.getElementById('registro').checked = false;
-		document.getElementById('impuestos_nacionales').checked = false;
-		document.getElementById('licencias').checked = false;		
-		
-		document.getElementById('hddNormas').value = 1;
-	}else{
-		document.getElementById('hddNormas').value = "";
-	}
-}
-
-
 </script>
 
 <div id="page-wrapper">
@@ -61,7 +30,11 @@ if($information_form2 && $information_form2['seguridad_social'] != 1){
 	$bandera = true;
 }
 
-if($information_form4 && $information_form4['ninguno'] == 1 && $information_form1 && $information_form1['tiempo'] != 1){
+if($information_form1 && $information_form1['tiempo'] != 1){
+	$bandera = true;
+}
+
+if($information_form4 && $information_form4['impuestos'] != 1){
 	$bandera = true;
 }
 ?>
@@ -177,34 +150,7 @@ if($information)
 <input type="hidden" id="hddBeneficios" name="hddBeneficios" value="<?php echo $valorBeneficios; ?>"/>
 							</div>
 						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-4 control-label" for="normas">Conoce las normas en materia de: *</label>
-							<div class="col-sm-5">
-<input type="checkbox" id="contratacion" name="contratacion" value=1 <?php if($information && $information["contratacion"]){echo "checked";} ?> onclick="valid_normas()"> Contratación laboral<br>
-<input type="checkbox" id="suelo" name="suelo" value=1 <?php if($information && $information["suelo"]){echo "checked";} ?> onclick="valid_normas()"> Uso del suelo<br>
-<input type="checkbox" id="medio_ambiente" name="medio_ambiente" value=1 <?php if($information && $information["medio_ambiente"]){echo "checked";} ?> onclick="valid_normas()"> Medio ambiente<br>
-<input type="checkbox" id="seguridad_social" name="seguridad_social" value=1 <?php if($information && $information["seguridad_social"]){echo "checked";} ?> onclick="valid_normas()"> Seguridad social<br>
-<input type="checkbox" id="impuestos_municipales" name="impuestos_municipales" value=1 <?php if($information && $information["impuestos_municipales"]){echo "checked";} ?> onclick="valid_normas()"> Impuestos municipales<br>
-<input type="checkbox" id="registro" name="registro" value=1 <?php if($information && $information["registro"]){echo "checked";} ?> onclick="valid_normas()"> Registro mercantil<br>
-<input type="checkbox" id="impuestos_nacionales" name="impuestos_nacionales" value=1 <?php if($information && $information["impuestos_nacionales"]){echo "checked";} ?> onclick="valid_normas()"> Impuestos nacionales<br>
-<input type="checkbox" id="licencias" name="licencias" value=1 <?php if($information && $information["licencias"]){echo "checked";} ?> onclick="valid_normas()"> Licencias sanitarias<br>
-<input type="checkbox" id="ninguno" name="ninguno" value=1 <?php if($information && $information["ninguno"]){echo "checked";} ?> onclick="valid_ninguno()"> Ninguna
-
-<?php 
-$valorNormas = "";
-if($information)
-{
-	if($information["contratacion"] || $information["suelo"] || $information["medio_ambiente"] || $information["seguridad_social"] || $information["impuestos_municipales"] || $information["registro"] || $information["impuestos_nacionales"] || $information["licencias"] || $information["ninguno"] )
-	{
-		$valorNormas = 1;
-	}
-}
-?>
-<input type="hidden" id="hddNormas" name="hddNormas" value="<?php echo $valorNormas; ?>"/>
-							</div>
-						</div>
-						
+												
 
 				</div>
 			</div>
