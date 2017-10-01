@@ -485,7 +485,7 @@
 				'fk_id_usuario' => $this->session->userdata("id"),
 				'formalizar' => $this->input->post('formalizar'),
 				'motivo' => $this->input->post('motivo'),
-				'asesoria' => $this->input->post('asesoria'),
+				'asesoria_mercados' => $this->input->post('asesoria_mercados'),
 				'apoyo' => $this->input->post('apoyo'),
 				'asesoria_juridica' => $this->input->post('asesoria_juridica'),
 				'capacitacion' => $this->input->post('capacitacion'),

@@ -89,6 +89,19 @@ if ($retornoError) {
 						</div>
 					</div>
 <br>
+
+<!-- validaciones capitulo 6 -->
+<?php
+$banderaTerminar = false;
+if($information_form1 && $information_form1['estado_actual'] == 1){
+	$banderaTerminar = true;
+}
+
+?>
+
+<?php if($banderaTerminar){ ?>
+
+
 					<div class="row">
 						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_actividad_economica/' . $idFormulario; ?>" class="btn <?php echo $boton_form2; ?> btn-block">
@@ -158,7 +171,7 @@ if($information_form4 && $information_form4['impuestos'] != 1){
 						</div>
 					</div>
 <?php } ?>
-
+<?php } ?>
 <br>
 					<div class="row">
 						<div class="col-lg-12">	

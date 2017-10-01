@@ -3,7 +3,7 @@
 <script>
 function valid_beneficios() 
 {
-	if(document.getElementById('asesoria').checked || document.getElementById('apoyo').checked || document.getElementById('asesoria_juridica').checked || document.getElementById('capacitacion').checked || document.getElementById('tecnologias').checked || document.getElementById('participacion').checked || document.getElementById('simplificacion').checked || document.getElementById('tramites').checked || document.getElementById('creditos').checked || document.getElementById('impuestos').checked){
+	if(document.getElementById('asesoria_mercados').checked || document.getElementById('apoyo').checked || document.getElementById('asesoria_juridica').checked || document.getElementById('capacitacion').checked || document.getElementById('tecnologias').checked || document.getElementById('participacion').checked || document.getElementById('simplificacion').checked || document.getElementById('tramites').checked || document.getElementById('creditos').checked || document.getElementById('impuestos').checked){
 		document.getElementById('hddBeneficios').value = 1;
 	}else{
 		document.getElementById('hddBeneficios').value = "";
@@ -126,7 +126,7 @@ if ($retornoError) {
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="aviso">¿Cuáles de los siguientes beneficios o incentivos motivarían la formalización de los establecimientos? *</label>
 							<div class="col-sm-5">								
-<input type="checkbox" id="asesoria" name="asesoria" value=1 <?php if($information && $information["asesoria"]){echo "checked";} ?> onclick="valid_beneficios()"> Asesoría de mercados (local, nacional e internacional)<br>
+<input type="checkbox" id="asesoria_mercados" name="asesoria_mercados" value=1 <?php if($information && $information["asesoria_mercados"]){echo "checked";} ?> onclick="valid_beneficios()"> Asesoría de mercados (local, nacional e internacional)<br>
 <input type="checkbox" id="apoyo" name="apoyo" value=1 <?php if($information && $information["apoyo"]){echo "checked";} ?> onclick="valid_beneficios()"> Apoyo en solución de conflictos<br>
 <input type="checkbox" id="asesoria_juridica" name="asesoria_juridica" value=1 <?php if($information && $information["asesoria_juridica"]){echo "checked";} ?> onclick="valid_beneficios()"> Asesoría jurídica gratita<br>
 <input type="checkbox" id="capacitacion" name="capacitacion" value=1 <?php if($information && $information["capacitacion"]){echo "checked";} ?> onclick="valid_beneficios()"> Capacitación gratuita<br>
@@ -141,7 +141,7 @@ if ($retornoError) {
 $valorBeneficios = "";
 if($information)
 {
-	if($information["asesoria"] || $information["apoyo"] || $information["asesoria_juridica"] || $information["capacitacion"] || $information["tecnologias"] || $information["participacion"] || $information["simplificacion"] || $information["tramites"] || $information["creditos"] || $information["impuestos"] )
+	if($information["asesoria_mercados"] || $information["apoyo"] || $information["asesoria_juridica"] || $information["capacitacion"] || $information["tecnologias"] || $information["participacion"] || $information["simplificacion"] || $information["tramites"] || $information["creditos"] || $information["impuestos"] )
 	{
 		$valorBeneficios = 1;
 	}

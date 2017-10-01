@@ -37,7 +37,7 @@ $(document).ready(function () {
 
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	<h4 class="modal-title" id="exampleModalLabel">Identificación del establecimiento y propietario
+	<h4 class="modal-title" id="exampleModalLabel">Identificación del establecimiento y/o propietario
 	<br><small>Adicionar/Editar</small>
 	</h4>
 </div>
@@ -54,7 +54,7 @@ $(document).ready(function () {
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="form-group text-left">
-					<label class="control-label" for="nombre">Nombre comercial : *</label>
+					<label class="control-label" for="nombre">Nombre comercial, razón social o  nombre del propietario : *</label>
 					<input type="text" id="nombre" name="nombre" class="form-control" value="<?php echo $information?$information[0]["nombre_propietario"]:""; ?>" placeholder="Nombre del propietario" required >
 				</div>
 			</div>
@@ -87,10 +87,10 @@ $(document).ready(function () {
 				<div class="form-group text-left">
 						<label for="type" class="control-label">Ubicación : *</label>
 
-						<input id="viewaddress" name="viewaddress" class="form-control" type="text" disabled >
+						<input id="viewaddress" name="viewaddress" class="form-control" type="text" disabled value="<?php echo $information?$information[0]["address"]:""; ?>">
 						<input id="latitud" name="latitud" type="hidden">					
 						<input id="longitud" name="longitud" type="hidden">	
-						<input id="address" name="address" type="hidden">									
+						<input id="address" name="address" type="hidden" value="<?php echo $information?$information[0]["address"]:""; ?>">									
 						
 				</div>
 			</div>
@@ -203,6 +203,8 @@ $(document).ready(function () {
 	</form>
 </div>
 
+
+<?php if(!$information){ ?>
   <script>
     // The following example creates complex markers to indicate beaches near
 	// Sydney, NSW, Australia. Note that the anchor is set to (0,32) to correspond
@@ -327,3 +329,5 @@ error("Geocoding fallo debido a : " + status);
 	<script async defer		
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDt__a_n1IUtBPqj9ntMD5cNG8gYlcovWM&libraries=places&callback=initMap">
 	</script>
+	
+<?php } ?>

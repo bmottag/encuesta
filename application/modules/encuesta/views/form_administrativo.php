@@ -32,6 +32,24 @@ $(document).ready(function () {
             }
         });
     });
+	
+    $('#estado_actual').change(function () {
+        $('#estado_actual option:selected').each(function () {
+            var estado_actual = $('#estado_actual').val();
+            if (estado_actual == 1) {
+				$("#div_terminar").css("display", "inline");
+				$('#establecimiento').val("");
+				$('#tiempo').val("");
+				$('#rut').val("");
+            } else {
+				$("#div_terminar").css("display", "none");
+				$('#establecimiento').val("");
+				$('#tiempo').val("");
+				$('#rut').val("");
+            }
+        });
+    });
+	
     
 });
 </script>
@@ -118,14 +136,14 @@ if ($retornoError) {
 						</div>	
 
 <?php 
-	$mostrar2 = "inline";
-	if($information && $information["matricula"]==1){
-		$mostrar2 = "none";
+	$mostrar2 = "none";
+	if($information && $information["matricula"]!=1){
+		$mostrar2 = "inline";
 	}
 ?>						
 
 						<div class="form-group" id="div_porqueno" style="display: <?php echo $mostrar2; ?>">
-							<label class="col-sm-4 control-label" for="porqueno">¿Por qué no cuenta Matricula Mercantil? *</label>
+							<label class="col-sm-4 control-label" for="porqueno">¿Por qué no cuenta con Matricula Mercantil? *</label>
 							<div class="col-sm-5">
 								<select name="porqueno" id="porqueno" class="form-control">
 									<option value=''>Select...</option>
@@ -165,10 +183,18 @@ if ($retornoError) {
 							</div>
 						</div>
 
+<?php 
+	$mostrarTerminar = "none";
+	if($information && $information["estado_actual"]==1){
+		$mostrarTerminar = "inline";
+	}
+?>
+			<div id="div_terminar" style="display: <?php echo $mostrarTerminar; ?>">
+			
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="establecimiento">Este establecimiento es: *</label>
 							<div class="col-sm-5">
-								<select name="establecimiento" id="establecimiento" class="form-control" required>
+								<select name="establecimiento" id="establecimiento" class="form-control">
 									<option value=''>Select...</option>
 									<option value=1 <?php if($information["establecimiento"] == 1) { echo "selected"; }  ?>>Único</option>
 									<option value=2 <?php if($information["establecimiento"] == 2) { echo "selected"; }  ?>>Principal</option>
@@ -182,7 +208,7 @@ if ($retornoError) {
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="tiempo">¿Cuánto tiempo lleva funcionando el establecimiento? (Esperar respuesta) *</label>
 							<div class="col-sm-5">
-								<select name="tiempo" id="tiempo" class="form-control" required>
+								<select name="tiempo" id="tiempo" class="form-control">
 									<option value=''>Select...</option>
 									<option value=1 <?php if($information["tiempo"] == 1) { echo "selected"; }  ?>>Menos de 6 meses</option>
 									<option value=2 <?php if($information["tiempo"] == 2) { echo "selected"; }  ?>>Entre 6 meses y  12 meses</option>
@@ -197,14 +223,16 @@ if ($retornoError) {
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="rut">¿Este establecimiento cuenta con Registro Único Tributario RUT? *</label>
 							<div class="col-sm-5">
-								<select name="rut" id="rut" class="form-control" required>
+								<select name="rut" id="rut" class="form-control" >
 									<option value=''>Select...</option>
 									<option value=1 <?php if($information["rut"] == 1) { echo "selected"; }  ?>>Si</option>
 									<option value=2 <?php if($information["rut"] == 2) { echo "selected"; }  ?>>No</option>
 									<option value=3 <?php if($information["rut"] == 3) { echo "selected"; }  ?>>NS/NR</option>
 								</select>
 							</div>
-						</div>																	
+						</div>
+
+			</div>
 
 				</div>
 			</div>

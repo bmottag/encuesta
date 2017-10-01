@@ -18,6 +18,15 @@ jQuery.validator.addMethod("campoPorqueno", function(value, element, param) {
 	}
 }, "Este campo es requerido.");
 
+jQuery.validator.addMethod("campoTerminar", function(value, element, param) {
+	var estado_actual = $('#estado_actual').val();
+	if (estado_actual == 1 && value == "") {
+		return false;
+	}else{
+		return true;
+	}
+}, "Este campo es requerido.");
+
 $("#cual").convertirMayuscula();
 			
 	$( "#form" ).validate( {
@@ -26,7 +35,10 @@ $("#cual").convertirMayuscula();
 			aviso:				{ required: true },
 			matricula:			{ required: true },
 			porqueno:			{ campoPorqueno: "#matricula" },
-			cual:				{ maxlength: 120, campoCual: "#porqueno" }
+			cual:				{ maxlength: 120, campoCual: "#porqueno" },
+			establecimiento:	{ campoTerminar: "#estado_actual" },
+			tiempo:				{ campoTerminar: "#estado_actual" },
+			rut:				{ campoTerminar: "#estado_actual" }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {

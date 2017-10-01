@@ -67,7 +67,7 @@ $(function(){
 					</div>
 				
 					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modal" id="<?php echo $infoManzana[0]['id_manzana']; ?>">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Identificación del Establecimiento y Propietario
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Identificación del Establecimiento y/o Propietario
 					</button><br>
 <?php
 $retornoExito = $this->session->flashdata('retornoExito');
@@ -102,7 +102,7 @@ if ($retornoError) {
 							<tr>
 								<th class="text-center">No. formulario</th>
 								<th class="text-center">Editar</th>
-								<th class="text-center">Nombre comercial</th>
+								<th class="text-center">Nombre comercial, razón social o  nombre del propietario</th>
 								<th class="text-center">Dirección del establecimiento</th>
 								<th class="text-center">Teléfono y/o celular del establecimiento</th>
 								<th class="text-center">Tipo Documento</th>

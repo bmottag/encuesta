@@ -29,12 +29,12 @@ jQuery.validator.addMethod("campoNit", function(value, element, param) {
 	$( "#form" ).validate( {
 		rules: {
 			nombre: 			{ required: true, minlength: 3, maxlength:100 },
-			address2: 			{ minlength: 4, maxlength:100},
+			address2: 			{ required: true, minlength: 4, maxlength:100},
 			documento: 			{ number: true, minlength: 4, maxlength:12, campoTipoDoc: "#tipo_documento" },
-			documentosConfirm: 	{ equalTo: "#documento" },
-			telefono:	 		{ minlength: 4, maxlength:40  },
-			digito:		 		{ number: true, maxlength:1, campoNit: "#tipo_documento" },
-			digitoConfirm: 		{ equalTo: "#digito" },
+			documentosConfirm: 	{ equalTo: "#documento", campoTipoDoc: "#tipo_documento" },
+			telefono:	 		{ required: true, minlength: 4, maxlength:40  },
+			digito:		 		{ campoNit: "#tipo_documento", number: true, maxlength:1},
+			digitoConfirm: 		{ campoNit: "#tipo_documento", equalTo: "#digito"},
 			address:		{ required: true }
 		},
 		errorElement: "em",

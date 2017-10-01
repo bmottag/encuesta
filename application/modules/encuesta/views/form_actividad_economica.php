@@ -22,6 +22,25 @@ $(document).ready(function () {
 
 <div id="page-wrapper">
 	<br>
+<!-- validaciones capitulo 6 -->
+<?php
+$bandera = false;
+if($information_form1 && $information_form1['estado_actual'] == 1){
+	$bandera = true;
+}
+?>
+
+<?php if(!$bandera){ ?>
+	<div class="col-lg-12">	
+		<div class="alert alert-success ">
+			<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			Usted termino la encuesta gracias por su tiempo.
+<br><br>
+<a class="btn btn-success" href=" <?php echo base_url().'encuesta/establecimiento/' . $information_establecimiento[0]['fk_id_manzana']; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar a lista de establecimientos </a> 
+<a class="btn btn-success" href=" <?php echo base_url().'encuesta/manzana/'; ?> "> Regresar a lista de manzanas <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a> 
+		</div>
+	</div>
+<?php }else{ ?>
 
 <form  name="form" id="form" class="form-horizontal" method="post"  >
 	<input type="hidden" id="hddIdentificador" name="hddIdentificador" value="<?php echo $idFormulario; ?>"/>
@@ -140,7 +159,7 @@ if ($retornoError) {
 									<option value=''>Select...</option>
 									<option value=1 <?php if($information["lugar"] == 1) { echo "selected"; }  ?>>Propio</option>
 									<option value=2 <?php if($information["lugar"] == 2) { echo "selected"; }  ?>>Arrendado</option>
-									<option value=3 <?php if($information["lugar"] == 3) { echo "selected"; }  ?>>Usufruto</option>
+									<option value=3 <?php if($information["lugar"] == 3) { echo "selected"; }  ?>>Usufructo</option>
 								</select>
 							</div>
 						</div>																	
@@ -184,6 +203,6 @@ if ($retornoError) {
 
 	
 </form>
-
+<?php } ?>
 </div>
 <!-- /#page-wrapper -->
