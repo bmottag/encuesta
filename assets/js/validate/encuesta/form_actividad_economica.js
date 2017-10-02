@@ -9,6 +9,7 @@ jQuery.validator.addMethod("campoCual", function(value, element, param) {
 	}
 }, "Este campo es requerido.");
 
+$("#numero_personas").bloquearTexto().maxlength(3);
 $("#cual").convertirMayuscula();
 			
 	$( "#form" ).validate( {

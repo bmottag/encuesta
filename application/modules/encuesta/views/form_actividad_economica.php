@@ -27,6 +27,9 @@ $(document).ready(function () {
 $bandera = false;
 if($information_form1 && $information_form1['estado_actual'] == 1){
 	$bandera = true;
+	if($information_form1['establecimiento'] == 3 || $information_form1['establecimiento'] == 4){
+		$bandera = false;
+	}
 }
 ?>
 

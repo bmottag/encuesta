@@ -33,6 +33,7 @@ $(document).ready(function () {
         });
     });
 	
+	//validacion para terminar formulario
     $('#estado_actual').change(function () {
         $('#estado_actual option:selected').each(function () {
             var estado_actual = $('#estado_actual').val();
@@ -44,6 +45,22 @@ $(document).ready(function () {
             } else {
 				$("#div_terminar").css("display", "none");
 				$('#establecimiento').val("");
+				$('#tiempo').val("");
+				$('#rut').val("");
+            }
+        });
+    });
+	
+	//validacion para terminar formulario
+    $('#establecimiento').change(function () {
+        $('#establecimiento option:selected').each(function () {
+            var establecimiento = $('#establecimiento').val();
+            if (establecimiento == 1 || establecimiento == 2) {
+				$("#div_terminar2").css("display", "inline");
+				$('#tiempo').val("");
+				$('#rut').val("");
+            } else {
+				$("#div_terminar2").css("display", "none");
 				$('#tiempo').val("");
 				$('#rut').val("");
             }
@@ -204,7 +221,14 @@ if ($retornoError) {
 							</div>
 						</div>
 
-
+<?php 
+	$mostrarTerminar2 = "none";
+	if($information && ($information["establecimiento"]==1 || $information["establecimiento"]==2)){
+		$mostrarTerminar2 = "inline";
+	}
+?>
+						
+				<div id="div_terminar2" style="display: <?php echo $mostrarTerminar2; ?>">
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="tiempo">¿Cuánto tiempo lleva funcionando el establecimiento? (Esperar respuesta) *</label>
 							<div class="col-sm-5">
@@ -231,7 +255,7 @@ if ($retornoError) {
 								</select>
 							</div>
 						</div>
-
+				</div>
 			</div>
 
 				</div>

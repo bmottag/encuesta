@@ -95,6 +95,9 @@ if ($retornoError) {
 $banderaTerminar = false;
 if($information_form1 && $information_form1['estado_actual'] == 1){
 	$banderaTerminar = true;
+	if($information_form1['establecimiento'] == 3 || $information_form1['establecimiento'] == 4){
+		$banderaTerminar = false;
+	}
 }
 
 ?>

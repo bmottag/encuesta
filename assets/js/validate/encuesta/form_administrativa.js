@@ -27,6 +27,16 @@ jQuery.validator.addMethod("campoTerminar", function(value, element, param) {
 	}
 }, "Este campo es requerido.");
 
+jQuery.validator.addMethod("campoTerminar2", function(value, element, param) {
+	var estado_actual = $('#estado_actual').val();
+	var establecimiento = $('#establecimiento').val();
+	if (estado_actual == 1 && value == "" && (establecimiento == 1 || establecimiento == 2 )) {
+		return false;
+	}else{
+		return true;
+	}
+}, "Este campo es requerido.");
+
 $("#cual").convertirMayuscula();
 			
 	$( "#form" ).validate( {
@@ -37,8 +47,8 @@ $("#cual").convertirMayuscula();
 			porqueno:			{ campoPorqueno: "#matricula" },
 			cual:				{ maxlength: 120, campoCual: "#porqueno" },
 			establecimiento:	{ campoTerminar: "#estado_actual" },
-			tiempo:				{ campoTerminar: "#estado_actual" },
-			rut:				{ campoTerminar: "#estado_actual" }
+			tiempo:				{ campoTerminar2: "#estado_actual, #establecimiento" },
+			rut:				{ campoTerminar2: "#estado_actual, #establecimiento" }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {
