@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.0.10.18
 -- https://www.phpmyadmin.net
 --
@@ -2714,3 +2714,66 @@ INSERT INTO `usuario` (`id_usuario`, `numero_documento`, `tipo_documento`, `nomb
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+---------------------------------------------------------------------------------------------
+
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 02-10-2017 a las 17:44:32
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.21
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de datos: `ceiv-ccv`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `form_reemplazo`
+--
+
+CREATE TABLE `form_reemplazo` (
+  `id_reemplazo` int(10) NOT NULL,
+  `fk_id_usuario` int(10) NOT NULL,
+  `fk_id_sector` varchar(10) NOT NULL,
+  `fk_id_seccion` varchar(10) NOT NULL,
+  `fk_id_manzana` varchar(10) NOT NULL,
+  `fk_id_comuna` varchar(10) NOT NULL,
+  `id_reemplazado` varchar(10) NOT NULL,
+  `id_reemplazante` varchar(10) NOT NULL,
+  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `form_reemplazo`
+--
+ALTER TABLE `form_reemplazo`
+  ADD PRIMARY KEY (`id_reemplazo`),
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`),
+  ADD KEY `fk_id_sector` (`fk_id_sector`),
+  ADD KEY `fk_id_seccion` (`fk_id_seccion`),
+  ADD KEY `fk_id_manzana` (`fk_id_manzana`),
+  ADD KEY `fk_id_comuna` (`fk_id_comuna`),
+  ADD KEY `id_reemplazado` (`id_reemplazado`),
+  ADD KEY `id_reemplazante` (`id_reemplazante`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `form_reemplazo`
+--
+ALTER TABLE `form_reemplazo`
+  MODIFY `id_reemplazo` int(10) NOT NULL AUTO_INCREMENT;
