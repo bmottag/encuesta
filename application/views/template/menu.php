@@ -103,6 +103,10 @@ if($userRol==1){ //ADMIN
                         <li>
 							<a href="<?php echo base_url("encuesta/manzana"); ?>"><i class="fa fa-dashboard fa-fw"></i> Formularios</a>
                         </li>
+
+                        <li>
+							<a href="<?php echo base_url("reemplazo/reemplazo"); ?>"><i class="fa fa-retweet fa-fw"></i> Reemplazos</a>
+                        </li>
 						
 
                     </ul>
