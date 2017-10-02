@@ -208,6 +208,7 @@
 		public function get_form_actividad_economica($arrDatos) 
 		{
 				$this->db->select();
+				$this->db->join('param_actividad_economica P', 'P.id_actividad_economica = A.division', 'INNER');
 				if (array_key_exists("idFormulario", $arrDatos)) {
 					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
 				}
@@ -235,11 +236,12 @@
 			$data = array(
 				'fk_id_formulario' => $this->input->post('hddIdentificador'),
 				'fk_id_usuario' => $this->session->userdata("id"),
-				'actividad' => $this->input->post('actividad'),
+				'fk_id_seccion' => $this->input->post('actividad'),
 				'numero_personas' => $this->input->post('numero_personas'),
 				'seguridad_social' => $this->input->post('seguridad_social'),
 				'lugar' => $this->input->post('lugar'),
-				'cual' => $this->input->post('cual')
+				'descripcion' => $this->input->post('descripcion'),
+				'division' => $this->input->post('division')
 			);
 			
 			//revisar si es para adicionar o editar
@@ -655,6 +657,49 @@
 					return false;
 				}
 		}
+		
+		/**
+		 * Lista de actividades economicas
+		 * @since 1/10/2017
+		 */
+		public function get_lista_actividad_economica() 
+		{		
+				$this->db->select('distinct(id_seccion), descripcion_seccion_app');
+				$query = $this->db->get('param_actividad_economica P');
+
+				if ($query->num_rows() > 0) {
+					return $query->result_array();
+				} else {
+					return false;
+				}
+		}
+		
+		/**
+		 * DIvision by actividad
+		 * @since 2/10/2017
+		 */
+		public function get_division_by($arrDatos)
+		{			
+				$lista = array();
+				$this->db->select("");
+				if (array_key_exists("idActividad", $arrDatos)) {
+					$this->db->where('id_seccion', $arrDatos["idActividad"]);
+				}
+
+				$query = $this->db->get('param_actividad_economica');
+					
+				if ($query->num_rows() > 0) {
+					$i = 0;
+					foreach ($query->result() as $row) {
+						$lista[$i]["ID"] = $row->id_actividad_economica;
+						$lista[$i]["DESCRIPCION"] = $row->descripcion_division_app;
+						$i++;
+					}
+				}
+				$this->db->close();
+				return $lista;
+		}
+
 
 
 

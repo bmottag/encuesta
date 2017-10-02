@@ -23,6 +23,7 @@
 						<option value="EC" <?php if($information[0]["resultado_encuesta"] == "EC") { echo "selected"; }  ?>>Encuesta completa</option>
 						<option value="EI" <?php if($information[0]["resultado_encuesta"] == "EI") { echo "selected"; }  ?>>Encuesta incompleta</option>
 						<option value="R" <?php if($information[0]["resultado_encuesta"] == "R") { echo "selected"; }  ?>>Rechazo</option>
+						<option value="FU" <?php if($information[0]["resultado_encuesta"] == "FU") { echo "selected"; }  ?>>Fuera de universo</option>
 					</select>
 				</div>
 			</div>

@@ -104,6 +104,9 @@ if ($retornoError) {
 										case "R":
 											echo "Rechazo";
 											break;
+										case "FU":
+											echo "Fuera de universo";
+											break;
 									}
 									
 									echo "</td>";

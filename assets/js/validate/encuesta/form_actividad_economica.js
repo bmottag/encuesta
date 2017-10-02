@@ -1,24 +1,17 @@
 $( document ).ready( function () {
 
-jQuery.validator.addMethod("campoCual", function(value, element, param) {
-	var actividad = $('#actividad').val();
-	if (actividad == 27 && value == "") {
-		return false;
-	}else{
-		return true;
-	}
-}, "Este campo es requerido.");
 
 $("#numero_personas").bloquearTexto().maxlength(3);
-$("#cual").convertirMayuscula();
+$("#descripcion").convertirMayuscula();
 			
 	$( "#form" ).validate( {
 		rules: {
 			actividad:			{ required: true },
+			division:			{ required: true },
+			descripcion:		{ required: true },
 			numero_personas:	{ required: true, number: true, maxlength:3 },
 			seguridad_social:	{ required: true },
-			lugar:				{ required: true },
-			cual:				{ maxlength: 120, campoCual: "#actividad" }
+			lugar:				{ required: true }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {

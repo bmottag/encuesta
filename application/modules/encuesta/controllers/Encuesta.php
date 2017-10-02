@@ -242,7 +242,9 @@ class Encuesta extends MX_Controller {
 			);				
 			$data['information'] = $this->encuesta_model->get_form_actividad_economica($arrParam);
 			
-			$data['information_form1'] = $this->encuesta_model->get_form_administrativa($arrParam);			
+			$data['information_form1'] = $this->encuesta_model->get_form_administrativa($arrParam);	
+
+			$data['lista_actividad_economica'] = $this->encuesta_model->get_lista_actividad_economica();				
 
 			if ($data['information']) { 
 				$data["idFormActividadEconomica"] = $data['information']['id_actividad_economica'];
@@ -621,6 +623,26 @@ class Encuesta extends MX_Controller {
 
 			echo json_encode($data);
     }
+	
+	/**
+	 * Lista de divisiones por actividad
+     * @since 2/10/2017
+	 */
+    public function divisionList()
+	{
+			header("Content-Type: text/plain; charset=utf-8"); //Para evitar problemas de acentos
+
+			$arrParam['idActividad'] = $this->input->post('identificador');
+			$lista = $this->encuesta_model->get_division_by($arrParam);
+
+			echo "<option value=''>Select...</option>";
+			if ($lista) {
+				foreach ($lista as $fila) {
+					echo "<option value='" . $fila["ID"] . "' >" . $fila["DESCRIPCION"] . "</option>";
+				}
+			}
+    }
+
 
 	
 	
