@@ -45,10 +45,18 @@ $(function(){
 					<i class="fa fa-users"></i> CONTROL DE LA ENCUESTA
 				</div>
 				<div class="panel-body">
-								
+
+	<div class="col-lg-12">
+		<div class="alert alert-danger ">
+			<span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+			Relacione a continuación el resultado de la encuesta.
+		</div>
+	</div>
+				
 					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modal" id="<?php echo $idFormulario; ?>">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Control
 					</button><br>
+
 <?php
 $retornoExito = $this->session->flashdata('retornoExito');
 if ($retornoExito) {
