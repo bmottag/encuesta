@@ -208,7 +208,7 @@
 		public function get_form_actividad_economica($arrDatos) 
 		{
 				$this->db->select();
-				$this->db->join('param_actividad_economica P', 'P.id_actividad_economica = A.division', 'INNER');
+				$this->db->join('param_actividad_economica P', 'P.id_param_actividad_economica = A.division', 'LEFT');
 				if (array_key_exists("idFormulario", $arrDatos)) {
 					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
 				}
@@ -691,7 +691,7 @@
 				if ($query->num_rows() > 0) {
 					$i = 0;
 					foreach ($query->result() as $row) {
-						$lista[$i]["ID"] = $row->id_actividad_economica;
+						$lista[$i]["ID"] = $row->id_param_actividad_economica;
 						$lista[$i]["DESCRIPCION"] = $row->descripcion_division_app;
 						$i++;
 					}

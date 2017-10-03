@@ -1,5 +1,14 @@
 $( document ).ready( function () {
 
+//nueva regla para terminar la encuesta
+jQuery.validator.addMethod("campoTerminar", function(value, element, param) {
+	var actividad = $('#actividad').val();
+	if (actividad != 16 && actividad != 17 && value == "") {
+		return false;
+	}else{
+		return true;
+	}
+}, "Este campo es requerido.");
 
 $("#numero_personas").bloquearTexto().maxlength(3);
 $("#descripcion").convertirMayuscula();
@@ -7,11 +16,11 @@ $("#descripcion").convertirMayuscula();
 	$( "#form" ).validate( {
 		rules: {
 			actividad:			{ required: true },
-			division:			{ required: true },
-			descripcion:		{ required: true },
-			numero_personas:	{ required: true, number: true, maxlength:3 },
-			seguridad_social:	{ required: true },
-			lugar:				{ required: true }
+			division:			{ campoTerminar: "#actividad" },
+			descripcion:		{ campoTerminar: "#actividad" },
+			numero_personas:	{ campoTerminar: "#actividad", number: true, maxlength:3 },
+			seguridad_social:	{ campoTerminar: "#actividad" },
+			lugar:				{ campoTerminar: "#actividad" }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {
@@ -21,10 +30,10 @@ $("#descripcion").convertirMayuscula();
 
 		},
 		highlight: function ( element, errorClass, validClass ) {
-			$( element ).parents( ".col-sm-5" ).addClass( "has-error" ).removeClass( "has-success" );
+			$( element ).parents( ".col-sm-8" ).addClass( "has-error" ).removeClass( "has-success" );
 		},
 		unhighlight: function (element, errorClass, validClass) {
-			$( element ).parents( ".col-sm-5" ).addClass( "has-success" ).removeClass( "has-error" );
+			$( element ).parents( ".col-sm-8" ).addClass( "has-success" ).removeClass( "has-error" );
 		},
 		submitHandler: function (form) {
 			return true;

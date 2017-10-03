@@ -1,6 +1,34 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/form_actividad_economica.js"); ?>"></script>
 <script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/ajaxActividad.js"); ?>"></script>
 
+<script>
+$(document).ready(function () {
+	
+	//validacion para terminar formulario
+    $('#actividad').change(function () {
+        $('#actividad option:selected').each(function () {
+            var actividad = $('#actividad').val();
+            if (actividad != 16 && actividad != 17) {
+				$("#div_terminar").css("display", "inline");
+				$('#division').val("");
+				$('#descripcion').val("");
+				$('#numero_personas').val("");
+				$('#seguridad_social').val("");
+				$('#lugar').val("");
+            } else {
+				$("#div_terminar").css("display", "none");
+				$('#division').val("");
+				$('#descripcion').val("");
+				$('#numero_personas').val("");
+				$('#seguridad_social').val("");
+				$('#lugar').val("");
+            }
+        });
+    });
+	
+    
+});
+</script>
 
 <div id="page-wrapper">
 	<br>
@@ -81,23 +109,30 @@ if ($retornoError) {
 							</div>
 						</div>
 
-
+<?php 
+//los siguientes campos quedan ocultos si en la pregunta anterior se selecciona la respuesta 16 y 17
+	$mostrarTerminar = "none";
+	if($information && $information["fk_id_seccion"]!=16 && $information["fk_id_seccion"]!=17){
+		$mostrarTerminar = "inline";
+	}
+?>
+			<div id="div_terminar" style="display: <?php echo $mostrarTerminar; ?>">
 
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="actividad">¿Detalle cuál es su actividad económica principal o que se dedica su establecimiento?*</label>
 							<div class="col-sm-8">
-					<select name="division" id="division" class="form-control" required>					
-						<?php if($information){ ?>
-						<option value=''>Select...</option>
-							<option value="<?php echo $information["division"]; ?>" selected><?php echo $information["descripcion_division_app"]; ?></option>
-						<?php } ?>					
-					</select>
+							<select name="division" id="division" class="form-control" >					
+								<?php if($information){ ?>
+								<option value=''>Select...</option>
+									<option value="<?php echo $information["division"]; ?>" selected><?php echo $information["descripcion_division_app"]; ?></option>
+								<?php } ?>					
+							</select>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="descripcion">Describa la actividad económica principal o la que se dedica el establecimiento *</label>					
-							<div class="col-sm-5">
+							<div class="col-sm-8">
 								<textarea id="descripcion" name="descripcion" class="form-control" rows="3" ><?php echo $information["descripcion"]; ?></textarea>
 							</div>
 						</div>
@@ -105,15 +140,15 @@ if ($retornoError) {
 						
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="numero_personas">¿Cuántas personas; incluido(a) usted, trabajan actualmente en el establecimiento? *</label>					
-							<div class="col-sm-5">
-								<input type="text" id="numero_personas" name="numero_personas" class="form-control" value="<?php echo $information?$information["numero_personas"]:""; ?>" placeholder="Número de personas" required >
+							<div class="col-sm-8">
+								<input type="text" id="numero_personas" name="numero_personas" class="form-control" value="<?php echo $information?$information["numero_personas"]:""; ?>" placeholder="Número de personas" >
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="seguridad_social">¿Cuantos de los trabajadores de este establecimiento; incluido(a) usted,  se encuentran afiliados a seguridad social? *</label>
-							<div class="col-sm-5">
-								<select name="seguridad_social" id="seguridad_social" class="form-control" required>
+							<div class="col-sm-8">
+								<select name="seguridad_social" id="seguridad_social" class="form-control">
 									<option value=''>Select...</option>
 									<option value=1 <?php if($information["seguridad_social"] == 1) { echo "selected"; }  ?>>Todos</option>
 									<option value=2 <?php if($information["seguridad_social"] == 2) { echo "selected"; }  ?>>Algunos</option>
@@ -124,15 +159,17 @@ if ($retornoError) {
 
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="lugar">El lugar donde funciona este establecimiento es:  *</label>
-							<div class="col-sm-5">
-								<select name="lugar" id="lugar" class="form-control" required>
+							<div class="col-sm-8">
+								<select name="lugar" id="lugar" class="form-control">
 									<option value=''>Select...</option>
 									<option value=1 <?php if($information["lugar"] == 1) { echo "selected"; }  ?>>Propio</option>
 									<option value=2 <?php if($information["lugar"] == 2) { echo "selected"; }  ?>>Arrendado</option>
 									<option value=3 <?php if($information["lugar"] == 3) { echo "selected"; }  ?>>Usufructo</option>
 								</select>
 							</div>
-						</div>																	
+						</div>
+
+			</div>
 
 
 				</div>
