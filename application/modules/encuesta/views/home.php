@@ -93,10 +93,17 @@ if ($retornoError) {
 <!-- validaciones capitulo 6 -->
 <?php
 $banderaTerminar = false;
+$banderaTerminar2 = false;
 if($information_form1 && $information_form1['estado_actual'] == 1){
 	$banderaTerminar = true;
 	if($information_form1['establecimiento'] == 3 || $information_form1['establecimiento'] == 4){
 		$banderaTerminar = false;
+	}else{
+	
+		if($information_form2 && $information_form2['fk_id_seccion'] != 16 && $information_form2['fk_id_seccion'] != 17){ //validacion formulario 2
+			$banderaTerminar2 = true;
+		}
+		
 	}
 }
 
@@ -113,6 +120,7 @@ if($information_form1 && $information_form1['estado_actual'] == 1){
 						</div>
 					</div>
 <br>					
+<?php if($banderaTerminar2){ //bandera para terminar encuesta de acuerdo a la respuesta del capitulo 2 ?>
 					<div class="row">
 						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_criticos/' . $idFormulario; ?>" class="btn <?php echo $boton_form3; ?> btn-block">
@@ -173,6 +181,8 @@ if($information_form4 && $information_form4['impuestos'] != 1){
 </a>
 						</div>
 					</div>
+
+<?php } ?>
 <?php } ?>
 <?php } ?>
 <br>
