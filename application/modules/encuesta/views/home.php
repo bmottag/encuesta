@@ -188,7 +188,7 @@ if($information_form4 && $information_form4['impuestos'] != 1){
 <br>
 					<div class="row">
 						<div class="col-lg-12">	
-<a href="<?php echo base_url(). 'encuesta/form_control/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<a href="<?php echo base_url(). 'encuesta/form_control/' . $idFormulario; ?>" class="btn btn-info btn-block">
 <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> 7. Capítulo Control de Encuesta
 </a>
 						</div>
