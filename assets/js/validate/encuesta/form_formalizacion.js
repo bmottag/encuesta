@@ -67,7 +67,7 @@ $( document ).ready( function () {
 							$("#div_guardado").css("display", "inline");
 							$('#btnSubmit').removeAttr('disabled');
 
-							var url = base_url + "encuesta/form_home/" + data.idFormulario;
+							var url = base_url + "encuesta/form_control/" + data.idFormulario;
 							$(location).attr("href", url);
 						}
 						else
