@@ -3,10 +3,21 @@ $( document ).ready( function () {
 //nueva regla para terminar la encuesta
 jQuery.validator.addMethod("campoTerminar", function(value, element, param) {
 	var actividad = $('#actividad').val();
-	if (actividad != 16 && actividad != 17 && value == "") {
+	if (actividad != 16 && actividad != 17 && actividad != 18 && value == "") {
 		return false;
 	}else{
 		return true;
+	}
+}, "Este campo es requerido.");
+
+//nueva regla para terminar la encuesta
+jQuery.validator.addMethod("campoTerminar2", function(value, element, param) {
+	var actividad = $('#actividad').val();
+	var numero_personas = $('#numero_personas').val();
+	if (actividad != 16 && actividad != 17 && actividad != 18 && numero_personas <= 9 && value == "") {
+		return false;
+	}else{
+			return true;
 	}
 }, "Este campo es requerido.");
 
@@ -19,8 +30,8 @@ $("#descripcion").convertirMayuscula();
 			division:			{ campoTerminar: "#actividad" },
 			descripcion:		{ campoTerminar: "#actividad" },
 			numero_personas:	{ campoTerminar: "#actividad", number: true, maxlength:3 },
-			seguridad_social:	{ campoTerminar: "#actividad" },
-			lugar:				{ campoTerminar: "#actividad" }
+			seguridad_social:	{ campoTerminar2: "#actividad, #numero_personas" },
+			lugar:				{ campoTerminar2: "#actividad, #numero_personas" }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {
@@ -83,7 +94,7 @@ $("#descripcion").convertirMayuscula();
 							$("#div_guardado").css("display", "inline");
 							$('#btnSubmit').removeAttr('disabled');
 
-							var url = base_url + "encuesta/form_criticos/" + data.idFormulario;
+							var url = base_url + "encuesta/" + data.redireccionamiento;
 							$(location).attr("href", url);
 						}
 						else

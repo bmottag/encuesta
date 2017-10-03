@@ -102,8 +102,12 @@ if($information_form1 && $information_form1['estado_actual'] == 1){
 		$banderaTerminar = false;
 	}else{
 	
-		if($information_form2 && $information_form2['fk_id_seccion'] != 16 && $information_form2['fk_id_seccion'] != 17){ //validacion formulario 2
+		if($information_form2 && $information_form2['fk_id_seccion'] != 16 && $information_form2['fk_id_seccion'] != 17 && $information_form2['fk_id_seccion'] != 18){ //validacion formulario 2
 			$banderaTerminar2 = true;
+			
+			if($information_form2['numero_personas']>9){
+				$banderaTerminar2 = false;
+			}
 		}
 		
 	}

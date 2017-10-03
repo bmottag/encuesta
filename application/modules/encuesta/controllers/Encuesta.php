@@ -279,10 +279,22 @@ class Encuesta extends MX_Controller {
 			$data = array();
 			
 			$idFormulario = $this->input->post('hddIdentificador');
-			$data["idFormulario"] = $idFormulario;
 
 			if($this->encuesta_model->add_form_actividad_economica()) 
 			{
+				//redireccionamiento del formulario
+				//si se termino la encuesta lo envio al formulario de control de lo contrario lo envio al siguiente formulario
+				$actividad =  $this->input->post('actividad');
+				$numero_personas =  $this->input->post('numero_personas');
+			
+				$data["redireccionamiento"] = "form_control/" . $idFormulario;
+				if($actividad != 16 && $actividad != 17 && $actividad != 18){
+					$data["redireccionamiento"] = "form_criticos/" . $idFormulario;
+					if($numero_personas > 9){
+						$data["redireccionamiento"] = "form_control/" . $idFormulario;
+					}
+				}
+				
 				$data["result"] = true;
 				$data["mensaje"] = "Se guardó la información con éxito.";
 				$this->session->set_flashdata('retornoExito', 'Se guardó la información con éxito.');

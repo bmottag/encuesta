@@ -8,7 +8,7 @@ $(document).ready(function () {
     $('#actividad').change(function () {
         $('#actividad option:selected').each(function () {
             var actividad = $('#actividad').val();
-            if (actividad != 16 && actividad != 17) {
+            if (actividad != 16 && actividad != 17 && actividad != 18) {
 				$("#div_terminar").css("display", "inline");
 				$('#division').val("");
 				$('#descripcion').val("");
@@ -24,6 +24,18 @@ $(document).ready(function () {
 				$('#lugar').val("");
             }
         });
+    });
+	
+	//validacion para terminar formulario
+    $('#numero_personas').blur(function () {
+            var numero_personas = $('#numero_personas').val();
+            if (numero_personas <= 9) {
+				$("#div_terminar2").css("display", "inline");
+            } else {
+				$("#div_terminar2").css("display", "none");
+				$('#seguridad_social').val("");
+				$('#lugar').val("");
+            }
     });
 	
     
@@ -112,8 +124,14 @@ if ($retornoError) {
 <?php 
 //los siguientes campos quedan ocultos si en la pregunta anterior se selecciona la respuesta 16 y 17
 	$mostrarTerminar = "none";
-	if($information && $information["fk_id_seccion"]!=16 && $information["fk_id_seccion"]!=17){
+	$mostrarTerminar2 = "none";
+	if($information && $information["fk_id_seccion"]!=16 && $information["fk_id_seccion"]!=17 && $information["fk_id_seccion"]!=18){
 		$mostrarTerminar = "inline";
+		
+		if($information["numero_personas"]<=9){
+			$mostrarTerminar2 = "inline";
+		}
+		
 	}
 ?>
 			<div id="div_terminar" style="display: <?php echo $mostrarTerminar; ?>">
@@ -144,7 +162,9 @@ if ($retornoError) {
 								<input type="text" id="numero_personas" name="numero_personas" class="form-control" value="<?php echo $information?$information["numero_personas"]:""; ?>" placeholder="Número de personas" >
 							</div>
 						</div>
-						
+					
+					
+				<div id="div_terminar2" style="display: <?php echo $mostrarTerminar2; ?>">
 						<div class="form-group">
 							<label class="col-sm-4 control-label" for="seguridad_social">¿Cuantos de los trabajadores de este establecimiento; incluido(a) usted,  se encuentran afiliados a seguridad social? *</label>
 							<div class="col-sm-8">
@@ -169,6 +189,7 @@ if ($retornoError) {
 							</div>
 						</div>
 
+					</div>
 			</div>
 
 
