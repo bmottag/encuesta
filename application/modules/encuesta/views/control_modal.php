@@ -33,7 +33,7 @@
 			<div class="col-sm-12">
 				<div class="form-group text-left">
 					<label class="control-label" for="observaciones">Observaciones : *</label>
-					<textarea id="observaciones" name="observaciones" class="form-control" rows="3"></textarea>
+					<textarea id="observaciones" name="observaciones" class="form-control" rows="3"><?php echo $information[0]["observaciones"]; ?></textarea>
 				</div>
 			</div>
 		</div>
@@ -51,7 +51,7 @@
 			<div class="col-sm-12">
 				<div class="form-group text-left">
 					<label class="control-label" for="date">Fecha : *</label>
-						<input type="text" class="form-control" id="date" name="date" value="" placeholder="Fecha" required />	
+						<input type="text" class="form-control" id="date" name="date" value="<?php echo $information[0]["fecha"]; ?>" placeholder="Fecha" required />	
 				</div>
 			</div>
 		</div>
