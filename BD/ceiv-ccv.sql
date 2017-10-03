@@ -1,11 +1,11 @@
 ﻿-- phpMyAdmin SQL Dump
--- version 4.0.10.18
--- https://www.phpmyadmin.net
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 02-10-2017 a las 09:35:45
--- Versión del servidor: 5.6.36-cll-lve
--- Versión de PHP: 5.6.30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 03-10-2017 a las 04:22:49
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `ceiv-ccv`
+-- Base de datos: `encuesta`
 --
 
 -- --------------------------------------------------------
@@ -26,8 +26,8 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `form_actividad_economica`
 --
 
-CREATE TABLE IF NOT EXISTS `form_actividad_economica` (
-  `id_actividad_economica` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `form_actividad_economica` (
+  `id_actividad_economica` int(10) NOT NULL,
   `fk_id_formulario` int(10) NOT NULL,
   `fk_id_usuario` int(10) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -36,11 +36,8 @@ CREATE TABLE IF NOT EXISTS `form_actividad_economica` (
   `seguridad_social` varchar(1) NOT NULL,
   `lugar` varchar(1) NOT NULL,
   `descripcion` text,
-  `division` int(1) NOT NULL,
-  PRIMARY KEY (`id_actividad_economica`),
-  KEY `fk_id_formulario` (`fk_id_formulario`),
-  KEY `fk_id_usuario` (`fk_id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `division` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -48,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `form_actividad_economica` (
 -- Estructura de tabla para la tabla `form_administrativa`
 --
 
-CREATE TABLE IF NOT EXISTS `form_administrativa` (
-  `id_administrativa` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `form_administrativa` (
+  `id_administrativa` int(10) NOT NULL,
   `fk_id_formulario` int(10) NOT NULL,
   `fk_id_usuario` int(10) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -61,11 +58,8 @@ CREATE TABLE IF NOT EXISTS `form_administrativa` (
   `establecimiento` varchar(1) NOT NULL,
   `tiempo` varchar(1) NOT NULL,
   `rut` varchar(1) NOT NULL,
-  `cual` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id_administrativa`),
-  KEY `fk_id_formulario` (`fk_id_formulario`),
-  KEY `fk_id_usuario` (`fk_id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Formulario de captura, la llave principal es ID_formulario' AUTO_INCREMENT=1 ;
+  `cual` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Formulario de captura, la llave principal es ID_formulario';
 
 -- --------------------------------------------------------
 
@@ -73,15 +67,13 @@ CREATE TABLE IF NOT EXISTS `form_administrativa` (
 -- Estructura de tabla para la tabla `form_control`
 --
 
-CREATE TABLE IF NOT EXISTS `form_control` (
-  `id_control` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `form_control` (
+  `id_control` int(10) NOT NULL,
   `fk_id_formulario` int(10) NOT NULL,
   `fecha` date NOT NULL,
   `resultado_encuesta` varchar(2) NOT NULL,
-  `observaciones` text NOT NULL,
-  PRIMARY KEY (`id_control`),
-  KEY `fk_id_formulario` (`fk_id_formulario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `observaciones` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -89,8 +81,8 @@ CREATE TABLE IF NOT EXISTS `form_control` (
 -- Estructura de tabla para la tabla `form_criticos`
 --
 
-CREATE TABLE IF NOT EXISTS `form_criticos` (
-  `id_criticos` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `form_criticos` (
+  `id_criticos` int(10) NOT NULL,
   `fk_id_formulario` int(10) NOT NULL,
   `fk_id_usuario` int(10) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -103,11 +95,8 @@ CREATE TABLE IF NOT EXISTS `form_criticos` (
   `ventas` varchar(2) DEFAULT NULL,
   `proveedores` varchar(2) DEFAULT NULL,
   `otros` varchar(2) DEFAULT NULL,
-  `cuales` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id_criticos`),
-  KEY `fk_id_formulario` (`fk_id_formulario`),
-  KEY `fk_id_usuario` (`fk_id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `cuales` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -115,8 +104,8 @@ CREATE TABLE IF NOT EXISTS `form_criticos` (
 -- Estructura de tabla para la tabla `form_establecimiento`
 --
 
-CREATE TABLE IF NOT EXISTS `form_establecimiento` (
-  `id_establecimiento` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `form_establecimiento` (
+  `id_establecimiento` int(10) NOT NULL,
   `nombre_propietario` varchar(150) NOT NULL,
   `direccion` varchar(100) NOT NULL,
   `telefono` varchar(40) NOT NULL,
@@ -128,11 +117,8 @@ CREATE TABLE IF NOT EXISTS `form_establecimiento` (
   `digito` varchar(10) DEFAULT NULL,
   `latitud` double NOT NULL,
   `longitud` double NOT NULL,
-  `address` text NOT NULL,
-  PRIMARY KEY (`id_establecimiento`),
-  KEY `fk_id_usuario` (`fk_id_usuario`),
-  KEY `fk_id_manzana` (`fk_id_manzana`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `address` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -140,8 +126,8 @@ CREATE TABLE IF NOT EXISTS `form_establecimiento` (
 -- Estructura de tabla para la tabla `form_financiera`
 --
 
-CREATE TABLE IF NOT EXISTS `form_financiera` (
-  `id_financiera` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `form_financiera` (
+  `id_financiera` int(10) NOT NULL,
   `fk_id_formulario` int(10) NOT NULL,
   `fk_id_usuario` int(10) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -154,11 +140,8 @@ CREATE TABLE IF NOT EXISTS `form_financiera` (
   `iso` varchar(3) DEFAULT NULL,
   `otros` varchar(3) DEFAULT NULL,
   `cuales` varchar(200) DEFAULT NULL,
-  `impuestos` varchar(1) DEFAULT NULL,
-  PRIMARY KEY (`id_financiera`),
-  KEY `fk_id_formulario` (`fk_id_formulario`),
-  KEY `fk_id_usuario` (`fk_id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `impuestos` varchar(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -166,8 +149,8 @@ CREATE TABLE IF NOT EXISTS `form_financiera` (
 -- Estructura de tabla para la tabla `form_formalizacion`
 --
 
-CREATE TABLE IF NOT EXISTS `form_formalizacion` (
-  `id_formalizacion` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `form_formalizacion` (
+  `id_formalizacion` int(10) NOT NULL,
   `fk_id_formulario` int(10) NOT NULL,
   `fk_id_usuario` int(10) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -191,11 +174,8 @@ CREATE TABLE IF NOT EXISTS `form_formalizacion` (
   `registro` varchar(3) DEFAULT NULL,
   `impuestos_nacionales` varchar(3) DEFAULT NULL,
   `licencias` varchar(3) DEFAULT NULL,
-  `ninguno` varchar(3) DEFAULT NULL,
-  PRIMARY KEY (`id_formalizacion`),
-  KEY `fk_id_formulario` (`fk_id_formulario`),
-  KEY `fk_id_usuario` (`fk_id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `ninguno` varchar(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -203,22 +183,34 @@ CREATE TABLE IF NOT EXISTS `form_formalizacion` (
 -- Estructura de tabla para la tabla `form_manzana`
 --
 
-CREATE TABLE IF NOT EXISTS `form_manzana` (
-  `id_manzana` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `form_manzana` (
+  `id_manzana` int(10) NOT NULL,
   `fk_id_usuario` int(10) NOT NULL,
   `fk_id_sector` varchar(10) NOT NULL,
   `fk_id_seccion` varchar(10) NOT NULL,
   `fk_id_manzana` varchar(10) NOT NULL,
   `fk_id_comuna` varchar(10) NOT NULL,
   `barrio` varchar(200) NOT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_manzana`),
-  KEY `fk_id_usuario` (`fk_id_usuario`),
-  KEY `fk_id_sector` (`fk_id_sector`),
-  KEY `fk_id_seccion` (`fk_id_seccion`),
-  KEY `fk_id_manzana` (`fk_id_manzana`),
-  KEY `fk_id_comuna` (`fk_id_comuna`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `form_reemplazo`
+--
+
+CREATE TABLE `form_reemplazo` (
+  `id_reemplazo` int(10) NOT NULL,
+  `fk_id_usuario` int(10) NOT NULL,
+  `fk_id_sector` varchar(10) NOT NULL,
+  `fk_id_seccion` varchar(10) NOT NULL,
+  `fk_id_manzana` varchar(10) NOT NULL,
+  `fk_id_comuna` varchar(10) NOT NULL,
+  `id_reemplazado` varchar(10) NOT NULL,
+  `id_reemplazante` varchar(10) NOT NULL,
+  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -226,8 +218,8 @@ CREATE TABLE IF NOT EXISTS `form_manzana` (
 -- Estructura de tabla para la tabla `form_servicios`
 --
 
-CREATE TABLE IF NOT EXISTS `form_servicios` (
-  `id_servicios` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `form_servicios` (
+  `id_servicios` int(10) NOT NULL,
   `fk_id_formulario` int(10) NOT NULL,
   `fk_id_usuario` int(10) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -245,11 +237,8 @@ CREATE TABLE IF NOT EXISTS `form_servicios` (
   `proyectos` varchar(3) DEFAULT NULL,
   `otro` varchar(3) DEFAULT NULL,
   `cual_motivo` varchar(150) DEFAULT NULL,
-  `cual_fortalecer` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id_servicios`),
-  KEY `fk_id_formulario` (`fk_id_formulario`),
-  KEY `fk_id_usuario` (`fk_id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `cual_fortalecer` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -257,8 +246,8 @@ CREATE TABLE IF NOT EXISTS `form_servicios` (
 -- Estructura de tabla para la tabla `param_actividad_economica`
 --
 
-CREATE TABLE IF NOT EXISTS `param_actividad_economica` (
-  `id_actividad_economica` int(10) NOT NULL,
+CREATE TABLE `param_actividad_economica` (
+  `id_param_actividad_economica` int(10) NOT NULL,
   `id_seccion` int(10) NOT NULL,
   `descripcion_seccion_app` varchar(250) NOT NULL,
   `id_division` int(10) NOT NULL,
@@ -267,17 +256,14 @@ CREATE TABLE IF NOT EXISTS `param_actividad_economica` (
   `seccion` varchar(40) NOT NULL,
   `descripcion_seccion` varchar(250) NOT NULL,
   `actividad` varchar(11) NOT NULL,
-  `ciiu` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`id_actividad_economica`),
-  KEY `id_seccion` (`id_seccion`),
-  KEY `id_divisionn` (`id_division`)
+  `ciiu` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `param_actividad_economica`
 --
 
-INSERT INTO `param_actividad_economica` (`id_actividad_economica`, `id_seccion`, `descripcion_seccion_app`, `id_division`, `descripcion_division_app`, `descripcion_division`, `seccion`, `descripcion_seccion`, `actividad`, `ciiu`) VALUES
+INSERT INTO `param_actividad_economica` (`id_param_actividad_economica`, `id_seccion`, `descripcion_seccion_app`, `id_division`, `descripcion_division_app`, `descripcion_division`, `seccion`, `descripcion_seccion`, `actividad`, `ciiu`) VALUES
 (1, 1, 'Mantenimiento y reparacion', 45, 'Vehiculos automotores', 'Comercio, mantenimiento y reparacion de vehiculos automotores y motocicletas, sus partes, piezas y accesorios', 'SECCION G', 'COMERCIO AL POR MAYOR Y AL POR MENOR; REPARACION DE VEHICULOS AUTOMOTORES Y MOTOCICLETAS', 'S', '4520'),
 (2, 1, 'Mantenimiento y reparacion', 45, 'Motocicletas y de sus partes y piezas', 'Comercio, mantenimiento y reparacion de vehiculos automotores y motocicletas, sus partes, piezas y accesorios', 'SECCION G', 'COMERCIO AL POR MAYOR Y AL POR MENOR; REPARACION DE VEHICULOS AUTOMOTORES Y MOTOCICLETAS', 'S', '4542'),
 (3, 1, 'Mantenimiento y reparacion', 95, 'Computadores y de equipo periferico', 'Mantenimiento y reparacion de computadores, efectos personales y enseres domesticos', 'SECCION S', 'OTRAS ACTIVIDADES DE SERVICIOS', 'S', '9511'),
@@ -405,15 +391,11 @@ INSERT INTO `param_actividad_economica` (`id_actividad_economica`, `id_seccion`,
 -- Estructura de tabla para la tabla `param_comuna`
 --
 
-CREATE TABLE IF NOT EXISTS `param_comuna` (
+CREATE TABLE `param_comuna` (
   `comuna` varchar(10) NOT NULL,
   `sector` varchar(10) NOT NULL,
   `seccion` varchar(10) NOT NULL,
-  `manzana` varchar(10) NOT NULL,
-  KEY `comuna` (`comuna`),
-  KEY `sector` (`sector`),
-  KEY `seccion` (`seccion`),
-  KEY `manzana` (`manzana`)
+  `manzana` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -2657,12 +2639,11 @@ INSERT INTO `param_comuna` (`comuna`, `sector`, `seccion`, `manzana`) VALUES
 -- Estructura de tabla para la tabla `param_roles`
 --
 
-CREATE TABLE IF NOT EXISTS `param_roles` (
-  `id_rol` int(1) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `param_roles` (
+  `id_rol` int(1) NOT NULL,
   `nombre_rol` varchar(100) NOT NULL,
-  `descripcion` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_rol`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `descripcion` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `param_roles`
@@ -2679,8 +2660,8 @@ INSERT INTO `param_roles` (`id_rol`, `nombre_rol`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `usuario` (
-  `id_usuario` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuario` (
+  `id_usuario` int(10) NOT NULL,
   `numero_documento` int(10) NOT NULL,
   `tipo_documento` varchar(150) NOT NULL,
   `nombres_usuario` varchar(50) NOT NULL,
@@ -2694,12 +2675,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `password` varchar(50) NOT NULL,
   `clave` varchar(50) NOT NULL,
   `fk_id_rol` int(1) NOT NULL,
-  `estado` int(1) NOT NULL DEFAULT '1' COMMENT '1:active; 2:inactive',
-  PRIMARY KEY (`id_usuario`),
-  UNIQUE KEY `numero_documento` (`numero_documento`),
-  UNIQUE KEY `log_user` (`log_user`),
-  KEY `fk_id_rol` (`fk_id_rol`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `estado` int(1) NOT NULL DEFAULT '1' COMMENT '1:active; 2:inactive'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -2707,53 +2684,77 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `numero_documento`, `tipo_documento`, `nombres_usuario`, `apellidos_usuario`, `direccion_usuario`, `telefono_fijo`, `celular`, `email`, `log_user`, `fecha_creacion`, `password`, `clave`, `fk_id_rol`, `estado`) VALUES
 (1, 12645615, '1', 'ADMIN', 'APP', 'AIRDRIE', '3347766', '4034089921', 'benmotta@gmail.com', 12645615, '2017-06-10', 'ce5dbff68c1cb46e1dbf45eb6736ddc2', '12645615', 1, 1),
-(2, 79757228, '1', 'JORGE ELIECER', 'LOZANO OSPINA', 'CARRERA 58 NO. 45A-29', '', '300 275 44 7', 'jelozanoo@gmail.com', 79757228, '2017-06-10', '7b544b82d84f041224ca43f597bfc6c9', '79757228', 1, 1),
-(3, 40333061, '1', 'NATALIA', 'ROJAS RAMOS', 'AV.  40 N. 24 A 71 – VILLAVICENCIO – META.', '6817777', '3142839558', 'natalia.rojas@ccv.org.co', 40333061, '2017-09-22', 'fd3b9755ad36419c0abbb983d4285d8f', '40333061', 2, 1),
-(4, 123456, '1', 'PRUEBAS', 'PREUBAS', 'PRUEBAS', '999999', '9999999999', 'jelozanoo@gmail.com', 123456, '2017-09-22', 'e10adc3949ba59abbe56e057f20f883e', '123456', 1, 1);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
----------------------------------------------------------------------------------------------
-
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2017 a las 17:44:32
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.21
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
---
--- Base de datos: `ceiv-ccv`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `form_reemplazo`
---
-
-CREATE TABLE `form_reemplazo` (
-  `id_reemplazo` int(10) NOT NULL,
-  `fk_id_usuario` int(10) NOT NULL,
-  `fk_id_sector` varchar(10) NOT NULL,
-  `fk_id_seccion` varchar(10) NOT NULL,
-  `fk_id_manzana` varchar(10) NOT NULL,
-  `fk_id_comuna` varchar(10) NOT NULL,
-  `id_reemplazado` varchar(10) NOT NULL,
-  `id_reemplazante` varchar(10) NOT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(2, 79757228, '1', 'JORGE ELIECER', 'LOZANO OSPINA', 'CARRERA 58 NO. 45A-29', '', '300 275 44 7', 'jelozanoo@gmail.com', 79757228, '2017-06-10', '7b544b82d84f041224ca43f597bfc6c9', '79757228', 1, 1);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `form_actividad_economica`
+--
+ALTER TABLE `form_actividad_economica`
+  ADD PRIMARY KEY (`id_actividad_economica`),
+  ADD KEY `fk_id_formulario` (`fk_id_formulario`),
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`);
+
+--
+-- Indices de la tabla `form_administrativa`
+--
+ALTER TABLE `form_administrativa`
+  ADD PRIMARY KEY (`id_administrativa`),
+  ADD KEY `fk_id_formulario` (`fk_id_formulario`),
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`);
+
+--
+-- Indices de la tabla `form_control`
+--
+ALTER TABLE `form_control`
+  ADD PRIMARY KEY (`id_control`),
+  ADD KEY `fk_id_formulario` (`fk_id_formulario`);
+
+--
+-- Indices de la tabla `form_criticos`
+--
+ALTER TABLE `form_criticos`
+  ADD PRIMARY KEY (`id_criticos`),
+  ADD KEY `fk_id_formulario` (`fk_id_formulario`),
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`);
+
+--
+-- Indices de la tabla `form_establecimiento`
+--
+ALTER TABLE `form_establecimiento`
+  ADD PRIMARY KEY (`id_establecimiento`),
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`),
+  ADD KEY `fk_id_manzana` (`fk_id_manzana`);
+
+--
+-- Indices de la tabla `form_financiera`
+--
+ALTER TABLE `form_financiera`
+  ADD PRIMARY KEY (`id_financiera`),
+  ADD KEY `fk_id_formulario` (`fk_id_formulario`),
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`);
+
+--
+-- Indices de la tabla `form_formalizacion`
+--
+ALTER TABLE `form_formalizacion`
+  ADD PRIMARY KEY (`id_formalizacion`),
+  ADD KEY `fk_id_formulario` (`fk_id_formulario`),
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`);
+
+--
+-- Indices de la tabla `form_manzana`
+--
+ALTER TABLE `form_manzana`
+  ADD PRIMARY KEY (`id_manzana`),
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`),
+  ADD KEY `fk_id_sector` (`fk_id_sector`),
+  ADD KEY `fk_id_seccion` (`fk_id_seccion`),
+  ADD KEY `fk_id_manzana` (`fk_id_manzana`),
+  ADD KEY `fk_id_comuna` (`fk_id_comuna`);
 
 --
 -- Indices de la tabla `form_reemplazo`
@@ -2769,11 +2770,109 @@ ALTER TABLE `form_reemplazo`
   ADD KEY `id_reemplazante` (`id_reemplazante`);
 
 --
+-- Indices de la tabla `form_servicios`
+--
+ALTER TABLE `form_servicios`
+  ADD PRIMARY KEY (`id_servicios`),
+  ADD KEY `fk_id_formulario` (`fk_id_formulario`),
+  ADD KEY `fk_id_usuario` (`fk_id_usuario`);
+
+--
+-- Indices de la tabla `param_actividad_economica`
+--
+ALTER TABLE `param_actividad_economica`
+  ADD PRIMARY KEY (`id_param_actividad_economica`),
+  ADD KEY `id_seccion` (`id_seccion`),
+  ADD KEY `id_divisionn` (`id_division`);
+
+--
+-- Indices de la tabla `param_comuna`
+--
+ALTER TABLE `param_comuna`
+  ADD KEY `comuna` (`comuna`),
+  ADD KEY `sector` (`sector`),
+  ADD KEY `seccion` (`seccion`),
+  ADD KEY `manzana` (`manzana`);
+
+--
+-- Indices de la tabla `param_roles`
+--
+ALTER TABLE `param_roles`
+  ADD PRIMARY KEY (`id_rol`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `numero_documento` (`numero_documento`),
+  ADD UNIQUE KEY `log_user` (`log_user`),
+  ADD KEY `fk_id_rol` (`fk_id_rol`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `form_actividad_economica`
+--
+ALTER TABLE `form_actividad_economica`
+  MODIFY `id_actividad_economica` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `form_administrativa`
+--
+ALTER TABLE `form_administrativa`
+  MODIFY `id_administrativa` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `form_control`
+--
+ALTER TABLE `form_control`
+  MODIFY `id_control` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `form_criticos`
+--
+ALTER TABLE `form_criticos`
+  MODIFY `id_criticos` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `form_establecimiento`
+--
+ALTER TABLE `form_establecimiento`
+  MODIFY `id_establecimiento` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `form_financiera`
+--
+ALTER TABLE `form_financiera`
+  MODIFY `id_financiera` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `form_formalizacion`
+--
+ALTER TABLE `form_formalizacion`
+  MODIFY `id_formalizacion` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `form_manzana`
+--
+ALTER TABLE `form_manzana`
+  MODIFY `id_manzana` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `form_reemplazo`
 --
 ALTER TABLE `form_reemplazo`
   MODIFY `id_reemplazo` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `form_servicios`
+--
+ALTER TABLE `form_servicios`
+  MODIFY `id_servicios` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `param_roles`
+--
+ALTER TABLE `param_roles`
+  MODIFY `id_rol` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
