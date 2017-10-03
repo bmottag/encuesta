@@ -7,8 +7,10 @@
 		<div class="col-lg-12">
 			<div class="panel panel-warning">
 				<div class="panel-heading">
-					<a class="btn btn-warning" href=" <?php echo base_url().'encuesta/establecimiento/' . $information[0]['fk_id_manzana']; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
-					<i class="fa fa-gears"></i> ENLACES DEL FORMULARIO
+					<i class="fa fa-gears"></i> CAPÍTULOS DEL FORMULARIO<br><br>
+					<a class="btn btn-warning" href=" <?php echo base_url().'encuesta/establecimiento/' . $information[0]['fk_id_manzana']; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Lista de Establecimientos </a> 
+					<a class="btn btn-warning" href=" <?php echo base_url().'encuesta/manzana/'; ?> "> Lista de Manzanas <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a> 
+					
 				</div>
 				<div class="panel-body">
 				
