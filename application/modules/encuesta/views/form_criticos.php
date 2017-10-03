@@ -20,10 +20,36 @@ function valid_inconvenientes()
 {
 	if(document.getElementById('financiamiento').checked || document.getElementById('ausencia').checked || document.getElementById('capacitacion').checked || document.getElementById('competencia').checked || document.getElementById('ambiental').checked || document.getElementById('seguridad').checked || document.getElementById('ventas').checked || document.getElementById('proveedores').checked || document.getElementById('otros').checked){
 		document.getElementById('hddInconvenientes').value = 1;
+		document.getElementById('ninguno').checked = false;
 	}else{
 		document.getElementById('hddInconvenientes').value = "";
 	}
 }
+
+function valid_ninguno() 
+{   
+	if(document.getElementById('ninguno').checked){
+		document.getElementById('financiamiento').checked = false;
+		document.getElementById('ausencia').checked = false;
+		document.getElementById('capacitacion').checked = false;
+		document.getElementById('competencia').checked = false;
+		document.getElementById('ambiental').checked = false;
+		document.getElementById('seguridad').checked = false;
+		document.getElementById('ventas').checked = false;
+		document.getElementById('proveedores').checked = false;
+		document.getElementById('otros').checked = false;		
+		
+		document.getElementById('hddInconvenientes').value = 1;
+		
+		//quito la opcion cual si la esta mostrando
+		$("#div_cual").css("display", "none");
+		$('#cuales').val("");
+
+	}else{
+		document.getElementById('hddInconvenientes').value = "";
+	}
+}
+
 </script>
 
 <div id="page-wrapper">
@@ -83,7 +109,8 @@ if ($retornoError) {
 <input type="checkbox" id="seguridad" name="seguridad" value=1 <?php if($information && $information["seguridad"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Seguridad<br>
 <input type="checkbox" id="ventas" name="ventas" value=1 <?php if($information && $information["ventas"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Ventas<br>
 <input type="checkbox" id="proveedores" name="proveedores" value=1 <?php if($information && $information["proveedores"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Proveedores<br>
-<input type="checkbox" id="otros" name="otros" value=1 <?php if($information && $information["otros"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Otros
+<input type="checkbox" id="otros" name="otros" value=1 <?php if($information && $information["otros"]){echo "checked";} ?> onclick="valid_inconvenientes()"> Otros<br>
+<input type="checkbox" id="ninguno" name="ninguno" value=1 <?php if($information && $information["ninguno"]){echo "checked";} ?> onclick="valid_ninguno()"> Ninguno
 
 <?php 
 $valorInconvenientes = "";

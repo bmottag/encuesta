@@ -7,8 +7,10 @@
 		<div class="col-lg-12">
 			<div class="panel panel-warning">
 				<div class="panel-heading">
-					<a class="btn btn-warning" href=" <?php echo base_url().'encuesta/establecimiento/' . $information[0]['fk_id_manzana']; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
-					<i class="fa fa-gears"></i> ENLACES DEL FORMULARIO
+					<i class="fa fa-gears"></i> CAPÍTULOS DEL FORMULARIO<br><br>
+					<a class="btn btn-warning" href=" <?php echo base_url().'encuesta/establecimiento/' . $information[0]['fk_id_manzana']; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Lista de Establecimientos </a> 
+					<a class="btn btn-warning" href=" <?php echo base_url().'encuesta/manzana/'; ?> "> Lista de Manzanas <span class="glyphicon glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a> 
+					
 				</div>
 				<div class="panel-body">
 				
@@ -93,10 +95,17 @@ if ($retornoError) {
 <!-- validaciones capitulo 6 -->
 <?php
 $banderaTerminar = false;
+$banderaTerminar2 = false;
 if($information_form1 && $information_form1['estado_actual'] == 1){
 	$banderaTerminar = true;
 	if($information_form1['establecimiento'] == 3 || $information_form1['establecimiento'] == 4){
 		$banderaTerminar = false;
+	}else{
+	
+		if($information_form2 && $information_form2['fk_id_seccion'] != 16 && $information_form2['fk_id_seccion'] != 17){ //validacion formulario 2
+			$banderaTerminar2 = true;
+		}
+		
 	}
 }
 
@@ -113,6 +122,7 @@ if($information_form1 && $information_form1['estado_actual'] == 1){
 						</div>
 					</div>
 <br>					
+<?php if($banderaTerminar2){ //bandera para terminar encuesta de acuerdo a la respuesta del capitulo 2 ?>
 					<div class="row">
 						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_criticos/' . $idFormulario; ?>" class="btn <?php echo $boton_form3; ?> btn-block">
@@ -173,12 +183,14 @@ if($information_form4 && $information_form4['impuestos'] != 1){
 </a>
 						</div>
 					</div>
+
+<?php } ?>
 <?php } ?>
 <?php } ?>
 <br>
 					<div class="row">
 						<div class="col-lg-12">	
-<a href="<?php echo base_url(). 'encuesta/form_control/' . $idFormulario; ?>" class="btn btn-warning btn-block">
+<a href="<?php echo base_url(). 'encuesta/form_control/' . $idFormulario; ?>" class="btn btn-info btn-block">
 <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> 7. Capítulo Control de Encuesta
 </a>
 						</div>

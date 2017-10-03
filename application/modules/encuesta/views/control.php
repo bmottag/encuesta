@@ -20,8 +20,8 @@ $(function(){
 			var oID = $(this).attr("id");
             $.ajax ({
                 type: 'POST',
-				url: base_url + 'encuesta/cargarModalEstablecimiento',
-                data: {'idManzana': '', 'idEstablecimiento': oID},
+				url: base_url + 'encuesta/cargarModalControl',
+                data: {'idFormulario': '', 'idControl': oID},
                 cache: false,
                 success: function (data) {
                     $('#tablaDatos').html(data);
@@ -80,6 +80,7 @@ if ($retornoError) {
 					<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables">
 						<thead>
 							<tr>
+								<th class="text-center">Editar</th>
 								<th class="text-center">No. formulario</th>
 								<th class="text-center">Fecha</th>
 								<th class="text-center">Resultado encuesta</th>
@@ -90,6 +91,13 @@ if ($retornoError) {
 						<?php
 							foreach ($info as $lista):
 									echo "<tr>";
+									echo "<td class='text-center'>";
+						?>
+									<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_control']; ?>" >
+										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
+									</button>																		
+						<?php
+									echo "</td>";
 									echo "<td class='text-right'>" . $lista['fk_id_formulario'] . "</td>";
 									echo "<td>" . $lista['fecha'] . "</td>";
 									echo "<td>";
