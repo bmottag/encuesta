@@ -105,7 +105,7 @@ if($userRol==1){ //ADMIN
                         </li>
 
                         <li>
-							<a href="<?php echo base_url("reemplazo/reemplazo"); ?>"><i class="fa fa-retweet fa-fw"></i> Reemplazos</a>
+							<a href="<?php echo base_url("reemplazo"); ?>"><i class="fa fa-retweet fa-fw"></i> Reemplazos</a>
                         </li>
 						
 

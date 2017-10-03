@@ -21,7 +21,7 @@ class Reemplazo_model extends CI_Model {
 				$this->db->where('R.fk_id_usuario', $userID);
 			}
 			
-			$this->db->order_by('idReemplazo', 'asc');
+			$this->db->order_by('id_reemplazo', 'asc');
 			$query = $this->db->get('form_reemplazo R');
 
 			if ($query->num_rows() > 0) {

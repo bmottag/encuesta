@@ -13,7 +13,7 @@ class Reemplazo extends MX_Controller {
 	 * Lista de REEMPLAZOS
      * @since 1/10/2017
 	 */
-	public function reemplazo()
+	public function index()
 	{
 			$arrParam = array();
 			$data['info'] = $this->reemplazo_model->get_reemplazos($arrParam);
