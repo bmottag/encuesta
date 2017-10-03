@@ -303,6 +303,7 @@
 				'ventas' => $this->input->post('ventas'),
 				'proveedores' => $this->input->post('proveedores'),
 				'otros' => $this->input->post('otros'),
+				'ninguno' => $this->input->post('ninguno'),
 				'cuales' => $this->input->post('cuales')
 			);
 			
