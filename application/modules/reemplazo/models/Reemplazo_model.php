@@ -64,4 +64,26 @@ class Reemplazo_model extends CI_Model {
 				return false;
 			}
 	}
+
+	/**
+		 * Reemplazo by manzana
+		 * @since 02/10/2017
+		 */
+		public function get_reemplazo_by($arrDatos)
+		{			
+				$reemplazo = array();
+				$sql = "SELECT id_establecimiento FROM form_manzana m INNER JOIN form_establecimiento e ON m.id_manzana = e.fk_id_manzana
+						WHERE m.fk_id_comuna = '" . $arrDatos["idComuna"] . "' AND m.fk_id_sector = '" . $arrDatos["idSector"] . "'
+						AND m.fk_id_seccion = '" . $arrDatos["idSeccion"] . "' AND m.fk_id_manzana = '" . $arrDatos["idManzana"] . "'";
+		        $query = $this->db->query($sql);
+					
+				if ($query->num_rows() > 0) {
+					$i = 0;
+					foreach ($query->result() as $row) {
+						$reemplazo[$i]["idReemplazo"] = $row->id_establecimiento;
+						$i++;
+					}
+				}
+				return $reemplazo;
+		}
 }

@@ -39,7 +39,6 @@ class Reemplazo extends MX_Controller {
 				);
 				$data['information'] = $this->reemplazo_model->get_reemplazos($arrParam);
 			}
-			
 			$this->load->view("reemplazo_modal", $data);
     }
 	
@@ -72,5 +71,28 @@ class Reemplazo extends MX_Controller {
 			}
 
 			echo json_encode($data);
+    }
+
+    /**
+	 * Lista de reemplazos por manzana
+     * @since 02/10/2017
+	 */
+    public function reemplazosList()
+	{
+			header("Content-Type: text/plain; charset=utf-8"); //Para evitar problemas de acentos
+
+			$arrParam['idManzana'] = $this->input->post('identificador');
+			$arrParam['idSeccion'] = $this->input->post('seccion');
+			$arrParam['idSector'] = $this->input->post('sector');
+			$arrParam['idComuna'] = $this->input->post('comuna');
+
+			$lista = $this->reemplazo_model->get_reemplazo_by($arrParam);
+
+			echo "<option value=''>Select...</option>";
+			if ($lista) {
+				foreach ($lista as $fila) {
+					echo "<option value='" . $fila["idReemplazo"] . "' >" . $fila["idReemplazo"] . "</option>";
+				}
+			}
     }
 }

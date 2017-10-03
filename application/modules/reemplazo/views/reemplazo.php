@@ -87,20 +87,14 @@ if ($retornoError) {
 
 						$arrParam = array("idReemplazo" => $lista["id_reemplazo"]);
 						$conteoEstablecimiento = $this->general_model->countEstablecimientos($arrParam);
-						?>
-						<br><br>								
-						<a href="<?php echo base_url("reemplazo/establecimiento/" . $lista['id_manzana']); ?>" class="btn btn-success btn-xs">
-						Establecimientos  <span class="badge"><?php echo $conteoEstablecimiento; ?></span>
-						</a>									
-						<?php
+						
 									echo "</td>";
 									echo "<td class='text-center'>" . $lista['fk_id_comuna'] . "</td>";
 									echo "<td>" . $lista['fk_id_sector'] . "</td>";
 									echo "<td>" . $lista['fk_id_seccion'] . "</td>";
-
 									echo "<td class='text-center'>" . $lista['fk_id_manzana'] . "</td>";
-									
-									echo "<td class='text-center'>" . $lista['barrio'] . "</td>";
+									echo "<td class='text-center'>" . $lista['id_reemplazado'] . "</td>";
+									echo "<td class='text-center'>" . $lista['id_reemplazante'] . "</td>";
 
 							endforeach;
 						?>

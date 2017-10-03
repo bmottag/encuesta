@@ -101,7 +101,7 @@ if($userRol==1){ //ADMIN
                         </li>
 						
                         <li>
-							<a href="<?php echo base_url("encuesta/manzana"); ?>"><i class="fa fa-dashboard fa-fw"></i> Formularios</a>
+							<a href="<?php echo base_url("encuesta/manzana"); ?>"><i class="fa fa-pencil-square-o fa-fw"></i> Formularios</a>
                         </li>
 
                         <li>
