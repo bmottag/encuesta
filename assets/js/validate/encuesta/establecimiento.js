@@ -35,7 +35,7 @@ jQuery.validator.addMethod("campoNit", function(value, element, param) {
 			telefono:	 		{ required: true, minlength: 4, maxlength:40  },
 			digito:		 		{ campoNit: "#tipo_documento", number: true, maxlength:1},
 			digitoConfirm: 		{ campoNit: "#tipo_documento", equalTo: "#digito"},
-			address:		{ required: true }
+			//address:		{ required: true }
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {
