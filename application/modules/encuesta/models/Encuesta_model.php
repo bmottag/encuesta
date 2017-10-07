@@ -645,7 +645,7 @@
 
 				//revisar si es para adicionar o editar
 				if ($idControl == '') {
-					//$data['fk_id_usuario'] = $this->session->id;
+					$data['fecha_registro'] = date("Y-m-d G:i:s");
 					$query = $this->db->insert('form_control', $data);
 					$idControl = $this->db->insert_id();
 				} else {

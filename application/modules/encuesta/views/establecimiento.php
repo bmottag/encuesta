@@ -107,6 +107,7 @@ if ($retornoError) {
 								<th class="text-center">Teléfono y/o celular del establecimiento</th>
 								<th class="text-center">Tipo Documento</th>
 								<th class="text-center">No. Documento</th>
+								<th class="text-center">Foto</th>
 							</tr>
 						</thead>
 						<tbody>							
@@ -151,6 +152,20 @@ Encuesta
 									
 									echo "</td>";
 									echo "<td>" . $lista['cedula'] . "</td>";
+									echo "<td class='text-center'>";
+																		
+						//si hay una foto la muestro
+						if($lista["foto_dispositivo"]){
+						?>
+<a href="<?php echo $lista["foto_dispositivo"]; ?>" class="btn btn-primary btn-xs">Ver</a>
+						<?php }elseif($lista["foto"]){ ?>
+<img src="<?php echo base_url($lista["foto"]); ?>" class="img-rounded" width="42" height="42" />
+						<?php } ?>
+						
+						
+									<a href="<?php echo base_url("encuesta/foto/" . $lista['id_establecimiento']); ?>" class="btn btn-primary btn-xs">Foto</a>
+						<?php
+									echo "</td>";
 									echo "</tr>";
 							endforeach;
 						?>

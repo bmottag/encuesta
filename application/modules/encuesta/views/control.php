@@ -91,6 +91,7 @@ if ($retornoError) {
 								<th class="text-center">Editar</th>
 								<th class="text-center">No. formulario</th>
 								<th class="text-center">Fecha</th>
+								<th class="text-center">Fecha registro</th>
 								<th class="text-center">Resultado encuesta</th>
 								<th class="text-center">Observaciones</th>
 							</tr>
@@ -108,6 +109,7 @@ if ($retornoError) {
 									echo "</td>";
 									echo "<td class='text-right'>" . $lista['fk_id_formulario'] . "</td>";
 									echo "<td>" . $lista['fecha'] . "</td>";
+									echo "<td>" . $lista['fecha_registro'] . "</td>";
 									echo "<td>";
 
 									switch ($lista['resultado_encuesta']) {

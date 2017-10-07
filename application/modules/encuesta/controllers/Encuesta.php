@@ -667,6 +667,131 @@ class Encuesta extends MX_Controller {
 			}
     }
 
+	/**
+	 * foto
+	 */
+	public function foto($idEstablecimiento, $error = '')
+	{
+			if (empty($idEstablecimiento)) {
+				show_error('ERROR!!! - You are in the wrong place.');
+			}
+			
+			//busco datos del estableciiento
+			$arrParam = array(
+				"idEstablecimiento" => $idEstablecimiento
+			);
+			$data['information'] = $this->encuesta_model->get_establecimientos($arrParam);
+			
+			$data['error'] = $error; //se usa para mostrar los errores al cargar la imagen 
+			$data['idEstablecimiento'] = $idEstablecimiento; 
+			$data["view"] = 'establecimiento_foto';
+			$this->load->view("layout", $data);
+	}	
+
+	/**
+	 * FUNCIÓN PARA SUBIR LA IMAGEN 
+	 */
+    function do_upload($idManzana) 
+	{
+        $config['upload_path'] = './images/establecimientos/';
+        $config['overwrite'] = true;
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '2000';
+        $config['max_width'] = '1024';
+        $config['max_height'] = '1008';
+        $idEstablecimiento = $this->input->post("hddId");
+        $config['file_name'] = $idEstablecimiento;
+
+        $this->load->library('upload', $config);
+        //SI LA IMAGEN FALLA AL SUBIR MOSTRAMOS EL ERROR EN LA VISTA 
+        if (!$this->upload->do_upload()) {
+            $error = $this->upload->display_errors();
+            $this->foto($idEstablecimiento,$error);
+        } else {
+            $file_info = $this->upload->data();//subimos la imagen
+			
+            //USAMOS LA FUNCIÓN create_thumbnail Y LE PASAMOS EL NOMBRE DE LA IMAGEN,
+            //ASÍ YA TENEMOS LA IMAGEN REDIMENSIONADA
+			$this->_create_thumbnail($file_info['file_name']);
+			$data = array('upload_data' => $this->upload->data());
+			$imagen = $file_info['file_name'];
+			$path = "images/establecimientos/thumbs/" . $imagen;
+
+			
+			//actualizamos el campo photo
+			$arrParam = array(
+				"table" => "form_establecimiento",
+				"primaryKey" => "id_establecimiento",
+				"id" => $idEstablecimiento,
+				"column" => "foto",
+				"value" => $path
+			);
+
+			$this->load->model("general_model");
+			//$data['linkBack'] = "encuest/vehicle/" . $vistaRegreso;
+			//$data['titulo'] = "<i class='fa fa-automobile'></i>VEHICLE";
+			
+			if($this->general_model->updateRecord($arrParam))
+			{
+				$data['clase'] = "alert-success";
+				$data['msj'] = "Se subio la imagen con éxito.";
+			}else{
+				$data['clase'] = "alert-danger";
+				$data['msj'] = "Error, contactarse con el administrador.";
+			}
+						
+			//$data["view"] = 'template/answer';
+			//$this->load->view("layout", $data);
+			redirect('encuesta/establecimiento/' . $idManzana);
+        }
+    }
+	
+    //FUNCIÓN PARA CREAR LA MINIATURA A LA MEDIDA QUE LE DIGAMOS
+    function _create_thumbnail($filename) 
+	{
+        $config['image_library'] = 'gd2';
+        //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
+        $config['source_image'] = 'images/establecimientos/' . $filename;
+        $config['create_thumb'] = TRUE;
+        $config['maintain_ratio'] = TRUE;
+        //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
+        $config['new_image'] = 'images/establecimientos/thumbs/';
+        $config['width'] = 150;
+        $config['height'] = 150;
+        $this->load->library('image_lib', $config);
+        $this->image_lib->resize();
+    }
+	
+	/**
+	 * Guardar imagen
+     * @since 6/8/2017
+	 */
+	public function ajax()
+	{		
+			$src = $this->input->post('src');
+			$idEstablecimiento = $this->input->post('idEstablecimiento');
+
+			//actualizamos el campo coordinador en la lista de municipios
+			$arrParam = array(
+				"table" => "form_establecimiento",
+				"primaryKey" => "id_establecimiento",
+				"id" => $idEstablecimiento,
+				"column" => "foto_dispositivo",
+				"value" => $src
+			);
+
+			$this->load->model("general_model");
+
+			if ($this->general_model->updateRecord($arrParam)) {				
+					$data["result"] = true;
+					$this->session->set_flashdata('retornoExito', 'Se guardó la información');
+			}else{
+					$data["result"] = "error";				
+					$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el Administrador.');					
+			}
+			
+			$this->output->set_output($src);
+	}
 
 	
 	

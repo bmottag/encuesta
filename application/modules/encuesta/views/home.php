@@ -168,11 +168,15 @@ if($information_form2 && $information_form2['seguridad_social'] != 1){
 	$bandera = true;
 }
 
+/*
 if($information_form1 && $information_form1['tiempo'] != 1){
 	$bandera = true;
 }
-
+*/
 if($information_form4 && $information_form4['impuestos'] != 1){
+	$bandera = true;
+}
+if($information_form4 && $information_form4['contabilidad'] != 1){
 	$bandera = true;
 }
 
