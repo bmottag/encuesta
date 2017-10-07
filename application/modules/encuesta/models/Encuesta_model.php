@@ -29,6 +29,7 @@
 				if (array_key_exists("idManzana", $arrDatos)) {
 					$this->db->where('E.fk_id_manzana', $arrDatos["idManzana"]);
 				}
+				$this->db->where('E.estado', 1); //solo muestra las activas
 				
 				$this->db->order_by('id_establecimiento', 'asc');
 				$query = $this->db->get('form_establecimiento E');
@@ -65,6 +66,7 @@
 				if ($idEstablecimiento == '') {
 					$data['fk_id_usuario'] = $this->session->id;
 					$data['fecha_registro'] = date("Y-m-d G:i:s");
+					$data['estado'] = 1;
 					$query = $this->db->insert('form_establecimiento', $data);
 					$idEstablecimiento = $this->db->insert_id();
 				} else {

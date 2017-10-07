@@ -35,10 +35,12 @@ class General_model extends CI_Model {
 		{
 				$sql = "SELECT count(id_establecimiento) CONTEO";
 				$sql.= " FROM form_establecimiento E";
+				$sql.= " WHERE 1 = 1";
 				
 				if (array_key_exists("idManzana", $arrDatos)) {
-					$sql.= " WHERE fk_id_manzana = " . $arrDatos["idManzana"];
+					$sql.= " AND fk_id_manzana = " . $arrDatos["idManzana"];
 				}
+				$sql.= " AND estado = 1";
 
 				$query = $this->db->query($sql);
 				$row = $query->row();

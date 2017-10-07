@@ -1,3 +1,5 @@
+<script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/establecimiento.js"); ?>"></script>
+
 <script>
 $(function(){ 
 	$(".btn-success").click(function () {	
@@ -120,11 +122,20 @@ if ($retornoError) {
 									<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_establecimiento']; ?>" >
 										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
 									</button>
-<p><br>
+<br><br>
 <a href="<?php echo base_url("encuesta/form_home/" . $lista['id_establecimiento']); ?>" class="btn btn-warning btn-xs">
 Encuesta  
 </a>
-</p>
+
+<?php 
+$userRol = $this->session->rol;
+if($userRol!=3){ //los encuestadores no pueden borrar
+?>
+<br><br>
+<button type="button" class="btn btn-danger btn-xs" id="<?php echo $lista['id_establecimiento']; ?>" >
+	Eliminar <span class="fa fa-times fa-fw" aria-hidden="true">
+</button>								
+<?php } ?>
 						<?php
 									echo "</td>";
 									echo "<td class='text-center'>" . $lista['nombre_propietario'] . "</td>";

@@ -831,6 +831,53 @@ class Encuesta extends MX_Controller {
 
 			echo json_encode($data);
     }
+	
+	/**
+	 * Eliminar establecimiento
+     * @since 6/10/2017
+	 */
+	public function eliminar_establecimiento()
+	{			
+			header('Content-Type: application/json');
+			$data = array();
+			
+			$idEstablecimiento = $this->input->post('identificador');
+			
+			//obtener id manzana del establecimeinto
+			$arrParam = array(
+				"idEstablecimiento" => $idEstablecimiento
+			);
+			$data['information'] = $this->encuesta_model->get_establecimientos($arrParam);
+			
+			$data["idRecord"] = $data['information'][0]['fk_id_manzana'];
+
+			$this->load->model("general_model");
+
+			//actualizar campo estado para no mostrar mas el establecimiento
+			$arrParam = array(
+				"table" => "form_establecimiento",
+				"primaryKey" => "id_establecimiento",
+				"id" => $idEstablecimiento,
+				"column" => "estado",
+				"value" => 2
+			);
+
+			$this->load->model("general_model");
+			
+			if($this->general_model->updateRecord($arrParam))
+			{
+				$data["result"] = true;
+				$data["mensaje"] = "Se eliminó el Establecimiento.";
+				$this->session->set_flashdata('retornoExito', 'Se eliminó el Establecimiento');
+			} else {
+				$data["result"] = "error";
+				$data["mensaje"] = "Error!!! Contactarse con el Administrador.";
+				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el Administrador');
+			}
+	
+
+			echo json_encode($data);
+    }
 
 	
 	
