@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo base_url("assets/js/validate/encuesta/manzana.js"); ?>"></script>
 
 <script>
 $(function(){ 
@@ -91,7 +92,17 @@ $conteoEstablecimiento = $this->general_model->countEstablecimientos($arrParam);
 <br><br>								
 <a href="<?php echo base_url("encuesta/establecimiento/" . $lista['id_manzana']); ?>" class="btn btn-success btn-xs">
 Establecimientos  <span class="badge"><?php echo $conteoEstablecimiento; ?></span>
-</a>									
+</a>	
+
+<?php 
+$userRol = $this->session->rol;
+if($userRol!=3){ //los encuestadores no pueden borrar manazanas
+?>
+<br><br>
+<button type="button" class="btn btn-danger btn-xs" id="<?php echo $lista['id_manzana']; ?>" >
+	Eliminar <span class="fa fa-times fa-fw" aria-hidden="true">
+</button>								
+<?php } ?>
 						<?php
 									echo "</td>";
 									echo "<td class='text-center'>" . $lista['fk_id_comuna'] . "</td>";

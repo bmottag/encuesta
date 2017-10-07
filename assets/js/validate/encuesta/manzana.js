@@ -32,12 +32,12 @@ $( document ).ready( function () {
 			var oID = $(this).attr("id");
 			
 			//Activa icono guardando
-			if(window.confirm('Esta seguro de eliminar el Grupo de Instrumentos?'))
+			if(window.confirm('Esta seguro de eliminar la Manzana?'))
 			{
 					$(".btn-danger").attr('disabled','-1');
 					$.ajax ({
 						type: 'POST',
-						url: base_url + 'admin/eliminar_grupo_instrumentos',
+						url: base_url + 'encuesta/eliminar_manzana',
 						data: {'identificador': oID},
 						cache: false,
 						success: function(data){
@@ -53,7 +53,7 @@ $( document ).ready( function () {
 							{	                                                        
 								$(".btn-danger").removeAttr('disabled');
 
-								var url = base_url + "admin/grupo_instrumentos/";
+								var url = base_url + "encuesta/manzana/";
 								$(location).attr("href", url);
 							}
 							else

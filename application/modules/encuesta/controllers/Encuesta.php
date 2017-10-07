@@ -792,6 +792,45 @@ class Encuesta extends MX_Controller {
 			
 			$this->output->set_output($src);
 	}
+	
+	/**
+	 * Eliminar manzana
+     * @since 6/10/2017
+	 */
+	public function eliminar_manzana()
+	{			
+			header('Content-Type: application/json');
+			$data = array();
+			
+			$idManzana = $this->input->post('identificador');
+
+			$this->load->model("general_model");
+
+			//actualizar campo estado para no mostrar mas la manzana
+			$arrParam = array(
+				"table" => "form_manzana",
+				"primaryKey" => "id_manzana",
+				"id" => $idManzana,
+				"column" => "estado",
+				"value" => 2
+			);
+
+			$this->load->model("general_model");
+			
+			if($this->general_model->updateRecord($arrParam))
+			{
+				$data["result"] = true;
+				$data["mensaje"] = "Se eliminó la manzana.";
+				$this->session->set_flashdata('retornoExito', 'Se eliminó la Manzana');
+			} else {
+				$data["result"] = "error";
+				$data["mensaje"] = "Error!!! Contactarse con el Administrador.";
+				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el Administrador');
+			}
+	
+
+			echo json_encode($data);
+    }
 
 	
 	

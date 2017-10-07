@@ -96,6 +96,7 @@
 				if($userRol==3) {					
 					$this->db->where('M.fk_id_usuario', $userID);
 				}
+				$this->db->where('M.estado', 1); //solo muestra las activas
 				
 				$this->db->order_by('barrio', 'asc');
 				$query = $this->db->get('form_manzana M');
@@ -127,6 +128,7 @@
 				if ($identificador == '') {
 					$data['fk_id_usuario'] = $this->session->id;
 					$data['fecha_creacion'] = date("Y-m-d G:i:s");
+					$data['estado'] = 1;
 					$query = $this->db->insert('form_manzana', $data);
 					$identificador = $this->db->insert_id();				
 				} else {
