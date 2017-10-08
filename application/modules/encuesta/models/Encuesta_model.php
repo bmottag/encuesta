@@ -704,6 +704,25 @@
 				$this->db->close();
 				return $lista;
 		}
+		
+		/**
+		 * Verificar si ya existe la manzana para el usuario en sesion
+		 * @since  6/10/2017
+		 */
+		public function verificarManzana() 
+		{
+				$this->db->where('fk_id_sector', $this->input->post('sector'));
+				$this->db->where('fk_id_seccion', $this->input->post('seccion'));
+				$this->db->where('fk_id_manzana', $this->input->post('manzana'));
+				$this->db->where('fk_id_comuna', $this->input->post('comuna'));
+				$this->db->where('fk_id_usuario', $this->session->id);
+				$query = $this->db->get("form_manzana");
+		
+
+				if ($query->num_rows() >= 1) {
+					return true;
+				} else{ return false; }
+		}
 
 
 

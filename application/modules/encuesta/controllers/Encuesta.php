@@ -58,19 +58,28 @@ class Encuesta extends MX_Controller {
 			if ($identificador != '') {
 				$msj = "Se actualizó la manzana con éxito.";
 			}
+			
+			//verificar si ya existe la manzana para ese usuario
+			$result_manzana = $this->encuesta_model->verificarManzana();
 
-			if ($identificador = $this->encuesta_model->saveManzana()) {
-				$data["result"] = true;
-				$data["idRecord"] = $identificador;
-				
-				$this->session->set_flashdata('retornoExito', $msj);
-			} else {
+			if ($result_manzana) {
 				$data["result"] = "error";
-				$data["idRecord"] = "";
-				
-				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el Administrador.');
+				$data["mensaje"] = "La Manzana ya existe en el listado.";
+				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> La Manzana ya existe en el listado.');
+			} else {
+				if ($identificador = $this->encuesta_model->saveManzana()) {
+					$data["result"] = true;
+					$data["idRecord"] = $identificador;
+					
+					$this->session->set_flashdata('retornoExito', $msj);
+				} else {
+					$data["result"] = "error";
+					$data["idRecord"] = "";
+					
+					$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el Administrador.');
+				}
 			}
-
+				
 			echo json_encode($data);
     }
 
