@@ -887,6 +887,53 @@ class Encuesta extends MX_Controller {
 
 			echo json_encode($data);
     }
+	
+	/**
+	 * Eliminar registro de control
+     * @since 7/10/2017
+	 */
+	public function eliminar_registro_control()
+	{			
+			header('Content-Type: application/json');
+			$data = array();
+			
+			$idControl = $this->input->post('identificador');
+			
+			//obtener id formulario
+			$arrParam = array(
+				"idControl" => $idControl
+			);
+			$data['information'] = $this->encuesta_model->get_control($arrParam);
+			
+			$data["idRecord"] = $data['information'][0]['fk_id_formulario'];
+			
+			$this->load->model("general_model");
+
+			//actualizar campo estado para no mostrar mas el registro control
+			$arrParam = array(
+				"table" => "form_control",
+				"primaryKey" => "id_control",
+				"id" => $idControl,
+				"column" => "estado",
+				"value" => 2
+			);
+
+			$this->load->model("general_model");
+			
+			if($this->general_model->updateRecord($arrParam))
+			{
+				$data["result"] = true;
+				$data["mensaje"] = "Se eliminó el registro de control de la encuesta.";
+				$this->session->set_flashdata('retornoExito', 'Se eliminó el registro de control de la encuesta');
+			} else {
+				$data["result"] = "error";
+				$data["mensaje"] = "Error!!! Contactarse con el Administrador.";
+				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el Administrador');
+			}
+	
+
+			echo json_encode($data);
+    }
 
 	
 	

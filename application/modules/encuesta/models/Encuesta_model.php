@@ -621,6 +621,7 @@
 				if (array_key_exists("idControl", $arrDatos)) {
 					$this->db->where('id_control', $arrDatos["idControl"]);
 				}
+				$this->db->where('estado', 1); //solo muestra las activas
 				
 				$this->db->order_by('id_control', 'asc');
 				$query = $this->db->get('form_control');
@@ -650,6 +651,7 @@
 				//revisar si es para adicionar o editar
 				if ($idControl == '') {
 					$data['fecha_registro'] = date("Y-m-d G:i:s");
+					$data['estado'] = 1;
 					$query = $this->db->insert('form_control', $data);
 					$idControl = $this->db->insert_id();
 				} else {
