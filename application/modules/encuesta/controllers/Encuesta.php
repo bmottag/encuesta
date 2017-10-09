@@ -645,14 +645,120 @@ class Encuesta extends MX_Controller {
 			if ($idControl != '') {
 				$msj = "Se actualizó registro.";
 			}			
+			
+			//si la respuesta es encuenta comleta, se debe validar si los formulario ya estan todos diligenciados
+			$resultado = $this->input->post('resultado');
+			$bandera = true;
+
+			if($resultado == "EC"){
+				
+				//busco informacion del formulario si existe
+				$arrParam = array(
+					"idFormulario" => $idFormulario
+				);				
+				$information_form1 = $this->encuesta_model->get_form_administrativa($arrParam);
+				$information_form2 = $this->encuesta_model->get_form_actividad_economica($arrParam);
+				$information_form3 = $this->encuesta_model->get_form_criticos($arrParam);
+				$information_form4 = $this->encuesta_model->get_form_financiera($arrParam);
+				$information_form5 = $this->encuesta_model->get_form_servicios($arrParam);
+				$information_form6 = $this->encuesta_model->get_form_formalizacion($arrParam);
+				$information_form7 = $this->encuesta_model->get_last_record_control($arrParam);
+				
+if(!$information_form1){
+		$bandera = false;//vailidacion del capitulo 1
+}
+				
+//validaciones para saber si se debe responder capitulo 2,3,4,5,6
+$banderaTerminar = false;
+$banderaTerminar2 = false;
+if($bandera && $information_form1 && $information_form1['estado_actual'] == 1){
+	$banderaTerminar = true;
+	if($information_form1['establecimiento'] == 3 || $information_form1['establecimiento'] == 4){
+		$banderaTerminar = false;
+	}else{
+	
+		if($information_form2 && $information_form2['fk_id_seccion'] != 16 && $information_form2['fk_id_seccion'] != 17 && $information_form2['fk_id_seccion'] != 18){ //validacion formulario 2
+			$banderaTerminar2 = true;
+			
+			if($information_form2['numero_personas']>9){
+				$banderaTerminar2 = false;
+			}
+		}
+		
+	}
+}
+
+//aplico la validacion 
+if($banderaTerminar){
+		if(!$information_form2){
+			//debe responder capitulo 2
+			$bandera = false;
+		}
+		if($bandera && $banderaTerminar2){
+			if(!$information_form3 || !$information_form4 || !$information_form5){
+				//debe responder capitulo 3,4,5
+				$bandera = false;
+			}
+			
+			
+			//validaciones para responder el capitulo 6
+			$banderaTerminar3 = false;
+			if($information_form1 && $information_form1['matricula'] != 1){
+				$banderaTerminar3 = true;
+			}
+
+			if($information_form1 && $information_form1['rut'] != 1){
+				$banderaTerminar3 = true;
+			}
+
+			if($information_form2 && $information_form2['seguridad_social'] != 1){
+				$banderaTerminar3 = true;
+			}
+			if($information_form4 && $information_form4['impuestos'] != 1){
+				$banderaTerminar3 = true;
+			}
+			if($information_form4 && $information_form4['contabilidad'] != 1){
+				$banderaTerminar3 = true;
+			}
+		
+			//aplico la validacion 
+			if($banderaTerminar3 && $bandera ){
+				if(!$information_form6){
+					//debe responder capitulo 6
+					$bandera = false;
+				}			
+			}	
+		}		
+}
+
+
+
+
+
+
+
+
+
+
+
+	
+				
+				
+			}
 
 			$data["idRecord"] = $idFormulario;
-			if ($idControl = $this->encuesta_model->saveControl()) {
-				$data["result"] = true;					
-				$this->session->set_flashdata('retornoExito', $msj);
-			} else {
-				$data["result"] = "error";
-				$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el administrador.');
+			if($bandera){
+				if ($idControl = $this->encuesta_model->saveControl()) {
+					$data["result"] = true;					
+					$this->session->set_flashdata('retornoExito', $msj);
+				} else {
+					$data["result"] = "error";
+					$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Contactarse con el administrador.');
+				}
+			}else{
+					$data["result"] = "error";
+					$data["mensaje"] = "Faltan capítulos por diligenciar";
+					$this->session->set_flashdata('retornoError', '<strong>Error!!!</strong> Faltan capítulos por diligenciar.');
 			}
 
 			echo json_encode($data);
