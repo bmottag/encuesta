@@ -23,6 +23,7 @@
 		public function get_establecimientos($arrDatos) 
 		{
 				$this->db->select();
+				$this->db->join('usuario U', 'U.id_usuario = E.fk_id_usuario', 'INNER');
 				if (array_key_exists("idEstablecimiento", $arrDatos)) {
 					$this->db->where('id_establecimiento', $arrDatos["idEstablecimiento"]);
 				}
@@ -724,6 +725,28 @@
 				if ($query->num_rows() >= 1) {
 					return true;
 				} else{ return false; }
+		}
+		
+		/**
+		 * Ultimo registro de control
+		 * @since 8/10/2017
+		 */
+		public function get_last_record_control($arrDatos) 
+		{
+				$this->db->select();
+				if (array_key_exists("idFormulario", $arrDatos)) {
+					$this->db->where('fk_id_formulario', $arrDatos["idFormulario"]);
+				}
+				$this->db->where('estado', 1); //solo muestra las activas
+				
+				$this->db->order_by('id_control', 'desc');
+				$query = $this->db->get('form_control');
+
+				if ($query->num_rows() > 0) {
+					return $query->result_array();
+				} else {
+					return false;
+				}
 		}
 
 

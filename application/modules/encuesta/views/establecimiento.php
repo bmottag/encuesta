@@ -110,10 +110,16 @@ if ($retornoError) {
 								<th class="text-center">Tipo Documento</th>
 								<th class="text-center">No. Documento</th>
 								<th class="text-center">Foto</th>
+								<th class="text-center">RE</th>
+								<th class="text-center">Encuestador</th>
 							</tr>
 						</thead>
 						<tbody>							
 						<?php
+							//cargo modelo para consultar el ultimo registro de control de la encuesta
+							$ci = &get_instance();
+							$ci->load->model("encuesta_model");
+						
 							foreach ($info as $lista):
 									echo "<tr>";
 									echo "<td class='text-right'>" . $lista['id_establecimiento'] . "</td>";
@@ -177,6 +183,24 @@ if($userRol!=3){ //los encuestadores no pueden borrar
 									<a href="<?php echo base_url("encuesta/foto/" . $lista['id_establecimiento']); ?>" class="btn btn-primary btn-xs">Foto</a>
 						<?php
 									echo "</td>";
+									
+									echo "<td>";
+	
+	//Buscar la alertas para esta sesion y el coordinador de sesion
+	$arrParam = array(
+		"idFormulario" => $lista['id_establecimiento']
+	);
+	$lastRecordControl = $this->encuesta_model->get_last_record_control($arrParam);
+									
+	if($lastRecordControl){
+		echo  $lastRecordControl[0]["resultado_encuesta"] . "<br>" . $lastRecordControl[0]["fecha_registro"];
+	}
+									echo "</td>";
+									
+									echo "<td>";
+									echo $lista['nombres_usuario'] . " " . $lista['apellidos_usuario'];
+									echo "</td>";
+									
 									echo "</tr>";
 							endforeach;
 						?>
