@@ -64,6 +64,7 @@ if ($retornoError) {
 	$boton_form4 = "btn-warning";
 	$boton_form5 = "btn-warning";
 	$boton_form6 = "btn-warning";
+	$boton_form7 = "btn-info";
 	if($information_form1){
 			$boton_form1 = "btn-success";
 	}
@@ -82,6 +83,10 @@ if ($retornoError) {
 	if($information_form6){
 			$boton_form6 = "btn-success";
 	}
+	if($information_form7 && $information_form7[0]["resultado_encuesta"] == "EC"){ //si el ultimo registro de control es completa entonces colocar el boton en verde
+			$boton_form7 = "btn-success";
+	}	
+	
 ?>
 					<div class="row">
 						<div class="col-lg-12">	
@@ -198,7 +203,7 @@ if($information_form4 && $information_form4['contabilidad'] != 1){
 <br>
 					<div class="row">
 						<div class="col-lg-12">	
-<a href="<?php echo base_url(). 'encuesta/form_control/' . $idFormulario; ?>" class="btn btn-info btn-block">
+<a href="<?php echo base_url(). 'encuesta/form_control/' . $idFormulario; ?>" class="btn <?php echo $boton_form7; ?> btn-block">
 <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> 7. Capítulo Control de Encuesta
 </a>
 						</div>

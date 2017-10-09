@@ -175,6 +175,7 @@ class Encuesta extends MX_Controller {
 			$data['information_form4'] = $this->encuesta_model->get_form_financiera($arrParam);
 			$data['information_form5'] = $this->encuesta_model->get_form_servicios($arrParam);
 			$data['information_form6'] = $this->encuesta_model->get_form_formalizacion($arrParam);
+			$data['information_form7'] = $this->encuesta_model->get_last_record_control($arrParam);
 
 			$data['idFormulario'] = $idFormulario;
 			$data["view"] = 'home';
