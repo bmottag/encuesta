@@ -91,7 +91,7 @@
 				$userID = $this->session->userdata("id");
 		
 				$this->db->select();
-
+				$this->db->join('usuario U', 'U.id_usuario = M.fk_id_usuario', 'INNER');
 				if (array_key_exists("idManzana", $arrDatos)) {
 					$this->db->where('M.id_manzana', $arrDatos["idManzana"]);
 				}
