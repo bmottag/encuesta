@@ -63,6 +63,7 @@ if ($retornoError) {
 						<thead>
 							<tr>
 								<th class="text-center">Editar</th>
+								<th class="text-center">ID</th>
 								<th class="text-center">Comuna</th>
 								<th class="text-center">Sector</th>
 								<th class="text-center">Sección</th>
@@ -105,6 +106,7 @@ if($userRol!=3){ //los encuestadores no pueden borrar manazanas
 <?php } ?>
 						<?php
 									echo "</td>";
+									echo "<td class='text-center'>" . $lista['id_manzana'] . "</td>";
 									echo "<td class='text-center'>" . $lista['fk_id_comuna'] . "</td>";
 									echo "<td>" . $lista['fk_id_sector'] . "</td>";
 									echo "<td>" . $lista['fk_id_seccion'] . "</td>";
