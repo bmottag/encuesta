@@ -44,7 +44,7 @@ $(function(){
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<a class="btn btn-success" href=" <?php echo base_url().'encuesta/form_home/' . $idFormulario; ?> "><span class="glyphicon glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Regresar </a> 
-					<i class="fa fa-users"></i> CONTROL DE LA ENCUESTA
+					<i class="fa fa-users"></i> RESULTADO ENCUESTA
 				</div>
 				<div class="panel-body">
 
@@ -56,7 +56,7 @@ $(function(){
 	</div>
 				
 					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modal" id="<?php echo $idFormulario; ?>">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Control
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Resultado Encuesta
 					</button><br>
 
 <?php

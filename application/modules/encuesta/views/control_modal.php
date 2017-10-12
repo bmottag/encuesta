@@ -2,7 +2,7 @@
 
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	<h4 class="modal-title" id="exampleModalLabel">Control de la Encuesta
+	<h4 class="modal-title" id="exampleModalLabel">Resultado Encuesta
 	</h4>
 </div>
 
@@ -17,7 +17,7 @@
 		<div class="row">	
 			<div class="col-sm-12">
 				<div class="form-group text-left">
-					<label class="control-label" for="resultado">Resultado de la encuesta : *</label>
+					<label class="control-label" for="resultado">Resultado encuesta : *</label>
 					<select name="resultado" id="resultado" class="form-control" required>
 						<option value=''>Select...</option>
 						<option value="EC" <?php if($information[0]["resultado_encuesta"] == "EC") { echo "selected"; }  ?>>Encuesta completa</option>

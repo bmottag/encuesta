@@ -204,7 +204,7 @@ if($information_form4 && $information_form4['contabilidad'] != 1){
 					<div class="row">
 						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_control/' . $idFormulario; ?>" class="btn <?php echo $boton_form7; ?> btn-block">
-<span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> 7. Capítulo Control de Encuesta
+<span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> 7. Capítulo Resultado Encuesta
 </a>
 						</div>
 					</div>
