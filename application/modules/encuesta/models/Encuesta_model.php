@@ -22,7 +22,7 @@
 		 */
 		public function get_establecimientos($arrDatos) 
 		{
-				$this->db->select();
+				$this->db->select('E.*, U.nombres_usuario, U.apellidos_usuario');
 				$this->db->join('usuario U', 'U.id_usuario = E.fk_id_usuario', 'INNER');
 				if (array_key_exists("idEstablecimiento", $arrDatos)) {
 					$this->db->where('id_establecimiento', $arrDatos["idEstablecimiento"]);
@@ -90,7 +90,7 @@
 				$userRol = $this->session->userdata("rol");
 				$userID = $this->session->userdata("id");
 		
-				$this->db->select();
+				$this->db->select("U.nombres_usuario, U.apellidos_usuario, M.*");
 				$this->db->join('usuario U', 'U.id_usuario = M.fk_id_usuario', 'INNER');
 				if (array_key_exists("idManzana", $arrDatos)) {
 					$this->db->where('M.id_manzana', $arrDatos["idManzana"]);
@@ -101,7 +101,7 @@
 				}
 				$this->db->where('M.estado', 1); //solo muestra las activas
 				
-				$this->db->order_by('barrio', 'asc');
+				$this->db->order_by('M.id_manzana', 'asc');
 				$query = $this->db->get('form_manzana M');
 
 				if ($query->num_rows() > 0) {
