@@ -89,7 +89,8 @@ $("#cual_fortalecer").convertirMayuscula();
 							$("#div_guardado").css("display", "inline");
 							$('#btnSubmit').removeAttr('disabled');
 
-							var url = base_url + "encuesta/form_formalizacion/" + data.idFormulario;
+							//var url = base_url + "encuesta/form_formalizacion/" + data.idFormulario;
+							var url = base_url + "encuesta/" + data.redireccionamiento;
 							$(location).attr("href", url);
 						}
 						else
