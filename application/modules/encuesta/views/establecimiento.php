@@ -112,6 +112,7 @@ if ($retornoError) {
 								<th class="text-center">Foto</th>
 								<th class="text-center">RE</th>
 								<th class="text-center">Encuestador</th>
+								<th class="text-center">Fecha</th>
 							</tr>
 						</thead>
 						<tbody>							
@@ -200,6 +201,8 @@ if($userRol!=3){ //los encuestadores no pueden borrar
 									echo "<td>";
 									echo $lista['nombres_usuario'] . " " . $lista['apellidos_usuario'];
 									echo "</td>";
+									
+									echo "<td class='text-center'>" . $lista['fecha_registro'] . "</td>";
 									
 									echo "</tr>";
 							endforeach;
