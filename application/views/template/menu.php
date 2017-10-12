@@ -67,7 +67,7 @@ if($userRol==1){ //SI es usuario ADMIN o SUPERVISOR
 			<ul class="dropdown-menu dropdown-messages">
 			
 				<li>
-					<a href="<?php echo base_url("public/reportico/run.php?execute_mode=MENU&project=ICFES"); ?>"><i class="fa fa-search fa-fw"></i> Ver formularios</a>
+					<a href="<?php echo base_url("public/reportico/run.php"); ?>"><i class="fa fa-search fa-fw"></i> Ver formularios</a>
 				</li>
 				
 			</ul>
