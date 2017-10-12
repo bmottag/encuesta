@@ -458,6 +458,35 @@ class Encuesta extends MX_Controller {
 
 			if($this->encuesta_model->add_form_servicios()) 
 			{
+				//redireccionamiento del formulario
+				//si se termino la encuesta lo envio al formulario de control de lo contrario lo envio al siguiente formulario
+$data["redireccionamiento"] = "form_control/" . $idFormulario;
+
+$arrParam = array(
+	"idFormulario" => $idFormulario
+);				
+			
+$information_form1 = $this->encuesta_model->get_form_administrativa($arrParam);
+$information_form2 = $this->encuesta_model->get_form_actividad_economica($arrParam);
+$information_form4 = $this->encuesta_model->get_form_financiera($arrParam);
+
+if($information_form1 && $information_form1['matricula'] != 1){
+	$data["redireccionamiento"] = "form_formalizacion/" . $idFormulario;
+}
+if($information_form1 && $information_form1['rut'] != 1){
+	$data["redireccionamiento"] = "form_formalizacion/" . $idFormulario;
+}
+if($information_form2 && $information_form2['seguridad_social'] != 1){
+	$data["redireccionamiento"] = "form_formalizacion/" . $idFormulario;
+}
+if($information_form4 && $information_form4['impuestos'] != 1){
+	$data["redireccionamiento"] = "form_formalizacion/" . $idFormulario;
+}
+if($information_form4 && $information_form4['contabilidad'] != 1){
+	$data["redireccionamiento"] = "form_formalizacion/" . $idFormulario;
+}
+				
+				
 				$data["result"] = true;
 				$data["mensaje"] = "Se guardó la información con éxito.";
 				$this->session->set_flashdata('retornoExito', 'Se guardó la información con éxito.');
@@ -641,7 +670,7 @@ class Encuesta extends MX_Controller {
 			$idControl = $this->input->post('hddId');
 			$idFormulario  = $this->input->post('hddIdFormulario');
 
-			$msj = "Se adicionó un nuevo registro de control.";
+			$msj = "Se adicionó un nuevo registro del resultado de la encuesta.";
 			if ($idControl != '') {
 				$msj = "Se actualizó registro.";
 			}			

@@ -152,7 +152,8 @@ if($userRol!=3){ //los encuestadores no pueden borrar manazanas
 $(document).ready(function() {
 	$('#dataTables').DataTable({
 		responsive: true,
-		"pageLength": 50
+		"ordering": false,
+		"pageLength": 100
 	});
 });
 </script>
