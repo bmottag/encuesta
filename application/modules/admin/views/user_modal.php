@@ -111,6 +111,20 @@
 <?php } ?>
 		</div>
 		
+		<div class="row">		
+			<div class="col-sm-6">
+				<div class="form-group text-left">
+					<label class="control-label" for="jefe">Jefe : *</label>
+					<select name="jefe" id="jefe" class="form-control" >
+						<option value=''>Select...</option>
+						<?php for ($i = 0; $i < count($listaSupervisores); $i++) { ?>
+							<option value="<?php echo $listaSupervisores[$i]["id_usuario"]; ?>" <?php if($information[0]["fk_id_jefe"] == $listaSupervisores[$i]["id_usuario"]) { echo "selected"; }  ?>><?php echo $listaSupervisores[$i]["nombres_usuario"] . " " . $listaSupervisores[$i]["apellidos_usuario"]; ?></option>	
+						<?php } ?>
+					</select>
+				</div>
+			</div>
+		</div>
+		
 
 		
 		<div class="form-group">

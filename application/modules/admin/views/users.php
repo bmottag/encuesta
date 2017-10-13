@@ -77,6 +77,7 @@ if ($retornoError) {
 								<th class="text-center">Editar</th>
 								<th class="text-center">Número de documento</th>
 								<th class="text-center">Rol</th>
+								<th class="text-center">Jefe inmediato</th>
 								<th class="text-center">Estado</th>
 								<th class="text-center">Contraseña</th>								
 								<th class="text-center">Teléfono</th>
@@ -102,6 +103,8 @@ if ($retornoError) {
 									echo "<td class='text-center'>";
 									echo '<p class="text-primary"><strong>' . $lista['nombre_rol'] . '</strong></p>';
 									echo "</td>";
+									
+									echo "<td>" . $lista['nombre_jefe'] . " " . $lista['apellido_jefe']  . "</td>";
 									
 									echo "<td class='text-center'>";
 									switch ($lista['estado']) {

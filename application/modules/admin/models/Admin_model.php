@@ -39,18 +39,16 @@
 		 */
 		public function get_users($arrDatos) 
 		{
-				$this->db->select();
+				$this->db->select("U.*, R.*, J.nombres_usuario nombre_jefe, J.apellidos_usuario apellido_jefe");
 				$this->db->join('param_roles R', 'R.id_rol = U.fk_id_rol', 'INNER');
+				$this->db->join('usuario J', 'J.id_usuario = U.fk_id_jefe', 'LEFT');
 				if (array_key_exists("idUsuario", $arrDatos)) {
-					$this->db->where('id_usuario', $arrDatos["idUsuario"]);
+					$this->db->where('U.id_usuario', $arrDatos["idUsuario"]);
 				}
 				if (array_key_exists("idRol", $arrDatos)) {
-					$this->db->where('fk_id_rol', $arrDatos["idRol"]);
+					$this->db->where('U.fk_id_rol', $arrDatos["idRol"]);
 				}
-				if (array_key_exists("codigo_dane", $arrDatos)) {
-					$where = "fk_codigo_dane is not NULL";
-					$this->db->where($where);
-				}
+				$this->db->where('U.estado', 1); //solo muestra las activas
 				
 				$this->db->order_by('nombres_usuario', 'asc');
 				$query = $this->db->get('usuario U');
@@ -80,7 +78,8 @@
 					'celular' => $this->input->post('movilNumber'),
 					'email' => $this->input->post('email'),
 					'log_user' => $this->input->post('documento'),
-					'fk_id_rol' => $this->input->post('rol')
+					'fk_id_rol' => $this->input->post('rol'),
+					'fk_id_jefe' => $this->input->post('jefe')
 				);	
 
 				//revisar si es para adicionar o editar

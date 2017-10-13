@@ -64,7 +64,7 @@ class Admin extends MX_Controller {
 
 			$arrParam = array();
 			$data['info'] = $this->admin_model->get_users($arrParam);
-			
+
 			$data["view"] = 'users';
 			$this->load->view("layout", $data);
 	}
@@ -86,7 +86,12 @@ class Admin extends MX_Controller {
 				"order" => "nombre_rol",
 				"id" => "x"
 			);
-			$data['roles'] = $this->general_model->get_basic_search($arrParam);			
+			$data['roles'] = $this->general_model->get_basic_search($arrParam);
+			
+			$arrParam = array(
+				"idRol" => 2
+			);
+			$data['listaSupervisores'] = $this->admin_model->get_users($arrParam);
 			
 			if ($data["idUser"] != 'x') 
 			{
