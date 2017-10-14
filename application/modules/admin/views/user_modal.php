@@ -114,7 +114,7 @@
 		<div class="row">		
 			<div class="col-sm-6">
 				<div class="form-group text-left">
-					<label class="control-label" for="jefe">Jefe : *</label>
+					<label class="control-label" for="jefe">Supervisor o Coordinador : *</label>
 					<select name="jefe" id="jefe" class="form-control" >
 						<option value=''>Select...</option>
 						<?php for ($i = 0; $i < count($listaSupervisores); $i++) { ?>
