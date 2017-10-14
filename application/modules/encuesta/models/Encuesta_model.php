@@ -22,6 +22,9 @@
 		 */
 		public function get_establecimientos($arrDatos) 
 		{
+				$userRol = $this->session->userdata("rol");
+				$userID = $this->session->userdata("id");
+			
 				$this->db->select('E.*, U.nombres_usuario, U.apellidos_usuario');
 				$this->db->join('usuario U', 'U.id_usuario = E.fk_id_usuario', 'INNER');
 				if (array_key_exists("idEstablecimiento", $arrDatos)) {
@@ -30,7 +33,16 @@
 				if (array_key_exists("idManzana", $arrDatos)) {
 					$this->db->where('E.fk_id_manzana', $arrDatos["idManzana"]);
 				}
-				$this->db->where('E.estado', 1); //solo muestra las activas
+				$this->db->where('E.estado != ', 2); //estado diferente a inactivo
+				
+				//FILTRO POR EL ENCUESTADOR
+				if($userRol==3) {					
+					$this->db->where('E.fk_id_usuario', $userID);
+				}
+				//FILTRO POR EL SUPERVISOR
+				if($userRol==2) {					
+					$this->db->where('U.fk_id_jefe', $userID);
+				}				
 				
 				$this->db->order_by('id_establecimiento', 'asc');
 				$query = $this->db->get('form_establecimiento E');
@@ -68,9 +80,20 @@
 					$data['fk_id_usuario'] = $this->session->id;
 					$data['fecha_registro'] = date("Y-m-d G:i:s");
 					$data['estado'] = 1;
+					
+					$userRol = $this->session->userdata("rol");
+					if($userRol == 2 || $userRol == 4){//si es supervisor o coordinador deja guardar el estado
+							$data['estado'] = $this->input->post('estado');
+					}
 					$query = $this->db->insert('form_establecimiento', $data);
 					$idEstablecimiento = $this->db->insert_id();
 				} else {
+					
+					$userRol = $this->session->userdata("rol");
+					if($userRol == 2 || $userRol == 4){//si es supervisor o coordinador deja guardar el estado
+							$data['estado'] = $this->input->post('estado');
+					}
+					
 					$this->db->where('id_establecimiento', $idEstablecimiento);
 					$query = $this->db->update('form_establecimiento', $data);
 				}
@@ -95,9 +118,13 @@
 				if (array_key_exists("idManzana", $arrDatos)) {
 					$this->db->where('M.id_manzana', $arrDatos["idManzana"]);
 				}
-				//FILTRO POR EL SUPERVISOR
+				//FILTRO POR EL ENCUESTADOR
 				if($userRol==3) {					
 					$this->db->where('M.fk_id_usuario', $userID);
+				}
+				//FILTRO POR EL SUPERVISOR
+				if($userRol==2) {					
+					$this->db->where('U.fk_id_jefe', $userID);
 				}
 				$this->db->where('M.estado', 1); //solo muestra las activas
 				
@@ -175,9 +202,10 @@
 		public function add_form_administrativa() 
 		{
 			$idFormAdministrativa = $this->input->post('hddIdFormAdministrativa');
+			$idFormulario = $this->input->post('hddIdentificador');
 			
 			$data = array(
-				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_formulario' => $idFormulario,
 				'fk_id_usuario' => $this->session->userdata("id"),
 				'visible' => $this->input->post('visible'),
 				'aviso' => $this->input->post('aviso'),
@@ -192,8 +220,19 @@
 			
 			//revisar si es para adicionar o editar
 			if ($idFormAdministrativa == '') {
-				$data['fecha_registro'] = date("Y-m-d G:i:s");
-				$query = $this->db->insert('form_administrativa', $data);				
+				
+						//verificar que no existe un registro con ese formulario
+						$this->db->select();
+						$this->db->where('fk_id_formulario', $idFormulario);
+						$query = $this->db->get('form_administrativa');
+
+						if ($query->num_rows() > 0) {
+							return false;
+						} else {
+							$data['fecha_registro'] = date("Y-m-d G:i:s");
+							$query = $this->db->insert('form_administrativa', $data);				
+						}				
+
 			} else {
 				$this->db->where('id_administrativa', $idFormAdministrativa);
 				$query = $this->db->update('form_administrativa', $data);
@@ -237,9 +276,10 @@
 		public function add_form_actividad_economica() 
 		{
 			$idFormActividadEconomica = $this->input->post('hddIdFormActividadEconomica');
+			$idFormulario = $this->input->post('hddIdentificador');
 			
 			$data = array(
-				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_formulario' => $idFormulario,
 				'fk_id_usuario' => $this->session->userdata("id"),
 				'fk_id_seccion' => $this->input->post('actividad'),
 				'numero_personas' => $this->input->post('numero_personas'),
@@ -251,8 +291,19 @@
 			
 			//revisar si es para adicionar o editar
 			if ($idFormActividadEconomica == '') {
-				$data['fecha_registro'] = date("Y-m-d G:i:s");
-				$query = $this->db->insert('form_actividad_economica', $data);				
+				
+						//verificar que no existe un registro con ese formulario
+						$this->db->select();
+						$this->db->where('fk_id_formulario', $idFormulario);
+						$query = $this->db->get('form_actividad_economica');
+
+						if ($query->num_rows() > 0) {
+							return false;
+						} else {
+							$data['fecha_registro'] = date("Y-m-d G:i:s");
+							$query = $this->db->insert('form_actividad_economica', $data);				
+						}
+
 			} else {
 				$this->db->where('id_actividad_economica', $idFormActividadEconomica);
 				$query = $this->db->update('form_actividad_economica', $data);
@@ -295,9 +346,10 @@
 		public function add_form_criticos() 
 		{
 			$idFormCriticos = $this->input->post('hddIdFormCriticos');
+			$idFormulario = $this->input->post('hddIdentificador');
 			
 			$data = array(
-				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_formulario' => $idFormulario,
 				'fk_id_usuario' => $this->session->userdata("id"),
 				'financiamiento' => $this->input->post('financiamiento'),
 				'ausencia' => $this->input->post('ausencia'),
@@ -314,8 +366,19 @@
 			
 			//revisar si es para adicionar o editar
 			if ($idFormCriticos == '') {
-				$data['fecha_registro'] = date("Y-m-d G:i:s");
-				$query = $this->db->insert('form_criticos', $data);				
+				
+						//verificar que no existe un registro con ese formulario
+						$this->db->select();
+						$this->db->where('fk_id_formulario', $idFormulario);
+						$query = $this->db->get('form_criticos');
+
+						if ($query->num_rows() > 0) {
+							return false;
+						} else {
+							$data['fecha_registro'] = date("Y-m-d G:i:s");
+							$query = $this->db->insert('form_criticos', $data);
+						}
+				
 			} else {
 				$this->db->where('id_criticos', $idFormCriticos);
 				$query = $this->db->update('form_criticos', $data);
@@ -358,9 +421,10 @@
 		public function add_form_financiera() 
 		{
 			$idFormFinanciera = $this->input->post('hddIdFormFinanciera');
+			$idFormulario = $this->input->post('hddIdentificador');
 			
 			$data = array(
-				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_formulario' => $idFormulario,
 				'fk_id_usuario' => $this->session->userdata("id"),
 				'ingresos' => $this->input->post('ingresos'),
 				'contabilidad' => $this->input->post('contabilidad'),
@@ -376,8 +440,20 @@
 			
 			//revisar si es para adicionar o editar
 			if ($idFormFinanciera == '') {
-				$data['fecha_registro'] = date("Y-m-d G:i:s");
-				$query = $this->db->insert('form_financiera', $data);				
+				
+						//verificar que no existe un registro con ese formulario
+						$this->db->select();
+						$this->db->where('fk_id_formulario', $idFormulario);
+						$query = $this->db->get('form_financiera');
+
+						if ($query->num_rows() > 0) {
+							return false;
+						} else {
+							$data['fecha_registro'] = date("Y-m-d G:i:s");
+							$query = $this->db->insert('form_financiera', $data);
+						}
+
+				
 			} else {
 				$this->db->where('id_financiera', $idFormFinanciera);
 				$query = $this->db->update('form_financiera', $data);
@@ -420,9 +496,10 @@
 		public function add_form_servicios() 
 		{
 			$idFormServicios = $this->input->post('hddIdFormServicios');
+			$idFormulario = $this->input->post('hddIdentificador');
 			
 			$data = array(
-				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_formulario' => $idFormulario,
 				'fk_id_usuario' => $this->session->userdata("id"),
 				'motivo' => $this->input->post('motivo'),
 				'productos' => $this->input->post('productos'),
@@ -443,8 +520,19 @@
 			
 			//revisar si es para adicionar o editar
 			if ($idFormServicios == '') {
-				$data['fecha_registro'] = date("Y-m-d G:i:s");
-				$query = $this->db->insert('form_servicios', $data);				
+				
+						//verificar que no existe un registro con ese formulario
+						$this->db->select();
+						$this->db->where('fk_id_formulario', $idFormulario);
+						$query = $this->db->get('form_servicios');
+
+						if ($query->num_rows() > 0) {
+							return false;
+						} else {
+								$data['fecha_registro'] = date("Y-m-d G:i:s");
+								$query = $this->db->insert('form_servicios', $data);				
+						}
+
 			} else {
 				$this->db->where('id_servicios', $idFormServicios);
 				$query = $this->db->update('form_servicios', $data);
@@ -487,9 +575,10 @@
 		public function add_form_formalizacion() 
 		{
 			$idFormFormalizacion = $this->input->post('hddIdFormFormalizacion');
+			$idFormulario = $this->input->post('hddIdentificador');
 			
 			$data = array(
-				'fk_id_formulario' => $this->input->post('hddIdentificador'),
+				'fk_id_formulario' => $idFormulario,
 				'fk_id_usuario' => $this->session->userdata("id"),
 				'formalizar' => $this->input->post('formalizar'),
 				'motivo' => $this->input->post('motivo'),
@@ -507,8 +596,21 @@
 			
 			//revisar si es para adicionar o editar
 			if ($idFormFormalizacion == '') {
-				$data['fecha_registro'] = date("Y-m-d G:i:s");
-				$query = $this->db->insert('form_formalizacion', $data);				
+				
+						//verificar que no existe un registro con ese formulario
+						$this->db->select();
+						$this->db->where('fk_id_formulario', $idFormulario);
+						$query = $this->db->get('form_formalizacion');
+
+						if ($query->num_rows() > 0) {
+							return false;
+						} else {
+							$data['fecha_registro'] = date("Y-m-d G:i:s");
+							$query = $this->db->insert('form_formalizacion', $data);				
+						}
+				
+				
+
 			} else {
 				$this->db->where('id_formalizacion', $idFormFormalizacion);
 				$query = $this->db->update('form_formalizacion', $data);

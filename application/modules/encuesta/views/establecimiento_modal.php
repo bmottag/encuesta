@@ -178,7 +178,42 @@ $(document).ready(function () {
 			</div>			
 		</div>
 		
+		
+<!-- campo para aprobar encuesta, solo se habilita para los supervisores o coordinaores -->
+<?php 
+$userRol = $this->session->userdata("rol");
+if($userRol == 2){ //SUPERVISOR
+?>
 
+		<div class="row">	
+			<div class="col-sm-12">
+				<div class="form-group text-left">
+					<label class="control-label" for="estado">Estado : *</label>
+					<select name="estado" id="estado" class="form-control" required>
+						<option value=1 <?php if($information[0]["estado"] == 1) { echo "selected"; }  ?>>Desaprobada</option>
+						<option value=3 <?php if($information[0]["estado"] == 3) { echo "selected"; }  ?>>Aprobada</option>
+					</select>
+				</div>
+			</div>
+		</div>
+<?php
+}elseif($userRol == 4){ //COORDINADOR
+?>
+
+		<div class="row">	
+			<div class="col-sm-12">
+				<div class="form-group text-left">
+					<label class="control-label" for="estado">Estado : *</label>
+					<select name="estado" id="estado" class="form-control" required>
+						<option value=1 <?php if($information[0]["estado"] == 1) { echo "selected"; }  ?>>Desaprobada</option>
+						<option value=4 <?php if($information[0]["estado"] == 4) { echo "selected"; }  ?>>Aprobada</option>
+					</select>
+				</div>
+			</div>
+		</div>
+<?php
+}
+?>
 		<div class="form-group">
 			<div class="row" align="center">
 				<div style="width:50%;" align="center">

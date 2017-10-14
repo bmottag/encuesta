@@ -59,7 +59,9 @@ $(function(){
 										<?php echo $infoManzana[0]['fk_id_seccion']; ?>
 										- <strong>Manzana: </strong>
 										<?php echo $infoManzana[0]['fk_id_manzana']; ?>
-										<br><strong>Barrio: </strong>
+										<br><strong>ID: </strong>
+										<?php echo $infoManzana[0]['id_manzana']; ?>
+										 - <strong>Barrio: </strong>
 										<?php echo $infoManzana[0]['barrio']; ?>
 									</div>
 								</div>
@@ -126,16 +128,31 @@ if ($retornoError) {
 									echo "<td class='text-right'>" . $lista['id_establecimiento'] . "</td>";
 									echo "<td class='text-center'>";
 						?>
-									<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_establecimiento']; ?>" >
+						
+						
+<?php 
+$userRol = $this->session->rol;
+	
+	$boton = "";
+	$enlace = base_url("encuesta/form_home/" . $lista['id_establecimiento']);
+	if($userRol==3 && $lista['estado'] != 1){//para los ENCUESTADORES si la encuesta esta aprobada no se puede editar nada
+		$boton = "disabled";
+		$enlace = "#";
+	}elseif($userRol==2 && $lista['estado'] == 4){//para los SUPERVISORES si la encuesta esta aprobada por el coordinador no puede editar nada
+		$boton = "disabled";
+		$enlace = "#";
+	}
+?>
+						
+									<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_establecimiento']; ?>" <?php echo $boton; ?> >
 										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
 									</button>
 <br><br>
-<a href="<?php echo base_url("encuesta/form_home/" . $lista['id_establecimiento']); ?>" class="btn btn-warning btn-xs">
+<a href="<?php echo $enlace; ?>" class="btn btn-warning btn-xs" <?php echo $boton; ?>>
 Encuesta  
 </a>
 
 <?php 
-$userRol = $this->session->rol;
 if($userRol!=3){ //los encuestadores no pueden borrar
 ?>
 <br><br>
