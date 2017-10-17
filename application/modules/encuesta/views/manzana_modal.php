@@ -21,6 +21,7 @@
 					<select name="comuna" id="comuna" class="form-control" required>
 						<option value=''>Select...</option>
 						<option value="02" <?php if($information[0]["fk_id_comuna"] == "02") { echo "selected"; }  ?>>Comuna 2</option>
+						<option value="03" <?php if($information[0]["fk_id_comuna"] == "03") { echo "selected"; }  ?>>Comuna 3</option>
 						<option value="04" <?php if($information[0]["fk_id_comuna"] == "04") { echo "selected"; }  ?>>Comuna 4</option>
 						<option value="05" <?php if($information[0]["fk_id_comuna"] == "05") { echo "selected"; }  ?>>Comuna 5</option>
 						<option value="08" <?php if($information[0]["fk_id_comuna"] == "08") { echo "selected"; }  ?>>Comuna 8</option>
