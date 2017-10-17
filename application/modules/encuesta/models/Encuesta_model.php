@@ -25,8 +25,9 @@
 				$userRol = $this->session->userdata("rol");
 				$userID = $this->session->userdata("id");
 			
-				$this->db->select('E.*, U.nombres_usuario, U.apellidos_usuario');
+				$this->db->select('E.*, U.nombres_usuario, U.apellidos_usuario, CONCAT(K.nombres_usuario, " ", K.apellidos_usuario) jefe');
 				$this->db->join('usuario U', 'U.id_usuario = E.fk_id_usuario', 'INNER');
+				$this->db->join('usuario K', 'K.id_usuario = U.fk_id_jefe', 'LEFT');
 				if (array_key_exists("idEstablecimiento", $arrDatos)) {
 					$this->db->where('id_establecimiento', $arrDatos["idEstablecimiento"]);
 				}
