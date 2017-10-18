@@ -70,6 +70,7 @@ if ($retornoError) {
 								<th class="text-center">Manzana</th>
 								<th class="text-center">Barrio</th>
 								<th class="text-center">Encuestador</th>
+								<th class="text-center">Supervisor</th>
 								<th class="text-center">Fecha</th>
 							</tr>
 						</thead>
@@ -120,6 +121,11 @@ if($userRol!=3){ //los encuestadores no pueden borrar manazanas
 									echo "<td>";
 									echo $lista['nombres_usuario'] . " " . $lista['apellidos_usuario'];
 									echo "</td>";
+									
+									echo "<td>";
+									echo $lista['jefe'];
+									echo "</td>";
+									
 									echo "<td class='text-center'>" . $lista['fecha_creacion'] . "</td>";
 							endforeach;
 						?>
