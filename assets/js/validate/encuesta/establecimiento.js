@@ -121,6 +121,7 @@ jQuery.validator.addMethod("campoNit", function(value, element, param) {
 						{
 							$("#div_load").css("display", "none");
 							$("#div_error").css("display", "inline");
+							$("#span_msj").html(data.mensaje);
 							$('#btnSubmit').removeAttr('disabled');							
 							return false;
 						} 

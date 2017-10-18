@@ -181,6 +181,8 @@ $(document).ready(function () {
 		
 <!-- campo para aprobar encuesta, solo se habilita para los supervisores o coordinaores -->
 <?php 
+
+if($information){
 $userRol = $this->session->userdata("rol");
 if($userRol == 2){ //SUPERVISOR
 ?>
@@ -190,14 +192,14 @@ if($userRol == 2){ //SUPERVISOR
 				<div class="form-group text-left">
 					<label class="control-label" for="estado">Estado : *</label>
 					<select name="estado" id="estado" class="form-control" required>
-						<option value=1 <?php if($information[0]["estado"] == 1) { echo "selected"; }  ?>>Desaprobada</option>
-						<option value=3 <?php if($information[0]["estado"] == 3) { echo "selected"; }  ?>>Aprobada</option>
+						<option value=0 <?php if($information[0]["aprobacion_supervisor"] == 0) { echo "selected"; }  ?>>Desaprobada</option>
+						<option value=3 <?php if($information[0]["aprobacion_supervisor"] == 3) { echo "selected"; }  ?>>Aprobada</option>
 					</select>
 				</div>
 			</div>
 		</div>
 <?php
-}elseif($userRol == 4){ //COORDINADOR
+}elseif($userRol == 4 && $information[0]["aprobacion_supervisor"] == 3){ //COORDINADOR
 ?>
 
 		<div class="row">	
@@ -205,14 +207,14 @@ if($userRol == 2){ //SUPERVISOR
 				<div class="form-group text-left">
 					<label class="control-label" for="estado">Estado : *</label>
 					<select name="estado" id="estado" class="form-control" required>
-						<option value=1 <?php if($information[0]["estado"] == 1) { echo "selected"; }  ?>>Desaprobada</option>
-						<option value=4 <?php if($information[0]["estado"] == 4) { echo "selected"; }  ?>>Aprobada</option>
+						<option value=1 <?php if($information[0]["aprobacion_coordinador"] == 1) { echo "selected"; }  ?>>Desaprobada</option>
+						<option value=4 <?php if($information[0]["aprobacion_coordinador"] == 4) { echo "selected"; }  ?>>Aprobada</option>
 					</select>
 				</div>
 			</div>
 		</div>
 <?php
-}
+}}
 ?>
 		<div class="form-group">
 			<div class="row" align="center">
@@ -231,7 +233,7 @@ if($userRol == 2){ //SUPERVISOR
 				</div>
 			</div>
 			<div id="div_error" style="display:none">			
-				<div class="alert alert-danger"><span class="glyphicon glyphicon-remove" id="span_msj">Este número de documetno ya existe en la base de datos.</span></div>
+				<div class="alert alert-danger"><span class="glyphicon glyphicon-remove" id="span_msj"></span></div>
 			</div>	
 		</div>
 			

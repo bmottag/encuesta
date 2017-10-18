@@ -82,17 +82,27 @@
 					$data['fecha_registro'] = date("Y-m-d G:i:s");
 					$data['estado'] = 1;
 					
-					$userRol = $this->session->userdata("rol");
-					if($userRol == 2 || $userRol == 4){//si es supervisor o coordinador deja guardar el estado
-							$data['estado'] = $this->input->post('estado');
-					}
 					$query = $this->db->insert('form_establecimiento', $data);
 					$idEstablecimiento = $this->db->insert_id();
+
 				} else {
 					
 					$userRol = $this->session->userdata("rol");
 					if($userRol == 2 || $userRol == 4){//si es supervisor o coordinador deja guardar el estado
-							$data['estado'] = $this->input->post('estado');
+						
+						if($userRol == 2){	
+							$data['aprobacion_supervisor'] = $this->input->post('estado');
+						}elseif($userRol == 4 && $this->input->post('estado')){
+							$data['aprobacion_coordinador'] = $this->input->post('estado');
+						}
+							
+							//guardo todos los cambio de estado
+							$estado['fk_id_establecimiento'] = $idEstablecimiento;
+							$estado['fk_id_usuario'] = $this->session->id;
+							$estado['fecha_registro_estado'] = date("Y-m-d G:i:s");
+							$estado['estado'] = $this->input->post('estado');							
+							$query = $this->db->insert('log_estado_establecimiento', $estado);
+							
 					}
 					
 					$this->db->where('id_establecimiento', $idEstablecimiento);
@@ -114,8 +124,9 @@
 				$userRol = $this->session->userdata("rol");
 				$userID = $this->session->userdata("id");
 		
-				$this->db->select("U.nombres_usuario, U.apellidos_usuario, M.*");
+				$this->db->select('U.nombres_usuario, U.apellidos_usuario, M.*, CONCAT(K.nombres_usuario, " ", K.apellidos_usuario) jefe');
 				$this->db->join('usuario U', 'U.id_usuario = M.fk_id_usuario', 'INNER');
+				$this->db->join('usuario K', 'K.id_usuario = U.fk_id_jefe', 'LEFT');
 				if (array_key_exists("idManzana", $arrDatos)) {
 					$this->db->where('M.id_manzana', $arrDatos["idManzana"]);
 				}

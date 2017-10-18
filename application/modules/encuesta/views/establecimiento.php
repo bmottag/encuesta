@@ -136,10 +136,10 @@ $userRol = $this->session->rol;
 	
 	$boton = "";
 	$enlace = base_url("encuesta/form_home/" . $lista['id_establecimiento']);
-	if($userRol==3 && $lista['estado'] != 1){//para los ENCUESTADORES si la encuesta esta aprobada no se puede editar nada
+	if($userRol==3 && $lista['aprobacion_supervisor'] == 3){//para los ENCUESTADORES si la encuesta esta aprobada no se puede editar nada
 		$boton = "disabled";
 		$enlace = "#";
-	}elseif($userRol==2 && $lista['estado'] == 4){//para los SUPERVISORES si la encuesta esta aprobada por el coordinador no puede editar nada
+	}elseif($userRol==2 && $lista['aprobacion_coordinador'] == 4){//para los SUPERVISORES si la encuesta esta aprobada por el coordinador no puede editar nada
 		$boton = "disabled";
 		$enlace = "#";
 	}
@@ -161,7 +161,22 @@ if($userRol!=3){ //los encuestadores no pueden borrar
 	Eliminar <span class="fa fa-times fa-fw" aria-hidden="true">
 </button>								
 <?php } ?>
+
 						<?php
+						
+						
+									if($lista['aprobacion_supervisor']==3) {
+
+											
+echo '<br><br><button type="button" class="btn btn-success btn-circle">AS</button>';
+											
+									}
+									if($lista['aprobacion_coordinador']==4){
+echo '  <button type="button" class="btn btn-primary btn-circle">AC</button>';
+									}
+						
+						
+						
 									echo "</td>";
 									echo "<td class='text-center'>" . $lista['nombre_propietario'] . "</td>";
 									echo "<td class='text-center'>" . $lista['direccion'] . "</td>";
