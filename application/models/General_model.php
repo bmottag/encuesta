@@ -47,7 +47,22 @@ class General_model extends CI_Model {
 				return $row->CONTEO;
 		}
 	
-	
+		/**
+		 * Update field in a table
+		 * @since 25/5/2017
+		 */
+		public function updateRecord($arrDatos) {
+				$data = array(
+					$arrDatos ["column"] => $arrDatos ["value"]
+				);
+				$this->db->where($arrDatos ["primaryKey"], $arrDatos ["id"]);
+				$query = $this->db->update($arrDatos ["table"], $data);
+				if ($query) {
+					return true;
+				} else {
+					return false;
+				}
+		}	
 	
 	
 	
