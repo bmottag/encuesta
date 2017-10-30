@@ -28,6 +28,7 @@
 								<th class="text-center">Encuestador</th>
 								<th class="text-center">Supervisor</th>
 								<th class="text-center">Fecha</th>
+								<th class="text-center">Ver en mapa</th>
 							</tr>
 						</thead>
 						<tbody>							
@@ -117,6 +118,13 @@ echo '  <button type="button" class="btn btn-primary btn-circle">AC</button>';
 									echo "</td>";
 									
 									echo "<td class='text-center'>" . $lista['fecha_registro'] . "</td>";
+?>
+<td>
+<a href="<?php echo base_url("busqueda/mapa/" . $lista['latitud'] . "/" . $lista['longitud']); ?>" class="btn btn-warning btn-xs" <?php echo $boton; ?>>
+Encuesta  
+</a>
+</td>
+<?php
 									
 									echo "</tr>";
 							endforeach;
