@@ -179,7 +179,12 @@ echo '  <button type="button" class="btn btn-primary btn-circle">AC</button>';
 						
 									echo "</td>";
 									echo "<td class='text-center'>" . $lista['nombre_propietario'] . "</td>";
-									echo "<td class='text-center'>" . $lista['direccion'] . "</td>";
+									echo "<td class='text-center'>" . $lista['direccion'];
+?>
+	<br>
+	<a href="<?php echo base_url("encuesta/geolocalizacion/" . $lista['id_establecimiento']); ?>" class="btn btn-primary btn-xs">Geolocalización</a>
+<?php
+									echo "</td>";
 									echo "<td class='text-center'>" . $lista['telefono'] . "</td>";
 									echo "<td>";
 

@@ -1186,6 +1186,43 @@ if($banderaTerminar){
 
 			echo json_encode($data);
     }
+	
+	/**
+	 * geolocalizacion
+	 */
+	public function geolocalizacion($idEstablecimiento)
+	{
+			if (empty($idEstablecimiento)) {
+				show_error('ERROR!!! - You are in the wrong place.');
+			}
+			
+			//busco datos del estableciiento
+			$arrParam = array(
+				"idEstablecimiento" => $idEstablecimiento
+			);
+			$data['information'] = $this->encuesta_model->get_establecimientos($arrParam);
+			
+			$data['idEstablecimiento'] = $idEstablecimiento; 
+			$data["view"] = 'establecimiento_geolocalizacion';
+			$this->load->view("layout", $data);
+	}
+	
+	/**
+	 * FUNCIÓN PARA SUBIR LA IMAGEN 
+	 */
+    public function update_geolocalizacion($idManzana) 
+	{
+		if($this->encuesta_model->updateAddressEstablecimiento($arrParam))
+		{
+			$data['clase'] = "alert-success";
+			$data['msj'] = "Se actualizarón los datos.";
+		}else{
+			$data['clase'] = "alert-danger";
+			$data['msj'] = "Error, contactarse con el administrador.";
+		}
+					
+		redirect('encuesta/establecimiento/' . $idManzana);
+    }
 
 	
 	

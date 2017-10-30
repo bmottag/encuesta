@@ -867,6 +867,31 @@
 					return false;
 				}
 		}
+		
+		/**
+		 * updateAddressEstablecimiento
+		 * @since 30/10/2017
+		 */
+		public function updateAddressEstablecimiento() 
+		{
+				$idEstablecimiento = $this->input->post('hddId');
+							
+				if($this->input->post('latitud') != 0){				
+					$data['latitud'] = $this->input->post('latitud');
+					$data['longitud'] = $this->input->post('longitud');
+					$data['address'] = $this->input->post('address');
+					
+					
+					$this->db->where('id_establecimiento', $idEstablecimiento);
+					$query = $this->db->update('form_establecimiento', $data);
+				}
+
+				if ($query) {
+					return true;
+				} else {
+					return false;
+				}
+		}
 
 
 
