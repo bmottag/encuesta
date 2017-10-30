@@ -70,11 +70,16 @@
 					'cedula' => $this->input->post('documento'),
 					'fk_id_manzana' => $this->input->post('hddIdManzana'),
 					'tipo_documento' => $this->input->post('tipo_documento'),
-					'digito' => $this->input->post('digito'),
-					'latitud' => $this->input->post('latitud'),
-					'longitud' => $this->input->post('longitud'),
-					'address' => $this->input->post('address')
+					'digito' => $this->input->post('digito')
 				);	
+				
+				
+				if($this->input->post('latitud') != 0){				
+					$data['latitud'] = $this->input->post('latitud');
+					$data['longitud'] = $this->input->post('longitud');
+					$data['address'] = $this->input->post('address');
+				}
+
 
 				//revisar si es para adicionar o editar
 				if ($idEstablecimiento == '') {
