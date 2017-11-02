@@ -147,8 +147,7 @@ if($information)
 									<option value=''>Select...</option>
 									<option value=1 <?php if($information["impuestos"] == 1) { echo "selected"; }  ?>>Si</option>
 									<option value=2 <?php if($information["impuestos"] == 2) { echo "selected"; }  ?>>No</option>
-									<option value=3 <?php if($information["impuestos"] == 3) { echo "selected"; }  ?>>NS</option>
-									<option value=4 <?php if($information["impuestos"] == 4) { echo "selected"; }  ?>>NR</option>
+									<option value=3 <?php if($information["impuestos"] == 3) { echo "selected"; }  ?>>NS/NR</option>
 								</select>
 							</div>
 						</div>																	
