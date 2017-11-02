@@ -59,7 +59,7 @@
 							C.financiamiento,C.ausencia,C.capacitacion,C.competencia,C.ambiental,C.seguridad,C.ventas,C.proveedores,C.otros,C.ninguno,C.cuales,
 							F.ingresos,F.contabilidad,F.mercadeo,F.planeacion,F.servicio,F.produccion,F.iso,F.otros,F.cuales,F.impuestos,
 							S.motivo,S.productos,S.procesos,S.capacitacion,S.mercadeo,S.nuevos,S.informaticos,S.innovacion,S.tramites,S.participacion,S.financiamiento,S.proyectos,S.otro,S.cual_motivo,S.cual_fortalecer,
-							O.formalizar,O.motivo,O.asesoria_mercados,O.apoyo,O.asesoria_juridica,O.capacitacion,O.tecnologias,O.participacion,O.simplificacion,O.tramites,O.creditos,O.impuestos,O.contratacion,O.suelo,O.medio_ambiente,O.seguridad_social,O.impuestos_municipales,O.registro,O.impuestos_nacionales,O.licencias,O.ninguno";
+							O.formalizar,O.motivo,O.asesoria_mercados,O.apoyo,O.asesoria_juridica,O.capacitacion,O.tecnologias,O.participacion,O.simplificacion,O.tramites,O.creditos,O.impuestos";
 			$cadena_sql.= " FROM form_establecimiento E";
 			$cadena_sql.= " INNER JOIN usuario U ON U.id_usuario = E.fk_id_usuario";
 			$cadena_sql.= " INNER JOIN form_manzana M ON M.id_manzana = E.fk_id_manzana";
