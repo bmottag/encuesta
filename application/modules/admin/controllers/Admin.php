@@ -44,7 +44,7 @@ class Admin extends MX_Controller {
 			$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
 			$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 			$cabeceras .= 'To: ' . $user . '<' . $to . '>' . "\r\n";
-			$cabeceras .= 'From: ICFES APP <administrador@operativoicfes.com>' . "\r\n";
+			$cabeceras .= 'From: CEIV-CCV APP <ceiv.ccv@gmail.com>' . "\r\n";
 
 			//enviar correo
 			mail($to, $subjet, $mensaje, $cabeceras);
