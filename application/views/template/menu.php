@@ -43,26 +43,36 @@
 				
 
 				<li>
-					<a href="#"><i class="fa fa-user fa-fw"></i> <?php echo $this->session->firstname; ?></a>
+					<a href="<?php echo base_url("encuesta/manzana"); ?>"><i class="fa fa-user fa-fw"></i> <?php echo $this->session->firstname; ?></a>
 				</li>
-				
+<?php 
+if($userRol!=5){ //SI es usuario diferente a consulta
+?>				
 				<li>
-					<a href="<?php echo base_url("encuesta/manzana"); ?>"><i class="fa fa-pencil-square-o fa-fw"></i> Formularios</a>
+					<a href="<?php echo base_url("encuesta/manzana"); ?>"><i class="fa fa-pencil-square-o fa-fw"></i> Inicio</a>
 				</li>
-				
-				<li>
-					<a href="<?php echo base_url("busqueda"); ?>"><i class="fa fa-bar-chart-o fa-fw"></i> Busqueda</a>
-				</li>
+<?php 
+}
+?>
 
+				<li>
+					<a href="<?php echo base_url("busqueda"); ?>"><i class="fa fa-bar-chart-o fa-fw"></i> Buscar</a>
+				</li>
+<?php 
+if($userRol!=5){ //SI es usuario diferente a consulta
+?>				
 				<li>
 					<a href="<?php echo base_url("reemplazo"); ?>"><i class="fa fa-retweet fa-fw"></i> Reemplazos</a>
 				</li>
+<?php 
+}
+?>
 				
 
 				
 				
 <?php 
-if($userRol==1){ //SI es usuario ADMIN o SUPERVISOR
+if($userRol!=3){ //SI es usuario diferente a encuestador
 ?>				
 		<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -71,7 +81,7 @@ if($userRol==1){ //SI es usuario ADMIN o SUPERVISOR
 			<ul class="dropdown-menu dropdown-messages">
 			
 				<li>
-					<a href="<?php echo base_url("public/reportico/run.php"); ?>"><i class="fa fa-search fa-fw"></i> Ver formularios</a>
+					<a href="<?php echo base_url("public/reportico/run.php"); ?>" target="_blank"><i class="fa fa-search fa-fw"></i> Ver formularios</a>
 				</li>
 				
 			</ul>
