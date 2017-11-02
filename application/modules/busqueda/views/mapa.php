@@ -1,6 +1,6 @@
     <style>
       #map {
-        height: 400px;
+        height: 550px;
         width: 100%;
        }
     </style>
@@ -21,7 +21,7 @@
       function initMap() {
         var uluru = {lat: <?php echo $latitud;?>, lng: <?php echo $longitud;?>};
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
+          zoom: 16,
           center: uluru
         });
         var marker = new google.maps.Marker({

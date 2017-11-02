@@ -39,7 +39,7 @@
 									echo "<td class='text-right'>" . $lista['id_establecimiento'] . "</td>";
 									echo "<td class='text-center'>";
 						?>
-<a href="<?php echo base_url("encuesta/establecimiento/" . $lista['fk_id_manzana']); ?>" class="btn btn-warning btn-xs">
+<a href="<?php echo base_url("encuesta/establecimiento/" . $lista['fk_id_manzana']); ?>" class="btn btn-danger btn-xs">
 <?php echo $lista['fk_id_manzana']; ?>
 </a>
 						<?php
@@ -119,9 +119,9 @@ echo '  <button type="button" class="btn btn-primary btn-circle">AC</button>';
 									
 									echo "<td class='text-center'>" . $lista['fecha_registro'] . "</td>";
 ?>
-<td>
-<a href="<?php echo base_url("busqueda/mapa/" . $lista['latitud'] . "/" . $lista['longitud']); ?>" class="btn btn-warning btn-xs" <?php echo $boton; ?>>
-Encuesta  
+<td class='text-center'>
+<a href="<?php echo base_url("busqueda/mapa/" . $lista['latitud'] . "/" . $lista['longitud']); ?>" target="_blank" class="btn btn-primary btn-circle" <?php echo $boton; ?>>
+  <span class="glyphicon glyphicon-screenshot" aria-hidden="true">
 </a>
 </td>
 <?php
