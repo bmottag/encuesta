@@ -120,7 +120,7 @@ echo '  <button type="button" class="btn btn-primary btn-circle">AC</button>';
 									echo "<td class='text-center'>" . $lista['fecha_registro'] . "</td>";
 ?>
 <td class='text-center'>
-<a href="<?php echo base_url("busqueda/mapa/" . $lista['latitud'] . "/" . $lista['longitud']); ?>" target="_blank" class="btn btn-primary btn-circle" <?php echo $boton; ?>>
+<a href="<?php echo base_url("busqueda/mapa/" . $lista['id_establecimiento']); ?>" target="_blank" class="btn btn-primary btn-circle" <?php echo $boton; ?>>
   <span class="glyphicon glyphicon-screenshot" aria-hidden="true">
 </a>
 </td>

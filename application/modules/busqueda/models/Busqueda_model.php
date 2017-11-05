@@ -10,15 +10,16 @@
 		{
 				$userRol = $this->session->userdata("rol");
 				$userID = $this->session->userdata("id");
-				$nombre = '%' . $arrDatos["nombre"] . '%';
 			
-				$this->db->select('E.*, U.nombres_usuario, U.apellidos_usuario, CONCAT(K.nombres_usuario, " ", K.apellidos_usuario) jefe');
+				$this->db->select('E.*, M.*, U.nombres_usuario, U.apellidos_usuario, CONCAT(K.nombres_usuario, " ", K.apellidos_usuario) jefe');
+				$this->db->join('form_manzana M', 'M.id_manzana = E.fk_id_manzana', 'INNER');
 				$this->db->join('usuario U', 'U.id_usuario = E.fk_id_usuario', 'INNER');
 				$this->db->join('usuario K', 'K.id_usuario = U.fk_id_jefe', 'LEFT');
 				if (array_key_exists("idEstablecimiento", $arrDatos) && $arrDatos["idEstablecimiento"] != '') {
 					$this->db->where('id_establecimiento', $arrDatos["idEstablecimiento"]);
 				}
 				if (array_key_exists("nombre", $arrDatos) && $arrDatos["nombre"] != '') {
+					$nombre = '%' . $arrDatos["nombre"] . '%';
 					$this->db->where('nombre_propietario LIKE', $nombre);
 				}
 				if (array_key_exists("documento", $arrDatos) && $arrDatos["documento"] != '') {

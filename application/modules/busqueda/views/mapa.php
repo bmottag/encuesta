@@ -6,7 +6,7 @@
     </style>
 <div id="page-wrapper">
 	<br>
-	
+
 	<!-- /.row -->
 	<div class="row">
 		<div class="col-lg-12">
@@ -19,15 +19,34 @@
     <div id="map"></div>
     <script>
       function initMap() {
-        var uluru = {lat: <?php echo $latitud;?>, lng: <?php echo $longitud;?>};
+        var uluru = {lat: <?php echo $info[0]['latitud'];?>, lng: <?php echo $info[0]['longitud'];?>};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 16,
           center: uluru
         });
+		
+		var contentString = '<div id="content">'+
+		  '<div id="siteNotice">'+
+		  '</div>'+
+		  '<div id="bodyContent">'+
+		  '<p><b><?php echo $info[0]['nombre_propietario'];?></b></p>'+
+		  '<p><b>Dirección: </b>'+'<?php echo $info[0]['address'];?>'+
+		  '<br><b>Comuna: </b>'+'<?php echo $info[0]['fk_id_comuna'];?>'+
+		  '</p>'+
+		  '</div>'+
+		  '</div>';
+
+		var infowindow = new google.maps.InfoWindow({
+			content: contentString
+		});
+		
         var marker = new google.maps.Marker({
           position: uluru,
           map: map
         });
+		
+		infowindow.open(map, marker);
+		
       }
     </script>
     <script async defer

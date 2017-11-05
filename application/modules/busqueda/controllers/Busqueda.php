@@ -212,10 +212,13 @@ echo $this->db->last_query() . "<br><br>";
 	 * Search
      * @since 29/10/2017
 	 */
-    public function mapa($latitud, $longitud) 
+    public function mapa($idEstablecimiento) 
 	{
-			$data["latitud"] = $latitud;
-			$data["longitud"] = $longitud;
+			$arrParam = array(
+				"idEstablecimiento" => $idEstablecimiento
+			);
+			
+			$data['info'] = $this->busqueda_model->get_establecimientos($arrParam);
 			
 			$data["view"] = "mapa";
 			$this->load->view("layout", $data);
