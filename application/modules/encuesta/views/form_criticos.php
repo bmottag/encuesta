@@ -149,7 +149,10 @@ if($information)
 								
 				
 								
-
+<?php 
+$userRol = $this->session->rol;
+if($userRol!=5){ //SI es usuario diferente a consulta.
+?>
 						<div class="form-group">
 							<div class="row" align="center">
 								<div style="width:100%;" align="center">
@@ -157,7 +160,9 @@ if($information)
 								</div>
 							</div>
 						</div>
-
+<?php
+}
+?>
 								
 
 								

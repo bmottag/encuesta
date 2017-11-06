@@ -69,10 +69,18 @@ $(function(){
 						
 						</div>
 					</div>
+<?php 
+$userRol = $this->session->rol;
+if($userRol!=5){ //SI es usuario diferente a consulta.
+?>
 				
 					<button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#modal" id="<?php echo $infoManzana[0]['id_manzana']; ?>">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Identificación del Establecimiento y/o Propietario
 					</button><br>
+<?php
+}
+?>
+
 <?php
 $retornoExito = $this->session->flashdata('retornoExito');
 if ($retornoExito) {
@@ -144,17 +152,25 @@ $userRol = $this->session->rol;
 		$enlace = "#";
 	}
 ?>
+
+<?php 
+if($userRol!=5){ //SI es usuario diferente a consulta.
+?>
 						
 									<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_establecimiento']; ?>" <?php echo $boton; ?> >
 										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
 									</button>
 <br><br>
+<?php
+}
+?>
+
 <a href="<?php echo $enlace; ?>" class="btn btn-warning btn-xs" <?php echo $boton; ?>>
 Encuesta  
 </a>
 
 <?php 
-if($userRol!=3){ //los encuestadores no pueden borrar
+if($userRol!=3 && $userRol!=5){ //los encuestadores, ni usuario CONSULTA pueden borrar
 ?>
 <br><br>
 <button type="button" class="btn btn-danger btn-xs" id="<?php echo $lista['id_establecimiento']; ?>" >
@@ -181,8 +197,17 @@ echo '  <button type="button" class="btn btn-primary btn-circle">AC</button>';
 									echo "<td class='text-center'>" . $lista['nombre_propietario'] . "</td>";
 									echo "<td class='text-center'>" . $lista['direccion'];
 ?>
+
+
+<?php 
+if($userRol!=5){ //SI es usuario diferente a consulta.
+?>
 	<br>
 	<a href="<?php echo base_url("encuesta/geolocalizacion/" . $lista['id_establecimiento']); ?>" class="btn btn-primary btn-xs">Geolocalización</a>
+<?php
+}
+?>
+	
 <?php
 									echo "</td>";
 									echo "<td class='text-center'>" . $lista['telefono'] . "</td>";
@@ -218,8 +243,14 @@ echo '  <button type="button" class="btn btn-primary btn-circle">AC</button>';
 <img src="<?php echo base_url($lista["foto"]); ?>" class="img-rounded" width="42" height="42" />
 						<?php } ?>
 						
-						
+<?php 
+if($userRol!=5){ //SI es usuario diferente a consulta.
+?>						
 									<a href="<?php echo base_url("encuesta/foto/" . $lista['id_establecimiento']); ?>" class="btn btn-primary btn-xs">Foto</a>
+<?php
+}
+?>
+									
 						<?php
 									echo "</td>";
 									

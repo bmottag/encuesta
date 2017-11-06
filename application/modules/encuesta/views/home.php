@@ -201,6 +201,11 @@ if($information_form4 && $information_form4['contabilidad'] != 1){
 <?php } ?>
 <?php } ?>
 <br>
+
+<?php 
+$userRol = $this->session->rol;
+if($userRol!=5){ //SI es usuario diferente a consulta.
+?>
 					<div class="row">
 						<div class="col-lg-12">	
 <a href="<?php echo base_url(). 'encuesta/form_control/' . $idFormulario; ?>" class="btn <?php echo $boton_form7; ?> btn-block">
@@ -208,6 +213,10 @@ if($information_form4 && $information_form4['contabilidad'] != 1){
 </a>
 						</div>
 					</div>
+<?php
+}
+?>
+					
 
 			</div>
 			<!-- /.panel-body -->

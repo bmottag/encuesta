@@ -28,9 +28,19 @@ $(function(){
 					<i class="fa fa-bullseye"></i> LISTA MANZANAS
 				</div>
 				<div class="panel-body">
+				
+<?php 
+$userRol = $this->session->rol;
+if($userRol!=5){ //SI es usuario diferente a consulta.
+?>
 					<button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#modal" id="x">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Manzana
 					</button><br>
+<?php
+}
+?>
+					
+					
 <?php
 $retornoExito = $this->session->flashdata('retornoExito');
 if ($retornoExito) {
@@ -80,9 +90,17 @@ if ($retornoError) {
 									echo "<tr>";
 									echo "<td class='text-center'>";
 						?>
+						
+<?php 
+if($userRol!=5){ //SI es usuario diferente a consulta.
+?>
 									<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal" id="<?php echo $lista['id_manzana']; ?>" >
 										Editar <span class="glyphicon glyphicon-edit" aria-hidden="true">
 									</button>									
+									<br><br>
+<?php
+}
+?>
 									
 									
 <?php 
@@ -93,14 +111,12 @@ $ci->load->model("general_model");
 $arrParam = array("idManzana" => $lista["id_manzana"]);
 $conteoEstablecimiento = $this->general_model->countEstablecimientos($arrParam);
 ?>
-<br><br>								
 <a href="<?php echo base_url("encuesta/establecimiento/" . $lista['id_manzana']); ?>" class="btn btn-success btn-xs">
 Establecimientos  <span class="badge"><?php echo $conteoEstablecimiento; ?></span>
 </a>	
 
 <?php 
-$userRol = $this->session->rol;
-if($userRol!=3){ //los encuestadores no pueden borrar manazanas
+if($userRol!=3 && $userRol!=5){ //los encuestadores, ni usuario CONSULTA pueden borrar manazanas
 ?>
 <br><br>
 <button type="button" class="btn btn-danger btn-xs" id="<?php echo $lista['id_manzana']; ?>" >
