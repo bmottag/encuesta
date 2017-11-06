@@ -45,15 +45,11 @@
 				<li>
 					<a href="<?php echo base_url("encuesta/manzana"); ?>"><i class="fa fa-user fa-fw"></i> <?php echo $this->session->firstname; ?></a>
 				</li>
-<?php 
-if($userRol!=5){ //SI es usuario diferente a consulta
-?>				
+				
 				<li>
 					<a href="<?php echo base_url("encuesta/manzana"); ?>"><i class="fa fa-pencil-square-o fa-fw"></i> Inicio</a>
 				</li>
-<?php 
-}
-?>
+
 
 				<li>
 					<a href="<?php echo base_url("busqueda"); ?>"><i class="fa fa-bar-chart-o fa-fw"></i> Buscar</a>
@@ -73,19 +69,12 @@ if($userRol!=5){ //SI es usuario diferente a consulta
 				
 <?php 
 if($userRol!=3){ //SI es usuario diferente a encuestador
-?>				
-		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				<i class="fa fa-list-alt"></i> Reportes <i class="fa fa-caret-down"></i>
-			</a>
-			<ul class="dropdown-menu dropdown-messages">
-			
+?>
+
 				<li>
-					<a href="<?php echo base_url("public/reportico/run.php"); ?>" target="_blank"><i class="fa fa-search fa-fw"></i> Ver formularios</a>
+					<a href="https://www.ceiv-ccv.com/public/reportico/run.php?execute_mode=EXECUTE&project=CEIV-CCV&report=Encuestas.xml&target_format=CSV"><i class="fa fa-list-alt"></i> Reporte</a>
 				</li>
 				
-			</ul>
-		</li>
 <?php 
 }
 ?>
