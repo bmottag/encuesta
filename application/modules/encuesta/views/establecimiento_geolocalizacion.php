@@ -117,12 +117,33 @@
 	  map.setZoom(14);
 	  
 	showLatLong(crd.latitude, crd.longitude);
+	
+  var contentString = '<div id="content">'+
+      '<div id="bodyContent">'+
+      '<p><b>Nota</b>: Si desea cambiar la ubicación guarde la información.</p>'+
+      '</div>'+
+      '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
 	  
 	  ultimaPosicionUsuario = new google.maps.LatLng(crd.latitude, crd.longitude);
       marcadorUsuario = new google.maps.Marker({
         position: ultimaPosicionUsuario,
-        map: map
+        map: map,
+		title: 'Ubicación establecimiento.'
       });
+	  
+	  
+
+    infowindow.open(map, marcadorUsuario);
+  
+
+	  
+	  
+	  
+	  
 	};
 
 	function error(err) {
