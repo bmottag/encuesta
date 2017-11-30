@@ -72,7 +72,8 @@ if($userRol!=3){ //SI es usuario diferente a encuestador
 ?>
 
 				<li>
-					<a href="https://www.ceiv-ccv.com/public/reportico/run.php?execute_mode=EXECUTE&project=CEIV-CCV&report=Encuestas.xml&target_format=CSV"><i class="fa fa-list-alt"></i> Reporte</a>
+				<!-- 	<a href="https://www.ceiv-ccv.com/public/reportico/run.php?execute_mode=EXECUTE&project=CEIV-CCV&report=Encuestas.xml&target_format=CSV"><i class="fa fa-list-alt"></i> Reporte</a> -->
+					<a href="https://www.ceiv-ccv.com/public/reportico/run.php?execute_mode=MENU&project=CEIV-CCV" target="_blanck"><i class="fa fa-list-alt"></i> Reporte</a>
 				</li>
 				
 <?php 
