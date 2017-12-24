@@ -30,7 +30,7 @@
 		  '</div>'+
 		  '<div id="bodyContent">'+
 		  '<p><b><?php echo $info[0]['nombre_propietario'];?></b></p>'+
-		  '<p><b>Dirección: </b>'+'<?php echo $info[0]['address'];?>'+
+		  '<p><b>Dirección: </b>'+'<?php echo $info[0]['direccion_normalizada'];?>'+
 		  '<br><b>Comuna: </b>'+'<?php echo $info[0]['fk_id_comuna'];?>'+
 		  '</p>'+
 		  '</div>'+
